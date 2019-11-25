@@ -25,7 +25,7 @@ def dict2list(dic):
 grab_dirs()
 url = doc.URL
 if "#" in url:
-    fil = "./doc"+url.split("#")[-1].replace(".", "/")
+    fil = "./doc"+url.split("#")[-1].replace(".txt", "&").replace(".", "/").replace("&", ".txt")
 else:
     fil = "./doc/index.txt"
 if not fil.endswith(".txt"):
@@ -64,5 +64,7 @@ else:
         md += line+"\n"
     doc["page"].innerHTML = md
     for lnk in dirs:
-        doc["nav"] <= html.A(html.DIV(lnk, Class="btn"), Href="https://voxelprismatic.github.io/prizmatic.docs#"+lnk)
+        doc["nav"] <= html.A(html.DIV(lnk[5:], Class="lnk", Id=lnk), Href="/prizmatic.docs#"+lnk)
+        if lnk == fil
+        
 print(dirs)
