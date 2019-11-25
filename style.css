@@ -24,7 +24,6 @@ body {
     border-radius: 5px;
     float: left;
     margin-right: 5px;
-    display: flex;
     justify-content: center;
     word-break: break-word;
 } .head {
