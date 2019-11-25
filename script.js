@@ -46,6 +46,7 @@ function grab_dirs(lvl) {
 }
 dirs = grab_dirs("./doc");
 url = document.URL;
+if url
 if(url.includes("?")) {
     var fil = "./doc/"+url.split("?")[1].split("#")[0].replace(/\.txt/g, "&").replace(/\./g, "/").replace(/\&/g, ".txt");
 } else {
@@ -117,5 +118,9 @@ if(url.includes("?")) {
 }
 console.log(dirs);
 if(url.includes("#")) {
-    jumper(url.split("#")[1]);
+    var sec = url.split("#")[1].split("?")[0];
+    if(!(sec.startsWith("SECT_"))) {
+        sec = "SECT_"+sec;
+    }
+    jump(sec);
 }
