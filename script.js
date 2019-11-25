@@ -9,7 +9,10 @@ function read(filename) {
     f.send();
     return document.getElementById("file").innerHTML;
 }
-console.log(read("./doc/dir.txt"))
+function jump(elem) {
+    id = elem.id.slice(5);
+    document.getElementById(id).scrollIntoView()
+}
 function grab_dirs(lvl) {
     var dirs = [];
     for(var line of read(lvl+"/dir.txt").split("\n")) {
@@ -84,9 +87,15 @@ if(url.includes("?")) {
         [/^ *(\w+) *---{3,}/gm, "<b>$1 ---</b>"],
         [/^---$/gm, "</div>"],
         [/^ *\|(.*)$/gm, "<div class='com'>&gt; $1</div>"],
-        [/\{\{(\w+)\}\}([\w\d]+) /gm, "<span class='$1'>$2</span>"]
+        [/\{\{(\w+)\}\}([\w\d]+) /gm, "<span class='$1'>$2</span>"],
+        [/--([\w]+)--/gm, "<div id='$1'></div>"],
     ];
     for(var line of txt.split("\n")) {
+        if(line.startsWith("SECT_")) {
+            document.getElementById("sect").innerHTML +=
+                `<div><div class="lnk" id="${line}" onclick="jump(this);">#${line.slice(5)}</div></div>`;
+            continue;
+        }
         for(var rep of reps) {
             line = line.replace(rep[0], rep[1]);
         }
