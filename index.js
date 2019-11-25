@@ -7,9 +7,7 @@ function read(filename) {
     }
     f.open("GET", filename, true);
     f.send();
-    txt = document.getElementById("file").innerHTML;
-    document.getElementById("file").innerHTML = "";
-    return txt;
+    return document.getElementById("file").innerHTML;
 }
 console.log(read("./doc/dir.txt"))
 function grab_dirs(lvl) {
