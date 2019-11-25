@@ -69,6 +69,7 @@ body {
     width: 9vw !important;
     text-align: left;
     display: block;
+    text-decoration: none;
 } .lnk:hover {
     color: #00ff00;
     border: 2px solid #00ff00;
@@ -78,6 +79,7 @@ body {
     width: 9vw !important;
     text-align: left;
     display: block;
+    text-decoration: none;
 } .alnk {
     color: #00ffff;
     border: 2px solid #00ffff;
@@ -87,6 +89,7 @@ body {
     width: 9vw !important;
     text-align: left;
     display: block;
+    text-decoration: none;
 } .alnk:hover {
     color: #ff0088;
     border: 2px solid #ff0088;
@@ -96,6 +99,7 @@ body {
     width: 9vw !important;
     text-align: left;
     display: block;
+    text-decoration: none;
 } .com {
     color: #888888;
     font-size: smaller;
@@ -119,5 +123,4 @@ body {
     padding: 5px;
 } a {
     color: #aaffff;
-    text-decoration: none;
 }
