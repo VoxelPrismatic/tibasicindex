@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-function open(filename) {
+function read(filename) {
     fs.readFile(filename, (err, data) => { 
         if (err) throw err; 
         return data.toString();
@@ -8,7 +8,7 @@ function open(filename) {
 }
 function grab_dirs(lvl) {
     var dirs = [];
-    for(var line of open(lvl+"/dir.txt").split("\n")) {
+    for(var line of read(lvl+"/dir.txt").split("\n")) {
         if(line.endsWith(".txt")) {
             dirs.append(line);
         } else if(line != "") {
@@ -32,7 +32,7 @@ if(url.contains("#")) {
 } if (!(dirs.contains(fil))) {
     document.getElementById("page").innerHTML = `<div class="warn">404 ] File not found</div>`;
 } else {
-    txt open(fil);
+    txt = read(fil);
     chars = [
         ["\\\\n", ""],
         ["&", "&amp;"],
