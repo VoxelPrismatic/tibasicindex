@@ -1,1 +1,27 @@
-#] PY
+#] HEADER
+| comment
+%bold%
+*ital*
+~strike~
+_under_
+COMMENT---
+block comment
+cool shit
+---
+CODE---
+code block
+---
+[link](/prismatic.docs)
+NOTE---
+noticing things
+---
+WARN---
+big red block
+---
+INFO---
+idk
+---
+EX---
+an example
+---
+
