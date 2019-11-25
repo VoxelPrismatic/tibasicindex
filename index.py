@@ -64,8 +64,8 @@ else:
         md += line+"\n"
     doc["page"].innerHTML = md
     for lnk in dirs:
-        doc["nav"].innerHTML += f'<a href="{lnk}"><div class="lnk" id="{lnk}">{lnk[5:]}</div></a>'
+        doc["nav"].innerHTML += f'<a href="/prizmatic.docs#{lnk[6:]}"><div class="lnk" id="{lnk}">{lnk[5:]}</div></a>'
         if lnk == fil:
-            doc[lnk].className += "active"
+            doc[lnk].className += " active"
         
 print(dirs)
