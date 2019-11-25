@@ -57,16 +57,23 @@ else:
             r"\~(.+)\~": r"<s>\1</s>", # ~strike~
             r"\_(.+)\_": r"<u>\1</s>", # _under_
             r"\n:::\n": r'<div class="code">',
-            r"\n;;;\n": r'</div>'
+            r"\n;;;\n": r'</div>', 
+            r"^ *//(.*)$": r'<div class="com">&gt; \1</div>',
+            r"\n/\|": r'<div class="comblock">',
+            r"\|/\n": r'</div>'
         }
         for k, v in dict2list(rep):
             line = re.sub(k, v, line)
         md += line+"\n"
     doc["page"].innerHTML = md
+    fil = fil.replace("index.txt", "").replace(".txt", ".py")
     for lnk in dirs:
+        if lnk.endswith("index.txt"):
+            continue
+        lnk = lnk.replace(".txt", ".py")
         if lnk != fil:
-            doc["nav"].innerHTML += f'<br><div><a href="/prizmatic.docs#{lnk[6:]}"><div class="lnk" id="{lnk}">{lnk[5:]}</div></a></div>'
+            doc["nav"] <= html.DIV(html.A(html.DIV(lnk[5:], Id=lnk, Class="lnk")))
         else:
-            doc["nav"].innerHTML += f'<br><div><a href="/prizmatic.docs#{lnk[6:]}"><div class="alnk" id="{lnk}">{lnk[5:]}</div></a></div>'
+            doc["nav"] <= html.DIV(html.A(html.DIV(lnk[5:], Id=lnk, Class="alnk")))
         
 print(dirs)
