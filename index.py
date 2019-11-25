@@ -50,8 +50,8 @@ else:
         line = eval(f'"{line}"') #Fixes unicode
         rep = {
             r"^(\#+)(.+)$": r'<div class="head">\1\2</div>', # @Header
-            r"\[(.+)\]<(.+)>": r'<a href="\2">\1</a>', # [alt]<link>
-            r"\[\[(.+)\]\]<(.+)>": r'<a href="\2"><div class="lnk">\1</div></a>', # [[btn]]<link>
+            r"\[(.+)\]\(.+)\)": r'<a href="\2">\1</a>', # [alt]<link>
+            r"\[\[(.+)\]\]\((.+)\)": r'<a href="\2"><div class="lnk">\1</div></a>', # [[btn]]<link>
             r"\%(.+)\%": r"<b>\1</b>", # #bold#
             r"\*(.+)\*": r"<i>\1</i>", # *ital*
             r"\~(.+)\~": r"<s>\1</s>", # ~strike~
