@@ -25,7 +25,7 @@ def dict2list(dic):
 grab_dirs()
 url = doc.URL
 if "#" in url:
-    fil = "./doc"+url.split("#")[-1].replace(".txt", "&").replace(".", "/").replace("&", ".txt")
+    fil = "./doc/"+url.split("#")[-1].replace(".txt", "&").replace(".", "/").replace("&", ".txt")
 else:
     fil = "./doc/index.txt"
 if not fil.endswith(".txt"):
