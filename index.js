@@ -5,11 +5,10 @@ function read(file) {
         if(rawFile.readyState === 4) {
             if(rawFile.status === 200 || rawFile.status == 0) {
                 var allText = rawFile.responseText;
-                return allText;
             }
         }
     }
-    throw "FileNotFoundError";
+    return allText;
 }
 function grab_dirs(lvl) {
     var dirs = [];
