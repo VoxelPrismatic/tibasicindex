@@ -2,7 +2,7 @@ import os
 from browser import document as doc, html, window as win
 global dirs
 dirs = []
-def grab_dirs(lvl = "."):
+def grab_dirs(lvl = "./doc"):
     global dirs
     for filename in os.listdir():
         if filename.endswith(".txt"):
@@ -14,7 +14,10 @@ def grab_dirs(lvl = "."):
             except NotADirectoryError:
                 pass
 url = doc.URL
-fil = "./"+url.split("#")[-1].replace(".", "/")
+if "#" in url:
+    fil = "./doc"+url.split("#")[-1].replace(".", "/")
+else:
+    fil = "./doc"
 if not fil.endswith(".txt"):
     fil += ".txt"
 if fil not in dirs:
