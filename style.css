@@ -23,7 +23,8 @@ body {
     border-radius: 5px;
     float: left;
     margin-right: 5px;
-    text-align: center;
+    display: flex;
+    justify-content: center;
 } .head {
     color: #00ffff;
 } .code {
