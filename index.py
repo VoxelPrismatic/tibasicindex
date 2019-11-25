@@ -6,15 +6,16 @@ print(os.listdir())
 dirs = []
 def grab_dirs(lvl = "./doc"):
     global dirs
-    for filename in os.listdir():
-        if filename.endswith(".txt"):
-            dirs.append(lvl+"/"+filename)
-        elif "." not in filename:
-            try:
-                os.listdir(lvl+"/"+filename)
-                grab_dirs(lvl+"/"+filename)
-            except NotADirectoryError:
-                pass
+    with open(lvl+"/dir.txt") as f:
+        for l in f.read().splitlines():
+            if l.endswith(".txt"):
+                dirs.append(lvl+"/"+l)
+            elif l != "":
+                try:
+                    grab_dirs(lvl+"/"+l)
+                except:
+                    pass
+
 def dict2list(dic):
     ls = []
     for key in dic:
@@ -32,7 +33,8 @@ if not fil.endswith(".txt"):
 if fil not in dirs:
     fil += "index.txt"
 if fil not in dirs:
-    doc["page"] <= html.DIV("File not found", Class = "warn")
+    doc["page"].innerHTML = '<div class="warn">404 ] File not found</div>'
+    doc["nav"].innerHTML = '<a href="https://voxelprismatic.github.io/prizmatic.docs"><div class="btn">Home</div></a>'
 else:
     txt = open(fil).read()
     chars = {
