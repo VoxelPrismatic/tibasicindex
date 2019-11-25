@@ -11,7 +11,12 @@ function read(filename) {
 }
 function jump(elem) {
     id = elem.id.slice(5);
-    document.getElementById(id).scrollIntoView()
+    document.getElementById(id).scrollIntoView();
+    var things = document.getElementById("sect").children;
+    for(var thing of things) {
+        thing.className = "lnk";
+    }
+    elem.className = "alnk";
 }
 function grab_dirs(lvl) {
     var dirs = [];
