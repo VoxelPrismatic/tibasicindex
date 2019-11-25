@@ -62,10 +62,10 @@ else:
             r"^INFO---$": r'<div class="info"><b>INFO ---</b><br>',
             r"^EX---$": r'<div class="exc"><b>EXAMPLE ---</b><br>',
             r"^CODE---$": r'<div class="code">',
+            r"^COMMENT---$": r'<div class="comblock"><b>OTHER INFO ---</b><br>',
             r"^---$": r'</div>', 
             r"^ *\|(.*)$": r'<div class="com">&gt; \1</div>',
-            r"^/\|": r'<div class="comblock">',
-            r"\|/$": r'</div>'
+            r"\{(\w+)\}([\w\d]+) ": r'<span class="\1">\2 </span>',
         }
         for k, v in dict2list(rep):
             line = re.sub(k, v, line)
