@@ -5,7 +5,7 @@ dirs = []
 def grab_dirs(lvl = "."):
     global dirs
     for filename in os.listdir():
-        if filename.endswith(".md"):
+        if filename.endswith(".txt"):
             dirs.append(lvl+"/"+filename)
         elif "." not in filename:
             try:
@@ -14,9 +14,11 @@ def grab_dirs(lvl = "."):
             except NotADirectoryError:
                 pass
 url = doc.URL
-fil = "./"+url.split("#")[-1].replace(".", "/")+".md"
+fil = "./"+url.split("#")[-1].replace(".", "/")
+if not fil.endswith(".txt"):
+    fil += ".txt"
 if fil not in dirs:
-    fil += "index.md"
+    fil += "index.txt"
 if fil not in dirs:
     doc["page"] <= html.DIV("File not found", Class = "warn")
 print(dirs)
