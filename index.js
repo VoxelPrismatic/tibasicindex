@@ -20,10 +20,6 @@ function grab_dirs(lvl) {
             if(lnk.endsWith("index.txt")) {
                 lnk = lnk.replace("index.txt", "")
                 var smol = lnk.slice(5)
-                if(!(dirs.includes(lnk))) {
-                    document.getElementById("nav").innerHTML +=
-                        `<div><a href="/prizmatic.docs#${smol}"><div class="lnk" id="${lnk}">${smol}</div></a></div>`;
-                }
             } else {
                 document.getElementById("nav").innerHTML +=
                     `<div><a href="/prizmatic.docs#${smol}"><div class="lnk" id="${lvl+"/"+line}">${smol}</div></a></div>`;
@@ -51,7 +47,7 @@ if(url.includes("#")) {
 } if (!(dirs.includes(fil))) {
     document.getElementById("page").innerHTML = `<div class="warn">404 ] File not found</div>`;
 } else {
-    document.getElementById(fil).className = "alnk";
+    document.getElementById(fil.splice(5)).className = "alnk";
     txt = read(fil);
     chars = [
         ["\\\\n", ""],
