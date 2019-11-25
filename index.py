@@ -56,6 +56,7 @@ else:
             r"\_(.+)\_": r"<u>\1</s>", # _under_
             r"\n:::\n": r'<div class="code">',
             r"\n;;;\n": r'</div>'
+        }
         for k, v in dict2list(rep):
             line = line.replace(k, v)
         md += line+"\n"
