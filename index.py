@@ -23,6 +23,7 @@ def dict2list(dic):
             dic[key] = dict2list(dic[key])
         ls.append([key, dic[key]])
     return ls
+grab_dirs()
 url = doc.URL
 if "#" in url:
     fil = "./doc"+url.split("#")[-1].replace(".", "/")
