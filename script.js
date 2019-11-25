@@ -103,7 +103,7 @@ function grab_dirs(lvl) {
                 nam = smol.slice(1)
                 fil = lvl+"/"+line
                 document.getElementById("nav").innerHTML +=
-                    `<div><div class="lnk" id="${fil}" onclick="docs(this);">${smol}</div></div>`;
+                    `<div class="lnk" id="${fil}" onclick="docs(this);">${smol}</div>`;
             }
         } else if(line != "") {
             try {
