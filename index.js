@@ -1,20 +1,32 @@
-function read(file) {
-    var rawFile = new XMLHttpRequest();
-    rawFile.open("GET", file, false);
-    rawFile.onreadystatechange = function() {
-        if(rawFile.readyState === 4) {
-            if(rawFile.status === 200 || rawFile.status == 0) {
-                var allText = rawFile.responseText;
-            }
+function read(filename) {
+    var f = new XMLHttpRequest()
+    f.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("file").innerHTML = f.responseText;
         }
     }
-    return allText;
+    f.open("GET", filename, true);
+    f.send();
+    txt = document.getElementById("file").innerHTML;
+    document.getElementById("file").innerHTML = "";
+    return txt;
 }
 function grab_dirs(lvl) {
     var dirs = [];
     for(var line of read(lvl+"/dir.txt").split("\n")) {
         if(line.endsWith(".txt")) {
             dirs.append(line);
+            lnk = line
+            var smol = lnk.slice(5)
+            if(lnk.endsWith("index.txt")) {
+                lnk = lnk.replace("index.txt", "")
+                document.getElementById("nav").innerHTML +=
+                    `<div><a href="/prizmatic.docs#${smol}"><div class="lnk" id="${lnk}">${smol}</div></a></div>`;
+            } else {
+                lnk = lnk.replace(/\.txt/gm, ".py");
+                document.getElementById("nav").innerHTML +=
+                    `<div><a href="/prizmatic.docs#${smol}"><div class="lnk" id="${lnk}">${smol}</div></a></div>`;
+            }
         } else if(line != "") {
             try {
                 grab_dirs(lvl+"/"+line);
@@ -88,12 +100,8 @@ if(url.contains("#")) {
         } else {
             lnk = lnk.replace(/\.txt/gm, ".py");
             var smol = lnk.slice(5)
-            if(lnk != fil) {
-                document.getElementById("nav").innerHTML +=
-                    `<div><a href="/prizmatic.docs#${smol}"><div class="lnk" id="${lnk}">${smol}</div></a></div>`;
-            } else {
-                document.getElementById("nav").innerHTML +=
-                    `<div><a href="/prizmatic.docs#${smol}"><div class="alnk" id="${lnk}">${smol}</div></a></div>`;
+            if(lnk == fil) {
+                document.getElementById("nav").className = "alnk";
             }
         }
     }
