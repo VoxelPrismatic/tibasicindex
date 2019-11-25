@@ -58,7 +58,7 @@ else:
             r"\_(.+)\_": r"<u>\1</s>", # _under_
             r"\n:::\n": r'<div class="code">',
             r"\n;;;\n": r'</div>', 
-            r"^ *//(.*)$": r'<div class="com">&gt; \1</div>',
+            r"^ *\|(.*)$": r'<div class="com">&gt; \1</div>',
             r"\n/\|": r'<div class="comblock">',
             r"\|/\n": r'</div>'
         }
