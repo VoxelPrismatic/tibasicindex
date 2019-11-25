@@ -2,7 +2,7 @@ body {
     font-family: "Ubuntu Mono";
     background-color: #112222;
     color: #aaaaaa;
-    height: 97vh;
+    height: 90vh;
     display: flex; 
     align-items: center; 
     align-content: center;
@@ -10,7 +10,7 @@ body {
 } .page {
     max-width: 80vw;
     min-width: 70vw;
-    height: 90vh;
+    height: 80vh;
     padding: 5px;
     border: 2px #00ffff solid;
     border-radius: 5px;
@@ -18,7 +18,7 @@ body {
     margin-left: 5px;
     word-break: break-word;
 } .nav {
-    height: 90vh;
+    height: 80vh;
     padding: 5px;
     border: 2px #00ffff solid;
     border-radius: 5px;
