@@ -41,7 +41,7 @@ function grab_dirs(lvl) {
 dirs = grab_dirs("./doc");
 url = document.URL;
 if(url.includes("#")) {
-    var fil = "./doc/"+url.split("#")[-1].replace(/\.txt/g, "&").replace(/\./g, "/").replace(/\&/g, ".txt");
+    var fil = "./doc/"+url.split("#")[1].replace(/\.txt/g, "&").replace(/\./g, "/").replace(/\&/g, ".txt");
 } else {
     var fil = "./doc/index.txt";
 } if (!(fil.endsWith(".txt"))) {
