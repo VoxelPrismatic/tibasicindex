@@ -31,6 +31,7 @@ body {
 } .head {
     color: #00ffff;
     font-size: larger;
+    font-weight: bold;
 } .code {
     background-color: #223333;
     border: 2px solid #334444;
