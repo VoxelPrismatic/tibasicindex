@@ -1,8 +1,6 @@
-import os
 from browser import document as doc, html, window as win
 import re
 global dirs
-print(os.listdir())
 dirs = []
 def grab_dirs(lvl = "./doc"):
     global dirs
