@@ -1,29 +1,45 @@
+function find_in(thing, ids) {
+    ls = [];
+    for(var id of ids.split(" ")) {
+        if(id.startsWith(".")) {
+            ls.push(...thing.getElementsByClassName(id.slice(1)));
+        } else if(id.startswith(">")) {
+            ls.push(...thing.getElementsByTagName(id.slice(1)));
+        } else if(id.startswith(":")) {
+            ls.push(...thing.getElementsByName(id.slice(1)));
+        } else {
+            ls.push(...thing.getElementById(id));
+        }
+    }
+    return ls;
+} function find(ids) {
+    return find_in(document, ids);
+}
+
 function read(filename) {
     var f = new XMLHttpRequest()
     f.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("file").innerHTML = f.responseText;
+            find("file").innerHTML = f.responseText;
         }
     }
     f.open("GET", filename, false);
     f.send();
-    return document.getElementById("file").innerHTML;
+    return find("file").innerHTML;
 }
 function jump(elem) {
     id = elem.id.slice(5);
-    document.getElementById(id).scrollIntoView();
-    var things = document.getElementById("sect").children;
+    find(id).scrollIntoView();
+    var things = find("sect").children;
     for(var thing of things) {
         thing.className = "lnk";
     }
     elem.className = "alnk";
 }
 function load(fil) {
-    document.getElementById("sect").innerHTML = 
-        `<div class="lnk" id="SECT_top" onclick="jump(this);">#top</div>`;
-    document.getElementById("page").innerHTML =
-        "WAIT... [LOADING FILE]";
-    document.getElementById(fil).className = "alnk";
+    find("sect").innerHTML = `<div class="lnk" id="SECT_top" onclick="jump(this);">#top</div>`;
+    find("page").innerHTML = "WAIT... [LOADING FILE]";
+    find(fil).className = "alnk";
     txt = read(fil);
     chars = [
         ["\\\\n", ""],
@@ -38,8 +54,8 @@ function load(fil) {
             txt = txt.replace(k, v);
         }
     }
-    txt = txt.replace(/\\U([A-Fa-f0-9]{16})/gm, "\\u{$1}")
-    var md = "<div id='top'></div>"
+    txt = txt.replace(/\\U([A-Fa-f0-9]{16})/gm, "\\u{$1}");
+    var md = "<div id='top'></div>";
     reps = [
         [/^(\#+)(.+)$/gm, "<div class='head'>$1$2</div>"],
         [/\[(.+)\]\((.+)\)/gm, "<a href='$2'>$1</a>"],
@@ -63,8 +79,7 @@ function load(fil) {
     ];
     for(var line of txt.split("\n")) {
         if(line.startsWith("SECT_")) {
-            document.getElementById("sect").innerHTML +=
-                `<div class="lnk" id="${line}" onclick="jump(this);">#${line.slice(5)}</div>`;
+            find("sect").innerHTML += `<div class="lnk" id="${line}" onclick="jump(this);">#${line.slice(5)}</div>`;
             continue;
         }
         for(var rep of reps) {
@@ -78,16 +93,17 @@ function load(fil) {
             md += line+"\n"
         }
     }
-    document.getElementById("page").innerHTML = md.replace(/\n/gm, "<br>")
+    find("page").innerHTML = md.replace(/\n/gm, "<br>")
     fil = fil.replace("index.txt", "").replace(".txt", ".py")
 }
 function docs(elem) {
     load(elem.id);
-    var things = document.getElementById("nav").children;
+    var things = find("nav").children;
     for(var thing of things) {
         thing.className = "lnk";
     }
     elem.className = "alnk";
+    jump("SECT_top");
 }
 function grab_dirs(lvl) {
     var dirs = [];
@@ -102,7 +118,7 @@ function grab_dirs(lvl) {
             } else {
                 nam = smol.slice(1)
                 fil = lvl+"/"+line
-                document.getElementById("nav").innerHTML +=
+                find("nav").innerHTML +=
                     `<div class="lnk" id="${fil}" onclick="docs(this);">${smol}</div>`;
             }
         } else if(line != "") {
@@ -127,12 +143,10 @@ if(url.includes("?")) {
 } if (!(dirs.includes(fil))) {
     fil += "index.txt";
 } if (!(dirs.includes(fil))) {
-    document.getElementById("page").innerHTML = `<div class="warn">404 ] File not found</div>`;
+    find("page").innerHTML = `<div class="warn">404 ] File not found</div>`;
 } else {
     load(fil);
 }
-
-console.log(dirs);
 if(url.includes("#")) {
     var sec = url.split("#")[1].split("?")[0];
     if(!(sec.startsWith("SECT_"))) {
