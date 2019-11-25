@@ -21,8 +21,10 @@ function grab_dirs(lvl) {
                 lnk = lnk.replace("index.txt", "")
                 var smol = lnk.slice(5)
             } else {
+                nam = smol.slice(1)
+                fil = lvl+"/"+line
                 document.getElementById("nav").innerHTML +=
-                    `<div><a href="/prizmatic.docs#${smol}"><div class="lnk" id="${lvl+"/"+line}">${smol}</div></a></div>`;
+                    `<div><a href="/prizmatic.docs#${nam}"><div class="lnk" id="${fil}">${smol}</div></a></div>`;
             }
         } else if(line != "") {
             try {
