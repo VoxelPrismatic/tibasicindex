@@ -14,7 +14,7 @@ function grab_dirs(lvl) {
     var dirs = [];
     for(var line of read(lvl+"/dir.txt").split("\n")) {
         if(line.endsWith(".txt")) {
-            dirs.append(line);
+            dirs.push(line);
             lnk = line
             var smol = lnk.slice(5)
             if(lnk.endsWith("index.txt")) {
@@ -28,7 +28,9 @@ function grab_dirs(lvl) {
             }
         } else if(line != "") {
             try {
-                grab_dirs(lvl+"/"+line);
+                for(var name of grab_dirs(lvl+"/"+line)) {
+                    dirs.push(name);
+                }
             } catch(err) {}
         }
     }
