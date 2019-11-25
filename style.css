@@ -28,6 +28,7 @@ body {
     word-break: break-word;
 } .head {
     color: #00ffff;
+    font-size: larger;
 } .code {
     background-color: #223333;
     border: 2px solid #334444;
