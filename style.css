@@ -36,7 +36,6 @@ body {
     background-color: #223333;
     border: 2px solid #334444;
     border-radius: 5px;
-    width: 90%;
     padding: 5px;
 } .note {
     color: #ffff00;
@@ -99,6 +98,7 @@ body {
     display: block;
 } .com {
     color: #888888;
+    font-size: smaller;
 } .comblock {
     color: #888888;
     border: 2px solid #888888;
