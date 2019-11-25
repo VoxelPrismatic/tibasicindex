@@ -67,7 +67,7 @@ body {
     background-color: #00ff0044;
     border-radius: 5px;
     padding: 5px;
-    width: 90%;
+    min-width: 90%;
     text-align: left;
 } .lnk:active {
     color: #00ffff;
