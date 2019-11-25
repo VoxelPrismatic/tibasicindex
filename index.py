@@ -55,7 +55,7 @@ else:
             r"\%(.+)\%": r"<b>\1</b>", # #bold#
             r"\*(.+)\*": r"<i>\1</i>", # *ital*
             r"\~(.+)\~": r"<s>\1</s>", # ~strike~
-            r"\_(.+)\_": r"<u>\1</s>", # _under_
+            r"\_(.+)\_": r"<u>\1</u>", # _under_
             r"^WARN---$": r'<div class="warn"><b>WARNING ---</b><br>',
             r"^NOTE---$": r'<div class="note"><b>NOTICE ---</b><br>',
             r"^NEW---$": r'<div class="new"><b>NEW ---</b><br>',
