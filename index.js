@@ -49,7 +49,7 @@ if(url.includes("#")) {
 } if (!(dirs.includes(fil))) {
     document.getElementById("page").innerHTML = `<div class="warn">404 ] File not found</div>`;
 } else {
-    document.getElementById(fil.slice(5)).className = "alnk";
+    document.getElementById(fil).className = "alnk";
     txt = read(fil);
     chars = [
         ["\\\\n", ""],
