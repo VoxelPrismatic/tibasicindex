@@ -14,7 +14,6 @@ function grab_dirs(lvl) {
     var dirs = [];
     for(var line of read(lvl+"/dir.txt").split("\n")) {
         if(line.endsWith(".txt")) {
-            dirs.push(lvl+"/"+line);
             lnk = lvl+"/"+line
             var smol = lnk.slice(5)
             if(lnk.endsWith("index.txt")) {
@@ -22,6 +21,7 @@ function grab_dirs(lvl) {
                 document.getElementById("nav").innerHTML +=
                     `<div><a href="/prizmatic.docs#${smol}"><div class="lnk" id="${lnk}">${smol}</div></a></div>`;
             } else {
+                dirs.push(lvl+"/"+line);
                 lnk = lnk.replace(/\.txt/gm, ".py");
                 document.getElementById("nav").innerHTML +=
                     `<div><a href="/prizmatic.docs#${smol}"><div class="lnk" id="${lnk}">${smol}</div></a></div>`;
@@ -49,6 +49,7 @@ if(url.includes("#")) {
 } if (!(dirs.includes(fil))) {
     document.getElementById("page").innerHTML = `<div class="warn">404 ] File not found</div>`;
 } else {
+    document.getElementById(fil).className = "alnk";
     txt = read(fil);
     chars = [
         ["\\\\n", ""],
@@ -93,17 +94,5 @@ if(url.includes("#")) {
     }
     document.getElementById("page").innerHTML = md;
     fil = fil.replace("index.txt", "").replace(".txt", ".py")
-    for(var lnk of dirs) {
-        if(lnk.endsWith("index.txt")) {
-            if(lnk.replace("index.txt", "") == fil) {
-                document.getElementById(fil).className = "alnk";
-            }
-        } else {
-            lnk = lnk.replace(/\.txt/gm, ".py");
-            if(lnk == fil) {
-                document.getElementById("nav").className = "alnk";
-            }
-        }
-    }
 }
 console.log(dirs);
