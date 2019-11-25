@@ -60,12 +60,13 @@ else:
             r"\n;;;\n": r'</div>'
         }
         for k, v in dict2list(rep):
-            line = line.replace(k, v)
+            line = re.sub(k, v, line)
         md += line+"\n"
     doc["page"].innerHTML = md
     for lnk in dirs:
-        doc["nav"].innerHTML += f'<a href="/prizmatic.docs#{lnk[6:]}"><div class="lnk" id="{lnk}">{lnk[5:]}</div></a>'
-        if lnk == fil:
-            doc[lnk].className += " active"
+        if lnk != fil:
+            doc["nav"].innerHTML += f'<br><a href="/prizmatic.docs#{lnk[6:]}"><div class="lnk" id="{lnk}">{lnk[5:]}</div></a>'
+        else:
+            doc["nav"].innerHTML += f'<br><a href="/prizmatic.docs#{lnk[6:]}"><div class="alnk" id="{lnk}">{lnk[5:]}</div></a>'
         
 print(dirs)
