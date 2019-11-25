@@ -1,3 +1,56 @@
+/* Modules */
 .flex {
     display: flex;
+} .border {
+    border: 2px solid;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
+} .centerH {
+    justify-content: center;
+} .centerV {
+    align-items: center;
+} .centerA {
+    .centerH();
+    .centerV();
+} .scroll {
+    overflow-y: scroll;
+    word-break: break-word;
+} .section(@var) {
+    color: @var;
+    .border();
+    border-color: @var;
+    background-color:
+
+/* Cls */
+body {
+    font-family: "Ubuntu Mono";
+    background-color: #112222;
+    color: #aaaaaa;
+    .flex();
+    .centerA();
+} .page {
+    min-width: 80vw;
+    max-width: 70vw;
+    height: 80vh;
+    .border();
+    border-color: #00ffff;
+    .centerH();
+    .scroll();
+    float: right;
+} .nav {
+    height: 80vh;
+    .border();
+    border-color: #00ffff;
+    float: left;
+    .centerH();
+    .scroll();
+} .head {
+    color: #00ffff;
+    font-size: larger;
+    font-weight: bold;
+} .code {
+    background-color: #223333;
+    .border();
+    border-color: #334444;
 }
