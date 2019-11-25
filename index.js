@@ -47,6 +47,7 @@ if(url.contains("#")) {
         }
     }
     txt = txt.replace(/\\U([A-Fa-f0-9]{16})/gm, "\\u{$1}")
+    var md = ""
     reps = [
         [/^(\#+)(.+)$/gm, "<div class='head'>$1$2</div>"],
         [/\[(.+)\]\(.+)\)/gm, "<a href='$2'>$1</a>"],
@@ -61,5 +62,35 @@ if(url.contains("#")) {
         [/^INFO---$/gm, "<div class='info'><b>INFO ---</b><br>"],
         [/^EX---$/gm, "<div class='exc'><b>EXAMPLES ---</b><br>"],
         [/^CODE---$/gm, "<div class='code'>"],
-    ]
-    for(var rep of reps)
+        [/^COMMENT---$/gm, "<div class='comblock'><b>OTHER INFO ---</b><br>"],
+        [/^ *(\w+) *---{3,}/gm, "<b>$1 ---</b>"],
+        [/^---$/gm, "</div>"],
+        [/^ *\|(.*)$/gm, "<div class='com'>&gt; $1</div>"],
+        [/\{\{(\w+)\}\}([\w\d]+) /gm, "<span class='$1'>$2</span>"]
+    ];
+    for(var line of txt.split("\n")) {
+        for(var rep of reps) {
+            line = line.replace(rep[0], rep[1]);
+        }
+        md += line+"\n"
+    }
+    document.getElementById("page").innerHTML = md;
+    fil = fil.replace("index.txt", "").replace(".txt", ".py")
+    for(var lnk of dirs) {
+        if(lnk.endsWith("index.txt")) {
+            if(lnk.replace("index.txt", "") == fil) {
+                document.getElementById(fil).className = "alnk";
+            }
+        } else {
+            lnk = lnk.replace(/\.txt/gm, ".py");
+            if(lnk != fil) {
+                document.getElementById("nav").innerHTML +=\
+                    `<div><a href="/prizmatic.docs#${lnk.slice(5)}"><div class="lnk" id="${lnk}">${lnk.slice(5)}</div></a></div>`;
+            } else {
+                document.getElementById("nav").innerHTML +=\
+                    `<div><a href="/prizmatic.docs#${lnk.slice(5)}"><div class="alnk" id="${lnk}">${lnk.slice(5)}</div></a></div>`;
+            }
+        }
+    }
+}
+console.log(dirs);
