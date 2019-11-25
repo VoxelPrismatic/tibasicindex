@@ -65,8 +65,8 @@ else:
     doc["page"].innerHTML = md
     for lnk in dirs:
         if lnk != fil:
-            doc["nav"].innerHTML += f'<br><a href="/prizmatic.docs#{lnk[6:]}"><div class="lnk" id="{lnk}">{lnk[5:]}</div></a>'
+            doc["nav"].innerHTML += f'<br><div><a href="/prizmatic.docs#{lnk[6:]}"><div class="lnk" id="{lnk}">{lnk[5:]}</div></a></div>'
         else:
-            doc["nav"].innerHTML += f'<br><a href="/prizmatic.docs#{lnk[6:]}"><div class="alnk" id="{lnk}">{lnk[5:]}</div></a>'
+            doc["nav"].innerHTML += f'<br><div><a href="/prizmatic.docs#{lnk[6:]}"><div class="alnk" id="{lnk}">{lnk[5:]}</div></a></div>'
         
 print(dirs)
