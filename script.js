@@ -18,46 +18,11 @@ function jump(elem) {
     }
     elem.className = "alnk";
 }
-function grab_dirs(lvl) {
-    var dirs = [];
-    for(var line of read(lvl+"/dir.txt").split("\n")) {
-        if(line.endsWith(".txt")) {
-            lnk = lvl+"/"+line
-            var smol = lnk.slice(5)
-            dirs.push(lnk);
-            if(lnk.endsWith("index.txt")) {
-                lnk = lnk.replace("index.txt", "")
-                var smol = lnk.slice(5)
-            } else {
-                nam = smol.slice(1)
-                fil = lvl+"/"+line
-                document.getElementById("nav").innerHTML +=
-                    `<div><a href="/prizmatic.docs?${nam}"><div class="lnk" id="${fil}">${smol}</div></a></div>`;
-            }
-        } else if(line != "") {
-            try {
-                for(var name of grab_dirs(lvl+"/"+line)) {
-                    dirs.push(name);
-                }
-            } catch(err) {}
-        }
-    }
-    return dirs;
-}
-dirs = grab_dirs("./doc");
-url = document.URL;
-if url
-if(url.includes("?")) {
-    var fil = "./doc/"+url.split("?")[1].split("#")[0].replace(/\.txt/g, "&").replace(/\./g, "/").replace(/\&/g, ".txt");
-} else {
-    var fil = "./doc/index.txt";
-} if (!(fil.endsWith(".txt"))) {
-    fil += ".txt";
-} if (!(dirs.includes(fil))) {
-    fil += "index.txt";
-} if (!(dirs.includes(fil))) {
-    document.getElementById("page").innerHTML = `<div class="warn">404 ] File not found</div>`;
-} else {
+function load(fil) {
+    document.getElementById("sect").innerHTML = 
+        `<div><div class="lnk" id="SECT_top" onclick="jump(this);">#top</div></div>`;
+    document.getElementById("page").innerHTML =
+        "WAIT... [LOADING FILE]";
     document.getElementById(fil).className = "alnk";
     txt = read(fil);
     chars = [
@@ -116,6 +81,57 @@ if(url.includes("?")) {
     document.getElementById("page").innerHTML = md.replace(/\n/gm, "<br>")
     fil = fil.replace("index.txt", "").replace(".txt", ".py")
 }
+function docs(elem) {
+    load(elem.id);
+    var things = document.getElementById("nav").children;
+    for(var thing of things) {
+        thing.className = "lnk";
+    }
+    elem.className = "alnk";
+}
+function grab_dirs(lvl) {
+    var dirs = [];
+    for(var line of read(lvl+"/dir.txt").split("\n")) {
+        if(line.endsWith(".txt")) {
+            lnk = lvl+"/"+line
+            var smol = lnk.slice(5)
+            dirs.push(lnk);
+            if(lnk.endsWith("index.txt")) {
+                lnk = lnk.replace("index.txt", "")
+                var smol = lnk.slice(5)
+            } else {
+                nam = smol.slice(1)
+                fil = lvl+"/"+line
+                document.getElementById("nav").innerHTML +=
+                    `<div><div class="lnk" id="${fil}" onclick=>${smol}</div></div>`;
+            }
+        } else if(line != "") {
+            try {
+                for(var name of grab_dirs(lvl+"/"+line)) {
+                    dirs.push(name);
+                }
+            } catch(err) {}
+        }
+    }
+    return dirs;
+}
+dirs = grab_dirs("./doc");
+url = document.URL;
+if url
+if(url.includes("?")) {
+    var fil = "./doc/"+url.split("?")[1].split("#")[0].replace(/\.txt/g, "&").replace(/\./g, "/").replace(/\&/g, ".txt");
+} else {
+    var fil = "./doc/index.txt";
+} if (!(fil.endsWith(".txt"))) {
+    fil += ".txt";
+} if (!(dirs.includes(fil))) {
+    fil += "index.txt";
+} if (!(dirs.includes(fil))) {
+    document.getElementById("page").innerHTML = `<div class="warn">404 ] File not found</div>`;
+} else {
+    load(fil);
+}
+
 console.log(dirs);
 if(url.includes("#")) {
     var sec = url.split("#")[1].split("?")[0];
