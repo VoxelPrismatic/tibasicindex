@@ -20,7 +20,8 @@
     color: @var;
     .border();
     border-color: @var;
-    background-color:
+    background-color: fadeout(@var, 73.333%);
+}
 
 /* Cls */
 body {
@@ -53,4 +54,43 @@ body {
     background-color: #223333;
     .border();
     border-color: #334444;
+} .note {
+    .section(#ffff00);
+} .warn {
+    .section(#ff0000);
+} .new {
+    .section(#00ff00);
+} .info {
+    .section(#ff0088);
+} .exc {
+    .section(#00ffff);
+} .comblock {
+    .section(#888888);
+} .fn {
+    color: #ff8800;
+} .aio {
+    color: #ff0088;
+} .cls {
+    color: #8800ff;
+} .lnk {
+    .section(#00ffff);
+    background-color: #112222;
+    display: block;
+    text-decoration: none;
+    width: 9vw !important;
+    text-align: left;
+    &:hover {
+        .section(#00ff00);
+    }
+} .alnk {
+    .section(#00ffff);
+    display: block;
+    text-decoration: none;
+    width: 9vw !important;
+    text-align: left;
+    &:hover {
+        .section(#ff0088);
+    }
+} a {
+    color: #aaffff;
 }
