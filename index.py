@@ -15,6 +15,7 @@ def grab_dirs(lvl = "./doc"):
                     grab_dirs(lvl+"/"+l)
                 except:
                     pass
+    return dirs
 
 def dict2list(dic):
     ls = []
