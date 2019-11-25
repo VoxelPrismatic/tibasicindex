@@ -68,7 +68,7 @@ if(url.includes("?")) {
         }
     }
     txt = txt.replace(/\\U([A-Fa-f0-9]{16})/gm, "\\u{$1}")
-    var md = ""
+    var md = "<div id='top'></div>"
     reps = [
         [/^(\#+)(.+)$/gm, "<div class='head'>$1$2</div>"],
         [/\[(.+)\]\((.+)\)/gm, "<a href='$2'>$1</a>"],
