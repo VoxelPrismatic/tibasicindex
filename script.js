@@ -20,7 +20,7 @@ function jump(elem) {
 }
 function load(fil) {
     document.getElementById("sect").innerHTML = 
-        `<div><div class="lnk" id="SECT_top" onclick="jump(this);">#top</div></div>`;
+        `<div class="lnk" id="SECT_top" onclick="jump(this);">#top</div>`;
     document.getElementById("page").innerHTML =
         "WAIT... [LOADING FILE]";
     document.getElementById(fil).className = "alnk";
@@ -64,7 +64,7 @@ function load(fil) {
     for(var line of txt.split("\n")) {
         if(line.startsWith("SECT_")) {
             document.getElementById("sect").innerHTML +=
-                `<div><div class="lnk" id="${line}" onclick="jump(this);">#${line.slice(5)}</div></div>`;
+                `<div class="lnk" id="${line}" onclick="jump(this);">#${line.slice(5)}</div>`;
             continue;
         }
         for(var rep of reps) {
