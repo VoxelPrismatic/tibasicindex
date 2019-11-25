@@ -11,6 +11,7 @@ function read(filename) {
     document.getElementById("file").innerHTML = "";
     return txt;
 }
+console.log(read("./doc/dir.txt"))
 function grab_dirs(lvl) {
     var dirs = [];
     for(var line of read(lvl+"/dir.txt").split("\n")) {
