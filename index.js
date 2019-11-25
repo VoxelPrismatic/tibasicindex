@@ -16,12 +16,13 @@ function grab_dirs(lvl) {
         if(line.endsWith(".txt")) {
             lnk = lvl+"/"+line
             var smol = lnk.slice(5)
+            dirs.push(lnk);
             if(lnk.endsWith("index.txt")) {
                 lnk = lnk.replace("index.txt", "")
+                var smol = lnk.slice(5)
                 document.getElementById("nav").innerHTML +=
                     `<div><a href="/prizmatic.docs#${smol}"><div class="lnk" id="${lnk}">${smol}</div></a></div>`;
             } else {
-                dirs.push(lvl+"/"+line);
                 lnk = lnk.replace(/\.txt/gm, ".py");
                 document.getElementById("nav").innerHTML +=
                     `<div><a href="/prizmatic.docs#${smol}"><div class="lnk" id="${lnk}">${smol}</div></a></div>`;
