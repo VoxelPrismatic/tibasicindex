@@ -92,7 +92,7 @@ if(url.includes("#")) {
         }
         md += line+"\n"
     }
-    document.getElementById("page").innerHTML = md;
+    document.getElementById("page").innerHTML = md.replace(/\n/gm, "<br>")
     fil = fil.replace("index.txt", "").replace(".txt", ".py")
 }
 console.log(dirs);
