@@ -1,10 +1,15 @@
-const fs = require('fs');
-
-function read(filename) {
-    fs.readFile(filename, (err, data) => { 
-        if (err) throw err; 
-        return data.toString();
-    })
+function read(file) {
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function() {
+        if(rawFile.readyState === 4) {
+            if(rawFile.status === 200 || rawFile.status == 0) {
+                var allText = rawFile.responseText;
+                return allText;
+            }
+        }
+    }
+    throw "FileNotFoundError";
 }
 function grab_dirs(lvl) {
     var dirs = [];
