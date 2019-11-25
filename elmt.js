@@ -1,17 +1,17 @@
 var attrib = new Map();
-attrib["global"] = ["accesskey", "class", "contenteditable", "dir", "draggable",
-                    "dropzone", "hidden", "id", "lang", "spellcheck", "tabindex",
-                    "title", "translate"];
+globalAttrib = ["accesskey", "class", "contenteditable", "dir", "draggable",
+                "dropzone", "hidden", "id", "lang", "spellcheck", "tabindex",
+                "title", "translate"];
 
 attrib["a"] = ["download", "href", "hreflang", "media", "ping", "referrerpolicy",
-               "rel", "target", "type"];
-attrib["abbr"] = [];
+               "rel", "target", "type"] + globalAttrib;
+attrib["abbr"] = [] + globalAttrib;
 
 //attrib["
 
 function create(name, text, attr) {
     s = "<"+name;
-    ls = attrib[name]+attrib["global"]
+    ls = attrib[name]
     for(var a of attr.keys()) {
         if(ls.includes(a.toLower())) {
             s += ` ${a}="${attr.get(a)}"`;
