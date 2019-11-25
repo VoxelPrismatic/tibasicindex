@@ -25,7 +25,7 @@ if(url.contains("#")) {
     var fil = "./doc/"+url.split("#")[-1].replace(/\.txt/g, "&").replace(/\./g, "/").replace(/\&/g, ".txt");
 } else {
     var fil = "./doc/index.txt";
-} if (!(fil.endswith(".txt")) {
+} if (!(fil.endswith(".txt"))) {
     fil += ".txt";
 } if (!(dirs.contains(fil))) {
     fil += "index.txt";
