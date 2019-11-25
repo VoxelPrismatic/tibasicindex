@@ -24,7 +24,7 @@ function grab_dirs(lvl) {
                 nam = smol.slice(1)
                 fil = lvl+"/"+line
                 document.getElementById("nav").innerHTML +=
-                    `<div><a href="/prizmatic.docs#${nam}"><div class="lnk" id="${fil}">${smol}</div></a></div>`;
+                    `<div><a href="/prizmatic.docs?${nam}"><div class="lnk" id="${fil}">${smol}</div></a></div>`;
             }
         } else if(line != "") {
             try {
@@ -38,7 +38,7 @@ function grab_dirs(lvl) {
 }
 dirs = grab_dirs("./doc");
 url = document.URL;
-if(url.includes("#")) {
+if(url.includes("?")) {
     var fil = "./doc/"+url.split("#")[1].replace(/\.txt/g, "&").replace(/\./g, "/").replace(/\&/g, ".txt");
 } else {
     var fil = "./doc/index.txt";
