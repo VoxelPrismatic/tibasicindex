@@ -17,6 +17,7 @@ body {
     float: right;
     margin-left: 5px;
     word-break: break-word;
+    overflow-y: scroll;
 } .nav {
     height: 80vh;
     padding: 5px;
@@ -26,6 +27,7 @@ body {
     margin-right: 5px;
     justify-content: center;
     word-break: break-word;
+    overflow-y: scroll;
 } .head {
     color: #00ffff;
     font-size: larger;
