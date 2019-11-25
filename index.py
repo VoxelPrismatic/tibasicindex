@@ -34,7 +34,6 @@ if fil not in dirs:
     fil += "index.txt"
 if fil not in dirs:
     doc["page"].innerHTML = '<div class="warn">404 ] File not found</div>'
-    doc["nav"].innerHTML = '<a href="https://voxelprismatic.github.io/prizmatic.docs"><div class="btn">Home</div></a>'
 else:
     txt = open(fil).read()
     chars = {
@@ -64,4 +63,6 @@ else:
             line = line.replace(k, v)
         md += line+"\n"
     doc["page"].innerHTML = md
+    for lnk in dirs:
+        doc["nav"] <= html.A(html.DIV(lnk, Class="btn"), Href="https://voxelprismatic.github.io/prizmatic.docs#"+lnk)
 print(dirs)
