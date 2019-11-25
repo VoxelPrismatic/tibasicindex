@@ -56,11 +56,16 @@ else:
             r"\*(.+)\*": r"<i>\1</i>", # *ital*
             r"\~(.+)\~": r"<s>\1</s>", # ~strike~
             r"\_(.+)\_": r"<u>\1</s>", # _under_
-            r"\n:::\n": r'<div class="code">',
-            r"\n;;;\n": r'</div>', 
+            r"^WARN---$": r'<div class="warn"><b>WARNING ---</b><br>',
+            r"^NOTE---$": r'<div class="note"><b>NOTICE ---</b><br>',
+            r"^NEW---$": r'<div class="new"><b>NEW ---</b><br>',
+            r"^INFO---$": r'<div class="info"><b>INFO ---</b><br>',
+            r"^EX---$": r'<div class="exc"><b>EXAMPLE ---</b><br>',
+            r"^CODE---$": r'<div class="code">',
+            r"^---$": r'</div>', 
             r"^ *\|(.*)$": r'<div class="com">&gt; \1</div>',
-            r"\n/\|": r'<div class="comblock">',
-            r"\|/\n": r'</div>'
+            r"^/\|": r'<div class="comblock">',
+            r"\|/$": r'</div>'
         }
         for k, v in dict2list(rep):
             line = re.sub(k, v, line)
