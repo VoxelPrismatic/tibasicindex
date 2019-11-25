@@ -27,9 +27,9 @@ if(url.contains("#")) {
     var fil = "./doc/index.txt";
 } if (!(fil.endswith(".txt")) {
     fil += ".txt";
-} if (!(dirs.contains(fil)) {
+} if (!(dirs.contains(fil))) {
     fil += "index.txt";
-} if (!(dirs.contains(fil)) {
+} if (!(dirs.contains(fil))) {
     document.getElementById("page").innerHTML = `<div class="warn">404 ] File not found</div>`;
 } else {
     txt open(fil);
