@@ -20,12 +20,13 @@ function grab_dirs(lvl) {
             if(lnk.endsWith("index.txt")) {
                 lnk = lnk.replace("index.txt", "")
                 var smol = lnk.slice(5)
-                document.getElementById("nav").innerHTML +=
-                    `<div><a href="/prizmatic.docs#${smol}"><div class="lnk" id="${lnk}">${smol}</div></a></div>`;
+                if(!(dirs.includes(lnk))) {
+                    document.getElementById("nav").innerHTML +=
+                        `<div><a href="/prizmatic.docs#${smol}"><div class="lnk" id="${lnk}">${smol}</div></a></div>`;
+                }
             } else {
-                lnk = lnk.replace(/\.txt/gm, ".py");
                 document.getElementById("nav").innerHTML +=
-                    `<div><a href="/prizmatic.docs#${smol}"><div class="lnk" id="${lnk}">${smol}</div></a></div>`;
+                    `<div><a href="/prizmatic.docs#${smol}"><div class="lnk" id="${lvl+"/"+line}">${smol}</div></a></div>`;
             }
         } else if(line != "") {
             try {
