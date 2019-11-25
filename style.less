@@ -1,11 +1,6 @@
 /* Modules */
 .flex {
     display: flex;
-} .border {
-    border: 2px solid;
-    border-radius: 5px;
-    margin: 5px;
-    padding: 5px;
 } .centerH {
     justify-content: center;
 } .centerV {
@@ -16,11 +11,25 @@
 } .scroll {
     overflow-y: scroll;
     word-break: break-word;
-} .section(@var) {
-    color: @var;
-    .border();
+}
+
+/* Functions */
+.border(@color) {
+    border: 2px @color solid;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
+} .section(@color) {
+    color: @color;
+    .border(@color);
     border-color: @var;
-    background-color: fadeout(@var, 73.333%);
+    background-color: fadeout(@color, 73.333%);
+} .rangeW(@maxi, @mini) {
+    min-width: @mini;
+    max-width: @maxi;
+} .rangeH(@maxi, @mini) {
+    min-height: @mini;
+    max-height: @maxi;
 }
 
 /* Cls */
@@ -31,18 +40,16 @@ body {
     .flex();
     .centerA();
 } .page {
-    min-width: 80vw;
-    max-width: 70vw;
+    .rangeW(80vw, 70vw);
     height: 80vh;
-    .border();
-    border-color: #00ffff;
+    .border(#00ffff);
     .centerH();
     .scroll();
     float: right;
 } .nav {
+    .rangeW(20vw, 10vw);
     height: 80vh;
-    .border();
-    border-color: #00ffff;
+    .border(#00ffff);
     float: left;
     .centerH();
     .scroll();
@@ -52,8 +59,7 @@ body {
     font-weight: bold;
 } .code {
     background-color: #223333;
-    .border();
-    border-color: #334444;
+    .border(#334444);
 } .note {
     .section(#ffff00);
 } .warn {
@@ -74,20 +80,17 @@ body {
     color: #8800ff;
 } .lnk {
     .section(#00ffff);
-    background-color: #112222;
+    background-color: none;
     display: block;
-    text-decoration: none;
+    text-decoration: none !important;
     width: 9vw !important;
     text-align: left;
     &:hover {
         .section(#00ff00);
     }
 } .alnk {
+    .lnk();
     .section(#00ffff);
-    display: block;
-    text-decoration: none;
-    width: 9vw !important;
-    text-align: left;
     &:hover {
         .section(#ff0088);
     }
