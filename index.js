@@ -37,15 +37,15 @@ function grab_dirs(lvl) {
 }
 dirs = grab_dirs("./doc");
 url = document.URL;
-if(url.contains("#")) {
+if(url.includes("#")) {
     var fil = "./doc/"+url.split("#")[-1].replace(/\.txt/g, "&").replace(/\./g, "/").replace(/\&/g, ".txt");
 } else {
     var fil = "./doc/index.txt";
 } if (!(fil.endswith(".txt"))) {
     fil += ".txt";
-} if (!(dirs.contains(fil))) {
+} if (!(dirs.includes(fil))) {
     fil += "index.txt";
-} if (!(dirs.contains(fil))) {
+} if (!(dirs.includes(fil))) {
     document.getElementById("page").innerHTML = `<div class="warn">404 ] File not found</div>`;
 } else {
     txt = read(fil);
@@ -58,7 +58,7 @@ if(url.contains("#")) {
     for(var ls of chars) {
         k = ls[0];
         v = ls[1];
-        while(txt.contains(k)) {
+        while(txt.includes(k)) {
             txt = txt.replace(k, v);
         }
     }
@@ -99,7 +99,6 @@ if(url.contains("#")) {
             }
         } else {
             lnk = lnk.replace(/\.txt/gm, ".py");
-            var smol = lnk.slice(5)
             if(lnk == fil) {
                 document.getElementById("nav").className = "alnk";
             }
