@@ -14,8 +14,8 @@ function grab_dirs(lvl) {
     var dirs = [];
     for(var line of read(lvl+"/dir.txt").split("\n")) {
         if(line.endsWith(".txt")) {
-            dirs.push(line);
-            lnk = line
+            dirs.push(lvl+"/"+line);
+            lnk = lvl+"/"+line
             var smol = lnk.slice(5)
             if(lnk.endsWith("index.txt")) {
                 lnk = lnk.replace("index.txt", "")
