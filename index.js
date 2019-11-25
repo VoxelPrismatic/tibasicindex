@@ -79,7 +79,7 @@ if(url.includes("#")) {
         [/^NEW---$/gm, "<div class='new'><b>NEW ---</b><br>"],
         [/^INFO---$/gm, "<div class='info'><b>INFO ---</b><br>"],
         [/^EX---$/gm, "<div class='exc'><b>EXAMPLES ---</b><br>"],
-        [/^CODE---$/gm, "<div class='code'>"],
+        [/^CODE---$/gm, "<div class='code'>§"],
         [/^COMMENT---$/gm, "<div class='comblock'><b>OTHER INFO ---</b><br>"],
         [/^ *(\w+) *---{3,}/gm, "<b>$1 ---</b>"],
         [/^---$/gm, "</div>"],
@@ -90,7 +90,13 @@ if(url.includes("#")) {
         for(var rep of reps) {
             line = line.replace(rep[0], rep[1]);
         }
-        md += line+"\n"
+        if(line.endsWith("<br>")) {
+            md += line;
+        } else if(line.endsWith("§")) {
+            md += line.slice(0, -1);
+        } else {
+            md += line+"\n"
+        }
     }
     document.getElementById("page").innerHTML = md.replace(/\n/gm, "<br>")
     fil = fil.replace("index.txt", "").replace(".txt", ".py")
