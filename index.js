@@ -85,10 +85,10 @@ if(url.contains("#")) {
             lnk = lnk.replace(/\.txt/gm, ".py");
             var smol = lnk.slice(5)
             if(lnk != fil) {
-                document.getElementById("nav").innerHTML +=\
+                document.getElementById("nav").innerHTML +=
                     `<div><a href="/prizmatic.docs#${smol}"><div class="lnk" id="${lnk}">${smol}</div></a></div>`;
             } else {
-                document.getElementById("nav").innerHTML +=\
+                document.getElementById("nav").innerHTML +=
                     `<div><a href="/prizmatic.docs#${smol}"><div class="alnk" id="${lnk}">${smol}</div></a></div>`;
             }
         }
