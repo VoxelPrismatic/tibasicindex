@@ -149,6 +149,7 @@ if(url.includes("?")) {
     load(fil);
 }
 if(url.includes("#")) {
+    url = url.replace("##", "#")
     var sec = url.split("#")[1].split("?")[0];
     if(!(sec.startsWith("SECT_"))) {
         sec = "SECT_"+sec;
