@@ -3,9 +3,9 @@ function find_in(thing, ids) {
     for(var id of ids.split(" ")) {
         if(id.startsWith(".")) {
             ls.push(...thing.getElementsByClassName(id.slice(1)));
-        } else if(id.startswith(">")) {
+        } else if(id.startsWith(">")) {
             ls.push(...thing.getElementsByTagName(id.slice(1)));
-        } else if(id.startswith(":")) {
+        } else if(id.startsWith(":")) {
             ls.push(...thing.getElementsByName(id.slice(1)));
         } else {
             ls.push(...thing.getElementById(id));
