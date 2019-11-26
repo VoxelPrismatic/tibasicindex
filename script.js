@@ -8,7 +8,7 @@ function find_in(thing, ids) {
         else if(id.startsWith(":"))
             ls.push(...thing.getElementsByName(id.slice(1)));
         else
-            ls.push(thing.getElementById(id));
+            return thing.getElementById(id);
     }
     return ls;
 } 
