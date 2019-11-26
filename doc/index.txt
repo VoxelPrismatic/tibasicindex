@@ -1,29 +1,42 @@
-SECT_code
-#] HEADER
-| comment
-%bold%
-*ital*
-~strike~
-_under_
-COMMENT---
-block comment
-cool shit
----
---code--
-CODE---
-code block
----
-[link](/prismatic.docs)
-NOTE---
-noticing things
----
-WARN---
-big red block
----
-INFO---
-idk
----
-EX---
-an example
----
+SECT_workings
+SECT_docs
+SECT_git
+#] WELCOME
+This is PRIZMATIC - The API wrapper for Discord, Riot, Reddit, and more.
+The bar on the far left or far top is the files index, there may be some scroll time.
+The the other bar is the sections on this page, tap it to jump there.
 
+--workings--
+#] WORKINGS
+How does the documentation work? Well, none of this is automatically generated. Everything \
+is typed by hand. I made my own version of MarkDown to support cool formatting.
+
+--docs--
+#] HOW STUFF IS DOCUMENTED
+Generally, in files, it will be documented with the following template:
+CODE---
+DOCUMENTATION ---
+    Description of the class
+
+PARAMS ---
+    param_name [param_type]
+    - Description of this param, eg what it does
+    .
+    .
+    .
+    >> If a class shouldn't be initialized by hand, a message will be there instead
+
+FUNCTIONS ---
+    function(...)
+    - What this function does
+    
+    function(...) -> type
+    - What this function does
+---
+Also, to get a specific file, add `?<file_name>` to the url where `<file_name>` is what is shown in the far left/top bar
+Additionally, to get a specific section, add `#<sect_name>` where `<sect_name>` is what is shown in the other bar
+
+--git--
+#] ANY SUGGESTIONS?
+You can find the repo for the docs [here](https://github.com/voxelprismatic/prizmatic.docs)
+You can find the repo for the actual module [here](https://github.com/voxelprismatic/prizmatic)
