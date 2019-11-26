@@ -1,11 +1,3 @@
-function jump(elem) {
-    id = elem.id.slice(5);
-    find(id).scrollIntoView();
-    var things = find("sect").children;
-    for(var thing of things)
-        thing.className = "lnk";
-    elem.className = "alnk";
-}
 function load(fil) {
     find("sect").innerHTML = `<div class="lnk" id="SECT_top" onclick="jump(this);">#top</div>`;
     find("page").innerHTML = "WAIT... [LOADING FILE]";
