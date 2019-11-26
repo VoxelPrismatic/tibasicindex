@@ -1,3 +1,9 @@
+import {find, find_in} from "./find.js";
+import {docs, jump} from "./swap.js";
+import {grab_dirs} from "./grab.js";
+import {read} from "./read.js";
+import {load} from "./load.js";
+
 dirs = grab_dirs("./doc");
 url = document.URL;
 if(url.includes("?")) {
