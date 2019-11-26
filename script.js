@@ -107,7 +107,8 @@ function docs(elem) {
 }
 function grab_dirs(lvl) {
     var dirs = [];
-    for(var line of read(lvl+"/dir.txt").split("\n")) {
+    var lines = read(lvl+"/dir.txt").split("\n")
+    for(var line of lines) {
         if(line.endsWith(".txt")) {
             lnk = lvl+"/"+line
             var smol = lnk.slice(5)
