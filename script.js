@@ -130,7 +130,12 @@ function grab_dirs(lvl) {
 dirs = grab_dirs("./doc");
 url = document.URL;
 if(url.includes("?")) {
-    var fil = "./doc/"+url.split("?")[1].split("#")[0].replace(/\.txt/g, "&").
+    var thing = url.split("?")[1].split("#")[0];
+    if(thing.startsWith("./doc"))
+        thing = thing.slice(5);
+    if(thing.startsWith("/"))
+        thing = thing.slice(1)
+    var fil = "./doc/"+thing.replace(/\.txt/g, "&").
     replace(/\./g, "/").replace(/\&/g, ".txt");
 } else {
     var fil = "./doc/index.txt";
