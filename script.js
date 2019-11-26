@@ -62,6 +62,7 @@ function load(fil) {
         [/\*(.+)\*/gm, "<i>$1</i>"],
         [/\_(.+)\_/gm, "<u>$1</u>"],
         [/\~(.+)\~/gm, "<s>$1</s>"],
+        [/\`(.+)\`/gm, `<span class="code">$1</span>`]
         [/^WARN---$/gm, "<div class='warn'><b>WARNING ---</b><br>"],
         [/^NOTE---$/gm, "<div class='note'><b>NOTICE ---</b><br>"],
         [/^NEW---$/gm, "<div class='new'><b>NEW ---</b><br>"],
