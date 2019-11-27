@@ -1,4 +1,4 @@
-dirs = grab_dirs("/prizmatic.docs/doc");
+dirs = grab_dirs("./doc");
 url = document.URL;
 if(url.includes("?")) {
     var thing = url.split("?")[1].split("#")[0];
@@ -17,7 +17,7 @@ if(url.includes("?")) {
     var fil = thing;
 } else {
     var fil = "./doc/index.txt";
-}/* if (!(dirs.includes(fil))) {
+}if (!(dirs.includes(fil))) {
     fil += "index.txt";
 } if (!(dirs.includes(fil))) {
     find("page").innerHTML = `<div class="warn">404 ] File not found</div>`;
@@ -34,4 +34,3 @@ if(url.includes("#")) {
 } else {
     jump("SECT_top");
 }
-*/
