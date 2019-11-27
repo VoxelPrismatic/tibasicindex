@@ -5,12 +5,19 @@ if(url.includes("?")) {
     if(thing.startsWith("./doc"))
         thing = thing.slice(5);
     if(thing.startsWith("/"))
-        thing = thing.slice(1)
-    var fil = "./doc/"+thing.replace(/\.txt/g, "&").
-    replace(/\./g, "/").replace(/\&/g, ".txt");
+        thing = thing.slice(1);
+    if(thing.endsWith(".txt")) {
+        thing = thing.slice(0, -3);
+        thing = thing.replace(/\./g, "/");
+        thing += ".txt";
+    } else {
+        thing = thing.replace(/\./g, "/");
+        thing += ".txt";
+    }
+    var fil = thing;
 } else {
     var fil = "./doc/index.txt";
-} if (!(fil.endsWith(".txt"))) {
+}/* if (!(fil.endsWith(".txt"))) {
     fil += ".txt";
 } if (!(dirs.includes(fil))) {
     fil += "index.txt";
@@ -29,3 +36,4 @@ if(url.includes("#")) {
 } else {
     jump("SECT_top");
 }
+*/
