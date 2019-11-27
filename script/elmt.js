@@ -18,7 +18,7 @@ var events = ["onabort", "onafterprint", "onanimationend", "onanimationiteration
               "onvolumechange", "onwaiting", "onwheel"];
               
               
-class Tag {
+class htmlTag {
     constructor(name, text, attr) {
         this.name = name;
         this.text = text;
@@ -57,354 +57,354 @@ class Tag {
         return e;
     }
 }
-function A(text, attr){
-    return Tag("a", text, attr);
+function htmlA(text, attr){
+    return htmlTag("a", text, attr);
 }
-function ABBR(text, attr){
-    return Tag("abbr", text, attr);
+function htmlABBR(text, attr){
+    return htmlTag("abbr", text, attr);
 }
-function ACRONYM(text, attr){
-    return Tag("acronym", text, attr);
+function htmlACRONYM(text, attr){
+    return htmlTag("acronym", text, attr);
 }
-function ADDRESS(text, attr){
-    return Tag("address", text, attr);
+function htmlADDRESS(text, attr){
+    return htmlTag("address", text, attr);
 }
-function APPLET(text, attr){
-    return Tag("applet", text, attr);
+function htmlAPPLET(text, attr){
+    return htmlTag("applet", text, attr);
 }
-function AREA(text, attr){
-    return Tag("area", text, attr);
+function htmlAREA(text, attr){
+    return htmlTag("area", text, attr);
 }
-function ARTICLE(text, attr){
-    return Tag("article", text, attr);
+function htmlARTICLE(text, attr){
+    return htmlTag("article", text, attr);
 }
-function ASIDE(text, attr){
-    return Tag("aside", text, attr);
+function htmlASIDE(text, attr){
+    return htmlTag("aside", text, attr);
 }
-function AUDIO(text, attr){
-    return Tag("audio", text, attr);
+function htmlAUDIO(text, attr){
+    return htmlTag("audio", text, attr);
 }
-function B(text, attr){
-    return Tag("b", text, attr);
+function htmlB(text, attr){
+    return htmlTag("b", text, attr);
 }
-function BASE(text, attr){
-    return Tag("base", text, attr);
+function htmlBASE(text, attr){
+    return htmlTag("base", text, attr);
 }
-function BASEFONT(text, attr){
-    return Tag("basefont", text, attr);
+function htmlBASEFONT(text, attr){
+    return htmlTag("basefont", text, attr);
 }
-function BDI(text, attr){
-    return Tag("bdi", text, attr);
+function htmlBDI(text, attr){
+    return htmlTag("bdi", text, attr);
 }
-function BDO(text, attr){
-    return Tag("bdo", text, attr);
+function htmlBDO(text, attr){
+    return htmlTag("bdo", text, attr);
 }
-function BIG(text, attr){
-    return Tag("big", text, attr);
+function htmlBIG(text, attr){
+    return htmlTag("big", text, attr);
 }
-function BLOCKQUOTE(text, attr){
-    return Tag("blockquote", text, attr);
+function htmlBLOCKQUOTE(text, attr){
+    return htmlTag("blockquote", text, attr);
 }
-function BODY(text, attr){
-    return Tag("body", text, attr);
+function htmlBODY(text, attr){
+    return htmlTag("body", text, attr);
 }
-function BR(text, attr){
-    return Tag("br", text, attr);
+function htmlBR(text, attr){
+    return htmlTag("br", text, attr);
 }
-function BUTTON(text, attr){
-    return Tag("button", text, attr);
+function htmlBUTTON(text, attr){
+    return htmlTag("button", text, attr);
 }
-function CANVAS(text, attr){
-    return Tag("canvas", text, attr);
+function htmlCANVAS(text, attr){
+    return htmlTag("canvas", text, attr);
 }
-function CAPTION(text, attr){
-    return Tag("caption", text, attr);
+function htmlCAPTION(text, attr){
+    return htmlTag("caption", text, attr);
 }
-function CENTER(text, attr){
-    return Tag("center", text, attr);
+function htmlCENTER(text, attr){
+    return htmlTag("center", text, attr);
 }
-function CITE(text, attr){
-    return Tag("cite", text, attr);
+function htmlCITE(text, attr){
+    return htmlTag("cite", text, attr);
 }
-function CODE(text, attr){
-    return Tag("code", text, attr);
+function htmlCODE(text, attr){
+    return htmlTag("code", text, attr);
 }
-function COL(text, attr){
-    return Tag("col", text, attr);
+function htmlCOL(text, attr){
+    return htmlTag("col", text, attr);
 }
-function COLGROUP(text, attr){
-    return Tag("colgroup", text, attr);
+function htmlCOLGROUP(text, attr){
+    return htmlTag("colgroup", text, attr);
 }
-function DATA(text, attr){
-    return Tag("data", text, attr);
+function htmlDATA(text, attr){
+    return htmlTag("data", text, attr);
 }
-function DATALIST(text, attr){
-    return Tag("datalist", text, attr);
+function htmlDATALIST(text, attr){
+    return htmlTag("datalist", text, attr);
 }
-function DD(text, attr){
-    return Tag("dd", text, attr);
+function htmlDD(text, attr){
+    return htmlTag("dd", text, attr);
 }
-function DEL(text, attr){
-    return Tag("del", text, attr);
+function htmlDEL(text, attr){
+    return htmlTag("del", text, attr);
 }
-function DETAILS(text, attr){
-    return Tag("details", text, attr);
+function htmlDETAILS(text, attr){
+    return htmlTag("details", text, attr);
 }
-function DFN(text, attr){
-    return Tag("dfn", text, attr);
+function htmlDFN(text, attr){
+    return htmlTag("dfn", text, attr);
 }
-function DIALOG(text, attr){
-    return Tag("dialog", text, attr);
+function htmlDIALOG(text, attr){
+    return htmlTag("dialog", text, attr);
 }
-function DIR(text, attr){
-    return Tag("dir", text, attr);
+function htmlDIR(text, attr){
+    return htmlTag("dir", text, attr);
 }
-function DIV(text, attr){
-    return Tag("div", text, attr);
+function htmlDIV(text, attr){
+    return htmlTag("div", text, attr);
 }
-function DL(text, attr){
-    return Tag("dl", text, attr);
+function htmlDL(text, attr){
+    return htmlTag("dl", text, attr);
 }
-function DT(text, attr){
-    return Tag("dt", text, attr);
+function htmlDT(text, attr){
+    return htmlTag("dt", text, attr);
 }
-function EM(text, attr){
-    return Tag("em", text, attr);
+function htmlEM(text, attr){
+    return htmlTag("em", text, attr);
 }
-function EMBED(text, attr){
-    return Tag("embed", text, attr);
+function htmlEMBED(text, attr){
+    return htmlTag("embed", text, attr);
 }
-function FIELDSET(text, attr){
-    return Tag("fieldset", text, attr);
+function htmlFIELDSET(text, attr){
+    return htmlTag("fieldset", text, attr);
 }
-function FIGCAPTION(text, attr){
-    return Tag("figcaption", text, attr);
+function htmlFIGCAPTION(text, attr){
+    return htmlTag("figcaption", text, attr);
 }
-function FIGURE(text, attr){
-    return Tag("figure", text, attr);
+function htmlFIGURE(text, attr){
+    return htmlTag("figure", text, attr);
 }
-function FONT(text, attr){
-    return Tag("font", text, attr);
+function htmlFONT(text, attr){
+    return htmlTag("font", text, attr);
 }
-function FOOTER(text, attr){
-    return Tag("footer", text, attr);
+function htmlFOOTER(text, attr){
+    return htmlTag("footer", text, attr);
 }
-function FORM(text, attr){
-    return Tag("form", text, attr);
+function htmlFORM(text, attr){
+    return htmlTag("form", text, attr);
 }
-function FRAME(text, attr){
-    return Tag("frame", text, attr);
+function htmlFRAME(text, attr){
+    return htmlTag("frame", text, attr);
 }
-function FRAMESET(text, attr){
-    return Tag("frameset", text, attr);
+function htmlFRAMESET(text, attr){
+    return htmlTag("frameset", text, attr);
 }
 function H1 - H6(text, attr){
-    return Tag("h1 - h6", text, attr);
+    return htmlTag("h1 - h6", text, attr);
 }
-function HEAD(text, attr){
-    return Tag("head", text, attr);
+function htmlHEAD(text, attr){
+    return htmlTag("head", text, attr);
 }
-function HEADER(text, attr){
-    return Tag("header", text, attr);
+function htmlHEADER(text, attr){
+    return htmlTag("header", text, attr);
 }
-function HR(text, attr){
-    return Tag("hr", text, attr);
+function htmlHR(text, attr){
+    return htmlTag("hr", text, attr);
 }
-function HTML(text, attr){
-    return Tag("html", text, attr);
+function htmlHTML(text, attr){
+    return htmlTag("html", text, attr);
 }
-function I(text, attr){
-    return Tag("i", text, attr);
+function htmlI(text, attr){
+    return htmlTag("i", text, attr);
 }
-function IFRAME(text, attr){
-    return Tag("iframe", text, attr);
+function htmlIFRAME(text, attr){
+    return htmlTag("iframe", text, attr);
 }
-function IMG(text, attr){
-    return Tag("img", text, attr);
+function htmlIMG(text, attr){
+    return htmlTag("img", text, attr);
 }
-function INPUT(text, attr){
-    return Tag("input", text, attr);
+function htmlINPUT(text, attr){
+    return htmlTag("input", text, attr);
 }
-function INS(text, attr){
-    return Tag("ins", text, attr);
+function htmlINS(text, attr){
+    return htmlTag("ins", text, attr);
 }
-function KBD(text, attr){
-    return Tag("kbd", text, attr);
+function htmlKBD(text, attr){
+    return htmlTag("kbd", text, attr);
 }
-function LABEL(text, attr){
-    return Tag("label", text, attr);
+function htmlLABEL(text, attr){
+    return htmlTag("label", text, attr);
 }
-function LEGEND(text, attr){
-    return Tag("legend", text, attr);
+function htmlLEGEND(text, attr){
+    return htmlTag("legend", text, attr);
 }
-function LI(text, attr){
-    return Tag("li", text, attr);
+function htmlLI(text, attr){
+    return htmlTag("li", text, attr);
 }
-function LINK(text, attr){
-    return Tag("link", text, attr);
+function htmlLINK(text, attr){
+    return htmlTag("link", text, attr);
 }
-function MAIN(text, attr){
-    return Tag("main", text, attr);
+function htmlMAIN(text, attr){
+    return htmlTag("main", text, attr);
 }
-function MAP(text, attr){
-    return Tag("map", text, attr);
+function htmlMAP(text, attr){
+    return htmlTag("map", text, attr);
 }
-function MARK(text, attr){
-    return Tag("mark", text, attr);
+function htmlMARK(text, attr){
+    return htmlTag("mark", text, attr);
 }
-function META(text, attr){
-    return Tag("meta", text, attr);
+function htmlMETA(text, attr){
+    return htmlTag("meta", text, attr);
 }
-function METER(text, attr){
-    return Tag("meter", text, attr);
+function htmlMETER(text, attr){
+    return htmlTag("meter", text, attr);
 }
-function NAV(text, attr){
-    return Tag("nav", text, attr);
+function htmlNAV(text, attr){
+    return htmlTag("nav", text, attr);
 }
-function NOFRAMES(text, attr){
-    return Tag("noframes", text, attr);
+function htmlNOFRAMES(text, attr){
+    return htmlTag("noframes", text, attr);
 }
-function NOSCRIPT(text, attr){
-    return Tag("noscript", text, attr);
+function htmlNOSCRIPT(text, attr){
+    return htmlTag("noscript", text, attr);
 }
-function OBJECT(text, attr){
-    return Tag("object", text, attr);
+function htmlOBJECT(text, attr){
+    return htmlTag("object", text, attr);
 }
-function OL(text, attr){
-    return Tag("ol", text, attr);
+function htmlOL(text, attr){
+    return htmlTag("ol", text, attr);
 }
-function OPTGROUP(text, attr){
-    return Tag("optgroup", text, attr);
+function htmlOPTGROUP(text, attr){
+    return htmlTag("optgroup", text, attr);
 }
-function OPTION(text, attr){
-    return Tag("option", text, attr);
+function htmlOPTION(text, attr){
+    return htmlTag("option", text, attr);
 }
-function OUTPUT(text, attr){
-    return Tag("output", text, attr);
+function htmlOUTPUT(text, attr){
+    return htmlTag("output", text, attr);
 }
-function P(text, attr){
-    return Tag("p", text, attr);
+function htmlP(text, attr){
+    return htmlTag("p", text, attr);
 }
-function PARAM(text, attr){
-    return Tag("param", text, attr);
+function htmlPARAM(text, attr){
+    return htmlTag("param", text, attr);
 }
-function PICTURE(text, attr){
-    return Tag("picture", text, attr);
+function htmlPICTURE(text, attr){
+    return htmlTag("picture", text, attr);
 }
-function PRE(text, attr){
-    return Tag("pre", text, attr);
+function htmlPRE(text, attr){
+    return htmlTag("pre", text, attr);
 }
-function PROGRESS(text, attr){
-    return Tag("progress", text, attr);
+function htmlPROGRESS(text, attr){
+    return htmlTag("progress", text, attr);
 }
-function Q(text, attr){
-    return Tag("q", text, attr);
+function htmlQ(text, attr){
+    return htmlTag("q", text, attr);
 }
-function RP(text, attr){
-    return Tag("rp", text, attr);
+function htmlRP(text, attr){
+    return htmlTag("rp", text, attr);
 }
-function RT(text, attr){
-    return Tag("rt", text, attr);
+function htmlRT(text, attr){
+    return htmlTag("rt", text, attr);
 }
-function RUBY(text, attr){
-    return Tag("ruby", text, attr);
+function htmlRUBY(text, attr){
+    return htmlTag("ruby", text, attr);
 }
-function S(text, attr){
-    return Tag("s", text, attr);
+function htmlS(text, attr){
+    return htmlTag("s", text, attr);
 }
-function SAMP(text, attr){
-    return Tag("samp", text, attr);
+function htmlSAMP(text, attr){
+    return htmlTag("samp", text, attr);
 }
-function SCRIPT(text, attr){
-    return Tag("script", text, attr);
+function htmlSCRIPT(text, attr){
+    return htmlTag("script", text, attr);
 }
-function SECTION(text, attr){
-    return Tag("section", text, attr);
+function htmlSECTION(text, attr){
+    return htmlTag("section", text, attr);
 }
-function SELECT(text, attr){
-    return Tag("select", text, attr);
+function htmlSELECT(text, attr){
+    return htmlTag("select", text, attr);
 }
-function SMALL(text, attr){
-    return Tag("small", text, attr);
+function htmlSMALL(text, attr){
+    return htmlTag("small", text, attr);
 }
-function SOURCE(text, attr){
-    return Tag("source", text, attr);
+function htmlSOURCE(text, attr){
+    return htmlTag("source", text, attr);
 }
-function SPAN(text, attr){
-    return Tag("span", text, attr);
+function htmlSPAN(text, attr){
+    return htmlTag("span", text, attr);
 }
-function STRIKE(text, attr){
-    return Tag("strike", text, attr);
+function htmlSTRIKE(text, attr){
+    return htmlTag("strike", text, attr);
 }
-function STRONG(text, attr){
-    return Tag("strong", text, attr);
+function htmlSTRONG(text, attr){
+    return htmlTag("strong", text, attr);
 }
-function STYLE(text, attr){
-    return Tag("style", text, attr);
+function htmlSTYLE(text, attr){
+    return htmlTag("style", text, attr);
 }
-function SUB(text, attr){
-    return Tag("sub", text, attr);
+function htmlSUB(text, attr){
+    return htmlTag("sub", text, attr);
 }
-function SUMMARY(text, attr){
-    return Tag("summary", text, attr);
+function htmlSUMMARY(text, attr){
+    return htmlTag("summary", text, attr);
 }
-function SUP(text, attr){
-    return Tag("sup", text, attr);
+function htmlSUP(text, attr){
+    return htmlTag("sup", text, attr);
 }
-function SVG(text, attr){
-    return Tag("svg", text, attr);
+function htmlSVG(text, attr){
+    return htmlTag("svg", text, attr);
 }
-function TABLE(text, attr){
-    return Tag("table", text, attr);
+function htmlTABLE(text, attr){
+    return htmlTag("table", text, attr);
 }
-function TBODY(text, attr){
-    return Tag("tbody", text, attr);
+function htmlTBODY(text, attr){
+    return htmlTag("tbody", text, attr);
 }
-function TD(text, attr){
-    return Tag("td", text, attr);
+function htmlTD(text, attr){
+    return htmlTag("td", text, attr);
 }
-function TEMPLATE(text, attr){
-    return Tag("template", text, attr);
+function htmlTEMPLATE(text, attr){
+    return htmlTag("template", text, attr);
 }
-function TEXTAREA(text, attr){
-    return Tag("textarea", text, attr);
+function htmlTEXTAREA(text, attr){
+    return htmlTag("textarea", text, attr);
 }
-function TFOOT(text, attr){
-    return Tag("tfoot", text, attr);
+function htmlTFOOT(text, attr){
+    return htmlTag("tfoot", text, attr);
 }
-function TH(text, attr){
-    return Tag("th", text, attr);
+function htmlTH(text, attr){
+    return htmlTag("th", text, attr);
 }
-function THEAD(text, attr){
-    return Tag("thead", text, attr);
+function htmlTHEAD(text, attr){
+    return htmlTag("thead", text, attr);
 }
-function TIME(text, attr){
-    return Tag("time", text, attr);
+function htmlTIME(text, attr){
+    return htmlTag("time", text, attr);
 }
-function TITLE(text, attr){
-    return Tag("title", text, attr);
+function htmlTITLE(text, attr){
+    return htmlTag("title", text, attr);
 }
-function TR(text, attr){
-    return Tag("tr", text, attr);
+function htmlTR(text, attr){
+    return htmlTag("tr", text, attr);
 }
-function TRACK(text, attr){
-    return Tag("track", text, attr);
+function htmlTRACK(text, attr){
+    return htmlTag("track", text, attr);
 }
-function TT(text, attr){
-    return Tag("tt", text, attr);
+function htmlTT(text, attr){
+    return htmlTag("tt", text, attr);
 }
-function U(text, attr){
-    return Tag("u", text, attr);
+function htmlU(text, attr){
+    return htmlTag("u", text, attr);
 }
-function UL(text, attr){
-    return Tag("ul", text, attr);
+function htmlUL(text, attr){
+    return htmlTag("ul", text, attr);
 }
-function VAR(text, attr){
-    return Tag("var", text, attr);
+function htmlVAR(text, attr){
+    return htmlTag("var", text, attr);
 }
-function VIDEO(text, attr){
-    return Tag("video", text, attr);
+function htmlVIDEO(text, attr){
+    return htmlTag("video", text, attr);
 }
-function WBR(text, attr){
-    return Tag("wbr", text, attr);
+function htmlWBR(text, attr){
+    return htmlTag("wbr", text, attr);
 }
