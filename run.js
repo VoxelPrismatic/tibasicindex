@@ -14,9 +14,9 @@ if(url.includes("?")) {
         thing = thing.replace(/\./g, "/");
         thing += ".txt";
     }
-    var fil = thing;
+    var fil = "../doc/"+thing;
 } else {
-    var fil = "./doc/index.txt";
+    var fil = "../doc/index.txt";
 }if (!(dirs.includes(fil))) {
     fil += "index.txt";
 } if (!(dirs.includes(fil))) {
