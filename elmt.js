@@ -1,3 +1,23 @@
+var events = ["onabort", "onafterprint", "onanimationend", "onanimationiteration",
+              "onanimationstart", "onbeforeprint", "onbeforeunload", "onblur", 
+              "oncanplay", "oncanplaythrough", "onchange", "onclick", "oncopy",
+              "oncontextmenu", "oncut", "ondblclick", "ondrag", "ondragend", 
+              "ondragenter", "ondragleave", "ondragover", "ondragstart", "ondrop",
+              "ondurationchange", "onended", "onerror", "onfocus", "onfocusin",
+              "onfocusout", "onfullscreenchange", "onfullscreenerror", "oninput",
+              "onhashchange", "onkeydown", "oninvalid", "onkeypress", "onkeyup",
+              "onload", "onloadeddata", "onloadedmetadata", "onloadstart",
+              "onmessage", "onmousedown", "onmouseenter", "onmouseleave", "onpause",
+              "onmousemove", "onmouseover", "onmouseout", "onmouseup", "onopen",
+              "onoffline", "ononline", "onpagehide", "onpageshow", "onpaste",
+              "onplay", "onplaying", "onpopstate", "onratechange", "onresize",
+              "onreset", "onscroll", "onsearch", "onseeked", "onseeking", "onshow",
+              "onselect", "onstalled", "onstorage", "onsubmit", "onsuspend",
+              "ontimeupdate", "ontoggle", "ontouchcancel", "ontouchend", 
+              "ontouchmove", "ontouchstart", "ontransitionend", "onunload",
+              "onvolumechange", "onwaiting", "onwheel"];
+              
+              
 class Tag {
     constructor(name, text, attr) {
         this.name = name;
@@ -30,7 +50,10 @@ class Tag {
         e = document.createElement(this.name.toUpper());
         e.appendChild(document.createTextNode(this.text));
         for(var a of this.attr.keys())
-            e.setAttribute(a, this.attr.get(a));
+            if(events.include(a))
+                e.setAttribute(a, eval(this.attr.get(a)));
+            else
+                e.setAttribute(a, this.attr.get(a));
         return e;
     }
 }
