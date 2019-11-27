@@ -5,7 +5,11 @@ function jump(elem) {
     for(var thing of things)
         if(thing.className == "alnk")
             thing.className = "lnk";
-    elem.className = "alnk";
+    try {
+        elem.className = "alnk";
+    } catch(err) {
+        find(elem).className = "alnk";
+    }
 }
 function docs(elem) {
     load(elem.id);
@@ -13,6 +17,10 @@ function docs(elem) {
     for(var thing of things)
         if(thing.className == "alnk")
             thing.className = "lnk";
-    elem.className = "alnk";
+    try {
+        elem.className = "alnk";
+    } catch(err) {
+        find(elem).className = "alnk";
+    }
     jump("SECT_top");
 }
