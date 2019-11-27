@@ -4,13 +4,13 @@ function grab_dirs(lvl) {
     for(var line of lines) {
         if(line.endsWith(".txt")) {
             lnk = lvl+"/"+line;
-            var smol = lnk.slice(5);
+            var smol = lnk.slice(6);
             dirs.push(lnk);
             if(lnk.endsWith("index.txt")) {
                 lnk = lnk.replace("index.txt", "");
-                var smol = lnk.slice(5);
+                var smol = lnk.slice(6);
             } else {
-                nam = smol.slice(1)
+                nam = smol.slice(2)
                 fil = lvl+"/"+line
                 find("nav").innerHTML +=
                     `<div class="lnk" id="${fil}" onclick="docs(this);">${smol}</div>`;
