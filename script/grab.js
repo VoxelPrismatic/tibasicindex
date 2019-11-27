@@ -3,7 +3,7 @@ function grab_dirs(lvl) {
     var lines = read(lvl+"/dir.txt").split("\n");
     for(var line of lines) {
         if(line.endsWith(".txt")) {
-            lnk = lvl+"/"+line;
+            lnk = lvl.replace("/prizmatic.docs", "..");+"/"+line;
             var smol = lnk.slice(6);
             dirs.push(lnk);
             if(lnk.endsWith("index.txt")) {
