@@ -16,23 +16,25 @@
         <title>PRIZMATIC ;]</title>
     </head>
     <body>
-        <div class="nav textC" id="nav">
-            <div class="head">[FILE]</div>
-            <div class="lnk" id="./doc/index.txt" onclick="docs(this);">/</div>
+        <div id="page">
+            <div class="nav textC" id="nav">
+                <div class="head">[FILE]</div>
+                <div class="lnk" id="./doc/index.txt" onclick="docs(this);">/</div>
+            </div>
+            <div class="nav textC" id="sect">
+                <div class="head">[JUMP]</div>
+                <div class="lnk" id="SECT_top" onclick="jump(this);">#top</div>
+            </div>
+            <div class="page" id="page">
+                WAIT... [LOADING DATABASE]
+            </div>
+            <div style="display: none;" id="file"></div>
+            <script type="text/javascript" src="./script/read.js"></script>
+            <script type="text/javascript" src="./script/load.js"></script>
+            <script type="text/javascript" src="./script/grab.js"></script>
+            <script type="text/javascript" src="./script/find.js"></script>
+            <script type="text/javascript" src="./script/swap.js"></script>
         </div>
-        <div class="nav textC" id="sect">
-            <div class="head">[JUMP]</div>
-            <div class="lnk" id="SECT_top" onclick="jump(this);">#top</div>
-        </div>
-        <div class="page" id="page">
-            WAIT... [LOADING DATABASE]
-        </div>
-        <div style="display: none;" id="file"></div>
-        <script type="text/javascript" src="./script/read.js"></script>
-        <script type="text/javascript" src="./script/load.js"></script>
-        <script type="text/javascript" src="./script/grab.js"></script>
-        <script type="text/javascript" src="./script/find.js"></script>
-        <script type="text/javascript" src="./script/swap.js"></script>
     </body>
     <footer>
         <div class="exc" style="text-align: center; display: block;">
