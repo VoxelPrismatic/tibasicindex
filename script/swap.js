@@ -12,7 +12,12 @@ function jump(elem) {
     }
 }
 function docs(elem) {
-    load(elem.id);
+    try {
+        find("page").innerHTML = find("DOCS_"+elem).innerHTML;
+    } catch(err) {
+        load(elem.id);
+        find("loaded-pages").innerHTML += `<div id="DOCS_${elem}" class="invis">${find("page").innerHTML}</div>`;
+    }
     var things = find("nav").children;
     for(var thing of things)
         if(thing.className == "alnk")
