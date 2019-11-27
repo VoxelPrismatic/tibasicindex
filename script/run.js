@@ -17,9 +17,7 @@ if(url.includes("?")) {
     var fil = thing;
 } else {
     var fil = "./doc/index.txt";
-}/* if (!(fil.endsWith(".txt"))) {
-    fil += ".txt";
-} if (!(dirs.includes(fil))) {
+}/* if (!(dirs.includes(fil))) {
     fil += "index.txt";
 } if (!(dirs.includes(fil))) {
     find("page").innerHTML = `<div class="warn">404 ] File not found</div>`;
