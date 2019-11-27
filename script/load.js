@@ -1,7 +1,8 @@
-function load(txt) {
+function load(fil) {
     find("sect").innerHTML = `<div class="lnk" id="SECT_top" onclick="jump(this);">#top</div>`;
     find("page").innerHTML = "WAIT... [LOADING FILE]";
     find(fil).className = "alnk";
+    txt = read(fil);
     chars = [
         ["\\\\n", ""],
         ["&", "&amp;"],
