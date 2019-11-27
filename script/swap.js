@@ -13,7 +13,7 @@ function jump(elem) {
 }
 function docs(elem) {
     try {
-        find("page").innerHTML = find("DOCS_"+elem).innerHTML;
+        find("page").innerHTML = find("DOCS_"+elem.id).innerHTML;
     } catch(err) {
         load(elem.id);
         find("loaded-pages").innerHTML += `<div id="DOCS_${elem}" class="invis">${find("page").innerHTML}</div>`;
