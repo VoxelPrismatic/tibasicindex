@@ -3,7 +3,7 @@ function grab_dirs(lvl) {
     var lines = read(lvl+"/dir.txt").split("\n");
     for(var line of lines) {
         if(line.endsWith(".txt")) {
-            lnk = line+"/"+line;
+            lnk = lvl+"/"+line;
             var smol = lnk.slice(19);
             dirs.push(lnk);
             if(lnk.endsWith("index.txt")) {
