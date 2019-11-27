@@ -1,4 +1,4 @@
-//dirs = grab_dirs("./doc");
+dirs = grab_dirs("/prizmatic.docs/doc");
 url = document.URL;
 if(url.includes("?")) {
     var thing = url.split("?")[1].split("#")[0];
