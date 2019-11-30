@@ -2,24 +2,21 @@ function load(fil) {
     find("sect").innerHTML = `<div class="lnk" id="SECT_top" onclick="jump(this);">#top</div>`;
     find("page").innerHTML = "WAIT... [LOADING FILE]";
     find(fil).className = "alnk";
-    console.log("Reading file");
+    console.log("Reading file" + fil);
     txt = read(fil);
-    console.log("Read file");
+    console.log("RegEx Bits");
     chars = [
-        ["\\\\n", ""],
-        ["&", "&amp;"],
-        [">", "&gt;"],
-        ["<", "&lt;"]
+        [/\\\\n/gm, ""],
+        [/\&/gm, "&amp;"],
+        [/\>/gm, "&gt;"],
+        [/\</gm, "&lt;"],
+        [/\\U([A-Fa-f0-9]{16})/gm, "\\u{$1}"],
+        [/ /gm, "\u200b \u200b"],
     ];
-    for(var ls of chars) {
-        k = ls[0];
-        v = ls[1];
-        while(txt.includes(k))
-            txt = txt.replace(k, v);
-    }
-    txt = txt.replace(/\\U([A-Fa-f0-9]{16})/gm, "\\u{$1}");
+    for(var ls of chars)
+        txt = txt.replace(ls[0], ls[1]);
     var md = "<div id='top'></div>";
-    console.log("RegEx");
+    console.log("RegEx Styles");
     reps = [
         [/^(\#+)(.+)$/gm, "<div class='head'>$1$2</div>"],
         [/\[(.+)\]\((.+)\)/gm, "<a href='$2'>$1</a>"],
