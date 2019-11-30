@@ -1,8 +1,9 @@
 function jump(elem) {
     try {
-        id = elem.id.slice(5);
+        id = elem.id;
     } catch {
-        
+        id = elem;
+    }
     find(id).scrollIntoView();
     var things = find("sect").children;
     for(var thing of things)
