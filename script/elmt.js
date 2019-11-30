@@ -108,8 +108,8 @@ function htmlBLOCKQUOTE(text, attr){
 function htmlBODY(text, attr){
     return htmlTag("body", text, attr);
 }
-function htmlBR(text, attr){
-    return htmlTag("br", text, attr);
+function htmlBR(text){
+    return htmlTag("br", "", {});
 }
 function htmlBUTTON(text, attr){
     return htmlTag("button", text, attr);
