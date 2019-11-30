@@ -2,7 +2,9 @@ function load(fil) {
     find("sect").innerHTML = `<div class="lnk" id="SECT_top" onclick="jump(this);">#top</div>`;
     find("page").innerHTML = "WAIT... [LOADING FILE]";
     find(fil).className = "alnk";
+    console.log("Reading file");
     txt = read(fil);
+    console.log("Read file");
     chars = [
         ["\\\\n", ""],
         ["&", "&amp;"],
@@ -17,6 +19,7 @@ function load(fil) {
     }
     txt = txt.replace(/\\U([A-Fa-f0-9]{16})/gm, "\\u{$1}");
     var md = "<div id='top'></div>";
+    console.log("RegEx");
     reps = [
         [/^(\#+)(.+)$/gm, "<div class='head'>$1$2</div>"],
         [/\[(.+)\]\((.+)\)/gm, "<a href='$2'>$1</a>"],
@@ -40,6 +43,7 @@ function load(fil) {
         [/--([\w]+)--/gm, "<div id='$1'></div>"],
     ];
     for(var line of txt.split("\n")) {
+        console.log(line);
         if(line.startsWith("SECT_")) {
             find("sect").innerHTML += `<div class="lnk" id="${line}" onclick="jump(this);">#${line.slice(5)}</div>`;
             continue;
@@ -53,6 +57,5 @@ function load(fil) {
         else
             md += line+"\n";
     }
-    find("page").innerHTML = md.replace(/\n/gm, "<br>")
-    fil = fil.replace("index.txt", "").replace(".txt", ".py")
+    find("page").innerHTML = md.replace(/\n/gm, "<br>");
 }
