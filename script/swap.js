@@ -10,7 +10,7 @@ function jump(elem) {
     for(var thing of things)
         if(thing.className == "alnk")
             thing.className = "lnk";
-    find(id).className = "alnk";
+    find("JUMP_"+id).className = "alnk";
 }
 function docs(elem) {
     try {
