@@ -6,7 +6,7 @@ function load(fil) {
     txt = read(fil);
     var md = "<div id='top'></div>";
     for(var line of txt.split("\n")) {
-        if(line.startsWith("SECT_")) {
+        if(line.startsWith("JUMP_")) {
             find("sect").innerHTML += `<div class="lnk" id="${line}" onclick="jump(this);">#${line.slice(5)}</div>`;
             continue;
         }
