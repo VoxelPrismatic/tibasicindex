@@ -4,6 +4,7 @@ function jump(elem) {
     } catch {
         id = elem.split("JUMP_")[-1];
     }
+    console.log(id);
     find(id).scrollIntoView();
     var things = find("sect").children;
     for(var thing of things)
