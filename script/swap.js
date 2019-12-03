@@ -1,8 +1,8 @@
 function jump(elem) {
     try {
-        id = elem.id.split("JUMP_")[-1];
+        id = elem.id.split("JUMP_").slice(-1)[0];
     } catch {
-        id = elem.split("JUMP_")[-1];
+        id = elem.split("JUMP_").slice(-1)[0];
     }
     console.log(id);
     find(id).scrollIntoView();
@@ -30,7 +30,8 @@ function docs(elem) {
         if(thing.className == "alnk")
             thing.className = "lnk";
     find(id).className = "alnk";
-    find("edit_page").href = `https://github.com/VoxelPrismatic/prizmatic.docs/edit/master/doc/${id.split("doc/")[-1]}`;
-    find("edit_page").innerHTML = "/"+id.split("doc/")[-1].replace("index.txt", "").toUpper();
+    find("edit_page").href = 
+        `https://github.com/VoxelPrismatic/prizmatic.docs/edit/master/doc/${id.split("doc/").slice(-1)[0]}`;
+    find("edit_page").innerHTML = "/"+id.split("doc/").slice(-1)[0].replace("index.txt", "").toUpper();
     jump("JUMP_top");
 }
