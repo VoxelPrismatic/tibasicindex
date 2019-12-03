@@ -26,7 +26,7 @@ function maybeload(url) {
           url = "/prizmatic.docs/doc/" + url
     url = url.replace(/\/\//gm, "/");
     if(!(url.endsWith(".txt")))
-       url += "index.txt;
+       url += "index.txt";
     if (!(dirs.includes(fil)))
         find("page").innerHTML = `<div class="warn">404 ] File not found</div>`;
     else 
