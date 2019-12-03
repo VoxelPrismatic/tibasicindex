@@ -30,5 +30,5 @@ function mark(st) {
     for(var r of regex) {
         st = st.replace(r[0], r[1]);
     }
-    return st.slice(1);
+    return st;
 }
