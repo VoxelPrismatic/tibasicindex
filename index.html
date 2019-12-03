@@ -33,12 +33,12 @@
         </div>
         <!-- FOOTER -->
         <div class="contain">
-            <textarea class="exc" onchange="load('/prizmatic.docs/doc'+this.innerHTML);" 
-                      style="font-family: Ubuntu Mono; height: 200%; width: 50%;">
+            <textarea class="exc" onchange="load('/prizmatic.docs/doc'+this.innerHTML);" id="input">
 Enter filename here</textarea>
-            <div class="exc" style="text-align: center; display: block; text-align: center; width: 90vw;">
+            <div class="exc" id="editor">
                 EDIT DOCS - <a href="https://github.com/VoxelPrismatic/prizmatic.docs/">GITHUB/PRIZMATIC.DOCS</a>
                 <br>EDIT MODULE - <a href="https://github.com/VoxelPrismatic/prizmatic/">GITHUB/PRIZMATIC</a>
+                <br>EDIT PAGE - <a id="edit_page">/</a>
             </div>
         </div>
         <div id="loaded-pages">
