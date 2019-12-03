@@ -45,6 +45,12 @@ py_regex = [
             s = s.slice(0, -1);
             return `<span class="comm">#${s}</span>`;
         }
+    ], [
+        /(-)?0x(\d+)/gm,
+        `<span class="var">$10x$2</span>`
+    ], [
+        /(-)?(\d+(\.\d+)?)/gm, 
+        `<span class="var">$1$2</span>`
     ]
 ];
 
