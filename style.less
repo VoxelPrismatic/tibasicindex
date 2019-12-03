@@ -15,14 +15,18 @@
     text-align: center;
 } .invis {
     display: none;
+} .blur {
+    transition: all 1s ease;
 }
 
 /* Functions */
-.border(@color) {
+.pad(@px) {
+    margin: @px;
+    padding: @px;
+} .border(@color) {
     border: 2px @color solid;
     border-radius: 5px;
-    margin: 5px;
-    padding: 5px;
+    .pad(5px);
 } .section(@color) {
     color: @color;
     .border(@color);
@@ -78,7 +82,7 @@ body {
     .border(#334444);
     .bg(#223333);
     font-size: smaller;
-    padding: 2px;
+    .pad(2px);
 } .note {
     .section(#ffff00);
 } .warn {
@@ -98,17 +102,20 @@ body {
     text-decoration: none !important;
     width: 80% !important;
     .align(left);
+    .blur();
     &:hover {
         .section(#00ff00);
     }
 } .alnk {
     .lnk();
     .section(#00ffff);
+    .blur();
     &:hover {
         .section(#ff0088);
     }
 } a {
     color: #aaffff;
+    .blur();
     &:hover {
         color: #ffaadd;
     }
