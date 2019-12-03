@@ -24,7 +24,7 @@ regex = [
     [/^ *\:(.*)$/gm, "<div class='com'>> $1</div>"],
     [/\{\{(\w+?)\}\}([\w\d]+?) /gm, "<span class='$1'>$2</span>"],
     [/^--([\w\d]+?)--$/gm, "<div id='$1'></div>"],
-    [/\\[^\\]/gm, ""], //Escape Chars
+    [/\\([^\\])/gm, "$1"], //Escape Chars
     [/\\U([A-Fa-f0-9]{16})/gm, "\\u{$1}"],
     [/ /gm, "\u200b \u200b"],
 ];
