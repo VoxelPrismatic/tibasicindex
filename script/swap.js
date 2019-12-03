@@ -20,12 +20,13 @@ function docs(elem) {
         id = elem.id;
     } catch(err) {
         id = elem;
-    }
-    try {
+    } try {
         find("page").innerHTML = find("DOCS_"+id).innerHTML;
+        find("sect").innerHTML = find("SECT_"+id).innerHTML;
     } catch(err) {
         load(id);
         find("loaded-pages").innerHTML += `<div id="DOCS_${id}" class="invis">${find("page").innerHTML}</div>`;
+        find("loaded-sects").innerHTML += `<div id="SECT_${id}" class="invis">${find("sect").innerHTML}</div>`;
     }
     var things = find("nav").children;
     for(var thing of things)
