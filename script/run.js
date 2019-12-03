@@ -1,3 +1,2 @@
 dirs = grab_dirs("/prizmatic.docs/doc"); // ../doc doesn't actually work for some reason
-url = document.URL;
-maybeload(url);
+maybeload(document.URL.split("github.io/").slice(-1)[0]);
