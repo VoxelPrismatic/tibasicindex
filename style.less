@@ -40,6 +40,10 @@
     text-align: @var;
 } .lean(@var) {
     float: @var;
+} .header(@color) {
+    color: @color;
+    font-size: larger;
+    font-weight: bold;
 }
 
 /* Cls */
@@ -64,10 +68,12 @@ body {
     .lean(left);
     .centerH();
     .scroll();
-} .head {
-    color: #00ffff;
-    font-size: larger;
-    font-weight: bold;
+} .head1 {
+    .header(#00ffff);
+} .head2 {
+    .header(#ff0088);
+} .head3 {
+    .header(#00ff00);
 } .code {
     .border(#334444);
     .bg(#223333);
