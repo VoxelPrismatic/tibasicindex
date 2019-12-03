@@ -1,6 +1,6 @@
 function load(fil) {
     find("sect").innerHTML = `<div class="head textC" style="width: 100%;">[JUMP]</div>`
-    find("sect").innerHTML += `<div class="lnk" id="SECT_top" onclick="jump(this);">#top</div>`;
+    find("sect").innerHTML += `<div class="lnk" id="JUMP_top" onclick="jump(this);">#top</div>`;
     find("page").innerHTML = "WAIT... [LOADING FILE]";
     find(fil).className = "alnk";
     txt = read(fil);
