@@ -13,12 +13,6 @@ kw = [
     "in", "not", "and", "or", "is",
     "super", "self"
 ];
-ops = [
-    "+", "-", "*", "^", "|", "~", ">", 
-    "<", "%", "=", "/", "@", "&", "[",
-    "]", "(", ")", "{", "}", ",", ".",
-    ":", ";"
-];
 
 py_regex = [
     [
@@ -32,18 +26,27 @@ py_regex = [
         `<span class="str">$1$2$3$2</span>`
     ], [
         /([fFrRuUbB]?)('''|""")((.|\n)+)$2/gm,
-        function(m) {
-            v = m[3];
+        function(m, a, b, c) {
             var s = "";
-            for(var a = 0; a < v.length(); a++)
-                s += v[a] + "\u200b";
+            for(var z = 0; z < c.length(); z++)
+                s += c[z] + "\u200b";
             s = s.slice(0, -1);
-            return `<span class="str">${m[1]}${m[2]}${s}${m[3]}</span>`;
+            return `<span class="str">${a}${b}${s}${b}</span>`;
         }
     ], [
         /([\w\d_]+)\(/gm,
         `<span class="fn">$1</span>(`
+    ], [
+        /\#(.+?)/gm,
+        function(m, a) {
+            var s = "";
+            for(var z = 0; z < a.length(); z++)
+                s += a[z] + "\u200b";
+            s = s.slice(0, -1);
+            return `<span class="comm">#${s}</span>`;
+        }
     ]
 ];
 
 function py_mark(st) {
+}
