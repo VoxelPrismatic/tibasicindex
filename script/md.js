@@ -26,6 +26,7 @@ regex = [
     [/^--([\w\d]+?)--$/gm, "<div id='$1'></div>"],
     [/\\([^\\])/gm, "$1"], //Escape Chars
     [/\\U([A-Fa-f0-9]{16})/gm, "\\u{$1}"],
+    [/\\ *$/gm, "§"], //New line escape
 ];
 function mark(st) {
     for(var r of regex) {
