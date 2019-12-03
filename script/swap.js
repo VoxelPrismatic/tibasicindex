@@ -35,5 +35,5 @@ function docs(elem) {
     find(id).className = "alnk";
     find("edit_page").href = `https://github.com/VoxelPrismatic/prizmatic.docs/edit/master/doc/${id.split("doc/")[-1]}`;
     find("edit_page").innerHTML = "/"+id.split("doc/")[-1].replace("index.txt", "").toUpper();
-    jump("SECT_top");
+    jump("JUMP_top");
 }
