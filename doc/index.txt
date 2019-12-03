@@ -19,7 +19,7 @@ DOCUMENTATION ---
     Description of the class
 
 PARAMS ---
-    param_name [param\_type]
+    param\_name [param_type]
     - Description of this param, eg what it does
     .
     .
