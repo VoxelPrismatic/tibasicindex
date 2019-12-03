@@ -1,5 +1,4 @@
 regex = [
-    [/ /gm, "\u200b \u200b"],
     [/^\#\] *(.+)$/gm, "<div class='head1'>#] $1</div>"],
     [/^\~\] *(.+)$/gm, "<div class='head2'>~] $1</div>"],
     [/^\=\] *(.+)$/gm, "<div class='head3'>=] $1</div>"],
