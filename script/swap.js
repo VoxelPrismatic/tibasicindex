@@ -8,9 +8,9 @@ function jump(elem) {
     find(id).scrollIntoView();
     var things = find("sect").children;
     for(var thing of things)
-        if(thing.className == "alnk")
+        if(thing.className == "lnk sel")
             thing.className = "lnk";
-    find("JUMP_"+id).className = "alnk";
+    find("JUMP_"+id).className = "lnk sel";
 }
 function docs(elem) {
     try {
@@ -27,9 +27,9 @@ function docs(elem) {
     }
     var things = find("nav").children;
     for(var thing of things)
-        if(thing.className == "alnk")
+        if(thing.className == "lnk sel")
             thing.className = "lnk";
-    find(id).className = "alnk";
+    find(id).className = "lnk sel";
     find("edit_page").href = 
         `https://github.com/VoxelPrismatic/prizmatic.docs/edit/master/doc/${id.split("doc/").slice(-1)[0]}`;
     find("edit_page").innerHTML = "/"+id.split("doc/").slice(-1)[0].replace("index.txt", "").toUpper();
