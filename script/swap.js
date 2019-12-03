@@ -20,7 +20,7 @@ function docs(elem) {
         find("page").innerHTML = find("DOCS_"+elem.id).innerHTML;
     } catch(err) {
         load(elem.id);
-        find("loaded-pages").innerHTML += `<div id="DOCS_${elem}" class="invis">${find("page").innerHTML}</div>`;
+        find("loaded-pages").innerHTML += `<div id="DOCS_${elem.id}" class="invis">${find("page").innerHTML}</div>`;
     }
     var things = find("nav").children;
     for(var thing of things)
