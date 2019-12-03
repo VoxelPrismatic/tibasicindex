@@ -26,8 +26,9 @@ regex = [
     [/ /gm, "\u200b \u200b"],
 ];
 function mark(st) {
+    st = " "+st;
     for(var r of regex) {
         st = st.replace(r[0], r[1]);
     }
-    return st;
+    return st.slice(1);
 }
