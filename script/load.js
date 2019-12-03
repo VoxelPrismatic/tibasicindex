@@ -6,10 +6,7 @@ function load(fil) {
     txt = read(fil);
     console.log("RegEx Bits");
     chars = [
-        [/\\\\n/gm, ""],
-        [/\&/gm, "&amp;"],
-        [/\>/gm, "&gt;"],
-        [/\</gm, "&lt;"],
+        [/\\ *\\n/gm, ""],
         [/\\U([A-Fa-f0-9]{16})/gm, "\\u{$1}"],
         [/ /gm, "\u200b \u200b"],
     ];
