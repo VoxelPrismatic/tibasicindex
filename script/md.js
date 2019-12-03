@@ -1,4 +1,5 @@
 regex = [
+    [/ /gm, "\u200b \u200b"],
     [/^\#\] *(.+)$/gm, "<div class='head1'>#] $1</div>"],
     [/^\~\] *(.+)$/gm, "<div class='head2'>~] $1</div>"],
     [/^\=\] *(.+)$/gm, "<div class='head3'>=] $1</div>"],
@@ -26,7 +27,6 @@ regex = [
     [/^--([\w\d]+?)--$/gm, "<div id='$1'></div>"],
     [/\\([^\\])/gm, "$1"], //Escape Chars
     [/\\U([A-Fa-f0-9]{16})/gm, "\\u{$1}"],
-    [/ /gm, "\u200b \u200b"],
 ];
 function mark(st) {
     for(var r of regex) {
