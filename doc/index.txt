@@ -19,7 +19,7 @@ DOCUMENTATION ---
     Description of the class
 
 PARAMS ---
-    param_name [param_type]
+    param_name [param\_type]
     - Description of this param, eg what it does
     .
     .
@@ -33,8 +33,8 @@ FUNCTIONS ---
     function(...) -> type
     - What this function does
 ---
-Also, to get a specific file, add `?{file\_name}` to the url where `{file_name}` is what is shown in the far left/top bar
-Additionally, to get a specific section, add `#{sect_name}` where `{sect_name}` is what is shown in the other bar
+Also, to get a specific file, add `?{file\_name}` to the url where `{file\_name}` is what is shown in the far left/top bar
+Additionally, to get a specific section, add `#{sect\_name}` where `{sect\_name}` is what is shown in the other bar
 
 --git--
 #] ANY SUGGESTIONS?
