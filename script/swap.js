@@ -32,10 +32,8 @@ function docs(elem) {
     for(var thing of things)
         if(thing.className == "alnk")
             thing.className = "lnk";
-    try {
-        elem.className = "alnk";
-    } catch(err) {
-        find(elem).className = "alnk";
-    }
+    find(id).className = "alnk";
+    find("edit_page").href = `https://github.com/VoxelPrismatic/prizmatic.docs/edit/master/doc/${id.split("doc/")[-1]}`;
+    find("edit_page").innerHTML = "/"+id.split("doc/")[-1].replace("index.txt", "").toUpper();
     jump("SECT_top");
 }
