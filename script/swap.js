@@ -17,10 +17,15 @@ function jump(elem) {
 }
 function docs(elem) {
     try {
-        find("page").innerHTML = find("DOCS_"+elem.id).innerHTML;
+        id = elem.id;
     } catch(err) {
-        load(elem.id);
-        find("loaded-pages").innerHTML += `<div id="DOCS_${elem.id}" class="invis">${find("page").innerHTML}</div>`;
+        id = elem;
+    }
+    try {
+        find("page").innerHTML = find("DOCS_"+id).innerHTML;
+    } catch(err) {
+        load(id);
+        find("loaded-pages").innerHTML += `<div id="DOCS_${id}" class="invis">${find("page").innerHTML}</div>`;
     }
     var things = find("nav").children;
     for(var thing of things)
