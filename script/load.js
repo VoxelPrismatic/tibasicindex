@@ -3,11 +3,6 @@ function load(fil) {
     find("page").innerHTML = "WAIT... [LOADING FILE]";
     find(fil).className = "alnk";
     txt = read(fil);
-    chars = [
-        [/\\ *\\n/gm, ""], //New line escape
-    ];
-    for(var ls of chars)
-        txt = txt.replace(ls[0], ls[1]);
     var md = "<div id='top'></div>";
     console.log("RegEx Styles");
     for(var line of txt.split("\n")) {
