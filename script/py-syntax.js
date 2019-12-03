@@ -14,6 +14,8 @@ kw = [
     "super", "self"
 ];
 
+ops = "()[]<>{}|.,:;&£*^%=/-@";
+
 py_regex = [
     [
         /( *)def ([\w\d_]+)/gm, 
@@ -34,8 +36,8 @@ py_regex = [
             return `<span class="str">${a}${b}${s}${b}</span>`;
         }
     ], [
-        /([\w\d_]+)\(/gm,
-        `<span class="fn">$1</span>(`
+        /([\w\d_]+)([\(\[.])/gm,
+        `<span class="fn">$1</span>$2`
     ], [
         /\#(.+?)/gm,
         function(m, a) {
@@ -49,10 +51,17 @@ py_regex = [
         /(-)?0x(\d+)/gm,
         `<span class="var">$10x$2</span>`
     ], [
-        /(-)?(\d+(\.\d+)?)/gm, 
+        /(-)?(\d+(\.\d+)?j?)/gm, 
         `<span class="var">$1$2</span>`
+    ], [
+        /( *)\@([\d\w_.]+)/gm,
+        `<span class="dec">$1@$2</span>`
     ]
+       
 ];
 
 function py_mark(st) {
+    for(var r of py_regex)
+        st = st.replace(r[0], r[1]);
+    return st;
 }
