@@ -19,4 +19,6 @@ function load(fil) {
             md += line+"\n";
     }
     find("page").innerHTML = md.replace(/\n/gm, "<br>");
+    find("edit_page").href = `https://github.com/VoxelPrismatic/prizmatic.docs/edit/master/doc/${fil.split("doc/")[-1]}`;
+    find("edit_page").innerHTML = fil.split("doc")[-1].replace("index.txt", "").toUpper();
 }
