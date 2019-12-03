@@ -9,11 +9,7 @@ function jump(elem) {
     for(var thing of things)
         if(thing.className == "alnk")
             thing.className = "lnk";
-    try {
-        elem.className = "alnk";
-    } catch(err) {
-        find(elem).className = "alnk";
-    }
+    find(id).className = "alnk";
 }
 function docs(elem) {
     try {
