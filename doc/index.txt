@@ -47,44 +47,51 @@ You can find the repo for the actual module [here](https://github.com/voxelprism
 #] HOW THIS MARKDOWN WORKS
 Unfortunately, there are no tables. Then again, who uses tables for code?
 Anyway here are the available styles:
-*\*ital** #\#bold## ~\~strike~~ _\_under__ \*escape* `\`inline-code``
+$*ital* $#bold# $~strike~ $_under_ \*escape* $`inline-code` $|spoil| $^super^ $%sub%
+[add a $ infront to show formatting chars ^^]
 #] HEADER 1
 ~] HEADER 2
 $] HEADER 3
 CODE---
-  CODE---
-  code block!
-  ---
+\CODE---
+code block!
+\---
 ---
 WARN---
-^ don't write that, thats automatically placed
-  WARN---
-  warnings
-  ---
+^ don't write that, that's automatically placed
+\WARN---
+warnings
+\---
 ---
 NOTE---
-^ don't write that, thats automatically placed
-  NOTE---
-  note or notice
-  ---
+^ don't write that, that's automatically placed
+\NOTE---
+note or notice
+\---
 ---
 NEW---
-^ don't write that, thats automatically placed
-  NEW---
-  new feature or smth
-  ---
+^ don't write that, that's automatically placed
+\NEW---
+new feature or smth
+\---
 ---
 INFO---
-^ don't write that, thats automatically placed
+^ don't write that, that's automatically placed
 \INFO---
 informational information that should be very informative
 \---
 ---
 EX---
-^ don't write that, thats automatically placed
-  EX---
-  example
-  ---
+^ don't write that, that's automatically placed
+\EX---
+example
+\---
+---
+COMMENT---
+^ don't write that, that's automatically placed
+\COMMENT---
+ooh i'm commenting inside a comment...
+\---
 ---
 
  new lines cannot start with a single space
@@ -92,3 +99,8 @@ EX---
   [this is just the regex implementation that prevents 1 space]
 {\{class\_name}}styled_word but this wont be styled
 To escape anything, just place a \ inbetween the some of the chars, the \ gets automatically removed
+
+To create a section, add `JUMP_sect_name` to the top of the file,\
+then add `--sect_name--` where the section should be. This is an implementation issue again.
+
+
