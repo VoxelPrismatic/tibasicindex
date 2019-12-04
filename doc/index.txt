@@ -51,7 +51,10 @@ $*ital* $#bold# $~strike~ $_under_ \*escape* $`inline-code` $|spoil| $^super^ $%
 [add a $ infront to show formatting chars ^^]
 #] HEADER 1
 ~] HEADER 2
-$] HEADER 3
++] HEADER 3
+-] HEADER 4
+$] HEADER 5
+%] HEADER 6
 CODE---
 \CODE---
 code block!
