@@ -15,7 +15,7 @@
         <!-- SCRIPTS -->
         <title>PRIZMATIC ;]</title>
     </head>
-    <body>
+    <body style="text-align: center;">
         <!-- MAIN PAGE HERE -->
         <div class="contain" style="width: 95vw; margin: auto; height: 70vh; margin: 15px;">
             <div style="display: flex; flex-direction: column; width: min-content; height: 70vh;">
@@ -34,12 +34,12 @@
         </div>
         <div style="display: none;" id="file"></div>
         <!-- FOOTER -->
-        <div class="exc" id="editor" style="width: 95vw; margin: auto">
+        <div class="exc" id="editor" style="width: 95vw;">
             EDIT DOCS - <a href="https://github.com/VoxelPrismatic/prizmatic.docs/">GITHUB/PRIZMATIC.DOCS</a>
             <br>EDIT MODULE - <a href="https://github.com/VoxelPrismatic/prizmatic/">GITHUB/PRIZMATIC</a>
             <br>EDIT PAGE - <a id="edit_page">/</a>
         </div>
-        <div style="display: grid; grid-template-columns: auto auto auto; width: 95vw; margin: auto;">
+        <div style="display: grid; grid-template-columns: auto auto auto; width: 95vw; text-align: right;">
             <textarea class="exc" oninput="maybeload(this.innerHTML);" id="input"
                       rows="1" placeholder="Filename"></textarea>
             <textarea class="exc" oninput="finder(this.innerHTML);" id="finder"
