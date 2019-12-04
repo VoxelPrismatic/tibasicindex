@@ -57,27 +57,32 @@ CODE---
   ---
 ---
 WARN---
+^ don't write that, thats automatically placed
   WARN---
   warnings
   ---
 ---
 NOTE---
+^ don't write that, thats automatically placed
   NOTE---
   note or notice
   ---
 ---
 NEW---
+^ don't write that, thats automatically placed
   NEW---
   new feature or smth
   ---
 ---
 INFO---
+^ don't write that, thats automatically placed
   INFO---
   informational information that should be very informative
   ---
 ---
-EXC---
-  EXC---
+EX---
+^ don't write that, thats automatically placed
+  EX---
   example
   ---
 ---
@@ -85,4 +90,4 @@ EXC---
  new lines cannot start with a single space
   but they can start with 2+!
   [this is just the regex implementation that prevents 1 space]
-{ {class_name}}styled_word but this wont be styled
+{\{class\_name}}styled_word but this wont be styled
