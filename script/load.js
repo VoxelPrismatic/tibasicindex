@@ -27,10 +27,10 @@ function maybeload(url) {
     url = url.replace(/\/\//gm, "/");
     if(!(url.endsWith(".txt")))
        url += "index.txt";
-    if (!(dirs.includes(fil)))
+    if (!(dirs.includes(url)))
         find("page").innerHTML = `<div class="warn">404 ] File not found</div>`;
     else 
-        docs(fil);
+        docs(url);
     if(url.includes("#")) {
         var sec = url.split("#")[1].split("?")[0].split("&")[0];
         if(!(sec.startsWith("JUMP_")))
