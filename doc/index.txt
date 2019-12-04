@@ -1,6 +1,8 @@
 JUMP_workings
 JUMP_docs
 JUMP_git
+JUMP_md
+
 #] WELCOME
 This is PRIZMATIC - The API wrapper for Discord, Riot, Reddit, and more.
 The bar on the far left or far top is the files index, there may be some scroll time.
@@ -40,3 +42,47 @@ Additionally, to get a specific section, add `#{sect\_name}` where `{sect\_name}
 #] ANY SUGGESTIONS?
 You can find the repo for the docs [here](https://github.com/voxelprismatic/prizmatic.docs)
 You can find the repo for the actual module [here](https://github.com/voxelprismatic/prizmatic)
+
+--md--
+#] HOW THIS MARKDOWN WORKS
+Unfortunately, there are no tables. Then again, who uses tables for code?
+Anyway here are the available styles:
+*\*ital** #\#bold## ~\~strike~~ _\_under__ \*escape* `\`inline-code``
+#] HEADER 1
+~] HEADER 2
+$] HEADER 3
+CODE---
+  CODE---
+  code block!
+  ---
+---
+WARN---
+  WARN---
+  warnings
+  ---
+---
+NOTE---
+  NOTE---
+  note or notice
+  ---
+---
+NEW---
+  NEW---
+  new feature or smth
+  ---
+---
+INFO---
+  INFO---
+  informational information that should be very informative
+  ---
+---
+EXC---
+  EXC---
+  example
+  ---
+---
+
+ new lines cannot start with a single space
+  but they can start with 2+!
+  [this is just the regex implementation that prevents 1 space]
+{ {class_name}}styled_word but this wont be styled
