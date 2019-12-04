@@ -64,9 +64,10 @@ body {
     .scroll();
     .lean(right);
 } .nav {
+    display: block;
     .rangeW(25vw, 15vw);
     min-height: 35vh;
-    height: 50%;
+    height: 100%;
     .border(#00ffff);
     .lean(left);
     .centerH();
@@ -100,8 +101,7 @@ body {
     .border(#008888);
     color: #00ffff;
     display: block;
-    text-decoration: none !important;
-    width: 80% !important;
+    /*width: 90% !important;*/
     .align(left);
     &:hover {
         .section(#00ff00);
@@ -149,6 +149,16 @@ body {
     color: #8800ff;
 } .comm {
     color: #777777;
+} textarea {
+    font-family: 'Ubuntu Mono';
+    width: 100%;
+} #editor {
+    text-align: center;
+    display: block;
+    font-size: small;
+} .stack {
+    display: grid;
+    grid-template: 100%;
 }
 
 /* Media */
@@ -167,13 +177,4 @@ body {
     }
 }
 
-/* Elements */
-textarea {
-    font-family: 'Ubuntu Mono';
-    width: 100%;
-} #editor {
-    text-align: center;
-    display: block;
-    font-size: small;
-}
     
