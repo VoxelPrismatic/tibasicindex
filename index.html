@@ -17,30 +17,30 @@
     </head>
     <body>
         <!-- MAIN PAGE HERE -->
-        <div class="contain" style="width: 95vw; margin: auto; height: 80vh;">
-            <div style="display: block; width: min-content;">
-                <div class="nav" id="nav">
+        <div class="contain" style="width: 95vw; margin: auto; height: 70vh;">
+            <div style="display: block; width: min-content; height: 100%;">
+                <div class="nav" id="nav" style="height: 45%;">
                     <div class="head textC" style="width: 100%;">[FILE]</div>
                     <div class="lnk" id="/prizmatic.docs/doc/index.txt" onclick="docs(this);">/</div>
                 </div>
-                <div class="nav" id="sect">
+                <div class="nav" id="sect" style="height: 45%;">
                     <div class="head textC" style="width: 100%;">[JUMP]</div>
                     <div class="lnk" id="SECT_top" onclick="jump(this);">#top</div>
                 </div>
             </div>
-            <div class="page" id="page" style="height: 80vh;">
+            <div class="page" id="page" style="height: 70vh;">
                 WAIT... [LOADING DATABASE]
             </div>
         </div>
         <div style="display: none;" id="file"></div>
         <!-- FOOTER -->
         <div style="width: 90vw; margin: auto;">
-            <div class="exc" id="editor">
+            <div class="exc" id="editor" style="width: 90vw;">
                 EDIT DOCS - <a href="https://github.com/VoxelPrismatic/prizmatic.docs/">GITHUB/PRIZMATIC.DOCS</a>
                 <br>EDIT MODULE - <a href="https://github.com/VoxelPrismatic/prizmatic/">GITHUB/PRIZMATIC</a>
                 <br>EDIT PAGE - <a id="edit_page">/</a>
             </div>
-            <div style="display: grid; grid-template-columns: auto auto auto;">
+            <div style="display: grid; grid-template-columns: auto auto auto; max-width: 90vw;">
                     <textarea class="exc" oninput="maybeload(this.innerHTML);" id="input"
                               rows="1" placeholder="Filename"></textarea>
                     <textarea class="exc" oninput="finder(this.innerHTML);" id="finder"
