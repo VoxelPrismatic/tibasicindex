@@ -59,13 +59,13 @@ body {
 } .page {
     /*.rangeW(80vw, 60vw);*/
     height: 70vh;
-    .border(#00ffff);
+    .border(#0000ff);
     .centerH();
     .scroll();
     .lean(right);
 } .nav {
     .rangeW(25vw, 15vw);
-    height: 70vh;
+    min-height: 30vh;
     .border(#00ffff);
     .lean(left);
     .centerH();
@@ -156,9 +156,10 @@ body {
         display: block;
     } .page {
         width: inherit;
-        height: 20vh;
+        height: 60vh;
         .lean(none);
     } .nav {
+        min-height: none;
         width: inherit;
         height: 20vh;
         .lean(none);
