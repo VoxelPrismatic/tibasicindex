@@ -1,7 +1,10 @@
 regex = [
     [/^\#\] +(.+)$/gm, "<div class='head1'>#] $1</div>"],
     [/^\~\] +(.+)$/gm, "<div class='head2'>~] $1</div>"],
-    [/^\=\] +(.+)$/gm, "<div class='head3'>=] $1</div>"],
+    [/^\+\] +(.+)$/gm, "<div class='head3'>+] $1</div>"],
+    [/^\-\] +(.+)$/gm, "<div class='head4'>-] $1</div>"],
+    [/^\$\] +(.+)$/gm, "<div class='head5'>$] $1</div>"],
+    [/^\%\] +(.+)$/gm, "<div class='head6'>%] $1</div>"],
     
     [/\[(.+?)\]\((.+?)\)/gm, "<a href='$2'>$1</a>"],
     [/\[\[(.+?)\]\]\((.+?)\)/gm, "<a href='$2'><div class='lnk'>$1</div></a>"],
