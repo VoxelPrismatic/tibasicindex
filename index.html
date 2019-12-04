@@ -34,20 +34,18 @@
         </div>
         <div style="display: none;" id="file"></div>
         <!-- FOOTER -->
-        <div style="width: 90vw; margin: auto;">
-            <div class="exc" id="editor" style="width: 90vw;">
-                EDIT DOCS - <a href="https://github.com/VoxelPrismatic/prizmatic.docs/">GITHUB/PRIZMATIC.DOCS</a>
-                <br>EDIT MODULE - <a href="https://github.com/VoxelPrismatic/prizmatic/">GITHUB/PRIZMATIC</a>
-                <br>EDIT PAGE - <a id="edit_page">/</a>
-            </div>
-            <div style="display: grid; grid-template-columns: auto auto auto; max-width: 90vw;">
-                    <textarea class="exc" oninput="maybeload(this.innerHTML);" id="input"
-                              rows="1" placeholder="Filename"></textarea>
-                    <textarea class="exc" oninput="finder(this.innerHTML);" id="finder"
-                              rows="1" placeholder="Search all docs"></textarea>
-                    <textarea class="exc" oninput=";" id="filter"
-                              rows="1" placeholder="Filter pages, not implemented yet"></textarea>
-            </div>
+        <div class="exc" id="editor" style="width: 90vw; margin: auto">
+            EDIT DOCS - <a href="https://github.com/VoxelPrismatic/prizmatic.docs/">GITHUB/PRIZMATIC.DOCS</a>
+            <br>EDIT MODULE - <a href="https://github.com/VoxelPrismatic/prizmatic/">GITHUB/PRIZMATIC</a>
+            <br>EDIT PAGE - <a id="edit_page">/</a>
+        </div>
+        <div style="display: grid; grid-template-columns: auto auto auto; width: 90vw; margin: auto;">
+            <textarea class="exc" oninput="maybeload(this.innerHTML);" id="input"
+                      rows="1" placeholder="Filename"></textarea>
+            <textarea class="exc" oninput="finder(this.innerHTML);" id="finder"
+                      rows="1" placeholder="Search all docs"></textarea>
+            <textarea class="exc" oninput=";" id="filter"
+                      rows="1" placeholder="Filter pages, not implemented yet"></textarea>
         </div>
         <!-- CACHE -->
         <div id="loaded-pages"></div>
