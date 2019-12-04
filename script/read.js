@@ -6,5 +6,5 @@ function read(filename) {
     }
     f.open("GET", filename, false);
     f.send();
-    return find("file").innerHTML.replace(/ /gm, "\u200b \u200b");
+    return find("file").innerHTML.replace(/  /gm, "\u200b \u200b \u200b");
 }
