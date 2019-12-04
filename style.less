@@ -28,7 +28,6 @@
 } .section(@color) {
     color: @color;
     .border(@color);
-    border-color: @color;
     background-color: fadeout(@color, 73.333%);
 } .rangeW(@maxi, @mini) {
     min-width: @mini;
@@ -57,7 +56,8 @@ body {
     .flex();
     .centerA();
 } .page {
-    min-width: 60vw;
+    /*min-width: 60vw;*/
+    /*width: 100%;*/
     height: 70vh;
     .border(#00ffff);
     .centerH();
@@ -68,6 +68,7 @@ body {
     .rangeW(25vw, 15vw);
     min-height: 35vh;
     height: 100%;
+    .align(center);
     .border(#00ffff);
     .lean(left);
     .centerH();
@@ -123,6 +124,17 @@ body {
     &:hover {
         color: #ffffff;
     }
+} textarea {
+    
+    font-family: 'Ubuntu Mono';
+    width: 100%;
+} #editor {
+    text-align: center;
+    display: block;
+    font-size: small;
+} .stack {
+    display: grid;
+    grid-template: 100%;
 }
 
 /* Py Components */
@@ -149,16 +161,6 @@ body {
     color: #8800ff;
 } .comm {
     color: #777777;
-} textarea {
-    font-family: 'Ubuntu Mono';
-    width: 100%;
-} #editor {
-    text-align: center;
-    display: block;
-    font-size: small;
-} .stack {
-    display: grid;
-    grid-template: 100%;
 }
 
 /* Media */
