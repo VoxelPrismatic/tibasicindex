@@ -76,9 +76,9 @@ NEW---
 ---
 INFO---
 ^ don't write that, thats automatically placed
-  INFO---
-  informational information that should be very informative
-  ---
+\INFO---
+informational information that should be very informative
+\---
 ---
 EX---
 ^ don't write that, thats automatically placed
@@ -91,3 +91,4 @@ EX---
   but they can start with 2+!
   [this is just the regex implementation that prevents 1 space]
 {\{class\_name}}styled_word but this wont be styled
+To escape anything, just place a \ inbetween the some of the chars, the \ gets automatically removed
