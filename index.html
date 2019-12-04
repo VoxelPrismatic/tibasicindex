@@ -19,12 +19,6 @@
         <!-- MAIN PAGE HERE -->
         <div class="contain">
             <div style="display: grid; grid-template: 100%;">
-                <textarea class="exc" oninput="maybeload('/prizmatic.docs/doc'+this.innerHTML);" id="input"
-                          rows="1" placeholder="Filename eg index.txt"></textarea>
-                <textarea class="exc" oninput=";" id="finder"
-                          rows="1" placeholder="Search all docs, not implemented yet"></textarea>
-                <textarea class="exc" oninput=";" id="input"
-                          rows="1" placeholder="Filter pages, not implemented yet"></textarea>
                 <div class="nav" id="nav">
                     <div class="head textC" style="width: 100%;">[FILE]</div>
                     <div class="lnk" id="/prizmatic.docs/doc/index.txt" onclick="docs(this);">/</div>
@@ -34,21 +28,26 @@
                     <div class="lnk" id="SECT_top" onclick="jump(this);">#top</div>
                 </div>
             </div>
-            <div class="page" id="page" style="width: 80vw !important;">
-                WAIT... [LOADING DATABASE]
-            </div>
-            <div style="display: none;" id="file"></div>
+            <div style="display: grid; grid-template: auto;">
+                <div style="display: grid; grid-template: 30% 30% 30%;">
+                    <textarea class="exc" oninput="maybeload('/prizmatic.docs/doc'+this.innerHTML);" id="input"
+                              rows="1" placeholder="Filename eg index.txt"></textarea>
+                    <textarea class="exc" oninput=";" id="finder"
+                              rows="1" placeholder="Search all docs, not implemented yet"></textarea>
+                    <textarea class="exc" oninput=";" id="input"
+                              rows="1" placeholder="Filter pages, not implemented yet"></textarea>
+                </div>
+                <div class="page" id="page" style="width: 80vw !important;">
+                    WAIT... [LOADING DATABASE]
+                </div>
+            </div> 
         </div>
+        <div style="display: none;" id="file"></div>
         <!-- FOOTER -->
-        <div class="contain">
-            
-            <!--<textarea class="exc" onchange="finddoc(this.innerHTML);" id="input"
-                      rows="3" placeholder="Find in docs"></textarea>-->
-            <div class="exc" id="editor">
-                EDIT DOCS - <a href="https://github.com/VoxelPrismatic/prizmatic.docs/">GITHUB/PRIZMATIC.DOCS</a>
-                <br>EDIT MODULE - <a href="https://github.com/VoxelPrismatic/prizmatic/">GITHUB/PRIZMATIC</a>
-                <br>EDIT PAGE - <a id="edit_page">/</a>
-            </div>
+        <div class="exc" id="editor">
+            EDIT DOCS - <a href="https://github.com/VoxelPrismatic/prizmatic.docs/">GITHUB/PRIZMATIC.DOCS</a>
+            <br>EDIT MODULE - <a href="https://github.com/VoxelPrismatic/prizmatic/">GITHUB/PRIZMATIC</a>
+            <br>EDIT PAGE - <a id="edit_page">/</a>
         </div>
         <div id="loaded-pages">
             <!-- Any loaded pages will have their generated content go here -->
