@@ -24,20 +24,26 @@
                 <button class="tab" id="jump" onclick="btn_jump();">[JUMP]</button>
                 <button class="tab" id="find" onclick="btn_find();">[FIND]</button>
             </div>
-            <div id="page" class="page">
+            <div id="page" class="page" style="display: block;">
             </div>
-            <div id="nav" class="page">
+            <div id="nav" class="page" style="display: none;">
                 <div class="head textC" style="width: 100%;">[FILE]</div>
                 <div class="lnk" id="/prizmatic.docs/doc/index.txt" onclick="docs(this);">/</div>
             </div>
-            <div id="sect" class="page">
+            <div id="sect" class="page" style="display: none;">
                 <div class="head textC" style="width: 100%;">[JUMP]</div>
                 <div class="lnk" id="JUMP_top" onclick="jump(this);">#top</div>
+            </div>
+            <div id="find" class="page" style="display: none;">
+                <textarea id="swapper" placeholder="Filename"></textarea>
+                <textarea id="filter" placeholder="Filter docs"></textarea>
+                <textarea id="finder" placeholder="Find in docs"></textarea>
             </div>
             <div id="cache">
             </div>
             <div id="src">
                 EDIT THIS PAGE - <a href="https://github.com/VoxelPrismatic/prizmatic.docs/">/</a>
+            </div>
         </div>
         <!-- CACHE -->
         <div id="loaded-pages"></div>
