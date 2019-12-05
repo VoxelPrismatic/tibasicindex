@@ -19,12 +19,13 @@
         <!-- MAIN PAGE HERE -->
         <div class="content">
             <div class="nav">
-                <button class="tab tabbed" id="docs" onclick="btn_docs();">[DOCS]</button>
-                <button class="tab" id="file" onclick="btn_file();">[FILE]</button>
-                <button class="tab" id="jump" onclick="btn_jump();">[JUMP]</button>
-                <button class="tab" id="find" onclick="btn_find();">[FIND]</button>
+                <button class="tab tabbed" id="docs" onclick="btn(this, 'page');">[DOCS]</button>
+                <button class="tab" id="swap" onclick="btn(this, 'nav');">[FILE]</button>
+                <button class="tab" id="jump" onclick="btn(this, 'sect');">[JUMP]</button>
+                <button class="tab" id="find" onclick="btn(this, 'search');">[FIND]</button>
             </div>
             <div id="page" class="page" style="display: block;">
+                JUST A SEC... [LOADING FILES]
             </div>
             <div id="nav" class="page" style="display: none;">
                 <div class="head textC" style="width: 100%;">[FILE]</div>
@@ -34,21 +35,21 @@
                 <div class="head textC" style="width: 100%;">[JUMP]</div>
                 <div class="lnk" id="JUMP_top" onclick="jump(this);">#top</div>
             </div>
-            <div id="find" class="page" style="display: none;">
+            <div id="search" class="page" style="display: none;">
                 <textarea id="swapper" placeholder="Filename"></textarea>
                 <textarea id="filter" placeholder="Filter docs"></textarea>
                 <textarea id="finder" placeholder="Find in docs"></textarea>
-            </div>
-            <div id="cache">
             </div>
             <div id="src">
                 EDIT THIS PAGE - <a href="https://github.com/VoxelPrismatic/prizmatic.docs/">/</a>
             </div>
         </div>
         <!-- CACHE -->
-        <div id="loaded-pages"></div>
-        <div id="loaded-sects"></div>
-        <div id="cached-pages"></div>
+        <div id="loaded-pages" class="invis"></div>
+        <div id="loaded-sects" class="invis"></div>
+        <div id="cached-pages" class="invis"></div>
+        <div id="cache" class="invis"></div>
+        <div id="file" class="invis"></div>
         
         <!-- LOADERS -->
         <script type="text/javascript" src="script/md.js"></script>
@@ -58,5 +59,6 @@
         <script type="text/javascript" src="script/load.js"></script>
         <script type="text/javascript" src="script/read.js"></script>
         <script type="text/javascript" src="script/run.js"></script>
+        <script type="text/javascript" src="script/other.js"></script>
     </body>
 </html>
