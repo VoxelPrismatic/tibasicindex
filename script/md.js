@@ -1,4 +1,6 @@
 regex = [
+    [/\\(.)/gm, function(m, p1) {return `\\u{${p1.charCodeAt(0).toString(16)}}`;}],
+    
     [/^\#\] +(.+)$/gm, "<div class='head1'>#] $1</div>"],
     [/^\~\] +(.+)$/gm, "<div class='head2'>~] $1</div>"],
     [/^\+\] +(.+)$/gm, "<div class='head3'>+] $1</div>"],
@@ -43,6 +45,8 @@ regex = [
     [/\\([^\\])/gm, "$1"], //Escape Chars
     [/\\U([A-Fa-f0-9]{16})/gm, "\\u{$1}"],
     [/\\ *$/gm, "§"], //New line escape
+    
+    [/\\u\{([a-fA-F0-9]+)\}/gm, function(m, p1) {return String.fromCharCode("0x"+p1);}],
 ];
 function mark(st) {
     for(var r of regex) {
