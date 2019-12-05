@@ -47,7 +47,7 @@ You can find the repo for the actual module [here](https://github.com/voxelprism
 #] HOW THIS MARKDOWN WORKS
 Unfortunately, there are no tables. Then again, who uses tables for code?
 Anyway here are the available styles:
-$*ital* $#bold# $~strike~ $_under_ \*escape* $`inline-code` $|spoil| $^super^ $%sub%
+*\*ital\** #\##bold\## ~\~strike\~~ _\_under\__ \*escape* $`inline-code` $|spoil| $^super^ $%sub%
 [add a $ infront to show formatting chars ^^]
 #] HEADER 1
 ~] HEADER 2
