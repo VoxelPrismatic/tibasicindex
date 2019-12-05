@@ -1,0 +1,61 @@
+@import "fn";
+@import (reference) "base";
+
+body {
+    .bg(#112222);
+    color: #aaaaaa;
+} a {
+    color: #aaffff;
+    &:hover {
+        color: #ffaadd;
+    }
+} .lnk {
+    .border(#008888);
+    color: #00ffff;
+    display: block;
+    .align(left);
+    &:hover {
+        .section(#00ff00);
+    }
+} .sel {
+    .lnk();
+    .section(#00ffff);
+    &:hover {
+        .section(#ff0088);
+    }
+} textarea {
+    width: 100%;
+} .content {
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    width: 90vw;
+    margin: auto;
+} .nav {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+} .page {
+    display: block;
+    .border(#00ffff);
+    height: 100%;
+    .scroll();
+    margin: none;
+} .tab {
+    text-align: center;
+    padding: 5px;
+    width: 100%;
+    color: #aaaaaa;
+    .border-colors(#00ffff, #00000000, #00000000, #00000000);
+    .border-radii(0px, 0px, 0px, 0px);
+    margin: none;
+    &.tabbed {
+        background-color: #00ffff44;
+        color: #00ffff;
+        .border-colors(#00ffff, #00ffff, #00000000, #00ffff);
+        .border-radii(5px, 5px, 0px, 0px);
+    }
+} .src {
+    .section(#aaaaaa);
+    text-align: center;
+}
