@@ -1,0 +1,97 @@
+@import (reference) "/prizmatic.docs/css/base.less";
+@import (reference) "/prizmatic.docs/css/fns.less";
+
+body {
+    .bg(#112222);
+    font-family: "Ubuntu Mono";
+    color: #aaaaaa;
+} .contain {
+    .flex();
+    .centerA();
+} .page {
+    max-height: 75vh;
+    height: 90%;
+    .border(#00ffff);
+    .centerH();
+    .scroll();
+    .lean(right);
+} .nav {
+    display: block;
+    min-width: 15vw;
+    .align(center);
+    .border(#00ffff);
+    .lean(left);
+    .centerH();
+    .scroll();
+} .head1 {
+    .header(#00ffff);
+} .head2 {
+    .header(#ff0088);
+} .head3 {
+    .header(#00ff00);
+} .head4 {
+    .header(#ff0000);
+} .head5 {
+    .header(#ff8800);
+} .head6 {
+    .header(#8800ff);
+} .code {
+    .border(#334444);
+    .bg(#223333);
+    font-size: smaller;
+    .pad(2px);
+} .note {
+    .section(#ffff00);
+} .warn {
+    .section(#ff0000);
+} .new {
+    .section(#00ff00);
+} .info {
+    .section(#ff0088);
+} .exc {
+    .section(#00ffff);
+} .comblock {
+    .section(#888888);
+} .find {
+    .section(#ff8800);
+} .lnk {
+    .border(#008888);
+    color: #00ffff;
+    display: block;
+    /*width: 90% !important;*/
+    .align(left);
+    &:hover {
+        .section(#00ff00);
+    }
+} .sel {
+    .lnk();
+    .section(#00ffff);
+    &:hover {
+        .section(#ff0088);
+    }
+} a {
+    color: #aaffff;
+    &:hover {
+        color: #ffaadd;
+    }
+} .hide {
+    background-color: #334444;
+    color: #334444;
+    &:hover {
+        color: #ffffff;
+    }
+    &:focus {
+        color: #ffffff;
+    }
+} textarea {
+    font-family: 'Ubuntu Mono';
+} #editor {
+    text-align: center;
+    display: block;
+    font-size: small;
+    width: 90%;
+    margin: auto;
+} .stack {
+    display: grid;
+    grid-template: 100%;
+}
