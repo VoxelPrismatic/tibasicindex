@@ -1,5 +1,5 @@
 function jump(elem) {
-    console.log("Jumping");
+    find("docs").click();
     try {
         id = elem.id.split("JUMP_").slice(-1)[0];
     } catch {
@@ -13,7 +13,6 @@ function jump(elem) {
     find("JUMP_"+id).className = "lnk sel";
 }
 function docs(elem) {
-    console.log("Swapping");
     try {
         id = elem.id;
     } catch(err) {
