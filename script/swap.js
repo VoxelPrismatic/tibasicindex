@@ -30,9 +30,10 @@ function docs(elem) {
         if(thing.className == "lnk sel")
             thing.className = "lnk";
     find(id).className = "lnk sel";
-    find("edit_page").href = 
-        `https://github.com/VoxelPrismatic/prizmatic.docs/edit/master/doc/${id.split("doc/").slice(-1)[0]}`;
-    find("edit_page").innerHTML = "/"+id.split("doc/").slice(-1)[0].replace("index.txt", "").toUpper();
+    url = "https://github.com/VoxelPrismatic/prizmatic.docs/edit/master/doc/"
+    name = "/"+id.split("doc/").slice(-1)[0].replace("index.txt", "").toUpper()
+    find("src").innerHTML = 
+        `EDIT THIS PAGE - <a href="${url}${id.split("doc/").slice(-1)[0]}">${id}</a>`;
     jump("JUMP_top");
 }
 function finder(thing) {
