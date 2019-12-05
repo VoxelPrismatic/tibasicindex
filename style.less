@@ -1,5 +1,7 @@
 /* Modules */
-.flex {
+* {
+    font-family: 'Ubuntu Mono';
+} .flex {
     display: flex;
 } .centerH {
     justify-content: center;
@@ -18,17 +20,31 @@
 }
 
 /* Functions */
-.pad(@px) {
+.theme(@color) {
+    color: @color;
+    background-color: fadeout(@color, 73.333%);
+    caret-color: @color;
+} .pad(@px) {
     margin: @px;
     padding: @px;
+} .border_radii(@tr, @tl, @br, @bl) {
+    border-top-right-radius: @tr;
+    border-top-left-radius: @tl;
+    border-bottom-right-radius: @br;
+    border-bottom-left-radius: @bl;
+} .border-colors(@t, @r, @b, @l) {
+    border-bottom-color: @b;
+    border-right-color: @r;
+    border-left-color: @l;
+    border-top-color: @t;
 } .border(@color) {
-    border: 2px @color solid;
-    border-radius: 5px;
+    border: 2px solid;
+    .border-colors(@color, @color, #00000000, @color);
+    .border-radii(5px, 5px, 0px, 0px);
     .pad(5px);
 } .section(@color) {
-    color: @color;
+    .theme(@color);
     .border(@color);
-    background-color: fadeout(@color, 73.333%);
 } .rangeW(@maxi, @mini) {
     min-width: @mini;
     max-width: @maxi;
@@ -45,8 +61,7 @@
     color: @color !important;
     font-size: larger !important;
     font-weight: bold !important;
-}
-
+} 
 /* Cls */
 body {
     .bg(#112222);
@@ -73,7 +88,6 @@ body {
         .section(#ff0088);
     }
 } textarea {
-    font-family: 'Ubuntu Mono';
     width: 100%;
 } .content {
     display: flex;
@@ -88,29 +102,23 @@ body {
 } .page {
     display: block;
     .border(#00ffff);
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
     height: 100%;
     .scroll();
     margin: none;
 } .tab {
-    .border(#00ffff);
-    border-radius: 0px;
     font-family: 'Ubuntu Mono';
     text-align: center;
     width: 100%;
     color: #aaaaaa;
-    border-bottom-color: #00ffff00;
-    border-left-color: #00ffff00;
-    border-right-color: #00ffff00;
+    .border-colors(#00ffff, #00000000, #00000000, #00000000);
+    .border-radii(0px, 0px, 0px, 0px);
     margin: none;
-} .tabbed {
-    background-color: #00ffff44;
-    color: #00ffff;
-    border-right-color: #00ffff;
-    border-left-color: #00ffff;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    &.tabbed {
+        background-color: #00ffff44;
+        color: #00ffff;
+        .border-colors(#00ffff, #00ffff, #00000000, #00ffff);
+        .border-radii(5px, 5px, 0px, 0px);
+    }
 } .src {
     .section(#aaaaaa);
     text-align: center;
@@ -187,18 +195,7 @@ body {
 
 /* Media */
 @media screen and (max-width: 640px) {
-    .contain {
-        display: block;
-    } .page {
-        width: inherit;
-        height: 60vh;
-        .lean(none);
-    } .nav {
-        min-height: none;
-        width: inherit;
-        height: 20vh;
-        .lean(none);
+    .nav {
+        flex-direction: column;
     }
 }
-
-    
