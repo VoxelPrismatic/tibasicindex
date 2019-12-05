@@ -6,8 +6,9 @@ function load(fil) {
     txt = read(fil);
     var md = "<div id='top'></div>";
     for(var line of txt.split("\n")) {
-        if(line.startsWith("JUMP_")) {
-            find("sect").innerHTML += `<div class="lnk" id="${line}" onclick="jump(this);">#${line.slice(5)}</div>`;
+        if(line.search(/^--[\w\d_.-]+--$/)) {
+            sid = line.slice(2, -2);
+            find("sect").innerHTML += `<div class="lnk" id="JUMP_${sid}" onclick="jump(this);">#${sid}</div>`;
             continue;
         }
         line = mark(line);
@@ -19,6 +20,8 @@ function load(fil) {
             md += line+"\n";
     }
     find("page").innerHTML = md.replace(/\n/gm, "<br>");
+    find("loaded-pages").innerHTML += `<div id="DOCS_${id}" class="invis">${find("page").innerHTML}</div>`;
+    find("loaded-sects").innerHTML += `<div id="SECT_${id}" class="invis">${find("sect").innerHTML}</div>`;
 }
 
 function maybeload(url) {
