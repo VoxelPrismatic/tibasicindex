@@ -9,7 +9,6 @@ function load(fil) {
         if(line.search(/^--[\w\d_.-]+--$/gm) == 0) {
             sid = line.slice(2, -2);
             find("sect").innerHTML += `<div class="lnk" id="JUMP_${sid}" onclick="jump(this);">#${sid}</div>`;
-            continue;
         }
         line = mark(line);
         if(line.endsWith("<br>"))
