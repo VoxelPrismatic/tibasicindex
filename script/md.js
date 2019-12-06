@@ -44,7 +44,7 @@ regex = [
     [/^---$/gm, "</div>"],
     
     [/^ *\:(.*)$/gm, "<div class='com'>> $1</div>"],
-    [/\{\{(\w+?)\}\}([\w\d]+?) /gm, "<span class='$1'>$2</span>"],
+    [/\{\{(\w+?)\}\}([\w\d]+?) /gm, "<span class='$1'>$2</span> "],
     [/^--([\w\d_.-]+)--$/gm, "<div id='$1'></div>"],
     [/\\ *$/gm, "§"], //New line escape
     
