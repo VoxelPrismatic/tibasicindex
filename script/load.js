@@ -5,10 +5,23 @@ function load(fil) {
     find(fil).className = "lnk sel";
     txt = read(fil);
     var md = "<div id='top'></div>";
+    var py = "";
+    var inpy = false;
     for(var line of txt.split("\n")) {
         if(line.search(/^--[\w\d_.-]+--$/gm) == 0) {
             sid = line.slice(2, -2);
             find("sect").innerHTML += `<div class="lnk" id="JUMP_${sid}" onclick="jump(this);">#${sid}</div>`;
+        }
+        if(inpy || line == "PY---") {
+            py += line + "\n";
+            inpy = true;
+            continue;
+        }
+        else if(line == "---" && inpy) {
+            md += py_mark(py).replace(/\n/gm, "<br>");
+            py = "";
+            inpy = false;
+            continue;
         }
         line = mark(line);
         if(line.endsWith("<br>"))
