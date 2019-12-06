@@ -90,7 +90,7 @@ py_regex = [
         /\#(.+?)/gm,
         function(m, a) {
             var s = "";
-            for(var z = 0; z < a.length(); z++)
+            for(var z = 0; z < a.length; z++)
                 s += a[z] + "\u200b";
             s = s.slice(0, -1);
             return `<span class="comm">#${s}</span>`;
