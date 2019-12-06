@@ -31,6 +31,7 @@ function docs(elem) {
     find(id).className = "lnk sel";
     console.log(id);
     uri("?"+id.slice(20));
+    console.log(find("url"))
     jump("JUMP_top");
 }
 function finder(thing) {
