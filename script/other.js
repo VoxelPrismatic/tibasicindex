@@ -10,7 +10,7 @@ function btn(elem, id) {
 }
 function highlight(phrase) {
     find("page").innerHTML = find("page").innerHTML.replace(RegExp(sec, "gm"), `<div class="find">${sec}</div>`);
-    url("&"+phrase);
+    uri("&"+phrase);
 }
 function uri(thing) {
     href = find("url").innerHTML
