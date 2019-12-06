@@ -32,6 +32,7 @@ function docs(elem) {
     find(id).className = "lnk sel";
     console.log(id);
     find("linky").href = "?"+id
+    find("linky").click();
     jump("JUMP_top");
 }
 function finder(thing) {
