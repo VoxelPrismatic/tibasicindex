@@ -1,1 +1,27 @@
 #] PY
+CODE---
+PY---
+from python import interpreter
+def generator():
+    for x in range(20):
+        yield x
+class abcd:
+    def __init__(self):
+        self.stuff = 2
+        self.test = 0xff
+        self.other = f"hi{'there'}"
+        for x in range(10):
+            print("TEST", x)
+            try:
+                x + "error"
+            except TypeError:
+                pass
+if generator is not None:
+    pass #testing stuff
+elif genertor is not True:
+    pass #more testing
+else:
+    print("nice")
+x = (lambda y: y) #completely useless
+---
+---
