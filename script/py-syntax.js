@@ -75,10 +75,10 @@ py_regex = [
         /\\(.)/gm, 
         `<span class="op">\\$1</span>`
     ], [
-        /^( *)def ([\w\d_]+)/gm, 
+        /^([\u200b ]*)def ([\w\d_]+)/gm, 
         `$1<span class="kw">def</span> <span class="fn">$2</span>`
     ], [
-        /^( *)class ([\w\d_]+)/gm,
+        /^([\u200b ]*)class ([\w\d_]+)/gm,
         function(m, a, b) {
             cls.push(b);
             return `${a}<span class="kw">class</span> <span class="cls">${b}</span>`;
@@ -96,13 +96,13 @@ py_regex = [
             return `<span class="comm">#${s}</span>`;
         }
     ], [
-        /(-?)(0x\d+)/gm,
+        /(-?)(\0x\d+)/gm,
         `<span class="var">$1$2</span>`
     ], [
         /(-?)(\d+(\.\d+)?j?)/gm, 
         `<span class="var">$1$2</span>`
     ], [
-        /^( *)\@([\d\w_.]+)/gm,
+        /^([\u200b ]*)\@([\d\w_.]+)/gm,
         `<span class="dec">$1@$2</span>`
     ], [
         /([\w\d_]*)(Error|Exception)/gm,
