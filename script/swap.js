@@ -14,11 +14,11 @@ function jump(elem) {
     uri("#"+id);
 }
 function docs(elem) {
-    try {
+    if(elem.id != undefined)
         id = elem.id;
-    } catch(err) {
+    else
         id = elem;
-    } try {
+    try {
         find("page").innerHTML = find("DOCS_"+id).innerHTML;
         find("sect").innerHTML = find("SECT_"+id).innerHTML;
     } catch(err) {
