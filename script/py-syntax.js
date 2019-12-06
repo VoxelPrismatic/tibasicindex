@@ -16,7 +16,8 @@ var kw = [
     "super", "self", "global", "id",
     "local", "try", "except", "pass",
     "continue", "break", "return",
-    "del", "nonlocal", "lambda",
+    "del", "nonlocal", "lambda", 
+    "class"
 ];
 
 function str_regex(m, a, b, c) {
@@ -120,7 +121,7 @@ function py_mark(st) {
             `<span class="cls">${r.split('').join('\u200b')}</span>$1`
         );
         st = st.replace(
-            RegExp("("+sym+"|\n|[\u200b ]+)"+r+sym, "gm"), 
+            RegExp("^("+sym+"|\n|[\u200b ]+)"+r+sym, "gm"), 
             `$1<span class="cls">${r.split('').join('\u200b')}</span>$2`
         );
     } for(var r of kw) {
@@ -129,7 +130,7 @@ function py_mark(st) {
             `<span class="kw">${r}</span>$1`
         );
         st = st.replace(
-            RegExp("("+sym+"|\n|[\u200b ]+)"+r+sym, "gm"), 
+            RegExp("^("+sym+"|\n|[\u200b ]+)"+r+sym, "gm"), 
             `$1<span class="kw">${r}</span>$2`
         );
     }
