@@ -1,3 +1,4 @@
+--hello--
 #] WELCOME
 This is PRIZMATIC - The API wrapper for Discord, Riot, Reddit, and more.
 The bar on the far left or far top is the files index, there may be some scroll time.
@@ -6,6 +7,19 @@ The the other bar is the sections on this page, tap it to jump there.
 --workings--
 #] WORKINGS
 How does everything work? Well, using the following bit of code,
+CODE---
+PY---
+import re
+docs = {}
+def get_docs(thing = discord, name = "discord"):
+    global docs
+    for item in dir(thing):
+        if item == "__doc__":
+            docs[name] = 
+        elif item == "__name__":
+            get_docs(thing, name + "." + thing.__name__)
+---
+---
 
 --docs--
 #] HOW STUFF IS DOCUMENTED
@@ -45,7 +59,7 @@ Tables haven't been implemented yet, but they will be soon
 
 Anyway here are the available styles:
 *\*ital\** #\#bold\## ~\~strike\~~ _\_under\__ \\\*escape\* `\`inline-code\`` |\|spoil\|| ^\^super\^^ %\%sub\%%
-[[text]](#)(link)
+[\[text\]\(link\)](#)
 
 :: \:\: comments
 :: :: \:\: \:\: and comments
