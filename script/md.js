@@ -47,7 +47,7 @@ regex = [
     
     [/^ *\:(.*)$/gm, "<div class='com'>> $1</div>"],
     [/\{\{(\w+?)\}\}([\w\d]+?) /gm, "<span class='$1'>$2 </span>"],
-    [/^--([\w\d_.-]+)--$/gm, "<div id='$1'></div>"],
+    [/^--([\w\d_.-]+)--$/gm, "<div id='$1'></div>§"],
     [/\\ *$/gm, "§"], //New line escape
     
     [/\\u\{([a-fA-F0-9]+)\}/gm, function(m, p1) {return String.fromCharCode("0x"+p1);}],
