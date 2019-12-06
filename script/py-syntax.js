@@ -64,5 +64,7 @@ py_regex = [
 function py_mark(st) {
     for(var r of py_regex)
         st = st.replace(r[0], r[1]);
+    for(var r of kw)
+        st = st.replace(RegExp("^( *)("+r+")", "gm"), `$1<span class="kw">$2</span>`);
     return st;
 }
