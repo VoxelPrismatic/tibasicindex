@@ -121,25 +121,26 @@ py_regex = [
 function py_mark(st) {
     st = st.replace(/\n/gm, " \n");
     var sym = "[\\"+"\\.,:;()[]{}~|/-+=*^%&@ ".split('').join("\\")+"]";
+    var gsym = "("+sym+")";
     for(var r of py_regex) {
         st = st.replace(r[0], r[1]);
     } for(var r of cls) {
         st = st.replace(
-            RegExp(`^${r}(${sym})`, "gm"),
+            RegExp("^"+r+gsym, "gm"),
             `<span class="cls">${r.split('').join('\u200b')}</span>$1`
         );
         st = st.replace(
-            RegExp("("+sym+"|\n|[\u200b ]+)"+r+sym, "gm"), 
+            RegExp("("+sym+"|\n|[\u200b ]+)"+r+gsym, "gm"), 
             `$1<span class="cls">${r.split('').join('\u200b')}</span>$2`
         );
     } for(var r of kw) {
         st = st.replace(
-            RegExp(`^${r}(${sym})`, "gm"), 
-            `<span class="kw">${r}</span>$1`
+            RegExp("^"+r+gsym, "gm"), 
+            `<span class="kw">${r.split('').join('\u200b')}</span>$1`
         );
         st = st.replace(
-            RegExp("("+sym+"|\n|[\u200b ]+)"+r+sym, "gm"), 
-            `$1<span class="kw">${r}</span>$2`
+            RegExp("("+sym+"|\n|[\u200b ]+)"+r+gsym, "gm"), 
+            `$1<span class="kw">${r.split('').join('\u200b')}</span>$2`
         );
     }
     return st;
