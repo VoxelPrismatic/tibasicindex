@@ -48,6 +48,7 @@ function maybeload(url) {
     url = url.replace(/\/\//gm, "/");
     if(!(url.endsWith(".txt")))
        url += "index.txt";
+    console.log(url);
     if (!(dirs.includes(url)))
         find("page").innerHTML = `<div class="warn">404 ] File not found</div>`;
     else
