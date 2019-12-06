@@ -11,11 +11,7 @@ function jump(elem) {
         if(thing.className == "lnk sel")
             thing.className = "lnk";
     find("JUMP_"+id).className = "lnk sel";
-    href = find("linky").href.split("#")[0]+"#"+id;
-    if(find("linky").href.includes("&"))
-        href += "&"+find("linky").href.split("&")[1];
-    find("linky").href = href;
-    find("linky").click();
+    url("#"+id);
 }
 function docs(elem) {
     try {
@@ -34,8 +30,7 @@ function docs(elem) {
             thing.className = "lnk";
     find(id).className = "lnk sel";
     console.log(id);
-    find("linky").href = "?"+id
-    find("linky").click();
+    url("?"+id.slice(20));
     jump("JUMP_top");
 }
 function finder(thing) {
