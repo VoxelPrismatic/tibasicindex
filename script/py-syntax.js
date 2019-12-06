@@ -8,16 +8,15 @@ var cls = [
 ];
 
 var kw = [
-    "def", "import", "from", "yield",
-    "if", "assert", "break", "finally",
+    "import", "from", "yield", "break", 
+    "if", "assert",  "finally", "def",
     "elif", "else", "for", "while",
     "async", "await", "with", "as",
     "in", "not", "and", "or", "is",
     "super", "self", "global", "id",
     "local", "try", "except", "pass",
     "continue", "break", "return",
-    "del", "nonlocal", "lambda", 
-    "class"
+    "del", "nonlocal", "lambda"
 ];
 
 function str_regex(m, a, b, c) {
