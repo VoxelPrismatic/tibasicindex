@@ -1,4 +1,4 @@
-cls = [
+var cls = [
     "int", "float", "dict", "list",
     "tuple", "set", "bool", "None",
     "frozenset", "str", "bytes",
@@ -6,7 +6,7 @@ cls = [
     "range", "bytearray", "memoryview"
 ];
 
-kw = [
+var kw = [
     "True", "False", "def", "import",
     "from", "yield", "class", "if",
     "elif", "else", "for", "while",
@@ -19,6 +19,7 @@ kw = [
     "finally", "assert", "break", 
     
 ];
+
 
 function str_regex(m, a, b, c) {
     var st = "";
@@ -113,17 +114,23 @@ function py_mark(st) {
     st = st.replace(/\n/gm, " \n");
     for(var r of py_regex) {
         st = st.replace(r[0], r[1]);
-    } for(var r of kw) {
-        st = st.replace(RegExp("^"+r+"([ \\.\\:\\(\\[])", "gm"), `<span class="kw">${r}</span>$1`);
-        st = st.replace(RegExp("(\n| +)"+r+"([ \\.\\:\\(\\[])", "gm"), `$1<span class="kw">${r}</span>$2`);
     } for(var r of cls) {
         st = st.replace(
             RegExp("^"+r+"([ \\.\\:\\(\\[])", "gm"),
             `<span class="cls">${r.split('').join('\u200b')}</span>$1`
         );
         st = st.replace(
-            RegExp("(\n| +)"+r+"([ \\.\\:\\(\\[])", "gm"), 
+            RegExp("(\n|[\u200b ]+)"+r+"([ \\.\\:\\(\\[])", "gm"), 
             `$1<span class="cls">${r.split('').join('\u200b')}</span>$2`
+        );
+    } for(var r of kw) {
+        st = st.replace(
+            RegExp("^"+r+"([ \\.\\:\\(\\[])", "gm"), 
+            `<span class="kw">${r}</span>$1`
+        );
+        st = st.replace(
+            RegExp("(\n|[\u200b ]+)"+r+"([ \\.\\:\\(\\[])", "gm"), 
+            `$1<span class="kw">${r}</span>$2`
         );
     }
     return st;
