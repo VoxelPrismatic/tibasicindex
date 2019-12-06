@@ -13,18 +13,18 @@ function highlight(phrase) {
     uri("&"+phrase);
 }
 function uri(thing) {
-    href = find("url").innerHTML
+    href = find("url").innerHTML.slice(2, -2);
     var page = "";
     var jump = "";
     var look = "";
     try {
-        page = href.split("?")[1].split("#")[0].split("&")[0].split(" ")[0];
+        page = href.split("?")[1].split("#")[0];
     } catch(err) {
     } try {
-        jump = href.split("#")[1].split("?")[0].split("&")[0].split(" ")[0];
+        jump = href.split("#")[1].split("&")[0];
     } catch(err) {
     } try {
-        look = href.split("&")[1].split("?")[0].split("#")[0].split(" ")[0];
+        look = href.split("&")[1];
     } catch(err) {
     }
     if(thing.startsWith("&"))
@@ -33,7 +33,7 @@ function uri(thing) {
         page = thing;
     if(thing.startsWith("#"))
         jump = thing;
-    href = `https://VoxelPrismatic.github.io/prizmatic.docs/?${page}#${jump}`
+    href = `https://VoxelPrismatic.github.io/prizmatic.docs/${page}${jump}`
     if(look != "")
         href += "&"+look;
     find("url").innerHTML = `[ ${href} ]`;
