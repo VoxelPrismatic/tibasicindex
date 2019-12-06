@@ -125,7 +125,7 @@ function py_mark(st) {
         st = st.replace(r[0], r[1]);
     } for(var r of cls) {
         st = st.replace(
-            RegExp(`^${r}(${sym})` "gm"),
+            RegExp(`^${r}(${sym})`, "gm"),
             `<span class="cls">${r.split('').join('\u200b')}</span>$1`
         );
         st = st.replace(
