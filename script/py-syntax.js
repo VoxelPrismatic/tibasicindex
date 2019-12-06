@@ -2,7 +2,9 @@ cls = [
     "int", "float", "dict", "list",
     "tuple", "set", "bool", "None",
     "frozenset", "str", "bytes",
-    "files", "type"
+    "files", "type", "complex", 
+    "range", "bytearray", "memoryview"
+    
 ];
 
 kw = [
