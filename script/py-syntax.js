@@ -35,7 +35,10 @@ py_regex = [
         `$1<span class="kw">def</span> <span class="fn">$2</span>`
     ], [
         /^( *)class ([\w\d_]+)/gm,
-        `$1<span class="kw">class</span> <span class="cls">$2</span>`
+        function(m, a, b) {
+            cls.push(b);
+            return `${a}<span class="kw">class</span> <span class="cls">${b}</span>`;
+        }
     ], [
         /([\w\d_]+)([\(\[.])/gm,
         `<span class="fn">$1</span>$2`
@@ -58,7 +61,6 @@ py_regex = [
         /^( *)\@([\d\w_.]+)/gm,
         `<span class="dec">$1@$2</span>`
     ]
-       
 ];
 
 function py_mark(st) {
@@ -66,5 +68,7 @@ function py_mark(st) {
         st = st.replace(r[0], r[1]);
     for(var r of kw)
         st = st.replace(RegExp("^( *)("+r+")", "gm"), `$1<span class="kw">$2</span>`);
+    for(var r of cls)
+        st = st.replace(RegExp(cls+"([\\(\\[\\.])", "gm"), `<span class="cls">${r}</span>$1`);
     return st;
 }
