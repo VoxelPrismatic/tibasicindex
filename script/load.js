@@ -56,6 +56,7 @@ function maybeload(url) {
             docs(url);
         } catch(err) {
             find("page").innerHTML = `<div class="warn">404 ] File not found</div>`;
+            console.log(err);
         }
     if(url.includes("#")) {
         var sec = url.split("#")[1].split("?")[0].split("&")[0];
