@@ -3,6 +3,7 @@ url = document.URL;
 if(url.includes("?")) {
     var thing = url.split("?")[1].split("#")[0];
     maybeload(thing);
+}
 if(url.includes("#")) {
     url = url.replace("##", "#")
     var sec = url.split("#")[1].split("?")[0];
