@@ -18,7 +18,7 @@ ops = "()[]<>{}|.,:;&£*^%=/-@";
 
 py_regex = [
     [
-        /([fFrRuUbB]?)(['"])(.+?)$2/gm,
+        /([fFrRuUbB]?)(['"])(.+?)\g<2>/gm,
         function(m, a, b, c) {
             var s = "";
             for(var z = 0; z < c.length; z++)
@@ -27,7 +27,7 @@ py_regex = [
             return `<span class="str">${a}${b}${s}${b}</span>`;
         }
     ], [
-        /([fFrRuUbB]?)('''|""")((.|\n)+)$2/gm,
+        /([fFrRuUbB]?)('''|""")((.|\n)+)\g<2>/gm,
         function(m, a, b, c) {
             var s = "";
             for(var z = 0; z < c.length; z++)
