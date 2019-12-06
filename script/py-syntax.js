@@ -115,8 +115,8 @@ function py_mark(st) {
     for(var r of py_regex) {
         st = st.replace(r[0], r[1]);
     } for(var r of kw) {
-        st = st.replace(RegExp("^"+r+"([ \.\:\(\[])", "gm"), `<span class="kw"> ${r}</span>$1`);
-        st = st.replace(RegExp("(\n| +)"+r+"([ \.\:\(\[])", "gm"), `$1<span class="kw"> ${r}</span>$2`);
+        st = st.replace(RegExp("^"+r+"([ \.\:\(\[])", "gm"), `<span class="kw">${r}</span>$1`);
+        st = st.replace(RegExp("(\n| +)"+r+"([ \.\:\(\[])", "gm"), `$1<span class="kw">${r}</span>$2`);
     } for(var r of cls) {
         st = st.replace(RegExp(cls+"([\\(\\[\\.])", "gm"), `<span class="cls">${r}</span>$1`);
     }
