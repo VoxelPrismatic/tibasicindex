@@ -112,24 +112,25 @@ py_regex = [
 
 function py_mark(st) {
     st = st.replace(/\n/gm, " \n");
+    var sym = "([\\"+"\\.,:;()[]{}<>~|/-+=*^%&@ ".split('').join("\\")+"])";
     for(var r of py_regex) {
         st = st.replace(r[0], r[1]);
     } for(var r of cls) {
         st = st.replace(
-            RegExp("^"+r+"([ \\.\\:\\(\\[])", "gm"),
+            RegExp("^"+r+sym, "gm"),
             `<span class="cls">${r.split('').join('\u200b')}</span>$1`
         );
         st = st.replace(
-            RegExp("(\n|[\u200b ]+)"+r+"([ \\.\\:\\(\\[])", "gm"), 
+            RegExp("("+sym+"|\n|[\u200b ]+)"+r+sym, "gm"), 
             `$1<span class="cls">${r.split('').join('\u200b')}</span>$2`
         );
     } for(var r of kw) {
         st = st.replace(
-            RegExp("^"+r+"([ \\.\\:\\(\\[])", "gm"), 
+            RegExp("^"+r+sym, "gm"), 
             `<span class="kw">${r}</span>$1`
         );
         st = st.replace(
-            RegExp("(\n|[\u200b ]+)"+r+"([ \\.\\:\\(\\[])", "gm"), 
+            RegExp("("+sym+"|\n|[\u200b ]+)"+r+sym, "gm"), 
             `$1<span class="kw">${r}</span>$2`
         );
     }
