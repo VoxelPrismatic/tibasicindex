@@ -17,12 +17,12 @@ if(url.includes("?")) {
     var fil = "/prizmatic.docs/doc/"+thing;
 } else {
     var fil = "/prizmatic.docs/doc/index.txt";
-}if (!(dirs.includes(fil))) {
-    fil += "index.txt";
 } if (!(dirs.includes(fil))) {
-    find("page").innerHTML = `<div class="warn">404 ] File not found</div>`;
-} else {
+    fil += "index.txt";
+} try {
     load(fil);
+} catch(err) {
+    find("page").innerHTML = `<div class="warn">404 ] File not found</div>`;
 }
 if(url.includes("#")) {
     url = url.replace("##", "#")
