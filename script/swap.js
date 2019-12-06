@@ -11,7 +11,7 @@ function jump(elem) {
         if(thing.className == "lnk sel")
             thing.className = "lnk";
     find("JUMP_"+id).className = "lnk sel";
-    url("#"+id);
+    uri("#"+id);
 }
 function docs(elem) {
     try {
@@ -30,7 +30,7 @@ function docs(elem) {
             thing.className = "lnk";
     find(id).className = "lnk sel";
     console.log(id);
-    url("?"+id.slice(20));
+    uri("?"+id.slice(20));
     jump("JUMP_top");
 }
 function finder(thing) {
