@@ -12,8 +12,7 @@ function load(fil) {
             sid = line.slice(2, -2);
             find("sect").innerHTML += `<div class="lnk" id="JUMP_${sid}" onclick="jump(this);">#${sid}</div>`;
         }
-        if(inpy || line == "PY---") {
-            py += line + "\n";
+        if(line == "PY---") {
             inpy = true;
             continue;
         }
@@ -21,6 +20,9 @@ function load(fil) {
             md += py_mark(py).replace(/\n/gm, "<br>");
             py = "";
             inpy = false;
+        }
+        else if(inpy) {
+            py += line;
             continue;
         }
         line = mark(line);
