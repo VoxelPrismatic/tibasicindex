@@ -22,7 +22,7 @@ function load(fil) {
             inpy = false;
         }
         else if(inpy) {
-            py += line;
+            py += line + "\n";
             continue;
         }
         line = mark(line);
