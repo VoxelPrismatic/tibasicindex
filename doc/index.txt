@@ -6,18 +6,20 @@ The the other bar is the sections on this page, tap it to jump there.
 
 --workings--
 #] WORKINGS
-How does everything work? Well, using the following bit of code,
+How does everything work? Well, using the following bit of code, all the docs can be built.
 CODE---
 PY---
 import re
+import inspect
 docs = {}
 def get_docs(thing = discord, name = "discord"):
     global docs
+    if inspect.isclass(thing):
+        docs[name] = f"class {thing.__name__}\n{thing.__docs__}"
     for item in dir(thing):
-        if item == "__doc__":
-            docs[name] = 
-        elif item == "__name__":
-            get_docs(thing, name + "." + thing.__name__)
+        if not re.search(r"__[\w\d_]+__", item):
+            get_docs(thing.__getattribute__(item), name + "." + thing.__name__)
+    
 ---
 ---
 
