@@ -12,7 +12,7 @@ is typed by hand. I made my own version of MarkDown to support cool formatting.
 #] HOW STUFF IS DOCUMENTED
 Generally, in files, it will be documented with the following template:
 CODE---
-DOCUMENTATION ---
+DESCRIPTION ---
     Description of the class
 
 PARAMS ---
@@ -30,8 +30,9 @@ FUNCTIONS ---
     function(...) -> type
     - What this function does
 ---
-Also, to get a specific file, add `?{file\_name}` to the url where `{file\_name}` is what is shown in the far left/top bar
-Additionally, to get a specific section, add `#{sect\_name}` where `{sect\_name}` is what is shown in the other bar
+Also, to get a specific file, add `?{file\_name}` to the url where `{file\_name}` is what is shown in the `[FILE]` tab
+Additionally, to get a specific section, add `#{sect\_name}` where `{sect\_name}` is what is shown in the `[JUMP]` tab
+Lastly, to find a specific word, add `&{word}` where `{word}` is any word or phrase you like
 
 --git--
 #] ANY SUGGESTIONS?
