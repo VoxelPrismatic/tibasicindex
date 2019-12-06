@@ -20,7 +20,7 @@ py_regex = [
     [
         /([\[\]\{\}\%\^\*\+\=\|\\\~\!\.\,\<\>\:\;\-\(\)\/\&])/gm,
         `<span class="op">$1</span>`
-    [
+    ], [
         /([fFrRuUbB]?)(['"])(.+?)\g<2>/gm,
         function(m, a, b, c) {
             return `<span class="str">${a}${b}${c.split('').join('\u200b')}${b}</span>`;
