@@ -13,22 +13,53 @@ kw = [
     "in", "not", "and", "or", "is",
     "super", "self", "global",
     "local", "try", "except", "pass",
-    "continue", "break", "return"
+    "continue", "break", "return",
+    "del", "nonlocal", "lambda",
+    "finally", "assert", "break", 
+    
 ];
 
-ops = "()[]<>{}|.,:;&£*^%=/-@";
+function str_regex(m, a, b, c) {
+    var st = "";
+    if(a == "f" || a == "F") {
+        var incode = false;
+        for(var d of c.split('')) {
+            if(d == "{") {
+                st += "</span>{";
+                incode = true;
+            } else if(d == "}") {
+                st += '}<span class="str">';
+                incode = false;
+            } else if(incode) {
+                st += d;
+            } else {
+                st += d+"\u200b";
+            } 
+        }
+    } else {
+        st = c.split('').join("\u200b");
+    }
+    return `<span class="str">${a}${b}${st}${b}</span>`;
+}
 
 py_regex = [
     [
+        /\\u([A-Fa-f0-9]{4})/gm, 
+        `<span class="op">\\u$1</span>`
+    ], [
+        /\\U([A-Fa-f0-9]{8})/gm, 
+        `<span class="op">\\U$1</span>`
+    ], [
+        /\\x([A-Fa-f0-9]{2})/gm, 
+        `<span class="op">\\x$1</span>`
+    ], [/\\(.)/gm, 
+        `<span class="op">\\$1</span>`
+    ], [
         /([fFrRuUbB]?)(['"])(.+?)(['"])/gm,
-        function(m, a, b, c) {
-            return `<span class="str">${a}${b}${c.split('').join('\u200b')}${b}</span>`;
-        }
+        str_regex
     ], [
         /([fFrRuUbB]?)('''|""")((.|\n)+)('''|""")/gm,
-        function(m, a, b, c) {
-            return `<span class="str">${a}${b}${c.split('').join('\u200b')}${b}</span>`;
-        }
+        str_regex
     ], [
         /^( *)def ([\w\d_]+)/gm, 
         `$1<span class="kw">def</span> <span class="fn">$2</span>`
@@ -66,11 +97,13 @@ py_regex = [
 ];
 
 function py_mark(st) {
-    for(var r of py_regex)
+    for(var r of py_regex) {
         st = st.replace(r[0], r[1]);
-    for(var r of kw)
-        st = st.replace(RegExp("^( *)("+r+")", "gm"), `$1<span class="kw">$2</span>`);
-    for(var r of cls)
+    } for(var r of kw) {
+        st = st.replace(RegExp("^"+r+"([ .:\(\[])", "gm"), `<span class="kw">${r}</span>$1`);
+        st = st.replace(RegExp("( +)"+r+"([ .:\(\[])", "gm"), `$1<span class="kw"> ${r}</span>$2`);
+    } for(var r of cls) {
         st = st.replace(RegExp(cls+"([\\(\\[\\.])", "gm"), `<span class="cls">${r}</span>$1`);
+    }
     return st;
 }
