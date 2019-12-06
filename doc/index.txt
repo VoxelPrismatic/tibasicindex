@@ -42,7 +42,7 @@ You can find the repo for the actual module [here](https://github.com/voxelprism
 --md--
 #] HOW THIS FLAVOR OF MARKDOWN WORKS
 
-Tables haven't been implemented yet,
+Tables haven't been implemented yet, but they will be soon
 
 Anyway here are the available styles:
 *\*ital\** #\#bold\## ~\~strike\~~ _\_under\__ \\\*escape\* `\`inline-code\`` |\|spoil\|| ^\^super\^^ %\%sub\%%
