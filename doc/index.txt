@@ -11,8 +11,9 @@ CODE---
 PY---
 import re
 import inspect
+import module
 docs = {}
-def get_docs(thing = discord, name = "discord"):
+def get_docs(thing = module, name = "module"):
     global docs
     if inspect.isclass(thing):
         docs[name] = f"class {thing.__name__}\n{thing.__docs__}"
