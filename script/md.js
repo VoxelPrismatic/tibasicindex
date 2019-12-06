@@ -23,7 +23,7 @@ regex = [
     [/^\^(.+?)\^/gm, "<sup>$1</sup>"],
     [/^\%(.+?)\%/gm, "<sub>$1</sub>"],
     [/^\|(.+?)\|/gm, `<span class="hide" onclick="this.classList.toggle('unhide');">$1</span>`],
-    [/^\:\: (.+)$/gm, `<span class="md-com"> $1</span>`],
+    [/^\:\: (.+)$/gm, `<span class="md-com">\u200b \u200b$1</span>`],
     
     [/([^\\])\#(.+?)\#/gm, "$1<b>$2</b>"],
     [/([^\\])\*(.+?)\*/gm, "$1<i>$2</i>"],
@@ -33,7 +33,7 @@ regex = [
     [/([^\\])\^(.+?)\^/gm, "$1<sup>$2</sup>"],
     [/([^\\])\%(.+?)\%/gm, "$1<sub>$2</sub>"],
     [/([^\\])\|(.+?)\|/gm, `$1<span class="hide" onclick="this.classList.toggle('unhide');">$2</span>`],
-    [/([^\\])\:\: (.+)$/gm, `$1<span class="md-com"> $2</span>`],
+    [/([^\\])\:\: (.+)$/gm, `$1<span class="md-com">\u200b \u200b$2</span>`],
     
     [/^WARN---$/gm, "<div class='warn'><b>WARNING ---</b><br>"],
     [/^NOTE---$/gm, "<div class='note'><b>NOTICE ---</b><br>"],
