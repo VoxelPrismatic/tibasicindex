@@ -39,10 +39,12 @@ You can find the repo for the docs [here](https://github.com/voxelprismatic/priz
 You can find the repo for the actual module [here](https://github.com/voxelprismatic/prizmatic)
 
 --md--
-#] HOW THIS MARKDOWN WORKS
+#] HOW THIS FLAVOR OF MARKDOWN WORKS
 Unfortunately, there are no tables. Then again, who uses tables for code?
 Anyway here are the available styles:
-*\*ital\** #\##bold\## ~\~strike\~~ _\_under\__ \\\*escape\* \`inline-code` \|spoil| \^super^ \%sub%
+*\*ital\** #\#bold\## ~\~strike\~~ _\_under\__ \\\*escape\* `\`inline-code\`` |\|spoil\|| ^\^super\^^ %\%sub\%%
+
+Tip: You can throw a `\\` anywhere and it will literally print that character
 
 #] HEADER 1
 ~] HEADER 2
@@ -92,13 +94,14 @@ ooh i'm commenting inside a comment...
 \---
 ---
 
- new lines cannot start with a single space
-  but they can start with 2+!
-  [this is just the regex implementation that prevents 1 space]
 {\{class\_name}}styled_word but this wont be styled
-To escape anything, just place a \ inbetween the some of the chars, the \ gets automatically removed
 
-To create a section, add `JUMP_sect_name` to the top of the file,\
-then add `--sect_name--` where the section should be. This is an implementation issue again.
+ You can
+  indent
+   as much
+    as you like!
+
+
+
 
 
