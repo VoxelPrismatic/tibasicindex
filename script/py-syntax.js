@@ -111,6 +111,7 @@ py_regex = [
 ];
 
 function py_mark(st) {
+    st = st.replace(/\n/gm, " \n");
     for(var r of py_regex) {
         st = st.replace(r[0], r[1]);
     } for(var r of kw) {
