@@ -11,7 +11,9 @@ kw = [
     "elif", "else", "for", "while",
     "async", "await", "with", "as",
     "in", "not", "and", "or", "is",
-    "super", "self"
+    "super", "self", "global",
+    "local", "try", "except", "pass",
+    "continue", "break", "return"
 ];
 
 ops = "()[]<>{}|.,:;&£*^%=/-@";
@@ -60,6 +62,9 @@ py_regex = [
     ], [
         /^( *)\@([\d\w_.]+)/gm,
         `<span class="dec">$1@$2</span>`
+    ], [
+        /([\w\d_]*)(Error|Exception)/gm,
+        `<span class="err">$1$2</span>`
     ]
 ];
 
