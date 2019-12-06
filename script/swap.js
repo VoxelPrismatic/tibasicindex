@@ -24,22 +24,15 @@ function docs(elem) {
         find("sect").innerHTML = find("SECT_"+id).innerHTML;
     } catch(err) {
         load(id);
-        find("loaded-pages").innerHTML += `<div id="DOCS_${id}" class="invis">${find("page").innerHTML}</div>`;
-        find("loaded-sects").innerHTML += `<div id="SECT_${id}" class="invis">${find("sect").innerHTML}</div>`;
     }
     var things = find("nav").children;
     for(var thing of things)
         if(thing.className == "lnk sel")
             thing.className = "lnk";
     find(id).className = "lnk sel";
-    url = "https://github.com/VoxelPrismatic/prizmatic.docs/edit/master/doc/";
     console.log(id);
-    name = "/"+id.slice(20).replace("index.txt", "").toUpperCase()
-    find("src").innerHTML = 
-        `EDIT THIS PAGE - <a href="${url}${id.split("doc/").slice(-1)[0]}">${name}</a>`;
+    find("linky").href = "?"+id
     jump("JUMP_top");
-    find("linky").href = "?"+id+"#top";
-    find("linky").click();
 }
 function finder(thing) {
     var ls = [];
