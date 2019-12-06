@@ -1,4 +1,5 @@
 function btn(elem, id) {
+    find = globalThis.find
     btns = find(".tab");
     for(el of btns)
         el.className = "tab";
@@ -9,10 +10,12 @@ function btn(elem, id) {
     find(id).style.display = "block";
 }
 function highlight(phrase) {
+    find = globalThis.find
     find("page").innerHTML = find("page").innerHTML.replace(RegExp(sec, "gm"), `<div class="find">${sec}</div>`);
     uri("&"+phrase);
 }
 function uri(thing) {
+    find = globalThis.find
     href = find("url").innerHTML
     var page = "";
     var jump = "";
