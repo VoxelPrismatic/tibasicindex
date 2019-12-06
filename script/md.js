@@ -55,6 +55,7 @@ function mark(st) {
     for(var r of regex) {
         console.log(r[0]+" "+r[1]);
         st = st.replace(r[0], r[1]);
+        console.log("succ")
     }
     return st;
 }
