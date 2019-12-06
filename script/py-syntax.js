@@ -76,6 +76,9 @@ py_regex = [
         /^([\u200b ]*)def ([\w\d_]+)/gm, 
         `$1<span class="kw">def</span> <span class="fn">$2</span>`
     ], [
+        /__([\w\d_]+)__/gm,
+        `<span class="op">$1</span>`
+    ], [
         /^([\u200b ]*)class ([\w\d_]+)/gm,
         function(m, a, b) {
             cls.push(b);
@@ -120,7 +123,7 @@ function py_mark(st) {
             `<span class="cls">${r.split('').join('\u200b')}</span>$1`
         );
         st = st.replace(
-            RegExp("^("+sym+"|\n|[\u200b ]+)"+r+sym, "gm"), 
+            RegExp("("+sym+"|\n|[\u200b ]+)"+r+sym, "gm"), 
             `$1<span class="cls">${r.split('').join('\u200b')}</span>$2`
         );
     } for(var r of kw) {
@@ -129,7 +132,7 @@ function py_mark(st) {
             `<span class="kw">${r}</span>$1`
         );
         st = st.replace(
-            RegExp("^("+sym+"|\n|[\u200b ]+)"+r+sym, "gm"), 
+            RegExp("("+sym+"|\n|[\u200b ]+)"+r+sym, "gm"), 
             `$1<span class="kw">${r}</span>$2`
         );
     }
