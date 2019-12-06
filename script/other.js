@@ -1,5 +1,4 @@
 function btn(elem, id) {
-    find = globalThis.find
     btns = find(".tab");
     for(el of btns)
         el.className = "tab";
@@ -10,16 +9,14 @@ function btn(elem, id) {
     find(id).style.display = "block";
 }
 function highlight(phrase) {
-    find = globalThis.find
     find("page").innerHTML = find("page").innerHTML.replace(RegExp(sec, "gm"), `<div class="find">${sec}</div>`);
     uri("&"+phrase);
 }
 function uri(thing) {
-    find = globalThis.find
     href = find("url").innerHTML
     var page = "";
     var jump = "";
-    var find = "";
+    var look = "";
     try {
         page = href.split("?")[1].split("#")[0].split("&")[0].split(" ")[0];
     } catch(err) {
@@ -27,17 +24,17 @@ function uri(thing) {
         jump = href.split("#")[1].split("?")[0].split("&")[0].split(" ")[0];
     } catch(err) {
     } try {
-        find = href.split("&")[1].split("?")[0].split("#")[0].split(" ")[0];
+        look = href.split("&")[1].split("?")[0].split("#")[0].split(" ")[0];
     } catch(err) {
     }
     if(thing.startsWith("&"))
-        find = thing;
+        look = thing;
     if(thing.startsWith("?"))
         page = thing;
     if(thing.startsWith("#"))
         jump = thing;
     href = `https://VoxelPrismatic.github.io/prizmatic.docs/?${page}#${jump}`
-    if(find != "")
-        href += "&"+find;
+    if(look != "")
+        href += "&"+look;
     find("url").innerHTML = `[ ${href} ]`;
 }
