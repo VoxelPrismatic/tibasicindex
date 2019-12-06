@@ -36,7 +36,7 @@ function load(fil) {
     find("page").innerHTML = md.replace(/\n/gm, "<br>");
     find("loaded-pages").innerHTML += `<div id="DOCS_${fil}" class="invis">${find("page").innerHTML}</div>`;
     find("loaded-sects").innerHTML += `<div id="SECT_${fil}" class="invis">${find("sect").innerHTML}</div>`;
-    name = fil.slice(18).replace("index.txt", "").toUpperCase();
+    name = fil.slice(20).replace("index.txt", "").toUpperCase();
     url = "https://github.com/VoxelPrismatic/prizmatic.docs/edit/master/doc/";
     find("src").innerHTML = 
         `EDIT THIS PAGE - <a href="${url}${fil.split("doc/").slice(-1)[0]}">${name}</a>`;
