@@ -98,7 +98,15 @@ ooh i'm commenting inside a comment...
 ---
 
 {\{class\_name}}styled_word but this wont be styled, eg
-{{aio}}aio -- `\{\{aio\}\}aio`
+CODE---
+{{aio}}async def blah():
+    pass
+---
+Was actually
+CODE---
+\{\{aio\}\}async def blah():
+    pass
+---
 
  You can
   indent
