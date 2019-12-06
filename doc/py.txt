@@ -18,7 +18,7 @@ class abcd:
                 pass
 if generator is not None:
     pass #testing stuff
-elif genertor is not True:
+elif generator is not True:
     pass #more testing
 else:
     print("nice")
