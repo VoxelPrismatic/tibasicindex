@@ -1,4 +1,4 @@
-regex = [
+var regex = [
     [/^ /gm, "\u200b \u200b"],
     
     [/\\(.)/gm, function(m, p1) {return `\\u{${p1.charCodeAt(0).toString(16)}}`;}],
@@ -53,6 +53,7 @@ regex = [
 ];
 function mark(st) {
     for(var r of regex) {
+        console.log(r[0]+" "+r[1]);
         st = st.replace(r[0], r[1]);
     }
     return st;
