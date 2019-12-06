@@ -5,7 +5,7 @@ var regex = [
     [/\\U([A-Fa-f0-9]{16})/gm, "\\u{$1}"],
     [/\\u([A-Fa-f0-9]{4})/gm, "\\u{$1}"],
     
-    [/^\#\] +(.+)$/gm, "<div class='head1'>#] $1</div></br>"]
+    [/^\#\] +(.+)$/gm, "<div class='head1'>#] $1</div></br>"],
     [/^\~\] +(.+)$/gm, "<div class='head2'>~] $1</div></br>"],
     [/^\+\] +(.+)$/gm, "<div class='head3'>+] $1</div></br>"],
     [/^\-\] +(.+)$/gm, "<div class='head4'>-] $1</div></br>"],
@@ -52,10 +52,7 @@ var regex = [
     [/\\u\{([a-fA-F0-9]+)\}/gm, function(m, p1) {return String.fromCharCode("0x"+p1);}],
 ];
 function mark(st) {
-    for(var r of regex) {
-        console.log(r[0]+" "+r[1]);
+    for(var r of regex)
         st = st.replace(r[0], r[1]);
-        console.log("succ")
-    }
     return st;
 }
