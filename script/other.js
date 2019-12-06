@@ -33,7 +33,7 @@ function uri(thing) {
         page = thing;
     if(thing.startsWith("#"))
         jump = thing;
-    href = `https://VoxelPrismatic.github.io/prizmatic.docs/${page}${jump}`
+    href = `https://VoxelPrismatic.github.io/prizmatic.docs/?${page}#${jump}`
     if(look != "")
         href += "&"+look;
     find("url").innerHTML = `[ ${href} ]`;
