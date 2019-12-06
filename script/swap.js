@@ -31,6 +31,7 @@ function docs(elem) {
             thing.className = "lnk";
     find(id).className = "lnk sel";
     url = "https://github.com/VoxelPrismatic/prizmatic.docs/edit/master/doc/"
+    console.log(id);
     name = "/"+id.split("doc/").slice(-1)[0].replace("index.txt", "").toUpper()
     find("src").innerHTML = 
         `EDIT THIS PAGE - <a href="${url}${id.split("doc/").slice(-1)[0]}">${id}</a>`;
