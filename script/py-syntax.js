@@ -120,12 +120,12 @@ py_regex = [
 
 function py_mark(st) {
     st = st.replace(/\n/gm, " \n");
-    var sym = "([\\"+"\\.,:;()[]{}~|/-+=*^%&@ ".split('').join("\\")+"])";
+    var sym = "[\\"+"\\.,:;()[]{}~|/-+=*^%&@ ".split('').join("\\")+"]";
     for(var r of py_regex) {
         st = st.replace(r[0], r[1]);
     } for(var r of cls) {
         st = st.replace(
-            RegExp("^"+r+sym, "gm"),
+            RegExp(`^${r}(${sym})` "gm"),
             `<span class="cls">${r.split('').join('\u200b')}</span>$1`
         );
         st = st.replace(
@@ -134,7 +134,7 @@ function py_mark(st) {
         );
     } for(var r of kw) {
         st = st.replace(
-            RegExp("^"+r+sym, "gm"), 
+            RegExp(`^${r}(${sym})`, "gm"), 
             `<span class="kw">${r}</span>$1`
         );
         st = st.replace(
