@@ -2,24 +2,22 @@ var cls = [
     "int", "float", "dict", "list",
     "tuple", "set", "bool", "None",
     "frozenset", "str", "bytes",
-    "files", "type", "complex", 
-    "range", "bytearray", "memoryview"
+    "files", "type", "complex", "True",
+    "range", "bytearray", "memoryview",
+    "False"
 ];
 
 var kw = [
-    "True", "False", "def", "import",
-    "from", "yield", "class", "if",
+    "def", "import", "from", "yield",
+    "if", "assert", "break", "finally",
     "elif", "else", "for", "while",
     "async", "await", "with", "as",
     "in", "not", "and", "or", "is",
-    "super", "self", "global",
+    "super", "self", "global", "id",
     "local", "try", "except", "pass",
     "continue", "break", "return",
     "del", "nonlocal", "lambda",
-    "finally", "assert", "break", 
-    
 ];
-
 
 function str_regex(m, a, b, c) {
     var st = "";
