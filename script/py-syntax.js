@@ -44,6 +44,12 @@ function str_regex(m, a, b, c) {
 
 py_regex = [
     [
+        /([fFrRuUbB]?)(['"])(.+?)(['"])/gm,
+        str_regex
+    ], [
+        /([fFrRuUbB]?)('''|""")((.|\n)+)('''|""")/gm,
+        str_regex
+    ], [
         /\\u([A-Fa-f0-9]{4})/gm, 
         `<span class="op">\\u$1</span>`
     ], [
@@ -55,11 +61,17 @@ py_regex = [
     ], [/\\(.)/gm, 
         `<span class="op">\\$1</span>`
     ], [
-        /([fFrRuUbB]?)(['"])(.+?)(['"])/gm,
-        str_regex
+        /\\u([A-Fa-f0-9\u200b]{8})/gm, 
+        `<span class="op">\\u$1</span>`
     ], [
-        /([fFrRuUbB]?)('''|""")((.|\n)+)('''|""")/gm,
-        str_regex
+        /\\U([A-Fa-f0-9\u200b]{16})/gm, 
+        `<span class="op">\\U$1</span>`
+    ], [
+        /\\x([A-Fa-f0-9\u200b]{4})/gm, 
+        `<span class="op">\\x$1</span>`
+    ], [
+        /\\(.)/gm, 
+        `<span class="op">\\$1</span>`
     ], [
         /^( *)def ([\w\d_]+)/gm, 
         `$1<span class="kw">def</span> <span class="fn">$2</span>`
