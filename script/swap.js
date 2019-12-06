@@ -11,7 +11,7 @@ function jump(elem) {
         if(thing.className == "lnk sel")
             thing.className = "lnk";
     find("JUMP_"+id).className = "lnk sel";
-    href = find("linky").href.split("?")[0]+"#"+id;
+    href = find("linky").href.split("#")[0]+"#"+id;
     if(find("linky").href.includes("&"))
         href += "&"+find("linky").href.split("&")[1];
     find("linky").href = href;
