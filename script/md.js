@@ -1,5 +1,7 @@
 regex = [
     [/\\(.)/gm, function(m, p1) {return `\\u{${p1.charCodeAt(0).toString(16)}}`;}],
+    [/\\U([A-Fa-f0-9]{16})/gm, "\\u{$1}"],
+    [/\\u([A-Fa-f0-9]{4})/gm, "\\u{$1}"],
     
     [/^\#\] +(.+)$/gm, "<div class='head1'>#] $1</div>"],
     [/^\~\] +(.+)$/gm, "<div class='head2'>~] $1</div>"],
@@ -42,8 +44,6 @@ regex = [
     [/^ *\:(.*)$/gm, "<div class='com'>> $1</div>"],
     [/\{\{(\w+?)\}\}([\w\d]+?) /gm, "<span class='$1'>$2</span>"],
     [/^--([\w\d_.-]+)--$/gm, "<div id='$1'></div>"],
-    [/\\([^\\])/gm, "$1"], //Escape Chars
-    [/\\U([A-Fa-f0-9]{16})/gm, "\\u{$1}"],
     [/\\ *$/gm, "§"], //New line escape
     
     [/\\u\{([a-fA-F0-9]+)\}/gm, function(m, p1) {return String.fromCharCode("0x"+p1);}],
