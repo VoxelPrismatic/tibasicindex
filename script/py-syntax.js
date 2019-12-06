@@ -112,7 +112,7 @@ py_regex = [
 
 function py_mark(st) {
     st = st.replace(/\n/gm, " \n");
-    var sym = "([\\"+"\\.,:;()[]{}<>~|/-+=*^%&@ ".split('').join("\\")+"])";
+    var sym = "([\\"+"\\.,:;()[]{}~|/-+=*^%&@ ".split('').join("\\")+"])";
     for(var r of py_regex) {
         st = st.replace(r[0], r[1]);
     } for(var r of cls) {
