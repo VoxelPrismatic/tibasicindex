@@ -13,7 +13,8 @@ function jump(elem) {
     find("JUMP_"+id).className = "lnk sel";
     href = find("linky").href.split("?")[0]+"#"+id;
     if(find("linky").href.includes("&"))
-        href += "&"+find("linky").href.split("&")[1]
+        href += "&"+find("linky").href.split("&")[1];
+    find("linky").href = href;
     find("linky").click();
 }
 function docs(elem) {
