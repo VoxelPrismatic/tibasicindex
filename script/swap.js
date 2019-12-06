@@ -11,6 +11,8 @@ function jump(elem) {
         if(thing.className == "lnk sel")
             thing.className = "lnk";
     find("JUMP_"+id).className = "lnk sel";
+    find("linky").href = "#"+id;
+    find("linky").click();
 }
 function docs(elem) {
     try {
@@ -36,6 +38,8 @@ function docs(elem) {
     find("src").innerHTML = 
         `EDIT THIS PAGE - <a href="${url}${id.split("doc/").slice(-1)[0]}">${name}</a>`;
     jump("JUMP_top");
+    find("linky").href = "?"+id+"#top";
+    find("linky").click();
 }
 function finder(thing) {
     var ls = [];
