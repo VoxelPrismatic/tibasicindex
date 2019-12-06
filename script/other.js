@@ -12,7 +12,7 @@ function highlight(phrase) {
     find("page").innerHTML = find("page").innerHTML.replace(RegExp(sec, "gm"), `<div class="find">${sec}</div>`);
     url("&"+phrase);
 }
-function url(thing) {
+function uri(thing) {
     href = find("url").innerHTML
     var page = "";
     var jump = "";
