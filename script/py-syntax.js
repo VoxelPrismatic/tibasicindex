@@ -58,7 +58,7 @@ py_regex = [
     ], [
         /\\x([A-Fa-f0-9]{2})/gm, 
         `<span class="op">\\x$1</span>`
-    ], [/\\(.)/gm, 
+    ], [/\\\u200b?(.)/gm, 
         `<span class="op">\\$1</span>`
     ], [
         /\\u([A-Fa-f0-9\u200b]{8})/gm, 
