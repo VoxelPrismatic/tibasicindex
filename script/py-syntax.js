@@ -87,7 +87,7 @@ py_regex = [
         /([\w\d_]+)([\(\[.])/gm,
         `<span class="fn">$1</span>$2`
     ], [
-        /\#(.+?)/gm,
+        /\#(.*)$/gm,
         function(m, a) {
             var s = "";
             for(var z = 0; z < a.length; z++)
