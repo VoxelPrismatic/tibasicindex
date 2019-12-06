@@ -96,10 +96,10 @@ py_regex = [
             return `<span class="comm">#${s}</span>`;
         }
     ], [
-        /(-)?0x(\d+)/gm,
-        `<span class="var">$10x$2</span>`
+        /(-?)(0x\d+)/gm,
+        `<span class="var">$1$2</span>`
     ], [
-        /(-)?(\d+(\.\d+)?j?)/gm, 
+        /(-?)(\d+(\.\d+)?j?)/gm, 
         `<span class="var">$1$2</span>`
     ], [
         /^( *)\@([\d\w_.]+)/gm,
