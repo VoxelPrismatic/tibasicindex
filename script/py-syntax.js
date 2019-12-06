@@ -18,22 +18,17 @@ ops = "()[]<>{}|.,:;&£*^%=/-@";
 
 py_regex = [
     [
+        /([\[\]\{\}\%\^\*\+\=\|\\\~\!\.\,\<\>\:\;\-\(\)\/\&])/gm,
+        `<span class="op">$1</span>`
+    [
         /([fFrRuUbB]?)(['"])(.+?)\g<2>/gm,
         function(m, a, b, c) {
-            var s = "";
-            for(var z = 0; z < c.length; z++)
-                s += c[z] + "\u200b";
-            s = s.slice(0, -1);
-            return `<span class="str">${a}${b}${s}${b}</span>`;
+            return `<span class="str">${a}${b}${c.split('').join('\u200b')}${b}</span>`;
         }
     ], [
         /([fFrRuUbB]?)('''|""")((.|\n)+)\g<2>/gm,
         function(m, a, b, c) {
-            var s = "";
-            for(var z = 0; z < c.length; z++)
-                s += c[z] + "\u200b";
-            s = s.slice(0, -1);
-            return `<span class="str">${a}${b}${s}${b}</span>`;
+            return `<span class="str">${a}${b}${c.split('').join('\u200b')}${b}</span>`;
         }
     ], [
         /^( *)def ([\w\d_]+)/gm, 
@@ -60,7 +55,7 @@ py_regex = [
         /(-)?(\d+(\.\d+)?j?)/gm, 
         `<span class="var">$1$2</span>`
     ], [
-        /( *)\@([\d\w_.]+)/gm,
+        /^( *)\@([\d\w_.]+)/gm,
         `<span class="dec">$1@$2</span>`
     ]
        
