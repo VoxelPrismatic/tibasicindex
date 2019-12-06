@@ -1,8 +1,3 @@
-JUMP_workings
-JUMP_docs
-JUMP_git
-JUMP_md
-
 #] WELCOME
 This is PRIZMATIC - The API wrapper for Discord, Riot, Reddit, and more.
 The bar on the far left or far top is the files index, there may be some scroll time.
