@@ -50,7 +50,7 @@ Anyway here are the available styles:
 
 :: \:\: comments
 :: :: \:\: \:\: and comments
-:: :: \:\: \:\: \:\: and comments!
+:: :: :: \:\: \:\: \:\: and comments!
 
 
 Tip: You can throw a `\\` anywhere and it will literally print that character
