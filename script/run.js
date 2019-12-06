@@ -3,7 +3,7 @@ url = document.URL;
 if(url.includes("?")) {
     maybeload(url.split("?")[1].split("#")[0].split("&")[0]);
 } else {
-    load("index.txt");
+    load("/prizmatic.docs/doc/index.txt");
 }
 if(url.includes("#")) {
     url = url.replace("##", "#")
