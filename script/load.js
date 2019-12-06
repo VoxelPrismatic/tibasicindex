@@ -30,6 +30,8 @@ function load(fil) {
             md += line;
         else if(line.endsWith("§"))
             md += line.slice(0, -1);
+        else if(line.endsWith("</br>"))
+            md += line.slice(0, -5);
         else
             md += line+"\n";
     }
