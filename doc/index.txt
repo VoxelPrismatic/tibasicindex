@@ -61,7 +61,7 @@ You can find the repo for the actual module [here](https://github.com/voxelprism
 Tables haven't been implemented yet, but they will be soon
 
 Anyway here are the available styles:
-*\*ital\** #\#bold\## ~\~strike\~~ _\_under\__ \\\*escape\* `\`inline-code\`` |\|spoil\|| ^\^super\^^ %\%sub\%%
+*\*ital\** #\#bold\## ~\~strike\~~ _\_under\__ \\\*escape\* `\`inline-code\`` !!\!\!spoil\!\!!! ^\^super\^^ %\%sub\%%
 [\[text\]\(link\)](#)
 
 :: \:\: comments
