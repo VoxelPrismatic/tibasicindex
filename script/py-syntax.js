@@ -85,13 +85,14 @@ py_regex = [
         /([\w\d_]+)([\(\[.])/gm,
         `<span class="fn">$1</span>$2`
     ], [
-        /\#(.*)$/gm,
+        /([^\u200b])\#(.*)$/gm,
+        function(m, b, a) {
+            return `${b}<span class="comm">#${a.split('').join('\u200b')}</span>`;
+        }
+    ], [
+        /^\#(.*)$/gm,
         function(m, a) {
-            var s = "";
-            for(var z = 0; z < a.length; z++)
-                s += a[z] + "\u200b";
-            s = s.slice(0, -1);
-            return `<span class="comm">#${s}</span>`;
+            return `<span class="comm">#${a.split('').join('\u200b')}</span>`;
         }
     ], [
         /(-?)(\0x\d+)/gm,
