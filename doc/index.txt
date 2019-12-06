@@ -5,8 +5,7 @@ The the other bar is the sections on this page, tap it to jump there.
 
 --workings--
 #] WORKINGS
-How does the documentation work? Well, none of this is automatically generated. Everything \
-is typed by hand. I made my own version of MarkDown to support cool formatting.
+How does everything work? Well, using the following bit of code,
 
 --docs--
 #] HOW STUFF IS DOCUMENTED
@@ -50,7 +49,7 @@ Anyway here are the available styles:
 
 :: \:\: comments
 :: :: \:\: \:\: and comments
-:: :: :: \:\: \:\: \:\: and comments!
+:: :: \:\: \:\: but no more than two :(
 
 
 Tip: You can throw a `\\` anywhere and it will literally print that character
