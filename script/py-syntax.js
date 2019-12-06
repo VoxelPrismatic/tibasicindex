@@ -83,7 +83,7 @@ py_regex = [
         `$1<span class="kw">def</span> <span class="fn">$2</span>`
     ], [
         /__([\w\d_]+)__/gm,
-        `<span class="op">$1</span>`
+        `<span class="op">__$1__</span>`
     ], [
         /^([\u200b ]*)class ([\w\d_]+)/gm,
         function(m, a, b) {
