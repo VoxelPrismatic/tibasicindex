@@ -6,7 +6,7 @@ function load(fil) {
     txt = read(fil);
     var md = "<div id='top'></div>";
     for(var line of txt.split("\n")) {
-        if(line.search(/^--[\w\d_.-]+--$/)) {
+        if(line.search(/^--[\w\d_.-]+--$/gm) == 0) {
             sid = line.slice(2, -2);
             find("sect").innerHTML += `<div class="lnk" id="JUMP_${sid}" onclick="jump(this);">#${sid}</div>`;
             continue;
