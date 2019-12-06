@@ -23,7 +23,7 @@ def get_docs(thing = discord, name = "discord"):
 ---
 ---
 
---docs--
+--these-docs--
 #] HOW STUFF IS DOCUMENTED
 Generally, in files, it will be documented with the following template:
 CODE---
