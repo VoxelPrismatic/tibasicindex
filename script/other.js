@@ -74,3 +74,13 @@ function searching() {
     }
     find("docs").click();
 }
+
+function filter_docs(thing) {
+    var pages = find("nav").children;
+    for(var page of pages) {
+        if(thing == "" || page.id.slice(20, -4).search(thing) != -1)
+            page.display = "block";
+        else
+            page.display = "none";
+    }
+}
