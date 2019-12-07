@@ -22,6 +22,7 @@ function highlight(phrase) {
     phrase2 = "(" + phrase2 + ")"
     md(find("RAW_"+find("this-here").innerHTML).innerHTML.replace(RegExp(phrase2, "gm"), `<span class="find">$1</span>`));
     uri("&"+phrase);
+    find("docs").click();
 }
 function uri(thing) {
     var href = find("url").innerHTML
@@ -71,4 +72,5 @@ function searching() {
         highlight(find("searcher").value);
         find("searcher").value = "";
     }
+    find("docs").click();
 }
