@@ -40,6 +40,12 @@ function uri(thing) {
         page = thing;
     if(thing.startsWith("#"))
         jump = thing;
+    if(page != "" && page != undefined && !(page.startsWith("?")))
+        page = "?" + page;
+    if(jump != "" && jump != undefined && !(jump.startsWith("#")))
+        jump = "#" + jump;
+    if(look != "" && look != undefined && !(look.startsWith("&")))
+        look = "&" + look;
     href = `https://VoxelPrismatic.github.io/prizmatic.docs/${page}${jump}`
     if(look != "" && look != undefined)
         href += "&"+look;
