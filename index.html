@@ -43,6 +43,7 @@
             <!-- FILES PAGE -->
             <div id="nav" class="page" style="display: none;">
                 <div class="head textC" style="width: 100%;">[FILE]</div>
+                <textarea onchange="filter_docs(this.value)" placeholder="Filter docs" id="filter"></textarea>
                 <div class="lnk" id="/prizmatic.docs/doc/index.txt" onclick="docs(this);">/</div>
             </div>
             
@@ -55,7 +56,6 @@
             <!-- SEARCH PAGE -->
             <div id="search" class="page" style="display: none; text-align: center;">
                 <textarea id="swapper" placeholder="Filename"></textarea>
-                <textarea id="filter" placeholder="Filter docs"></textarea>
                 <textarea id="finder" placeholder="Find in docs"></textarea>
                 <textarea id="searcher" placeholder="Find on this page"></textarea>
                 <button class="tab" onclick="searching()">[OK]</button>
