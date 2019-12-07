@@ -20,26 +20,7 @@ var kw = [
 ];
 
 function str_regex(m, a, b, c) {
-    var st = "";
-    if(a == "f" || a == "F") {
-        var incode = false;
-        for(var d of c.split('')) {
-            if(d == "{") {
-                st += "</span>{";
-                incode = true;
-            } else if(d == "}") {
-                st += '}<span class="str">';
-                incode = false;
-            } else if(incode) {
-                st += d;
-            } else {
-                st += d+"\u200b";
-            } 
-        }
-    } else {
-        st = c.split('').join("\u200b");
-    }
-    return `${a}<span class="str">${b}${st}${b}</span>`;
+    return `${a}<span class="str">${b}${c.split('').join("\u200b")}${b}</span>`;
 }
 
 function fstr_regex(m, a, b, c) {
