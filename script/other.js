@@ -9,7 +9,7 @@ function btn(elem, id) {
     find(id).style.display = "block";
 }
 function highlight(phrase) {
-    find("page").innerHTML = find("page").innerHTML.replace(RegExp(phrase, "gm"), `<div class="find">${sec}</div>`);
+    md(find(find("this-here").innerHTML).innerHTML.replace(RegExp(phrase, "gm"), `<div class="find">${phrase}</div>`));
     uri("&"+phrase);
 }
 function uri(thing) {
@@ -48,6 +48,6 @@ function uri(thing) {
         look = "&" + look;
     href = `https://VoxelPrismatic.github.io/prizmatic.docs/${page}${jump}`
     if(look != "" && look != undefined)
-        href += "&"+look;
+        href += look;
     find("url").innerHTML = `[ <a href="${href}">${href}</a> ]`;
 }
