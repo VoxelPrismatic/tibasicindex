@@ -16,7 +16,7 @@ function uri(thing) {
     var href = find("url").innerHTML
     while(href.startsWith(" "))
         href = href.slice(1);
-    href = href.slice(2, -2);
+    href = href.replace(/.*>(.*)<.*/gm, "$1");
     console.log(href);
     var page = "";
     var jump = "";
