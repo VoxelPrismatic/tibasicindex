@@ -63,12 +63,12 @@ function uri(thing) {
 }
 
 function searching() {
-    if(find("swapper").innerHTML != "") {
-        maybeload(find("swapper").innerHTML);
-        find("swapper").innerHTML = "";
+    if(find("swapper").value != "") {
+        maybeload(find("swapper").value);
+        find("swapper").value = "";
     }
-    if(find("searcher").innerHTML != "") {
-        highlight(find("searcher").innerHTML);
-        find("searcher").innerHTML = "";
+    if(find("searcher").value != "") {
+        highlight(find("searcher").value);
+        find("searcher").value = "";
     }
 }
