@@ -104,7 +104,7 @@ py_regex = [
             return `<span class="comm">#${a.split('').join('\u200b')}</span>`;
         }
     ], [
-        /(-?)(0x\d+)/gm,
+        /(-?)(0x[A-Fa-f0-9]+)/gm,
         `<span class="var">$1$2</span>`
     ], [
         /(-?)(\d+(\.\d+)?j?)/gm, 
