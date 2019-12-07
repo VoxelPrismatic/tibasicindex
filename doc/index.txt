@@ -4,26 +4,6 @@ This is PRIZMATIC - The API wrapper for Discord, Riot, Reddit, and more.
 The bar on the far left or far top is the files index, there may be some scroll time.
 The the other bar is the sections on this page, tap it to jump there.
 
---workings--
-#] WORKINGS
-How does everything work? Well, using the following bit of code, all the docs can be built.
-CODE---
-PY---
-import re
-import inspect
-import module
-docs = {}
-def get_docs(thing = module, name = "module"):
-    global docs
-    if inspect.isclass(thing):
-        docs[name] = f"class {thing.__name__}\n{thing.__docs__}"
-    for item in dir(thing):
-        if not re.search(r"__[\w\d_]+__", item):
-            get_docs(thing.__getattribute__(item), name + "." + thing.__name__)
-    
----
----
-
 --these-docs--
 #] HOW STUFF IS DOCUMENTED
 Generally, in files, it will be documented with the following template:
@@ -41,10 +21,13 @@ PARAMS ---
 
 FUNCTIONS ---
     function(...)
-    - What this function does
-    
-    function(...) -> type
-    - What this function does
+    DESCRIPTION ---
+        What this function does
+    PARAMS ---
+        param\_name [param_type]
+        - Description of this param
+    RETURNS ---
+        return_type - Description of what it is maybe
 ---
 Also, to get a specific file, add `?{file\_name}` to the url where `{file\_name}` is what is shown in the `[FILE]` tab
 Additionally, to get a specific section, add `#{sect\_name}` where `{sect\_name}` is what is shown in the `[JUMP]` tab
@@ -80,6 +63,11 @@ $] HEADER 5
 CODE---
 \CODE---
 code block!
+PY---
+\PY---
+def cool_stuff():
+    return "Nice, Python formatting"
+\---
 \---
 ---
 WARN---
