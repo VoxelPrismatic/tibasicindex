@@ -13,11 +13,7 @@ function highlight(phrase) {
     for(l of phrase.split('')) {
         var lc = l.toLowerCase().charCodeAt(0).toString(16);
         var uc = l.toUpperCase().charCodeAt(0).toString(16);
-        while(lc.length < 4)
-            lc = "0" + lc;
-        while(uc.length < 4)
-            uc = "0" + lc;
-        phrase2 += `[\\u${lc}\\u${uc}]`;
+        phrase2 += `[\\u{${lc}}\\u{${uc}}]`;
     }
     phrase2 = "(" + phrase2 + ")"
     md(find("RAW_"+find("this-here").innerHTML).innerHTML.replace(RegExp(phrase2, "gm"), `<div class="find">$1</div>`));
