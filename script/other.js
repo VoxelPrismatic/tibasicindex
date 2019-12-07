@@ -86,3 +86,16 @@ function filter_docs(thing) {
             page.style.display = "none";
     }
 }
+
+function filter_jump(thing) {
+    var pages = find("sect").children;
+    for(var page of pages) {
+        if(!(page.id.startsWith("JUMP_")))
+            continue;
+        if(thing == "" || page.id.slice(20, -4).search(thing) != -1)
+            page.style.display = "block";
+        else
+            page.style.display = "none";
+    }
+}
+
