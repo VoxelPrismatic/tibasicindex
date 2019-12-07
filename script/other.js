@@ -61,3 +61,14 @@ function uri(thing) {
         href += look;
     find("url").innerHTML = `[ <a href="${href}">${href}</a> ]`;
 }
+
+function searching() {
+    if(find("swapper").innerHTML != "") {
+        maybeload(find("swapper").innerHTML);
+        find("swapper").innerHTML = "";
+    }
+    if(find("searcher").innerHTML != "") {
+        highlight(find("searcher").innerHTML);
+        find("searcher").innerHTML = "";
+    }
+}
