@@ -13,19 +13,23 @@ function highlight(phrase) {
     uri("&"+phrase);
 }
 function uri(thing) {
-    href = find("url").innerHTML.slice(2, -2);
+    var href = find("url").innerHTML.slice(2, -2);
+    console.log(href);
     var page = "";
     var jump = "";
     var look = "";
     try {
         page = href.split("?")[1].split("#")[0];
     } catch(err) {
+        console.log(err);
     } try {
         jump = href.split("#")[1].split("&")[0];
     } catch(err) {
+        console.log(err);
     } try {
         look = href.split("&")[1];
     } catch(err) {
+        console.log(err);
     }
     if(thing.startsWith("&"))
         look = thing;
