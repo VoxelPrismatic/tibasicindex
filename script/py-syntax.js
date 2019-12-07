@@ -20,10 +20,6 @@ var kw = [
 ];
 
 function str_regex(m, a, b, c) {
-    return `${a}<span class="str">${b}${c.split('').join("\u200b")}${b}</span>`;
-}
-
-function fstr_regex(m, a, b, c) {
     var st = "";
     if(a == "f" || a == "F") {
         var incode = false;
@@ -48,29 +44,17 @@ function fstr_regex(m, a, b, c) {
 
 py_regex = [
     [
-        /([^fFrRuUbB])(")(.+?)"/gm,
+        /([fFrRuUbB]?)(")(.+?)"/gm,
         str_regex
-    ], [
-        /([^fFrRuUbB])(')(.+?)'/gm,
-        str_regex
-    ], [
-        /([fFrRuUbB])(")(.+?)"/gm,
-        fstr_regex
     ], [
         /([fFrRuUbB])(')(.+?)'/gm,
-        fstr_regex
-    ], [
-        /([^fFrRuUbB])(''')((.|\n)+)'''/gm,
-        str_regex
-    ], [
-        /([^fFrRuUbB])(""")((.|\n)+)"""/gm,
         str_regex
     ], [
         /([fFrRuUbB])(''')((.|\n)+)'''/gm,
-        fstr_regex
+        str_regex
     ], [
         /([fFrRuUbB])(""")((.|\n)+)"""/gm,
-        fstr_regex
+        str_regex
     ], [
         /\\u([A-Fa-f0-9]{4})/gm, 
         `<span class="op">\\u$1</span>`
