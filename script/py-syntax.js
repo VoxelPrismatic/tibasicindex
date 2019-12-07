@@ -39,7 +39,7 @@ function str_regex(m, a, b, c) {
     } else {
         st = c.split('').join("\u200b");
     }
-    return `<span class="byte">${a}${b}${st}${b}</span>`;
+    return `<span class="str">${a}${b}${st}${b}</span>`;
 }
 
 py_regex = [
