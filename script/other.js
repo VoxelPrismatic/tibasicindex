@@ -11,8 +11,12 @@ function btn(elem, id) {
 function highlight(phrase) {
     var phrase2 = "";
     for(l of phrase.split('')) {
-        lc = l.toLowerCase().charCodeAt(0).toString(16);
-        uc = l.toUpperCase().charCodeAt(0).toString(16);
+        var lc = l.toLowerCase().charCodeAt(0).toString(16);
+        var uc = l.toUpperCase().charCodeAt(0).toString(16);
+        while(lc.length < 4)
+            lc = "0" + lc;
+        while(uc.length < 4)
+            uc = "0" + lc;
         phrase2 += `[\\u${lc}\\u${uc}]`;
     }
     phrase2 = "(" + phrase2 + ")"
