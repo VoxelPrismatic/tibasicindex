@@ -9,7 +9,7 @@ function btn(elem, id) {
     find(id).style.display = "block";
 }
 function highlight(phrase) {
-    find("page").innerHTML = find("page").innerHTML.replace(RegExp(sec, "gm"), `<div class="find">${sec}</div>`);
+    find("page").innerHTML = find("page").innerHTML.replace(RegExp(phrase, "gm"), `<div class="find">${sec}</div>`);
     uri("&"+phrase);
 }
 function uri(thing) {
