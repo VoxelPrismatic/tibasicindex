@@ -45,6 +45,7 @@ function load(fil) {
     find("loaded-pages").innerHTML += `<div id="DOCS_${fil}" class="invis">${find("page").innerHTML}</div>`;
     find("loaded-sects").innerHTML += `<div id="SECT_${fil}" class="invis">${find("sect").innerHTML}</div>`;
     find("this-here").innerHTML = fil;
+    searching();
 }
 
 function maybeload(url) {
