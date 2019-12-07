@@ -39,22 +39,57 @@ function str_regex(m, a, b, c) {
     } else {
         st = c.split('').join("\u200b");
     }
-    return `<span class="str">${a}${b}${st}${b}</span>`;
+    return `${a}<span class="str">${b}${st}${b}</span>`;
+}
+
+function fstr_regex(m, a, b, c) {
+    var st = "";
+    if(a == "f" || a == "F") {
+        var incode = false;
+        for(var d of c.split('')) {
+            if(d == "{") {
+                st += "</span>{";
+                incode = true;
+            } else if(d == "}") {
+                st += '}<span class="str">';
+                incode = false;
+            } else if(incode) {
+                st += d;
+            } else {
+                st += d+"\u200b";
+            } 
+        }
+    } else {
+        st = c.split('').join("\u200b");
+    }
+    return `<span class="byte">${a}${b}${st}${b}</span>`;
 }
 
 py_regex = [
     [
-        /([fFrRuUbB]?)(")(.+?)"/gm,
+        /([^fFrRuUbB])(")(.+?)"/gm,
         str_regex
     ], [
-        /([fFrRuUbB]?)(')(.+?)'/gm,
+        /([^fFrRuUbB])(')(.+?)'/gm,
         str_regex
     ], [
-        /([fFrRuUbB]?)(''')((.|\n)+)'''/gm,
+        /([fFrRuUbB])(")(.+?)"/gm,
+        fstr_regex
+    ], [
+        /([fFrRuUbB])(')(.+?)'/gm,
+        fstr_regex
+    ], [
+        /([^fFrRuUbB])(''')((.|\n)+)'''/gm,
         str_regex
     ], [
-        /([fFrRuUbB]?)(""")((.|\n)+)"""/gm,
+        /([^fFrRuUbB])(""")((.|\n)+)"""/gm,
         str_regex
+    ], [
+        /([fFrRuUbB])(''')((.|\n)+)'''/gm,
+        fstr_regex
+    ], [
+        /([fFrRuUbB])(""")((.|\n)+)"""/gm,
+        fstr_regex
     ], [
         /\\u([A-Fa-f0-9]{4})/gm, 
         `<span class="op">\\u$1</span>`
