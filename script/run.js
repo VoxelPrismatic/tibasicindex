@@ -16,5 +16,5 @@ if(url.includes("#")) {
     jump("JUMP_top");
 }
 if(url.includes("&")) {
-    highlight(url.split("#")[1].split("&")[1].split("?")[0].split("#")[0]);
+    highlight(url.split("&")[1]);
 }
