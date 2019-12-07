@@ -81,8 +81,8 @@ function filter_docs(thing) {
         if(page.id == undefined)
             continue;
         if(thing == "" || page.id.slice(20, -4).search(thing) != -1)
-            page.display = "block";
+            page.style.display = "block";
         else
-            page.display = "none";
+            page.style.display = "none";
     }
 }
