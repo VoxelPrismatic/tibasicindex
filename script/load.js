@@ -1,9 +1,4 @@
-function load(fil) {
-    find("sect").innerHTML = `<div class="head textC" style="width: 100%;">[JUMP]</div>`
-    find("sect").innerHTML += `<div class="lnk" id="JUMP_top" onclick="jump(this);">#top</div>`;
-    find("page").innerHTML = "WAIT... [LOADING FILE]";
-    find(fil).className = "lnk sel";
-    txt = read(fil);
+function md(txt) {
     var md = "<div id='top'></div>";
     var py = "";
     var inpy = false;
@@ -37,6 +32,16 @@ function load(fil) {
             md += line+"\n";
     }
     find("page").innerHTML = md.replace(/\n/gm, "<br>");
+}
+
+function load(fil) {
+    find("sect").innerHTML = `<div class="head textC" style="width: 100%;">[JUMP]</div>`
+    find("sect").innerHTML += `<div class="lnk" id="JUMP_top" onclick="jump(this);">#top</div>`;
+    find("page").innerHTML = "WAIT... [LOADING FILE]";
+    find(fil).className = "lnk sel";
+    txt = read(fil);
+    find("cached-pages").innerHTML += `<div id="RAW_${fil}" class="invis">${txt}</div>`;
+    md(txt);
     find("loaded-pages").innerHTML += `<div id="DOCS_${fil}" class="invis">${find("page").innerHTML}</div>`;
     find("loaded-sects").innerHTML += `<div id="SECT_${fil}" class="invis">${find("sect").innerHTML}</div>`;
 }
