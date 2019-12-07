@@ -13,7 +13,12 @@ function highlight(phrase) {
     uri("&"+phrase);
 }
 function uri(thing) {
-    var href = find("url").innerHTML.slice(2, -2);
+    var href = find("url").innerHTML
+    while(href.startsWith(" "))
+        href = href.slice(1);
+    while(href.endsWith(" "))
+        href.slice(0, -1);
+    href = href.slice(2, -2);
     console.log(href);
     var page = "";
     var jump = "";
