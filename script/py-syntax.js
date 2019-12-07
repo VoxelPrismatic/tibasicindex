@@ -178,5 +178,5 @@ function py_mark(st) {
             `$1<span class="kw">${r.split('').join('\u200b')}</span>$2`
         );
     }
-    return st;
+    return st.replace(/([^ ])\u200b/gm, "$1").replace(/ +\n/gm, "\n");
 }
