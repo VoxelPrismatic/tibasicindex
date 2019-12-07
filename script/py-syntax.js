@@ -56,17 +56,6 @@ py_regex = [
         /([fFrRuUbB])(""")((.|\n)+)"""/gm,
         str_regex
     ], [
-        /\\u([A-Fa-f0-9]{4})/gm, 
-        `<span class="op">\\u$1</span>`
-    ], [
-        /\\U([A-Fa-f0-9]{8})/gm, 
-        `<span class="op">\\U$1</span>`
-    ], [
-        /\\x([A-Fa-f0-9]{2})/gm, 
-        `<span class="op">\\x$1</span>`
-    ], [/\\\u200b?(.)/gm, 
-        `<span class="op">\\$1</span>`
-    ], [
         /\\u([A-Fa-f0-9\u200b]{8})/gm, 
         `<span class="op">\\u$1</span>`
     ], [
@@ -104,7 +93,7 @@ py_regex = [
             return `<span class="comm">#${a.split('').join('\u200b')}</span>`;
         }
     ], [
-        /(-?)(0x[A-Fa-f0-9]+)/gm,
+        /(-?)(0x[A-Fa-f0-9\u200b]+)/gm,
         `<span class="var">$1$2</span>`
     ], [
         /(-?)(\d+(\.\d+)?j?)/gm, 
