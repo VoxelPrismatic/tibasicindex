@@ -78,7 +78,7 @@ function searching() {
 function filter_docs(thing) {
     var pages = find("nav").children;
     for(var page of pages) {
-        if(page.id == undefined)
+        if(page.id == undefined && page.id != "filter")
             continue;
         if(thing == "" || page.id.slice(20, -4).search(thing) != -1)
             page.style.display = "block";
