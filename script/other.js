@@ -9,7 +9,7 @@ function btn(elem, id) {
     find(id).style.display = "block";
 }
 function highlight(phrase) {
-    md(find(find("this-here").innerHTML).innerHTML.replace(RegExp(phrase, "gm"), `<div class="find">${phrase}</div>`));
+    md(find("RAW_"+find("this-here").innerHTML).innerHTML.replace(RegExp(phrase, "gm"), `<div class="find">${phrase}</div>`));
     uri("&"+phrase);
 }
 function uri(thing) {
@@ -17,7 +17,6 @@ function uri(thing) {
     while(href.startsWith(" "))
         href = href.slice(1);
     href = href.replace(/.*>(.*)<.*/gm, "$1");
-    console.log(href);
     var page = "";
     var jump = "";
     var look = "";
