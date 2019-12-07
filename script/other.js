@@ -16,8 +16,6 @@ function uri(thing) {
     var href = find("url").innerHTML
     while(href.startsWith(" "))
         href = href.slice(1);
-    while(href.endsWith(" "))
-        href.slice(0, -1);
     href = href.slice(2, -2);
     console.log(href);
     var page = "";
