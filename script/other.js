@@ -9,7 +9,16 @@ function btn(elem, id) {
     find(id).style.display = "block";
 }
 function highlight(phrase) {
-    md(find("RAW_"+find("this-here").innerHTML).innerHTML.replace(RegExp(phrase, "gm"), `<div class="find">${phrase}</div>`));
+    var phrase2 = "";
+    for(l of phrase.split('')) {
+        lc = l.toLowerCase().charCodeAt(0).toString(16);
+        uc = l.toUpperCase().charCodeAt(0).toString(16);
+        phrase2 += `[\\u${lc}\\u${uc}]`;
+    }
+    md(find("RAW_"+find("this-here").innerHTML).innerHTML.replace(
+        RegExp(phrase2, "gm"), 
+        `<div class="find">${phrase}</div>`
+    ));
     uri("&"+phrase);
 }
 function uri(thing) {
