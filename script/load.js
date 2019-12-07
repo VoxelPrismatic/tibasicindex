@@ -20,6 +20,7 @@ function load(fil) {
             md += py_mark(py).replace(/\n/gm, "<br>");
             py = "";
             inpy = false;
+            continue;
         }
         else if(inpy) {
             py += line + "\n";
