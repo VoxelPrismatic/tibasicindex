@@ -5,6 +5,7 @@ if(url.includes("?")) {
 } else {
     load("/prizmatic.docs/doc/index.txt");
 }
+url = document.URL;
 if(url.includes("#")) {
     url = url.replace("##", "#")
     var sec = url.split("#")[1].split("?")[0].split("&")[0];
@@ -15,6 +16,7 @@ if(url.includes("#")) {
 } else {
     jump("JUMP_top");
 }
+url = document.URL;
 if(url.includes("&")) {
     highlight(url.split("&")[1]);
 }
