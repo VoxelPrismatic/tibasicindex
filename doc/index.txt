@@ -67,6 +67,7 @@ PY---
 \PY---
 def cool_stuff():
     return "Nice, Python formatting"
+---
 \---
 \---
 ---
