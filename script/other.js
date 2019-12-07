@@ -49,5 +49,5 @@ function uri(thing) {
     href = `https://VoxelPrismatic.github.io/prizmatic.docs/${page}${jump}`
     if(look != "" && look != undefined)
         href += "&"+look;
-    find("url").innerHTML = `[ ${href} ]`;
+    find("url").innerHTML = `[ <a href="${href}">${href}</a> ]`;
 }
