@@ -98,7 +98,7 @@ function mark_page(st) {
         }
         
         //Table
-        if(line.replace(/^(\|.+)+\|$/gm, "") == "") {
+        if(line != "" && line.replace(/^(\|.+)+\|$/gm, "") == "") {
             table_lines += 1
             table_str.push([]);
             if(table_lines = 1) {
@@ -158,7 +158,7 @@ function mark_page(st) {
         }
         
         // Ordered list
-        if(line.replace(/^\d+[\]\)\.\-] .*$/gm, "") == "") {
+        if(line != "" && line.replace(/^\d+[\]\)\.\-] .*$/gm, "") == "") {
             ol.push(line.replace(/^\d+[\]\)\.\-] (.*)$/gm, "$1").trim());
             continue;
         }
@@ -172,7 +172,7 @@ function mark_page(st) {
         }
         
         // Unordered list
-        if(line.replace(/^ [\>\-\+\~\]\)] .*$/gm, "") == "") {
+        if(line != "" && line.replace(/^ [\>\-\+\~\]\)] .*$/gm, "") == "") {
             ul.push(line.slice(3).trim());
             continue;
         }
