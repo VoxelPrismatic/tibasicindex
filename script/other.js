@@ -179,6 +179,7 @@ function check_for_dupes() {
     var ls = [];
     for(var btn of btns) {
         if(ls.includes(btn.id)) {
+            btn.style.display = "none";
             delete btn;
         } else {
             ls.push(btn.id);
