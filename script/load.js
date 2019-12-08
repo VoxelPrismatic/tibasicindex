@@ -8,16 +8,17 @@ function load(fil) {
     txt = read(fil);
     find("cached-pages").innerHTML += `<div id="RAW_${fil}" class="invis">${txt}</div>`;
     find("page").innerHTML = "<div id='top'></div>" + mark_page(txt);
+    check_for_dupes();
     find("loaded-pages").innerHTML += `<div id="DOCS_${fil}" class="invis">${find("page").innerHTML}</div>`;
     find("loaded-sects").innerHTML += `<div id="SECT_${fil}" class="invis">${find("sect").innerHTML}</div>`;
     find("this-here").innerHTML = fil;
     searching();
 }
 
-function maybeload(url) {
-    if (!(url.startsWith("/prizmatic.docs/doc/")));
-          url = "/prizmatic.docs/doc/" + url
-    url = url.replace(/\/\//gm, "/").split("#")[0].split("&")[0];
+function maybeload(uri) {
+    if (!(uri.startsWith("/prizmatic.docs/doc/")));
+          uri = "/prizmatic.docs/doc/" + uri
+    var url = url.replace(/\/\//gm, "/").split("#")[0].split("&")[0];
     if(!(url.endsWith(".txt")))
        url += "index.txt";
     console.log(url);
@@ -30,6 +31,7 @@ function maybeload(url) {
             find("page").innerHTML = `<div class="warn">An unknown error occured, check console for details</div>`;
             console.log(err);
         }
+    url = uri;
     if(url.includes("#")) {
         var sec = url.split("#")[1].split("?")[0].split("&")[0];
         if(!(sec.startsWith("JUMP_")))
