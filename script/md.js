@@ -175,13 +175,7 @@ function mark_page(st) {
     var inol = false;
     var inul = false;
     var incode = false;
-    for(var line of st.split("\n")) {
-        // Section
-        if(line.search(/^--[\w\d_.-]+--$/gm) == 0) {
-            sid = line.slice(2, -2);
-            find("sect").innerHTML += `<div class="lnk" id="JUMP_${sid}" onclick="jump(this);">#${sid}</div>`;
-        }
-        
+    for(var line of st.split("\n")) {        
         // Python formatting
         if(line == "PY---" && !inpy) {
             inpy = true;
