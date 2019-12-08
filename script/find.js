@@ -1,5 +1,5 @@
 function find_in(thing, ids) {
-    ls = [];
+    var ls = [];
     for(var id of ids.split(" ")) {
         if(id.startsWith("."))
             ls.push(...thing.getElementsByClassName(id.slice(1)));
@@ -14,4 +14,16 @@ function find_in(thing, ids) {
 } 
 function find(ids) {
     return find_in(document, ids);
+}
+function findHtml_in(thing, ids) {
+    var ls = [];
+    var elm = find_in(thing, ids);
+    for(var e of elm)
+        ls.push(e.innerHTML);
+    if(ls.length == 1)
+        return ls[0]
+    return ls;
+}
+function findHtml(ids) {
+    return findHtml_in(document, ids);
 }
