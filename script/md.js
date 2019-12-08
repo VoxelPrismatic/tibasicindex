@@ -74,7 +74,7 @@ function mk_table(st) {
         if(line != "" && line.replace(/^(\|.+)+\|$/gm, "") == "") {
             table_lines += 1
             table_str.push([]);
-            if(table_lines == 1) {
+            if(table_lines == 0) {
                 for(var header of line.split("|")) {
                     header = header.trim();
                     if(header.startsWith(":") && header.endsWith(":")) {
