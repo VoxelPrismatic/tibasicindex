@@ -25,6 +25,7 @@ function docs(elem) {
     } catch(err) {
         load(id);
     }
+    check_for_dupes();
     var things = find("nav").children;
     for(var thing of things)
         if(thing.className == "lnk sel")
