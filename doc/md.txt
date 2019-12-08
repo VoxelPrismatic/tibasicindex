@@ -101,14 +101,16 @@ CODE---
    as much
     as you like!
 --tables--
-|:left align|:center align:|right align:|
-| cool      | stuff        | yknow?     |
-| i'd       | say          | so         |
+|:left align |:center align:| right align:| no align |
+| cool       | stuff        | yknow?      | neato    |
+| i'd        | say          | so          | lol      |
+| add        | more         | columns     | than     | before |
 
 CODE---
-|:left align|:center align:|right align:|
-| cool      | stuff        | yknow?     |
-| i'd       | say          | so         |
+|:left align |:center align:| right align:| no align |
+| cool       | stuff        | yknow?      | neato    |
+| i'd        | say          | so          | lol      |
+| add        | more         | columns     | than     | before |
 ---
 --lists--
 1. hi
