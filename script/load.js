@@ -27,7 +27,7 @@ function maybeload(url) {
         try {
             docs(url);
         } catch(err) {
-            find("page").innerHTML = `<div class="warn">404 ] File not found</div>`;
+            find("page").innerHTML = `<div class="warn">404 ] An unknown error occured, check console for details</div>`;
             console.log(err);
         }
     if(url.includes("#")) {
