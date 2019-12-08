@@ -118,9 +118,9 @@ function mk_table(st) {
         for(var col of row) {
             col_num += 1;
             if(row_num == 0)
-                str += `<th style="text-align: ${table_aligns[col_num]}">${mark_page(col)}</th>`;
+                str += `<th style="text-align: ${table_aligns[col_num]}">${mark_page(col).trim()}</th>`;
             else
-                str += `<td style="text-align: ${table_aligns[col_num]}">${mark_page(col)}</td>`;
+                str += `<td style="text-align: ${table_aligns[col_num]}">${mark_page(col).trim()}</td>`;
         }
         str += "</tr>";
     }
