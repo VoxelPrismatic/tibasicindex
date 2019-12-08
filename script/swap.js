@@ -20,8 +20,8 @@ function docs(elem) {
     else
         id = elem;
     var jumps = find("sect").children
-    for(var jump of jumps)
-        if(jump.id.startsWith("JUMP_"))
+    for(var jmp of jumps)
+        if(jmp.id.startsWith("JUMP_"))
             delete jump;
     try {
         find("page").innerHTML = find("DOCS_"+id).innerHTML;
