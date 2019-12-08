@@ -43,7 +43,7 @@ function highlight(phrase) {
             this.classList.toggle("nofind");
         }
     }
-    find("highligher").innerHTML = phrase
+    find("highlighter").innerHTML = phrase
 }
 function uri(thing) {
     try {
