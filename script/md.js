@@ -1,7 +1,5 @@
 function trim(str) {
-    str = str.replace(/^([ /u200b]+)/, function(m, a){return a.replace(/\u200b/gm, "");})
-    str = str.replace(/([ /u200b]+)$/, function(m, a){return a.replace(/\u200b/gm, "");})
-    return str.trim();
+    return str.replace(/^([ /u200b]+)/, "").replace(/([ /u200b]+)$/, "")
 }
 
 var line_regex = [
