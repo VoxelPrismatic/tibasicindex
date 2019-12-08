@@ -27,6 +27,7 @@ function highlight(phrase) {
         mark_page(find("RAW_"+find("this-here").innerHTML).innerHTML.replace(re, `<span class="find">$1</span>`));
     uri("&"+phrase);
     find("docs").click();
+    find("highligher").innerHTML = phrase
 }
 function uri(thing) {
     try {
