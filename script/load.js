@@ -17,7 +17,7 @@ function load(fil) {
 function maybeload(url) {
     if (!(url.startsWith("/prizmatic.docs/doc/")));
           url = "/prizmatic.docs/doc/" + url
-    url = url.replace(/\/\//gm, "/");
+    url = url.replace(/\/\//gm, "/").split("#")[0].split("&")[0];
     if(!(url.endsWith(".txt")))
        url += "index.txt";
     console.log(url);
