@@ -11,7 +11,7 @@ _\_under\__
 %\%sub\%%
 --links--
 [\[text\]\(link\)](#)
-?[\?\[text\]\(source docs\)](md.txt#links)
+?[\?\[text\]\(source docs\)]<md.txt#links>
 --unicode--
 | Written    :|:Output     |
 | \\U00000041 | \U00000041 |
