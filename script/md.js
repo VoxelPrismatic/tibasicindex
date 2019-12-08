@@ -92,7 +92,7 @@ function mk_table(st) {
                     }
                 }
             } else {
-                for(var cell of line.split("|")) {
+                for(var cell of line.split("|").slice(1, -1)) {
                     table_str.slice(-1)[0].push(cell);
                 }
                 var max_len = 0;
