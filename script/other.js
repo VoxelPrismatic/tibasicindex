@@ -10,6 +10,10 @@ function btn(elem, id) {
 }
 function highlight(phrase) {
     var phrase2 = "";
+     var jumps = find("sect").children
+    for(var jump of jumps)
+        if(jump.id.startsWith("JUMP_"))
+            delete jump;
     for(var l of phrase.split('')) {
         var lc = l.toLowerCase().charCodeAt(0).toString(16);
         var uc = l.toUpperCase().charCodeAt(0).toString(16);
