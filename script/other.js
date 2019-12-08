@@ -10,10 +10,7 @@ function btn(elem, id) {
 }
 function highlight(phrase) {
     var phrase2 = "";
-     var jumps = find("sect").children
-    for(var jump of jumps)
-        if(jump.id.startsWith("JUMP_"))
-            delete jump;
+    var jumps = find("sect").children;
     for(var l of phrase.split('')) {
         var lc = l.toLowerCase().charCodeAt(0).toString(16);
         var uc = l.toUpperCase().charCodeAt(0).toString(16);
@@ -176,16 +173,12 @@ function find_in_docs(phrase) {
 
 function check_for_dupes() {
     var btns = find("sect").children;
-    var html = "";
     var ls = [];
     for(var btn of btns) {
         if(ls.includes(btn.id)) {
-            btn.style.display = "none";
-            delete btn;
+            btn.remove();
         } else {
             ls.push(btn.id);
-            html += btn.outerHTML;
         }
     }
-    find("sect").innerHTML = html;
 }
