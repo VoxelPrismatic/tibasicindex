@@ -57,7 +57,7 @@ var line_regex = [
     [/^INFO---$/gm, "<div class='info'><b>INFO ---</b><br>"],
     [/^EX---$/gm, "<div class='exc'><b>EXAMPLES ---</b><br>"],
     [/^COMMENT---$/gm, "<div class='comblock'><b>OTHER INFO ---</b><br>"],
-    [/^ *(\w+) *-{3,}/gm, "<b>$1 ---</b><br>"],
+    [/^[ \u200b]*(\w+) *-{3,}/gm, "<b>$1 ---</b><br>"],
     [/^---$/gm, "</div></br>"],
     [/^-~-$/gm, "<hr></br>"],
     
