@@ -93,7 +93,7 @@ function mk_table(st) {
                 }
             } else {
                 for(var cell of line.split("|").slice(1, -1)) {
-                    table_str.slice(-1)[0].push(cell);
+                    table_str.slice(-1)[0].push(cell.trim());
                 }
                 var max_len = 0;
                 for(var row of table_str)
@@ -118,9 +118,9 @@ function mk_table(st) {
         for(var col of row) {
             col_num += 1;
             if(row_num == 0)
-                str += `<th style="text-align: ${table_aligns[col_num]}">${mark_page(col).trim()}</th>`;
+                str += `<th style="text-align: ${table_aligns[col_num]}">${mark_page(col)}</th>`;
             else
-                str += `<td style="text-align: ${table_aligns[col_num]}">${mark_page(col).trim()}</td>`;
+                str += `<td style="text-align: ${table_aligns[col_num]}">${mark_page(col)}</td>`;
         }
         str += "</tr>";
     }
