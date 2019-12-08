@@ -22,7 +22,7 @@ function docs(elem) {
     var jumps = find("sect").children
     for(var jmp of jumps)
         if(jmp.id.startsWith("JUMP_"))
-            delete jump;
+            jmp.delete();
     try {
         find("page").innerHTML = find("DOCS_"+id).innerHTML;
         find("sect").innerHTML = find("SECT_"+id).innerHTML;
