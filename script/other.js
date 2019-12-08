@@ -107,5 +107,3 @@ function unimap(str) {
             return line.split("\u0009")[0];
     return "\\<INVALID CHAR\\>";
 }
-
-find("unidata").innerHTML = read("/prizmatic.docs/script/uni.txt");
