@@ -10,7 +10,7 @@ function btn(elem, id) {
 }
 function highlight(phrase) {
     var phrase2 = "";
-    for(l of phrase.split('')) {
+    for(var l of phrase.split('')) {
         var lc = l.toLowerCase().charCodeAt(0).toString(16);
         var uc = l.toUpperCase().charCodeAt(0).toString(16);
         while(lc.length < 4)
@@ -20,7 +20,10 @@ function highlight(phrase) {
         phrase2 += `[\\u${lc}\\u${uc}]`; //Escape chars
     }
     phrase2 = "(" + phrase2 + ")"
-    md(find("RAW_"+find("this-here").innerHTML).innerHTML.replace(RegExp(phrase2, "gm"), `<span class="find">$1</span>`));
+    var re = RegExp(phrase2, "gm")
+    if(phrase.startsWith("/") && str.endsWith("/"))
+        re = RegExp(phrase.slice(1, -1), "gm")
+    md(find("RAW_"+find("this-here").innerHTML).innerHTML.replace(re, `<span class="find">$1</span>`));
     uri("&"+phrase);
     find("docs").click();
 }
@@ -101,4 +104,38 @@ function filter_jump(thing) {
 
 function unimap(str) {
     return uni[str.toUpperCase()];
+}
+
+function find_in_docs(phrase) {
+    var phrase2 = "";
+    for(var l of phrase.split('')) {
+        var lc = l.toLowerCase().charCodeAt(0).toString(16);
+        var uc = l.toUpperCase().charCodeAt(0).toString(16);
+        while(lc.length < 4)
+            lc = "0" + lc;
+        while(uc.length < 4)
+            uc = "0" + uc;
+        phrase2 += `[\\u${lc}\\u${uc}]`; //Escape chars
+    }
+    var re = RegExp(phrase2, "gm")
+    if(phrase.startsWith("/") && str.endsWith("/"))
+        re = RegExp(phrase.slice(1, -1), "gm")
+    for(var dir of dirs) {
+        try {
+            if(find("RAW_").innerHTML.search(re) == -1)
+                find(dir).style.display = "none";
+            else
+                find(dir).style.display = "block";
+        } catch(err) {
+            var this_here = find("this-here").innerHTML);
+            docs(dir);
+            docs(this_here);
+            if(find("RAW_").innerHTML.search(re) == -1)
+                find(dir).style.display = "none";
+            else
+                find(dir).style.display = "block";
+        }
+    }
+    highlight(phrase);
+    find("nav").click();
 }
