@@ -92,7 +92,7 @@ CODE---
 \-\-section-name\-\-
 ^ creates a section
 -~-
-\~\~\~
+\-~-
 ^ creates a line
 
 --indents--
