@@ -22,8 +22,9 @@ function highlight(phrase) {
     phrase2 = "(" + phrase2 + ")"
     var re = RegExp(phrase2, "gm")
     if(phrase.startsWith("/") && phrase.endsWith("/"))
-        re = RegExp(phrase.slice(1, -1), "gm")
-    mark_page(find("RAW_"+find("this-here").innerHTML).innerHTML.replace(re, `<span class="find">$1</span>`));
+        re = RegExp("("+phrase.slice(1, -1)+")", "gm")
+    find("page").innerHTML = 
+        mark_page(find("RAW_"+find("this-here").innerHTML).innerHTML.replace(re, `<span class="find">$1</span>`));
     uri("&"+phrase);
     find("docs").click();
 }
