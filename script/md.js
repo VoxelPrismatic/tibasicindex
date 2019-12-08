@@ -158,8 +158,8 @@ function mark_page(st) {
         }
         
         // Ordered list
-        if(line.replace(/^\d [\]\)\.\-] .*$/gm, "") == "") {
-            ol.push(line.slice(3).trim());
+        if(line.replace(/^\d+[\]\)\.\-] .*$/gm, "") == "") {
+            ol.push(line.replace(/^\d+[\]\)\.\-] (.*)$/gm, "$1").trim());
             continue;
         }
         if(ol != []) {
