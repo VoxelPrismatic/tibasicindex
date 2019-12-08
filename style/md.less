@@ -63,11 +63,12 @@
 } th {
     .section(#0088ff);
 } tr {
-    border-width: 0px 2px 0px 2px;
-    border-color: #0088ff;
+    border-top: 2px solid #0088ff;
     &:nth-child(even) {
-        background-color: #00ffff22;
+        background-color: #00ffff11;
     } &:nth-child(odd) {
-        background-color: #0088ff22;
+        background-color: #0088ff11;
     }
+} td, tr {
+    .pad(5px);
 }
