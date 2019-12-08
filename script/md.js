@@ -154,7 +154,7 @@ function mk_ul(st) {
 }
 
 function mark_page(st) {
-    var str = "<div id='top'></div>"
+    var str = "";
     var py = "";
     var table = "";
     var ol = "";
