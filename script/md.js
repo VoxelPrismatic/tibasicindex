@@ -135,7 +135,7 @@ function mark_page(st) {
             }
             continue;
         }
-        if(table_str != []) {
+        if(table_str.length != 0) {
             var row_num = -1;
             str += "<table>";
             for(var row of table_str) {
@@ -162,7 +162,7 @@ function mark_page(st) {
             ol.push(line.replace(/^\d+[\]\)\.\-] (.*)$/gm, "$1").trim());
             continue;
         }
-        if(ol != []) {
+        if(ol.length != 0) {
             str += "<ol>";
             for(var li of ol)
                 str += `<li>${mark(li)}</li>`;
@@ -176,7 +176,7 @@ function mark_page(st) {
             ul.push(line.slice(3).trim());
             continue;
         }
-        if(ul != []) {
+        if(ul.length != 0) {
             str += "<ul>";
             for(var li of ul)
                 str += `<li>${mark(li)}</li>`;
