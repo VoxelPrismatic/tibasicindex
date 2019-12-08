@@ -35,7 +35,7 @@ function highlight(phrase) {
             for(var l of ls)
                 l.click()
         }
-        l.onclick = function(this) {
+        l.onclick = function() {
             this.classList.toggle("nofind");
         }
     }
