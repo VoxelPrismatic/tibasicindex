@@ -100,8 +100,16 @@ CODE---
   indent
    as much
     as you like!
-
+---tables---
 TABLE---
 |::left align|::center align::|right align::|
 |cool|stuff|yknow?|
+|i'd|say|so|
+---
+CODE---
+\TABLE---
+|:left align|:center align:|right align:|
+|cool|stuff|yknow?|
+|i'd|say|so|
+\---
 ---
