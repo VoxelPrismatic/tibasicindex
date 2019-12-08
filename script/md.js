@@ -1,3 +1,9 @@
+function trim(str) {
+    str = str.replace(/^([ /u200b]+)/, function(m, a){return a.replace(/\u200b/gm, "");})
+    str = str.replace(/([ /u200b]+)$/, function(m, a){return a.replace(/\u200b/gm, "");})
+    return str.trim();
+}
+
 var line_regex = [
     [/^ /gm, "\u200b \u200b"],
     
@@ -76,7 +82,7 @@ function mk_table(st) {
             table_str.push([]);
             if(table_lines == 0) {
                 for(var header of line.split("|").slice(1, -1)) {
-                    header = header.trim();
+                    header = trim(header);
                     if(header.startsWith(":") && header.endsWith(":")) {
                         table_str[0].push(header.slice(1, -1));
                         table_aligns.push("center");
@@ -93,7 +99,7 @@ function mk_table(st) {
                 }
             } else {
                 for(var cell of line.split("|").slice(1, -1)) {
-                    table_str.slice(-1)[0].push(cell.trim());
+                    table_str.slice(-1)[0].push(trim(cell));
                 }
                 var max_len = 0;
                 for(var row of table_str)
@@ -132,7 +138,7 @@ function mk_ol(st) {
     var str = "";
     var ol = [];
     for(var line of st.split("\n").slice(0, -1))
-        ol.push(line.replace(/^\d+[\]\)\.\-] (.*)$/gm, "$1").trim());
+        ol.push(trim(line.replace(/^\d+[\]\)\.\-] (.*)$/gm, "$1")));
     str += "<ol>";
     for(var li of ol)
         str += `<li>${mark_page(li)}</li>`;
@@ -145,7 +151,7 @@ function mk_ul(st) {
     var str = "";
     var ul = [];
     for(var line of st.split("\n").slice(0, -1))
-        ul.push(line.slice(3).trim());
+        ul.push(trim(line.slice(3)));
     str += "<ul>";
     for(var li of ul)
         str += `<li>${mark_page(li)}</li>`;
