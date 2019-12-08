@@ -6,20 +6,20 @@ function load(fil) {
     find("page").innerHTML = "WAIT... [LOADING FILE]";
     find(fil).className = "lnk sel";
     var txt = read(fil);
-    if(!(txt.startsWith("--top--\n"))
+    if(!(txt.startsWith("--top--\n")))
        txt = "--top--\n"+txt;
-    find("cached-pages").innerHTML += `<div id="RAW_${fil}" class="invis">${txt}</div>`;
-    find("page").innerHTML = "<div id='top'></div>" + mark_page(txt);
+    find("cached-pages").innerHTML += mkElm("div", txt, {id: "RAW_"+fil, class: "invis"});
+    find("page").innerHTML = mark_page(txt);
     // Section
     for(var line of txt.split("\n")) {
         if(line.search(/^--[\w\d_.-]+--$/gm) == 0) {
             sid = line.slice(2, -2);
-            find("sect").innerHTML += `<div class="lnk" id="JUMP_${sid}" onclick="jump(this);">#${sid}</div>`;
+            find("sect").innerHTML += mkElm("div", "#"+sid, {class: "lnk", id: "JUMP_"+sid, onclick: "jump(this)"});
         }
     }
     check_for_dupes();
-    find("loaded-pages").innerHTML += `<div id="DOCS_${fil}" class="invis">${find("page").innerHTML}</div>`;
-    find("loaded-sects").innerHTML += `<div id="SECT_${fil}" class="invis">${find("sect").innerHTML}</div>`;
+    find("loaded-pages").innerHTML += mkElm("div", findHtml("page"), {id: "DOCS_"+fil, class: "invis"});
+    find("loaded-sects").innerHTML += mkElm("div", findHtml("sect"), {id: "SECT_"+fil, class: "invis"});
     find("this-here").innerHTML = fil;
     searching();
 }
@@ -32,12 +32,12 @@ function maybeload(uri) {
        url += "index.txt";
     console.log(url);
     if (!(dirs.includes(url)))
-        find("page").innerHTML = `<div class="warn">404 ] File not found</div>`;
+        find("page").innerHTML = mkElm("div", "404 ] File not found", {class: "warn"});
     else
         try {
             docs(url);
         } catch(err) {
-            find("page").innerHTML = `<div class="warn">An unknown error occured, check console for details</div>`;
+            find("page").innerHTML = mkElm("div", "An unknown error occured, check console for details", {class: "warn"});
             console.log(err);
         }
     url = uri;
@@ -50,6 +50,6 @@ function maybeload(uri) {
         jump("JUMP_top");
     if(url.includes("&")) {
         var sec = url.split("#")[1].split("?")[0].split("&")[0];
-        find("page").innerHTML = find("page").innerHTML.replace(RegExp(sec, "gm"), `<div class="find">${sec}</div>`);
+        find("page").innerHTML = findHtml("page").replace(RegExp(sec, "gm"), `<div class="find">${sec}</div>`);
     }
 }
