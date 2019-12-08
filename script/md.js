@@ -87,16 +87,16 @@ function mk_table(st) {
                 for(var header of line.split("|").slice(1, -1)) {
                     header = trim(header);
                     if(header.startsWith(":") && header.endsWith(":")) {
-                        table_str[0].push(header.slice(1, -1));
+                        table_str[0].push(trim(header.slice(1, -1)));
                         table_aligns.push("center");
                     } else if(header.startsWith(":")) {
-                        table_str[0].push(header.slice(1));
+                        table_str[0].push(trim(header.slice(1)));
                         table_aligns.push("left");
                     } else if(header.endsWith(":")) {
-                        table_str[0].push(header.slice(0, -1));
+                        table_str[0].push(trim(header.slice(0, -1)));
                         table_aligns.push("right");
                     } else {
-                        table_str[0].push(header);
+                        table_str[0].push(trim(header));
                         table_aligns.push("left");
                     }
                 }
