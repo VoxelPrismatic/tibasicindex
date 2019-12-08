@@ -105,5 +105,5 @@ function unimap(str) {
         console.log(line);
         if(line.split("\u0009")[1] == str.toUpperCase())
             return line.split("\u0009")[0];
-    return "\\<INVALID CHAR\\>";
+    return "{INVALID CHAR}";
 }
