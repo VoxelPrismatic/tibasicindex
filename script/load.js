@@ -1,12 +1,12 @@
 function load(fil) {
     var jumps = find("sect").children
     for(var jmp of jumps)
-        if(jmp.id.startsWith("JUMP_")))
+        if(jmp.id.startsWith("JUMP_"))
             jmp.delete();
     find("page").innerHTML = "WAIT... [LOADING FILE]";
     find(fil).className = "lnk sel";
     var txt = read(fil);
-    if(!(txt.startsWith("--top--\n")))
+    if(!(txt.startsWith("--top--\n"))))
        txt = "--top--\n"+txt;
     find("cached-pages").innerHTML += mkElm("div", txt, {id: "RAW_"+fil, class: "invis"});
     find("page").innerHTML = mark_page(txt);
