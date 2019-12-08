@@ -1,5 +1,3 @@
-find("unidata").innerHTML = read("/prizmatic.docs/script/uni.txt");
-
 function unimap(str) {
     var lines = find("unidata").innerHTML.split("\n");
     for(var line of lines)
@@ -281,3 +279,5 @@ function mark_page(st) {
     }
     return str.replace(/\n/gm, "<br>").slice(0, -4);
 }
+
+find("unidata").innerHTML = read("/prizmatic.docs/script/uni.txt");
