@@ -35,6 +35,7 @@ function docs(elem) {
     url = "https://github.com/VoxelPrismatic/prizmatic.docs/edit/master/doc/";
     find("src").innerHTML = 
         `EDIT THIS PAGE - <a href="${url}${name.toLowerCase()}">${name}</a>`;
+    highlight(find("highlighter").innerHTML);
 }
 function finder(thing) {
     var ls = [];
