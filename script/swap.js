@@ -19,6 +19,10 @@ function docs(elem) {
         id = elem.id;
     else
         id = elem;
+    var jumps = find("sect").children
+    for(var jump of jumps)
+        if(jump.id.startsWith("JUMP_"))
+            delete jump;
     try {
         find("page").innerHTML = find("DOCS_"+id).innerHTML;
         find("sect").innerHTML = find("SECT_"+id).innerHTML;
