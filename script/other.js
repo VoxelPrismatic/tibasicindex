@@ -176,6 +176,7 @@ function find_in_docs(phrase) {
 
 function check_for_dupes() {
     var btns = find("sect").children;
+    var html = "";
     var ls = [];
     for(var btn of btns) {
         if(ls.includes(btn.id)) {
@@ -183,6 +184,8 @@ function check_for_dupes() {
             delete btn;
         } else {
             ls.push(btn.id);
+            html += btn.outerHTML;
         }
     }
+    find("sect").innerHTML = html;
 }
