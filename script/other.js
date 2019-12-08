@@ -131,7 +131,7 @@ function find_in_docs(phrase) {
             else
                 find(dir).style.display = "block";
         } catch(err) {
-            var this_here = find("this-here").innerHTML);
+            var this_here = find("this-here").innerHTML;
             docs(dir);
             docs(this_here);
             if(find("RAW_").innerHTML.search(re) == -1)
