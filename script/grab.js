@@ -10,16 +10,17 @@ function grab_dirs(lvl) {
                 lnk = lnk.replace("index.txt", "");
                 var smol = lnk.slice(19);
             } else {
-                nam = smol.slice(15)
-                fil = lvl+"/"+line
-                find("nav").innerHTML +=
-                    `<div class="lnk" id="${fil}" onclick="docs(this);">${smol}</div>`;
+                nam = smol.slice(15);
+                fil = lvl+"/"+line;
+                find("nav").innerHTML += makeElem("div", smol, {id:fil, onclick:"docs(this);", class: "lnk"})
             }
         } else if(line != "") {
             try {
                 for(var name of grab_dirs(lvl+"/"+line))
                     dirs.push(name);
-            } catch(err) {}
+            } catch(err) {
+                console.log(err);
+            }
         }
     }
     return dirs;
