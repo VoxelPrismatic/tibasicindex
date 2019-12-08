@@ -8,6 +8,13 @@ function load(fil) {
     txt = read(fil);
     find("cached-pages").innerHTML += `<div id="RAW_${fil}" class="invis">${txt}</div>`;
     find("page").innerHTML = "<div id='top'></div>" + mark_page(txt);
+    // Section
+    for(var line of txt.split("\n")) {
+        if(line.search(/^--[\w\d_.-]+--$/gm) == 0) {
+            sid = line.slice(2, -2);
+            find("sect").innerHTML += `<div class="lnk" id="JUMP_${sid}" onclick="jump(this);">#${sid}</div>`;
+        }
+    }
     check_for_dupes();
     find("loaded-pages").innerHTML += `<div id="DOCS_${fil}" class="invis">${find("page").innerHTML}</div>`;
     find("loaded-sects").innerHTML += `<div id="SECT_${fil}" class="invis">${find("sect").innerHTML}</div>`;
