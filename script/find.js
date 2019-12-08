@@ -27,3 +27,10 @@ function findHtml_in(thing, ids) {
 function findHtml(ids) {
     return findHtml_in(document, ids);
 }
+function makeElem(typ, txt, params) {
+    var str = "<"+typ;
+    for(var param of params.keys())
+        str += ` ${param}="${params[param]}"`;
+    str += `>${txt}</${typ}>`;
+    return str;
+}
