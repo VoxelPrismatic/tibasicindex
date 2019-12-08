@@ -5,7 +5,9 @@ function load(fil) {
             jmp.delete();
     find("page").innerHTML = "WAIT... [LOADING FILE]";
     find(fil).className = "lnk sel";
-    txt = read(fil);
+    var txt = read(fil);
+    if(!(txt.startsWith("--top--\n"))
+       txt = "--top--\n"+txt;
     find("cached-pages").innerHTML += `<div id="RAW_${fil}" class="invis">${txt}</div>`;
     find("page").innerHTML = "<div id='top'></div>" + mark_page(txt);
     // Section
