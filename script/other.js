@@ -28,42 +28,46 @@ function highlight(phrase) {
     find("docs").click();
 }
 function uri(thing) {
-    var href = find("url").innerHTML
-    while(href.startsWith(" "))
-        href = href.slice(1);
-    href = href.replace(/.*>(.*)<.*/gm, "$1");
-    var page = "";
-    var jump = "";
-    var look = "";
     try {
-        page = href.split("?")[1].split("#")[0];
-    } catch(err) {
-        console.log(err);
-    } try {
-        jump = href.split("#")[1].split("&")[0];
-    } catch(err) {
-        console.log(err);
-    } try {
-        look = href.split("&")[1];
+        var href = find("url").innerHTML
+        while(href.startsWith(" "))
+            href = href.slice(1);
+        href = href.replace(/.*>(.*)<.*/gm, "$1");
+        var page = "";
+        var jump = "";
+        var look = "";
+        try {
+            page = href.split("?")[1].split("#")[0];
+        } catch(err) {
+            console.log(err);
+        } try {
+            jump = href.split("#")[1].split("&")[0];
+        } catch(err) {
+            console.log(err);
+        } try {
+            look = href.split("&")[1];
+        } catch(err) {
+            console.log(err);
+        }
+        if(thing.startsWith("&"))
+            look = thing;
+        if(thing.startsWith("?"))
+            page = thing;
+        if(thing.startsWith("#"))
+            jump = thing;
+        if(page != "" && page != undefined && !(page.startsWith("?")))
+            page = "?" + page;
+        if(jump != "" && jump != undefined && !(jump.startsWith("#")))
+            jump = "#" + jump;
+        if(look != "" && look != undefined && !(look.startsWith("&")))
+            look = "&" + look;
+        href = `https://VoxelPrismatic.github.io/prizmatic.docs/${page}${jump}`
+        if(look != "" && look != undefined)
+            href += look;
+        find("url").innerHTML = `[ <a href="${href}">${href}</a> ]`;
     } catch(err) {
         console.log(err);
     }
-    if(thing.startsWith("&"))
-        look = thing;
-    if(thing.startsWith("?"))
-        page = thing;
-    if(thing.startsWith("#"))
-        jump = thing;
-    if(page != "" && page != undefined && !(page.startsWith("?")))
-        page = "?" + page;
-    if(jump != "" && jump != undefined && !(jump.startsWith("#")))
-        jump = "#" + jump;
-    if(look != "" && look != undefined && !(look.startsWith("&")))
-        look = "&" + look;
-    href = `https://VoxelPrismatic.github.io/prizmatic.docs/${page}${jump}`
-    if(look != "" && look != undefined)
-        href += look;
-    find("url").innerHTML = `[ <a href="${href}">${href}</a> ]`;
 }
 
 function searching() {
@@ -122,7 +126,7 @@ function find_in_docs(phrase) {
         phrase2 += `[\\u${lc}\\u${uc}]`; //Escape chars
     }
     var re = RegExp(phrase2, "gm")
-    if(phrase.startsWith("/") && str.endsWith("/"))
+    if(phrase.startsWith("/") && phrase.endsWith("/"))
         re = RegExp(phrase.slice(1, -1), "gm")
     for(var dir of dirs) {
         try {
@@ -135,6 +139,7 @@ function find_in_docs(phrase) {
             try {
                 docs(dir);
             } catch(err) {
+                console.log(err);
             }
             docs(this_here);
             if(find("RAW_"+dir).innerHTML.search(re) == -1)
