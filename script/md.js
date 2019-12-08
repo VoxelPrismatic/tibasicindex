@@ -1,11 +1,12 @@
-function getuni() {
-    var unitxt = read("/prizmatic.docs/script/uni.txt");
-    var uni = {};
-    for(var line of unitxt.split("\n"))
-        uni[line.split("\u0009")[1]] = line.split("\u0009")[0];
-    return uni;
+find("unidata").innerHTML = read("/prizmatic.docs/script/uni.txt");
+
+function unimap(str) {
+    var lines = find("unidata").innerHTML.split("\n");
+    for(var line of lines)
+        if(line.split("\u0009")[1] == str.toUpperCase())
+            return line.split("\u0009")[0];
+    return str;
 }
-var unimap = getuni();
 
 function trim(str) {
     return str.replace(/<br>/gm, "\n").replace(/^([ \u200b\n]+)/, "").replace(/([ \u200b\n]+)$/, "").trim();
@@ -17,11 +18,11 @@ var line_regex = [
     [/^\\x([A-Fa-f0-9]{2})/gm, "\\u{$1}"],
     [/^\\U([A-Fa-f0-9]{8})/gm, "\\u{$1}"],
     [/^\\u([A-Fa-f0-9]{4})/gm, "\\u{$1}"],
-    [/^\\N\{(.+?)\}/gm, function(m, p) {return "\\u{"+unimap[p.toUpperCase()]+"}";}],
+    [/^\\N\{(.+?)\}/gm, function(m, p) {return "\\u{"+unimap(p.toUpperCase())+"}";}],
     [/[^\\]\\x([A-Fa-f0-9]{2})/gm, "$1\\u{$2}"],
     [/[^\\]\\U([A-Fa-f0-9]{8})/gm, "$1\\u{$2}"],
     [/[^\\]\\u([A-Fa-f0-9]{4})/gm, "$1\\u{$2}"],
-    [/[^\\]\\N\{(.+?)\}/gm, function(m, a, p) {return a+"\\u{"+unimap[p.toUpperCase()]+"}";}],
+    [/[^\\]\\N\{(.+?)\}/gm, function(m, a, p) {return a+"\\u{"+unimap(p.toUpperCase())+"}";}],
     [/\\([^u])/gm, function(m, p1) {return `\\u{${p1.charCodeAt(0).toString(16)}}`;}],
     
     [/^\#\] +(.+)$/gm, "<div class='head1'>#] $1</div></br>"],
