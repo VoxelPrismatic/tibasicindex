@@ -12,6 +12,7 @@ function jump(elem) {
             thing.className = "lnk";
     find("JUMP_"+id).className = "lnk sel";
     uri("#"+id);
+    check_for_dupes();
 }
 function docs(elem) {
     if(elem.id != undefined)
