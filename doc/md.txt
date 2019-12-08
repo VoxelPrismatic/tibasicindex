@@ -19,7 +19,7 @@ _\_under\__
 
 
 Tip: You can throw a `\\` anywhere and it will literally print that character
-~~~
+-~-
 --headers--
 #] HEADER 1
 ~] HEADER 2
@@ -27,7 +27,7 @@ Tip: You can throw a `\\` anywhere and it will literally print that character
 -] HEADER 4
 $] HEADER 5
 %] HEADER 6
-~~~
+-~-
 --blocks--
 CODE---
 \CODE---
@@ -87,11 +87,11 @@ CODE---
 \{\{aio\}\}async def blah():
     pass
 ---
-~~~
+-~-
 --section-name--
 \-\-section-name\-\-
 ^ creates a section
-~~~
+-~-
 \~\~\~
 ^ creates a line
 
@@ -103,3 +103,4 @@ CODE---
 
 |::left align|::center align::|right align::|
 |cool|stuff|yknow?|
+</br>
