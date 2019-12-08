@@ -32,8 +32,15 @@ function highlight(phrase) {
     for(var l of ls) {
         l.ondblclick = function() {
             ls = find(".find");
-            for(var l of ls)
-                l.click()
+            var show = false;
+            if(!(this.className.includes("nofind"))
+                show = true;
+            for(var l of ls) {
+                if(show)
+                    l.className = "find";
+                else
+                    l.className = "find nofind";
+            }
         }
         l.onclick = function() {
             this.classList.toggle("nofind");
