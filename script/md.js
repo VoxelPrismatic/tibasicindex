@@ -209,7 +209,7 @@ function mark_page(st) {
         }
         
         //Table
-        if(line.replace(/^(\|.+)+\|$/gm, "") == "" && !intable) {
+        if(line.replace(/^(\|.+)+\|$/gm, "") == "" && !intable && line != "") {
             intable = true;
         }
         if((line == "---" || line == "" || line.replace(/^(\|.+)+\|$/gm, "") != "") && intable) {
@@ -224,7 +224,7 @@ function mark_page(st) {
         }
         
         // Ordered list
-        if(line.replace(/^\d+[\]\)\.\-] .*$/gm, "") == "" && !inol) {
+        if(line.replace(/^\d+[\]\)\.\-] .*$/gm, "") == "" && !inol && line != "") {
             inol = true;
         }
         if((line == "---" || line == "" || line.replace(/^\d+[\]\)\.\-] .*$/gm, "") != "") && inol) {
@@ -239,7 +239,7 @@ function mark_page(st) {
         }
         
        // Unordered list
-        if(line.replace(/^[\>\]\)\~\-\+] .*$/gm, "") == "" && !inul) {
+        if(line.replace(/^[\>\]\)\~\-\+] .*$/gm, "") == "" && !inul && line != "") {
             inul = true;
         }
         if((line == "---" || line == "" || line.replace(/^[\+\]\)\-] .*$/gm, "") != "") && inul) {
