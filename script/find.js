@@ -27,9 +27,21 @@ function findHtml_in(thing, ids) {
 function findHtml(ids) {
     return findHtml_in(document, ids);
 }
+function findVal_in(thing, ids) {
+    var ls = [];
+    var elm = find_in(thing, ids);
+    for(var e of elm)
+        ls.push(e.value);
+    if(ls.length == 1)
+        return ls[0]
+    return ls;
+}
+function findVal(ids) {
+    return findVal_in(document, ids);
+}
 function mkElm(typ, txt, params) {
     var str = "<"+typ;
-    for(var param of params.keys())
+    for(var param of params)
         str += ` ${param}="${params[param]}"`;
     str += `>${txt}</${typ}>`;
     return str;
