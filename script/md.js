@@ -162,7 +162,6 @@ function mark_page(st) {
     var table = "";
     var ol = "";
     var ul = "";
-    var code = "";
     var inpy = false;
     var intable = false;
     var inol = false;
@@ -194,16 +193,16 @@ function mark_page(st) {
         // Code block
         if(line == "CODE---" && !incode) {
             incode = true;
+            str += "<div class='code'>"
             continue;
         }
         if(line == "---" && incode) {
-            str += `<div class='code'>${code}</div>`;
+            str += "</div>";
             incode = false;
-            code = "";
             continue;
         }
         if(incode) {
-            code += mark(line) + "\n";
+            str += mark(line) + "\n";
             continue;
         }
         
