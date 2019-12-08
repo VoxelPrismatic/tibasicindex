@@ -19,10 +19,10 @@ function highlight(phrase) {
             uc = "0" + uc;
         phrase2 += `[\\u${lc}\\u${uc}]`; //Escape chars
     }
-    phrase2 = ">.*(" + phrase2 + ").*<"
+    phrase2 = ">.*?(" + phrase2 + ").*?<"
     var re = RegExp(phrase2, "gm")
     if(phrase.startsWith("/") && phrase.endsWith("/"))
-        re = RegExp(">.*("+phrase.slice(1, -1)+").*<", "gm")
+        re = RegExp(">.*?("+phrase.slice(1, -1)+").*?<", "gm")
     find("page").innerHTML = 
         mark_page(find("RAW_"+find("this-here").innerHTML).innerHTML).replace(re, `<span class="find">$1</span>`);
     uri("&"+phrase);
