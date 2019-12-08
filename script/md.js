@@ -1,11 +1,3 @@
-function unimap(str) {
-    var lines = find("unidata").innerHTML.split("\n");
-    for(var line of lines)
-        if(line.split("\u0009")[1] == str.toUpperCase())
-            return line.split("\u0009")[0];
-    return "<INVALID CHAR>";
-}
-
 function trim(str) {
     return str.replace(/<br>/gm, "\n").replace(/^([ \u200b\n]+)/, "").replace(/([ \u200b\n]+)$/, "").trim();
 }
@@ -279,5 +271,3 @@ function mark_page(st) {
     }
     return str.replace(/\n/gm, "<br>").slice(0, -4);
 }
-
-find("unidata").innerHTML = read("/prizmatic.docs/script/uni.txt");
