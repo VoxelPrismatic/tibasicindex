@@ -41,11 +41,9 @@
     color: #223333;
     &:hover {
         color: #ffffff;
-    }
-    &:focus {
+    } &:focus {
         color: #ffffff;
-    }
-    &.unhide {
+    } &.unhide {
         color: #ffffff;
     }
 } .md-com {
@@ -58,9 +56,18 @@
     &:hover {
         .section(#00ff88);
         .pad(0px);
-    }
-    &:focus {
+    } &:focus {
         .section(#00ff88);
         .pad(0px);
+    }
+} th {
+    .section(#0088ff);
+} tr {
+    border-width: 0px 2px 0px 2px;
+    border-color: #0088ff;
+    &:nth-child(even) {
+        background-color: #00ffff22;
+    } &:nth-child(odd) {
+        background-color: #0088ff22;
     }
 }
