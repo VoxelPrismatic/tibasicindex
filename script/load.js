@@ -1,47 +1,13 @@
-function md(txt) {
-    var md = "<div id='top'></div>";
-    var py = "";
-    var inpy = false;
-    for(var line of txt.split("\n")) {
-        if(line.search(/^--[\w\d_.-]+--$/gm) == 0) {
-            sid = line.slice(2, -2);
-            find("sect").innerHTML += `<div class="lnk" id="JUMP_${sid}" onclick="jump(this);">#${sid}</div>`;
-        }
-        if(line == "PY---") {
-            inpy = true;
-            continue;
-        }
-        else if(line == "---" && inpy) {
-            md += py_mark(py).replace(/\n/gm, "<br>");
-            py = "";
-            inpy = false;
-            continue;
-        }
-        else if(inpy) {
-            py += line + "\n";
-            continue;
-        }
-        line = mark(line);
-        if(line.endsWith("<br>"))
-            md += line;
-        else if(line.endsWith("§"))
-            md += line.slice(0, -1);
-        else if(line.endsWith("</br>"))
-            md += line.slice(0, -5);
-        else
-            md += line+"\n";
-    }
-    find("page").innerHTML = md.replace(/\n/gm, "<br>");
-}
-
 function load(fil) {
-    find("sect").innerHTML = `<div class="head textC" style="width: 100%;">[JUMP]</div>`
-    find("sect").innerHTML += `<div class="lnk" id="JUMP_top" onclick="jump(this);">#top</div>`;
+    var jumps = find("sect").children
+    for(var jump of jumps)
+        if(jump.id.startsWith("JUMP_"))
+            delete jump;
     find("page").innerHTML = "WAIT... [LOADING FILE]";
     find(fil).className = "lnk sel";
     txt = read(fil);
     find("cached-pages").innerHTML += `<div id="RAW_${fil}" class="invis">${txt}</div>`;
-    md(txt);
+    find("page").innerHTML = md(txt);
     find("loaded-pages").innerHTML += `<div id="DOCS_${fil}" class="invis">${find("page").innerHTML}</div>`;
     find("loaded-sects").innerHTML += `<div id="SECT_${fil}" class="invis">${find("sect").innerHTML}</div>`;
     find("this-here").innerHTML = fil;
