@@ -101,6 +101,7 @@ CODE---
    as much
     as you like!
 
+TABLE---
 |::left align|::center align::|right align::|
 |cool|stuff|yknow?|
 ---
