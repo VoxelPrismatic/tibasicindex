@@ -98,7 +98,7 @@ function mark_page(st) {
         }
         
         //Table
-        if(line.replace(/^(\|.*)+\|$/gm, "") == "") {
+        if(line.replace(/^(\|.+)+\|$/gm, "") == "") {
             table_lines += 1
             table_str.push([]);
             if(table_lines = 1) {
