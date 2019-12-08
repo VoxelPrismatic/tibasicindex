@@ -75,6 +75,10 @@ function searching() {
         highlight(find("searcher").value);
         find("searcher").value = "";
     }
+    if(find("finder").value != "") {
+        find_in_docs(find("finder").value);
+        find("finder").value = "";
+    }
     find("docs").click();
 }
 
