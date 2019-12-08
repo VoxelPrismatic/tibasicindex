@@ -1,8 +1,8 @@
 function load(fil) {
     var jumps = find("sect").children
-    for(var jump of jumps)
-        if(jump.id.startsWith("JUMP_"))
-            delete jump;
+    for(var jmp of jumps)
+        if(jmp.id.startsWith("JUMP_"))
+            jmp.delete();
     find("page").innerHTML = "WAIT... [LOADING FILE]";
     find(fil).className = "lnk sel";
     txt = read(fil);
