@@ -1,0 +1,105 @@
+Anyway here are the available styles:
+--simple--
+*\*ital\** 
+#\#bold\## 
+~\~strike\~~ 
+_\_under\__ 
+\\\*escape\* 
+`\`inline-code\`` 
+!!\!\!spoil\!\!!! 
+^\^super\^^ 
+%\%sub\%%
+--links--
+[\[text\]\(link\)](#)
+%[\%\[text\]\(source docs\)](md.txt#links)
+--comments--
+:: \:\: comments
+:: :: \:\: \:\: and comments
+:: :: \:\: \:\: but no more than two :(
+
+
+Tip: You can throw a `\\` anywhere and it will literally print that character
+~~~
+--headers--
+#] HEADER 1
+~] HEADER 2
++] HEADER 3
+-] HEADER 4
+$] HEADER 5
+%] HEADER 6
+~~~
+--blocks--
+CODE---
+\CODE---
+code block!
+PY---
+\PY---
+def cool_stuff():
+    return "Nice, Python formatting"
+---
+\---
+\---
+---
+WARN---
+^ don't write that, that's automatically placed
+\WARN---
+warnings
+\---
+---
+NOTE---
+^ don't write that, that's automatically placed
+\NOTE---
+note or notice
+\---
+---
+NEW---
+^ don't write that, that's automatically placed
+\NEW---
+new feature or smth
+\---
+---
+INFO---
+^ don't write that, that's automatically placed
+\INFO---
+informational information that should be very informative
+\---
+---
+EX---
+^ don't write that, that's automatically placed
+\EX---
+example
+\---
+---
+COMMENT---
+^ don't write that, that's automatically placed
+\COMMENT---
+ooh i'm commenting inside a comment...
+\---
+---
+
+{\{class\_name}}styled_word but this wont be styled, eg
+CODE---
+{{aio}}async def blah():
+    pass
+---
+Was actually
+CODE---
+\{\{aio\}\}async def blah():
+    pass
+---
+~~~
+--section-name--
+\-\-section-name\-\-
+^ creates a section
+~~~
+\~\~\~
+^ creates a line
+
+--others--
+ You can
+  indent
+   as much
+    as you like!
+
+|::left align|::center align::|right align::|
+|cool|stuff|yknow?|
