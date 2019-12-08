@@ -29,14 +29,12 @@ function docs(elem) {
         if(thing.className == "lnk sel")
             thing.className = "lnk";
     find(id).className = "lnk sel";
-    console.log(id);
     uri("?"+id.slice(20));
-    console.log(find("url"))
     jump("JUMP_top");
     name = fil.slice(19).replace("index.txt", "").toUpperCase();
     url = "https://github.com/VoxelPrismatic/prizmatic.docs/edit/master/doc/";
     find("src").innerHTML = 
-        `EDIT THIS PAGE - <a href="${url}${fil.split("doc/").slice(-1)[0]}">${name}</a>`;
+        `EDIT THIS PAGE - <a href="${url}${name.toLowerCase()}">${name}</a>`;
 }
 function finder(thing) {
     var ls = [];
