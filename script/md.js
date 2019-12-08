@@ -209,6 +209,8 @@ function mark_page(st) {
         }
         if((line == "" || line.replace(/^\d+[\]\)\.\-] .*$/gm, "") != "") && inol) {
             mk_ol(ol);
+            ol = "";
+            inol = false;
             continue;
         }
         if(inol) {
@@ -217,12 +219,14 @@ function mark_page(st) {
         }
         
        // Unordered list
-        if(line == "UL---" && !inol) {
+        if(line == "UL---" && !inul) {
             inul = true;
             continue;
         }
         if((line == "" || line.replace(/^[\>\]\)\~\-\+] .*$/gm, "") != "") && inul) {
             mk_ul(ul);
+            ul = "";
+            inul = false;
             continue;
         }
         if(inul) {
