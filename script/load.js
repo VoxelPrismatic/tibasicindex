@@ -7,7 +7,7 @@ function load(fil) {
     find(fil).className = "lnk sel";
     txt = read(fil);
     find("cached-pages").innerHTML += `<div id="RAW_${fil}" class="invis">${txt}</div>`;
-    find("page").innerHTML = mark_page(txt);
+    find("page").innerHTML = "<div id='top'></div>" + mark_page(txt);
     find("loaded-pages").innerHTML += `<div id="DOCS_${fil}" class="invis">${find("page").innerHTML}</div>`;
     find("loaded-sects").innerHTML += `<div id="SECT_${fil}" class="invis">${find("sect").innerHTML}</div>`;
     find("this-here").innerHTML = fil;
