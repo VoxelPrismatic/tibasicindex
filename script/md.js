@@ -191,7 +191,7 @@ function mark_page(st) {
             intable = true;
             continue;
         }
-        if((line == "---" || line = "") && intable) {
+        if((line == "---" || line == "") && intable) {
             str += mk_table(table).replace(/\n/gm, "<br>");
             table = "";
             intable = false;
