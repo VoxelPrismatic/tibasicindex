@@ -126,15 +126,18 @@ function find_in_docs(phrase) {
         re = RegExp(phrase.slice(1, -1), "gm")
     for(var dir of dirs) {
         try {
-            if(find("RAW_").innerHTML.search(re) == -1)
+            if(find("RAW_"+dir).innerHTML.search(re) == -1)
                 find(dir).style.display = "none";
             else
                 find(dir).style.display = "block";
         } catch(err) {
             var this_here = find("this-here").innerHTML;
-            docs(dir);
+            try {
+                docs(dir);
+            } catch(err) {
+            }
             docs(this_here);
-            if(find("RAW_").innerHTML.search(re) == -1)
+            if(find("RAW_"+dir).innerHTML.search(re) == -1)
                 find(dir).style.display = "none";
             else
                 find(dir).style.display = "block";
