@@ -79,10 +79,10 @@
         <div id="unidata" class="invis"></div>
         
         <script type="text/javascript">
-            var lines = read("/prizmatic.docs/script/uni.txt");
+            var lines = read("/prizmatic.docs/script/uni.txt").split("\n");
             var uni = {}
             for(var line of lines)
-                uni[line.split("\u0009")[1].trim().toUpperCase()] = line.split("\u0009")[0].trim().toUpperCase();
+                uni[line.split("\t")[1].trim().toUpperCase()] = line.split("\t")[0].trim().toUpperCase();
         </script>
         <script type="text/javascript" src="script/run.js"></script>
     </body>
