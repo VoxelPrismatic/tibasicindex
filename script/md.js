@@ -70,7 +70,7 @@ function mark_page(st) {
     var ul = [];
     var ol = [];
     var table_str = [];
-    var str = ""
+    var str = "<div id='top'></div>"
     var table_aligns = [];
     var py = "";
     var inpy = false;
