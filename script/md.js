@@ -23,7 +23,7 @@ var line_regex = [
     [/e\[(.+?)]<(.+?)>/gm, "<a href='mailto:$2'>$1</a>"],
     [/p\[(.+?)]<(.+?)>/gm, "<a href='tel:$2'>$1</a>"],
     [/<<(.+?)>>/gm, "<a href='$1'>$1</a>"],
-    [/\?\[(.+?)\]\<(.+?)\>/gm, `<button class="btn" id="$2" onclick="maybeload(this.id)">$1</button>`],
+    [/\?\[(.+?)\]\<(.+?)\>/gm, `<button class="btn" id="?$2" onclick="maybeload(this.id)">$1</button>`],
     
     [/^\#(.+?)\#/gm, "<b>$1</b>"],
     [/^\*(.+?)\*/gm, "<i>$1</i>"],
