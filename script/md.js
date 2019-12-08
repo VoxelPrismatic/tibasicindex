@@ -50,7 +50,7 @@ var line_regex = [
     [/^COMMENT---$/gm, "<div class='comblock'><b>OTHER INFO ---</b><br>"],
     [/^ *(\w+) *-{3,}/gm, "<b>$1 ---</b><br>"],
     [/^---$/gm, "</div></br>"],
-    [/^\~{3,}$/gm, "<hr></br>"],
+    [/^-~-$/gm, "<hr></br>"],
     
     [/\{\{(\w+?)\}\}([\w\d]+?) /gm, "<span class='$1'>$2 </span>"],
     [/^--([\w\d_.-]+)--$/gm, "<div id='$1'></div></br>"],
