@@ -6,4 +6,3 @@ function getuni() {
     return uni;
 }
 var unimap = getuni();
-console.log(unimap);
