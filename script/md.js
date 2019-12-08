@@ -1,3 +1,5 @@
+var unimap = getuni();
+
 function trim(str) {
     return str.replace(/<br>/gm, "\n").replace(/^([ \u200b\n]+)/, "").replace(/([ \u200b\n]+)$/, "").trim();
 }
