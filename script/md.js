@@ -131,7 +131,7 @@ function mk_table(st) {
 function mk_ol(st) {
     var str = "";
     var ol = [];
-    for(var line of st.split("\n"))
+    for(var line of st.split("\n").slice(0, -1))
         ol.push(line.replace(/^\d+[\]\)\.\-] (.*)$/gm, "$1").trim());
     str += "<ol>";
     for(var li of ol)
@@ -144,7 +144,7 @@ function mk_ol(st) {
 function mk_ul(st) {
     var str = "";
     var ul = [];
-    for(var line of st.split("\n"))
+    for(var line of st.split("\n").slice(0, -1))
         ul.push(line.slice(3).trim());
     str += "<ul>";
     for(var li of ul)
