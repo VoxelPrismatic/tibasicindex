@@ -5,7 +5,7 @@ function unimap(str) {
     for(var line of lines)
         if(line.split("\u0009")[1] == str.toUpperCase())
             return line.split("\u0009")[0];
-    return str;
+    return "<INVALID CHAR>";
 }
 
 function trim(str) {
