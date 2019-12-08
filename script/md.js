@@ -50,7 +50,6 @@ var line_regex = [
     [/^NEW---$/gm, "<div class='new'><b>NEW ---</b><br>"],
     [/^INFO---$/gm, "<div class='info'><b>INFO ---</b><br>"],
     [/^EX---$/gm, "<div class='exc'><b>EXAMPLES ---</b><br>"],
-    [/^CODE---$/gm, "<div class='code'></br>"],
     [/^COMMENT---$/gm, "<div class='comblock'><b>OTHER INFO ---</b><br>"],
     [/^ *(\w+) *-{3,}/gm, "<b>$1 ---</b><br>"],
     [/^---$/gm, "</div></br>"],
@@ -163,10 +162,12 @@ function mark_page(st) {
     var table = "";
     var ol = "";
     var ul = "";
+    var code = "";
     var inpy = false;
     var intable = false;
     var inol = false;
     var inul = false;
+    var incode = false;
     for(var line of st.split("\n")) {
         // Section
         if(line.search(/^--[\w\d_.-]+--$/gm) == 0) {
@@ -187,6 +188,20 @@ function mark_page(st) {
         }
         if(inpy) {
             py += line + "\n";
+            continue;
+        }
+        
+        if(line == "CODE---" && !incode) {
+            incode = true;
+            continue;
+        }
+        if(line == "---" && incode) {
+            str += code;
+            incode = false;
+            continue;
+        }
+        if(incode) {
+            code += line + "\n";
             continue;
         }
         
