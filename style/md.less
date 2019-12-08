@@ -1,6 +1,7 @@
 @import "fn";
 @import (reference) "base";
 
+@inv: #00000000
 .head1 {
     .header(#00ffff);
 } .head2 {
@@ -71,6 +72,14 @@
 } td, tr {
     .pad(5px);
     border-width: 2px;
-    .border-colors(#00000000, #0088ff, #00000000, #0088ff);
+    .border-colors(@inv, #0088ff, @inv, @inv);
     border-style: solid;
+} ul, ol {
+    .border-colors(@inv, @inv, @inv, #ff0088);
+    .bg(#ff008844);
+    border-width: 2px;
+    border-style: solid;
+    .pad(5px);
+} ul {
+    list-style-type: "> "; 
 }
