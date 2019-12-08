@@ -8,6 +8,7 @@ var line_regex = [
     [/\\(.)/gm, function(m, p1) {return `\\u{${p1.charCodeAt(0).toString(16)}}`;}],
     [/\\U([A-Fa-f0-9]{16})/gm, "\\u{$1}"],
     [/\\u([A-Fa-f0-9]{4})/gm, "\\u{$1}"],
+    [/\\N\{(.+?)\}/gm, function(m, p) {return unimap[p.toUpperCase()];}],
     
     [/^\#\] +(.+)$/gm, "<div class='head1'>#] $1</div></br>"],
     [/^\~\] +(.+)$/gm, "<div class='head2'>~] $1</div></br>"],
