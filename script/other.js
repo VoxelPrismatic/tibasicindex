@@ -92,7 +92,7 @@ function filter_jump(thing) {
     for(var page of pages) {
         if(!(page.id.startsWith("JUMP_")))
             continue;
-        if(thing == "" || page.id.slice(20, -4).search(thing) != -1)
+        if(thing == "" || page.id.slice(5).search(thing) != -1)
             page.style.display = "block";
         else
             page.style.display = "none";
