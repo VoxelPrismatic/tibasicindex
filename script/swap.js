@@ -24,8 +24,8 @@ function docs(elem) {
         if(jmp.id.startsWith("JUMP_"))
             jmp.remove();
     try {
-        find("page").innerHTML = find("DOCS_"+id).innerHTML;
-        find("sect").innerHTML = find("SECT_"+id).innerHTML;
+        find("page").innerHTML = findHtml("DOCS_"+id);
+        find("sect").innerHTML = findHtml("SECT_"+id);
     } catch(err) {
         load(id);
     }
@@ -50,7 +50,7 @@ function finder(thing) {
             if(find("RAW_"+file).innerHTML.includes(thing))
                 ls.push(file);
         } catch(err) {
-            txt = mayberead(file)
+            var txt = mayberead(file);
             find("cached-pages").innerHTML += `<div id="RAW_${file}" class="invis">${txt}</div>`
             if(txt.includes(thing))
                 ls.push(file);
