@@ -102,9 +102,10 @@ function filter_jump(thing) {
 function unimap(str) {
     var lines = find("unidata").innerHTML.split("\n");
     for(var line of lines)
+        console.log(line);
         if(line.split("\u0009")[1] == str.toUpperCase())
             return line.split("\u0009")[0];
-    return "<INVALID CHAR>";
+    return "\\<INVALID CHAR\\>";
 }
 
 find("unidata").innerHTML = read("/prizmatic.docs/script/uni.txt");
