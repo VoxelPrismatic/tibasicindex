@@ -173,3 +173,15 @@ function find_in_docs(phrase) {
     highlight(phrase);
     find("nav").click();
 }
+
+function check_for_dupes() {
+    var btns = find("sect").children;
+    var ls = [];
+    for(var btn of btns) {
+        if(ls.includes(btn.id)) {
+            delete btn;
+        } else {
+            ls.push(btn.id);
+        }
+    }
+}
