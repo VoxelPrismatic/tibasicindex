@@ -95,21 +95,51 @@ CODE---
 \~\~\~
 ^ creates a line
 
---others--
+--indents--
  You can
   indent
    as much
     as you like!
----tables---
+--tables--
 TABLE---
-|::left align|::center align::|right align::|
-|cool|stuff|yknow?|
-|i'd|say|so|
+|:left align|:center align:|right align:|
+| cool      | stuff        | yknow?     |
+| i'd       | say          | so         |
 ---
 CODE---
 \TABLE---
 |:left align|:center align:|right align:|
-|cool|stuff|yknow?|
-|i'd|say|so|
+| cool      | stuff        | yknow?     |
+| i'd       | say          | so         |
 \---
 ---
+--lists--
+OL---
+1. hi
+2] bye
+3) ok
+---
+CODE---
+\OL---
+1. hi
+2] bye
+3) ok
+\---
+---
+UL---
+> item 1
+] item 2
+) item 3
+- item 4
++ item 5
+---
+CODE---
+\UL---
+> item 1
+] item 2
+) item 3
+- item 4
++ item 5
+\---
+---
+The headers `UL---`, `OL---` and `TABLE---` are a result of a regex limitation at the moment, but it at the very least works at the moment
