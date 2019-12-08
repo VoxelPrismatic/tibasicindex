@@ -40,4 +40,4 @@ You can find the repo for the actual module [here](https://github.com/voxelprism
 
 --md--
 #] HOW THIS FLAVOR OF MARKDOWN WORKS
-See %[the markdown docs](md.txt) to see how everything here works
+See ?[the markdown docs]<md.txt> to see how everything here works
