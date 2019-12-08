@@ -65,39 +65,12 @@ function mark(st) {
     return st;
 }
 
-function mark_page(st) {
+function mk_table(st) {
     var table_lines = -1;
-    var ul = [];
-    var ol = [];
-    var table_str = [];
-    var str = "<div id='top'></div>"
     var table_aligns = [];
-    var py = "";
-    var inpy = false;
+    var table_str = [];
+    var str = "";
     for(var line of st.split("\n")) {
-        // Section
-        if(line.search(/^--[\w\d_.-]+--$/gm) == 0) {
-            sid = line.slice(2, -2);
-            find("sect").innerHTML += `<div class="lnk" id="JUMP_${sid}" onclick="jump(this);">#${sid}</div>`;
-        }
-        
-        // Python formatting
-        if(line == "PY---" && !inpy) {
-            inpy = true;
-            continue;
-        }
-        if(line == "---" && inpy) {
-            str += py_mark(py).replace(/\n/gm, "<br>");
-            py = "";
-            inpy = false;
-            continue;
-        }
-        if(inpy) {
-            py += line + "\n";
-            continue;
-        }
-        
-        //Table
         if(line != "" && line.replace(/^(\|.+)+\|$/gm, "") == "") {
             table_lines += 1
             table_str.push([]);
@@ -135,55 +108,128 @@ function mark_page(st) {
             }
             continue;
         }
-        if(table_str.length != 0) {
-            var row_num = -1;
-            str += "<table>";
-            for(var row of table_str) {
-                row_num += 1;
-                str += "<tr>";
-                var col_num = -1;
-                for(var col of row) {
-                    col_num += 1;
-                    if(row_num == 0)
-                        str += `<th style="text-align: ${table_aligns[col_num]}">${mark(col)}</th>`;
-                    else
-                        str += `<td style="text-align: ${table_aligns[col_num]}">${mark(col)}</td>`;
-                }
-                str += "</tr>";
-            }
-            str += "</table>";
-            table_aligns = [];
-            table_str = [];
+    }
+    var row_num = -1; 
+    str += "<table>";
+    for(var row of table_str) {
+        row_num += 1;
+        str += "<tr>";
+        var col_num = -1;
+        for(var col of row) {
+            col_num += 1;
+            if(row_num == 0)
+                str += `<th style="text-align: ${table_aligns[col_num]}">${mark_page(col)}</th>`;
+            else
+                str += `<td style="text-align: ${table_aligns[col_num]}">${mark_page(col)}</td>`;
+        }
+        str += "</tr>";
+    }
+    str += "</table>";
+    return str;
+}
+
+function mk_ol(st) {
+    var str = "";
+    var ol = [];
+    for(var line of st.split("\n"))
+        ol.push(line.replace(/^\d+[\]\)\.\-] (.*)$/gm, "$1").trim());
+    str += "<ol>";
+    for(var li of ol)
+        str += `<li>${mark_page(li)}</li>`;
+    str += "</ol>";
+    return str;
+}
+
+
+function mk_ul(st) {
+    var str = "";
+    var ul = [];
+    for(var line of st.split("\n"))
+        ul.push(line.slice(3).trim());
+    str += "<ul>";
+    for(var li of ul)
+        str += `<li>${mark_page(li)}</li>`;
+    str += "</ul>";
+    return str;
+}
+
+function mark_page(st) {
+    var str = "<div id='top'></div>"
+    var py = "";
+    var table = "";
+    var ol = "";
+    var ul = "";
+    var inpy = false;
+    var intable = false;
+    var inol = false;
+    var inul = false;
+    for(var line of st.split("\n")) {
+        // Section
+        if(line.search(/^--[\w\d_.-]+--$/gm) == 0) {
+            sid = line.slice(2, -2);
+            find("sect").innerHTML += `<div class="lnk" id="JUMP_${sid}" onclick="jump(this);">#${sid}</div>`;
+        }
+        
+        // Python formatting
+        if(line == "PY---" && !inpy) {
+            inpy = true;
+            continue;
+        }
+        if(line == "---" && inpy) {
+            str += py_mark(py).replace(/\n/gm, "<br>");
+            py = "";
+            inpy = false;
+            continue;
+        }
+        if(inpy) {
+            py += line + "\n";
+            continue;
+        }
+        
+        //Table
+        if(line == "TABLE---" && !intable) {
+            intable = true;
+            continue;
+        }
+        if((line == "---" || line = "") && intable) {
+            str += mk_table(table).replace(/\n/gm, "<br>");
+            table = "";
+            intable = false;
+            continue;
+        }
+        if(intable) {
+            table += line + "\n";
             continue;
         }
         
         // Ordered list
-        if(line != "" && line.replace(/^\d+[\]\)\.\-] .*$/gm, "") == "") {
-            ol.push(line.replace(/^\d+[\]\)\.\-] (.*)$/gm, "$1").trim());
+        if(line == "OL---" && !inol) {
+            inol = true;
             continue;
         }
-        if(ol.length != 0) {
-            str += "<ol>";
-            for(var li of ol)
-                str += `<li>${mark(li)}</li>`;
-            str += "</ol>";
-            ol = [];
+        if((line == "" || line.replace(/^\d+[\]\)\.\-] .*$/gm, "") != "") && inol) {
+            mk_ol(ol);
+            continue;
+        }
+        if(inol) {
+            ol += line + "\n";
             continue;
         }
         
-        // Unordered list
-        if(line != "" && line.replace(/^ [\>\-\+\~\]\)] .*$/gm, "") == "") {
-            ul.push(line.slice(3).trim());
+       // Unordered list
+        if(line == "UL---" && !inol) {
+            inul = true;
             continue;
         }
-        if(ul.length != 0) {
-            str += "<ul>";
-            for(var li of ul)
-                str += `<li>${mark(li)}</li>`;
-            str += "</ul>";
-            ul = [];
+        if((line == "" || line.replace(/^[\>\]\)\~\-\+] .*$/gm, "") != "") && inul) {
+            mk_ul(ul);
             continue;
         }
+        if(inul) {
+            ul += line + "\n";
+            continue;
+        }
+        
         line = mark(line);
         if(line.endsWith("<br>"))
             str += line;
