@@ -157,6 +157,8 @@ function mk_ul(st) {
 }
 
 function mark_page(st) {
+    if(!(st.endsWith("\n")))
+       st += "\n";
     var str = "";
     var py = "";
     var table = "";
@@ -240,7 +242,7 @@ function mark_page(st) {
         if(line.replace(/^[\>\]\)\~\-\+] .*$/gm, "") == "" && !inul) {
             inul = true;
         }
-        if((line == "---" || line == "" || line.replace(/^[\>\]\)\~\-\+] .*$/gm, "") != "") && inul) {
+        if((line == "---" || line == "" || line.replace(/^[\+\]\)\-] .*$/gm, "") != "") && inul) {
             str += mk_ul(ul);
             ul = "";
             inul = false;
