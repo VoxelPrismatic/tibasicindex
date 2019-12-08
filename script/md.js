@@ -191,7 +191,7 @@ function mark_page(st) {
             intable = true;
             continue;
         }
-        if((line == "---" || line == "") && intable) {
+        if((line == "---" || line == "" || line.replace(/^(\|.+)+\|$/gm, "") != "") && intable) {
             str += mk_table(table).replace(/\n/gm, "<br>");
             table = "";
             intable = false;
@@ -207,8 +207,8 @@ function mark_page(st) {
             inol = true;
             continue;
         }
-        if((line == "" || line.replace(/^\d+[\]\)\.\-] .*$/gm, "") != "") && inol) {
-            mk_ol(ol);
+        if((line == "---" || line == "" || line.replace(/^\d+[\]\)\.\-] .*$/gm, "") != "") && inol) {
+            str += mk_ol(ol);
             ol = "";
             inol = false;
             continue;
@@ -223,8 +223,8 @@ function mark_page(st) {
             inul = true;
             continue;
         }
-        if((line == "" || line.replace(/^[\>\]\)\~\-\+] .*$/gm, "") != "") && inul) {
-            mk_ul(ul);
+        if((line == "---" || line == "" || line.replace(/^[\>\]\)\~\-\+] .*$/gm, "") != "") && inul) {
+            str += mk_ul(ul);
             ul = "";
             inul = false;
             continue;
