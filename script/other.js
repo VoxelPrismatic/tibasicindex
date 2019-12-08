@@ -27,14 +27,11 @@ function highlight(phrase) {
         mark_page(find("RAW_"+find("this-here").innerHTML).innerHTML.replace(re, `<span class="find">$1</span>`));
     uri("&"+phrase);
     find("docs").click();
-    find("highligher").innerHTML = phrase
     ls = find(".find");
     for(var l of ls) {
         l.ondblclick = function() {
             ls = find(".find");
-            var show = false;
-            if(!(this.className.includes("nofind"))
-                show = true;
+            var show = this.className.includes("nofind")
             for(var l of ls) {
                 if(show)
                     l.className = "find";
@@ -46,6 +43,7 @@ function highlight(phrase) {
             this.classList.toggle("nofind");
         }
     }
+    find("highligher").innerHTML = phrase
 }
 function uri(thing) {
     try {
