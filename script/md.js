@@ -5,9 +5,10 @@ function trim(str) {
 var line_regex = [
     [/^ /gm, "\u200b \u200b"],
     
+    [/\\x([A-Fa-f0-9]{2})/gm, "\\u{$1}"],
     [/\\U([A-Fa-f0-9]{16})/gm, "\\u{$1}"],
     [/\\u([A-Fa-f0-9]{4})/gm, "\\u{$1}"],
-    [/\\N\{(.+?)\}/gm, function(m, p) {return "\u{"+unimap[p.toUpperCase()]+"}";}],
+    [/\\N\{(.+?)\}/gm, function(m, p) {return "\\u{"+unimap[p.toUpperCase()]+"}";}],
     [/\\(.)/gm, function(m, p1) {return `\\u{${p1.charCodeAt(0).toString(16)}}`;}],
     
     [/^\#\] +(.+)$/gm, "<div class='head1'>#] $1</div></br>"],
