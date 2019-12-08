@@ -39,10 +39,14 @@ function findVal_in(thing, ids) {
 function findVal(ids) {
     return findVal_in(document, ids);
 }
+
 function mkElm(typ, txt, params) {
     var str = "<"+typ;
-    for(var param of params)
-        str += ` ${param}="${params[param]}"`;
+    var map = {};
+    for(var key of params.constructor["entries"](params))
+        map[key[0]] = key[1];
+    for(var param of map.entries())
+        str += ` ${param}="${map[param]}"`;
     str += `>${txt}</${typ}>`;
     return str;
 }
