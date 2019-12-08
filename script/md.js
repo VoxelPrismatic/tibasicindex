@@ -203,7 +203,7 @@ function mark_page(st) {
             continue;
         }
         if(incode) {
-            code += line + "\n";
+            code += mark(line) + "\n";
             continue;
         }
         
