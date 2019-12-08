@@ -12,7 +12,7 @@ function grab_dirs(lvl) {
             } else {
                 nam = smol.slice(15);
                 fil = lvl+"/"+line;
-                find("nav").innerHTML += makeElem("div", smol, {id:fil, onclick:"docs(this);", class: "lnk"})
+                find("nav").innerHTML += mkElm("div", smol, {id:fil, onclick:"docs(this);", class: "lnk"})
             }
         } else if(line != "") {
             try {
