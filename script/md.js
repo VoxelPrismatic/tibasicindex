@@ -191,13 +191,15 @@ function mark_page(st) {
             continue;
         }
         
+        // Code block
         if(line == "CODE---" && !incode) {
             incode = true;
             continue;
         }
         if(line == "---" && incode) {
-            str += code;
+            str += `<div class='code'>${code}</div>`;
             incode = false;
+            code = "";
             continue;
         }
         if(incode) {
