@@ -114,7 +114,7 @@ CODE---
 1. hi
 2] bye
 3) ok
-
+---
 CODE---
 1. hi
 2] bye
@@ -124,12 +124,10 @@ CODE---
 ) item 2
 - item 3
 + item 4
-~ item 5
-
+---
 CODE---
 ] item 1
 ) item 2
 - item 3
 + item 4
-~ item 5
 ---
