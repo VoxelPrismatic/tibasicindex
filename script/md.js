@@ -191,9 +191,8 @@ function mark_page(st) {
         }
         
         //Table
-        if(line == "TABLE---" && !intable) {
+        if(line.replace(/^(\|.+)+\|$/gm, "") == "" && !intable) {
             intable = true;
-            continue;
         }
         if((line == "---" || line == "" || line.replace(/^(\|.+)+\|$/gm, "") != "") && intable) {
             str += mk_table(table).replace(/\n/gm, "<br>");
@@ -207,7 +206,7 @@ function mark_page(st) {
         }
         
         // Ordered list
-        if(line == "OL---" && !inol) {
+        if(line.replace(/^\d+[\]\)\.\-] .*$/gm, "") == "" && !inol) {
             inol = true;
             continue;
         }
@@ -223,7 +222,7 @@ function mark_page(st) {
         }
         
        // Unordered list
-        if(line == "UL---" && !inul) {
+        if(line.replace(/^[\>\]\)\~\-\+] .*$/gm, "") == "" && !inul) {
             inul = true;
             continue;
         }
