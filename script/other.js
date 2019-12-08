@@ -28,6 +28,17 @@ function highlight(phrase) {
     uri("&"+phrase);
     find("docs").click();
     find("highligher").innerHTML = phrase
+    ls = find(".find");
+    for(var l of ls) {
+        l.ondblclick = function() {
+            ls = find(".find");
+            for(var l of ls)
+                l.click()
+        }
+        l.onclick = function(this) {
+            this.classList.toggle("nofind");
+        }
+    }
 }
 function uri(thing) {
     try {
