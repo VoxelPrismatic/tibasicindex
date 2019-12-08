@@ -145,9 +145,9 @@ function mark_page(st) {
                 for(var col of row) {
                     col_num += 1;
                     if(row_num == 0)
-                        str += `<th style="text-align: ${table_aligns[col_num]}>${mark(col)}</th>`;
+                        str += `<th style="text-align: ${table_aligns[col_num]}">${mark(col)}</th>`;
                     else
-                        str += `<td style="text-align: ${table_aligns[col_num]}>${mark(col)}</td>`;
+                        str += `<td style="text-align: ${table_aligns[col_num]}">${mark(col)}</td>`;
                 }
                 str += "</tr>";
             }
