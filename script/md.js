@@ -75,7 +75,7 @@ function mk_table(st) {
             table_lines += 1
             table_str.push([]);
             if(table_lines == 0) {
-                for(var header of line.split("|")) {
+                for(var header of line.split("|").slice(1, -1)) {
                     header = header.trim();
                     if(header.startsWith(":") && header.endsWith(":")) {
                         table_str[0].push(header.slice(1, -1));
