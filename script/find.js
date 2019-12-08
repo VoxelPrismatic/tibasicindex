@@ -42,11 +42,8 @@ function findVal(ids) {
 
 function mkElm(typ, txt, params) {
     var str = "<"+typ;
-    var map = {};
     for(var key of params.constructor["entries"](params))
-        map[key[0]] = key[1];
-    for(var param of map.entries())
-        str += ` ${param}="${map[param]}"`;
+        str += ` ${key[0]}="${key[1]}"`;
     str += `>${txt}</${typ}>`;
     return str;
 }
