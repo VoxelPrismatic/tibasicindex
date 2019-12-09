@@ -24,12 +24,37 @@ function highlight(phrase) {
     var re = RegExp(phrase2, "gm")
     if(phrase.startsWith("/") && phrase.endsWith("/"))
         re = RegExp("("+phrase.slice(1, -1)+")", "gm")
-    find("page").innerHTML = 
-        mark_page(find("RAW_"+find("this-here").innerHTML).innerHTML);
-    elms = findHtml("page");
+    find("page").innerHTML = findHtml("DOCS_" + findHtml("this-here"));
+    var elms = findHtml("page").children;
+    var intag = false;
     for(var elm of elms) {
         elm.innerHTML = elm.innerHTML.replace(re, `<span class="find">$1</span>`);
     }
+    var st = findHtml("page");
+    var str = [];
+    var thistag = "";
+    var thistext = ""
+    for(var chr of st) {
+        if(chr == ">") {
+            intag = false;
+            str.push("<" + thistag + ">");
+            thistag = "";
+            continue;
+        }
+        if(chr == "<") {
+            intag = true;
+            str.push(thistext.replace(re, `<span class="find">$1</span>`));
+            thistext = "";
+        }
+        if(intag) {
+            thistag += chr;
+        }
+        else {
+            thistext += chr;
+        }
+    }
+    find("page").innerHTML = str.join("");
+    
     uri("&"+phrase);
     find("docs").click();
     ls = find(".find");
