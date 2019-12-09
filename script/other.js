@@ -14,9 +14,6 @@ function highlight(phrase) {
     if(phrase.lengh <= 2)
         return;
     var phrase2 = "";
-    phrase = phrase.replace(/</gm, "\\&lt;");
-    phrase = phrase.replace(/>/gm, "\\&gt;");
-    phrase = phrase.replace(/\&/gm, "\\&amp;");
     var jumps = find("sect").children;
     for(var l of phrase.split('')) {
         var lc = l.toLowerCase().charCodeAt(0).toString(16);
