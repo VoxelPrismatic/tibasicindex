@@ -31,31 +31,10 @@ function highlight(phrase) {
     var re = RegExp(phrase2, "gm")
     if(phrase.startsWith("/") && phrase.endsWith("/"))
         re = RegExp("("+phrase.slice(1, -1)+")", "gm")
-    var intag = false;
-    var st = findHtml("page");
-    var str = [];
-    var thistag = "";
-    var thistext = "";
-    for(var chr of st) {
-        if(chr == ">") {
-            intag = false;
-            str.push("<" + thistag + ">");
-            thistag = "";
-            continue;
-        }
-        if(chr == "<") {
-            intag = true;
-            str.push(thistext.replace(re, `<span class="find">$1</span>`));
-            thistext = "";
-        }
-        if(intag) {
-            thistag += chr;
-        }
-        else {
-            thistext += chr;
-        }
-    }
-    find("page").innerHTML = str.join("");
+    
+    var elms = find("page").children;
+    for(var elm of elms)
+        elm.innerHTML = elm.innerHTML.replace(re, "<span class='find'>$1</span>");
     
     uri("&"+phrase);
     find("docs").click();
