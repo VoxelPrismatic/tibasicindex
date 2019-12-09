@@ -18,8 +18,12 @@ function find(ids) {
 function findHtml_in(thing, ids) {
     var ls = [];
     var elm = find_in(thing, ids);
-    for(var e of elm)
-        ls.push(e.innerHTML);
+    try {
+        for(var e of elm)
+            ls.push(e.innerHTML);
+    } catch(err) {
+        return e.innerHTML; // Not iterable
+    }
     if(ls.length == 1)
         return ls[0]
     return ls;
@@ -27,13 +31,29 @@ function findHtml_in(thing, ids) {
 function findHtml(ids) {
     return findHtml_in(document, ids);
 }
+function findOHtml_in(thing, ids) {
+    var ls = [];
+    var elm = find_in(thing, ids);
+    try {
+        for(var e of elm)
+            ls.push(e.outerHTML);
+    } catch(err) {
+        return e.outerHTML; // Not iterable
+    }
+    return ls;
+}
+function findOHtml(ids) {
+    return findOHtml_in(document, ids);
+}
 function findVal_in(thing, ids) {
     var ls = [];
     var elm = find_in(thing, ids);
-    for(var e of elm)
-        ls.push(e.value);
-    if(ls.length == 1)
-        return ls[0]
+    try {
+        for(var e of elm)
+            ls.push(e.value);
+    } catch(err) {
+        return e.value; // Not iterable
+    }
     return ls;
 }
 function findVal(ids) {
