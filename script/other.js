@@ -25,15 +25,11 @@ function highlight(phrase) {
     if(phrase.startsWith("/") && phrase.endsWith("/"))
         re = RegExp("("+phrase.slice(1, -1)+")", "gm")
     find("page").innerHTML = findHtml("DOCS_" + findHtml("this-here"));
-    var elms = findHtml("page").children;
     var intag = false;
-    for(var elm of elms) {
-        elm.innerHTML = elm.innerHTML.replace(re, `<span class="find">$1</span>`);
-    }
     var st = findHtml("page");
     var str = [];
     var thistag = "";
-    var thistext = ""
+    var thistext = "";
     for(var chr of st) {
         if(chr == ">") {
             intag = false;
