@@ -213,20 +213,3 @@ function check_for_dupes() {
         }
     }
 }
-function get_elms(elem = find("page")) {
-    var elms = [];
-    var chld = elem.children;
-    var html = elem.innerHTML
-    var oldc = 0;
-    var len = 0;
-    for(var c of chld) {
-        elms.push(html.slice(len).split(c.outerHTML)[0]);
-        elms.push(c.outerHTML.slice(c.outerHTML.indexOf(">")));
-        for(var e of escape(c)) {
-            elms.push(e)
-        }
-        elms.push(c.outerHTML.slice(c.outerHTML.lastIndexOf("<")));
-        len += c.outerHTML.length;
-    }
-    return elms;
-}
