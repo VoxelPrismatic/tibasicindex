@@ -11,14 +11,6 @@ function load(fil) {
     find("cached-pages").innerHTML += mkElm("div", txt, {id: "RAW_"+fil, class: "invis"});
     find("page").innerHTML = mark_page(txt);
     var elms = get_elms();
-    for(var i = 0; i < elms.length; i++) {
-        if(elms[i].startsWith("<"))
-            continue;
-        elms[i] = elms[i].replace(/\&/gm, "&amp;");
-        elms[i] = elms[i].replace(/>/gm, "&gt;");
-        elms[i] = elms[i].replace(/</gm, "&lt;");
-        elms[i] = elms[i].replace(/\&lt;br\&gt;/gm, "<br>");
-    }
     find("page").innerHTML = elms.join("")
     // Section
     for(var line of txt.split("\n")) {
