@@ -11,8 +11,10 @@ function btn(elem, id) {
 function highlight(phrase) {
     phrase = phrase.trim();
     find("page").innerHTML = mark_page(findHtml("RAW_" + findHtml("this-here")));
-    if(phrase.lengh <= 2)
+    if(phrase.lengh <= 2) {
         return;
+        throw "Thrown to stop highlighting";
+    }
     var phrase2 = "";
     var jumps = find("sect").children;
     for(var l of phrase.split('')) {
@@ -25,8 +27,10 @@ function highlight(phrase) {
         phrase2 += `[\\u${lc}\\u${uc}]`; //Escape chars
     }
     phrase2 = "(" + phrase2 + ")"
-    if(phrase2 == "()")
+    if(phrase2 == "()") {
         return;
+        throw "Thrown to stop highlighting";
+    }
     var re = RegExp(phrase2, "gm")
     if(phrase.startsWith("/") && phrase.endsWith("/"))
         re = RegExp("("+phrase.slice(1, -1)+")", "gm")
