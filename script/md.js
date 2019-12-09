@@ -66,6 +66,11 @@ var line_regex = [
     [/\\ *$/gm, "</br>"], //New line escape
     
     [/\\u\{([a-fA-F0-9]+)\}/gm, function(m, p1) {return String.fromCharCode("0x"+p1);}],
+    [/<(\/?(div|a|b|span|br|sub|sup|s|u|i|button|hr).*?)>/gm, "\u200a$1\u200a"],
+    [/\&/gm, "&amp;"],
+    [/\>/gm, "&gt;"],
+    [/\</gm, "&lt;"],
+    [/\u200a(\/?(div|a|b|span|br|sub|sup|s|u|i|button|hr).*)\u200a/gm, "<$1>"],
 ];
 
 function mark(st) {
