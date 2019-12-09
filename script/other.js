@@ -10,7 +10,7 @@ function btn(elem, id) {
 }
 function highlight(phrase) {
     phrase = phrase.trim();
-    find("page").innerHTML = findHtml("DOCS_" + findHtml("this-here"));
+    find("page").innerHTML = mark_page(findHtml("RAW_" + findHtml("this-here")));
     if(phrase.lengh <= 2)
         return;
     var phrase2 = "";
@@ -25,6 +25,7 @@ function highlight(phrase) {
         phrase2 += `[\\u${lc}\\u${uc}]`; //Escape chars
     }
     phrase2 = "(" + phrase2 + ")"
+    console.log(phrase2);
     var re = RegExp(phrase2, "gm")
     if(phrase.startsWith("/") && phrase.endsWith("/"))
         re = RegExp("("+phrase.slice(1, -1)+")", "gm")
