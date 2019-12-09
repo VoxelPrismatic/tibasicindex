@@ -10,6 +10,8 @@ function btn(elem, id) {
 }
 function highlight(phrase) {
     var phrase2 = "";
+    phrase = phrase.replace(/</gm, "\\&lt\\;");
+    phrase = phrase.replace(/>/gm, "\\&gt\\;");
     var jumps = find("sect").children;
     for(var l of phrase.split('')) {
         var lc = l.toLowerCase().charCodeAt(0).toString(16);
