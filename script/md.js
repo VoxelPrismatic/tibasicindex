@@ -4,6 +4,9 @@ function trim(str) {
 
 var line_regex = [
     [/^ /gm, "\u200b \u200b"],
+    [/\&/gm, "&amp;"],
+    [/\>/gm, "&gt;"],
+    [/\</gm, "&lt;"],
     
     [/^\\x([A-Fa-f0-9]{2})/gm, "\\u{$1}"],
     [/^\\U([A-Fa-f0-9]{8})/gm, "\\u{$1}"],
