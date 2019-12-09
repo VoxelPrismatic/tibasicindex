@@ -4,9 +4,15 @@ function trim(str) {
 
 var line_regex = [
     [/^ /gm, "\u200b \u200b"],
-    [/\&/gm, "&amp;"],
-    [/\>/gm, "&gt;"],
-    [/\</gm, "&lt;"],
+    
+    [/\[(.+?)\]\((.+?)\)/gm, "<a href='$2'>$1</a>"],
+    [/\@\[(.+?)\]\((.+?)\)/gm, "<img alt='$1' src='$2'>"],
+    [/e<<(.+?)>>/gm, "<a href='mailto:$1>$1</a>"],
+    [/p<<(.+?)>>/gm, "<a href='tel:$1>$1</a>"],
+    [/e\[(.+?)]<(.+?)>/gm, "<a href='mailto:$2'>$1</a>"],
+    [/p\[(.+?)]<(.+?)>/gm, "<a href='tel:$2'>$1</a>"],
+    [/<<(.+?)>>/gm, "<a href='$1'>$1</a>"],
+    [/\?\[(.+?)\]\<(.+?)\>/gm, `<button class="btn" id="$2" onclick="maybeload(this.id)">$1</button>`],
     
     [/^\\x([A-Fa-f0-9]{2})/gm, "\\u{$1}"],
     [/^\\U([A-Fa-f0-9]{8})/gm, "\\u{$1}"],
@@ -24,15 +30,6 @@ var line_regex = [
     [/^\-\] +(.+)$/gm, "<div class='head4'>-] $1</div></br>"],
     [/^\$\] +(.+)$/gm, "<div class='head5'>$] $1</div></br>"],
     [/^\%\] +(.+)$/gm, "<div class='head6'>%] $1</div></br>"],
-    
-    [/\[(.+?)\]\((.+?)\)/gm, "<a href='$2'>$1</a>"],
-    [/\@\[(.+?)\]\((.+?)\)/gm, "<img alt='$1' src='$2'>"],
-    [/e<<(.+?)>>/gm, "<a href='mailto:$1>$1</a>"],
-    [/p<<(.+?)>>/gm, "<a href='tel:$1>$1</a>"],
-    [/e\[(.+?)]<(.+?)>/gm, "<a href='mailto:$2'>$1</a>"],
-    [/p\[(.+?)]<(.+?)>/gm, "<a href='tel:$2'>$1</a>"],
-    [/<<(.+?)>>/gm, "<a href='$1'>$1</a>"],
-    [/\?\[(.+?)\]\<(.+?)\>/gm, `<button class="btn" id="$2" onclick="maybeload(this.id)">$1</button>`],
     
     [/^\#(.+?)\#/gm, "<b>$1</b>"],
     [/^\*(.+?)\*/gm, "<i>$1</i>"],
