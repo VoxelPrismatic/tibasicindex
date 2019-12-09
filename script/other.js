@@ -213,37 +213,20 @@ function check_for_dupes() {
         }
     }
 }
-function escape(elem = find("page")) {
-    var elms = elem.children;
-    var st = elem.innerHTML;
-    var ls = [];
-    var el = [];
-    if(elms.length == 0) {
-        elem.innerHTML = elem.innerHTML.replace(/\&/gm, "&amp;");
-        elem.innerHTML = elem.innerHTML.replace(/</gm, "&lt;");
-        elem.innerHTML = elem.innerHTML.replace(/>/gm, "&gt;");
-        elem.innerHTML = elem.innerHTML.replace(/\&lt;br\&gt;/, "<br>");
-        return true;
-    }
-    for(var elm of elms) {
-        if(escape(elm)) {
-            if(ls.length == 0) {
-                ls = elem.innerHTML.split(elm.outerHTML);
-            } else {
-                var tmp = ls.slice(-1)[0].split(elm.outerHTML);
-                ls[ls.length-1] = tmp[0];
-                ls.push(tmp[1]);
-            }
-            el.push(elm.outerHTML);
+function get_elms(elem = find("page")) {
+    var elms = [];
+    var chld = elem.children;
+    var html = elem.innerHTML
+    var oldc = 0;
+    var len = 0;
+    for(var c of chld) {
+        elms.push(html.slice(len).split(c.outerHTML)[0]);
+        elms.push(c.outerHTML.slice(c.outerHTML.indexOf(">")));
+        for(var e of escape(c)) {
+            elms.push(e)
         }
+        elms.push(c.outerHTML.slice(c.outerHTML.lastIndexOf("<")));
+        len += c.outerHTML.length;
     }
-    var str = "";
-    while(el.length < ls.length)
-        el.push("");
-    while(el.length > ls.length)
-        ls.push("");
-    for(var i = 0; i < ls.length; i++)
-        str += ls[i] + el[i];
-    elem.innerHTML = str;
-    return false;
+    return elms;
 }
