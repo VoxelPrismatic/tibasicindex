@@ -267,5 +267,8 @@ function mark_page(st) {
         else
             str += line+"\n";
     }
-    return str.replace(/\n/gm, "<br>").slice(0, -4);
+    str = str.replace(/\n/gm, "<br>");
+    while(str.includes("<br><span><br></span>"))
+        str = str.replace("<br><span><br></span>", "<br>");
+    return str;
 }
