@@ -10,13 +10,7 @@ function load(fil) {
        txt = "--top--\n"+txt;
     find("cached-pages").innerHTML += mkElm("div", txt, {id: "RAW_"+fil, class: "invis"});
     find("page").innerHTML = mark_page(txt);
-    var elms = find("page").children;
-    for(var elm of elms) {
-        elm.innerHTML = elm.innerHTML.replace(/\&/gm, "&amp;");
-        elm.innerHTML = elm.innerHTML.replace(/</gm, "&lt;");
-        elm.innerHTML = elm.innerHTML.replace(/>/gm, "&gt;");
-        elm.innerHTML = elm.innerHTML.replace(/\&lt;br\&gt;/, "<br>");
-    }
+    escape()
     // Section
     for(var line of txt.split("\n")) {
         if(line.search(/^--[\w\d_.-]+--$/gm) == 0) {
