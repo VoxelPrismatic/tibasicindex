@@ -70,7 +70,7 @@ var line_regex = [
 
 function mark(st) {
     for(var r of line_regex)
-        st = st.replace(r[0], r[1]);
+        st = st.replace(r[0], "</span>"+r[1]+"<span>");
     return st;
 }
 
