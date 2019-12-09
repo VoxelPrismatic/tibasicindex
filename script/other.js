@@ -9,6 +9,10 @@ function btn(elem, id) {
     find(id).style.display = "block";
 }
 function highlight(phrase) {
+    phrase = phrase.trim();
+    find("page").innerHTML = findHtml("DOCS_" + findHtml("this-here"));
+    if(phrase.lengh == 0)
+        return;
     var phrase2 = "";
     phrase = phrase.replace(/</gm, "\\&lt;");
     phrase = phrase.replace(/>/gm, "\\&gt;");
@@ -27,7 +31,6 @@ function highlight(phrase) {
     var re = RegExp(phrase2, "gm")
     if(phrase.startsWith("/") && phrase.endsWith("/"))
         re = RegExp("("+phrase.slice(1, -1)+")", "gm")
-    find("page").innerHTML = findHtml("DOCS_" + findHtml("this-here"));
     var intag = false;
     var st = findHtml("page");
     var str = [];
