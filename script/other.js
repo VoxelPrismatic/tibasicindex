@@ -11,7 +11,7 @@ function btn(elem, id) {
 function highlight(phrase) {
     phrase = phrase.trim();
     find("page").innerHTML = findHtml("DOCS_" + findHtml("this-here"));
-    if(phrase.lengh == 0)
+    if(phrase.lengh <= 2)
         return;
     var phrase2 = "";
     phrase = phrase.replace(/</gm, "\\&lt;");
