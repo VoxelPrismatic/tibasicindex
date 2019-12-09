@@ -9,9 +9,10 @@ function load(fil) {
     if(!(txt.startsWith("--top--\n")))
        txt = "--top--\n"+txt;
     find("cached-pages").innerHTML += mkElm("div", txt, {id: "RAW_"+fil, class: "invis"});
-    find("page").innerHTML = mark_page(txt);
-    var elms = get_elms();
-    find("page").innerHTML = elms.join("")
+    find("page").innerHTML = "<span>"+mark_page(txt)+"</span>";
+    var elms = find("page").children;
+    for(var elm of elms)
+        elm.outerHTML = "</span>"+elm.outerHTML+"<span>";
     // Section
     for(var line of txt.split("\n")) {
         if(line.search(/^--[\w\d_.-]+--$/gm) == 0) {
