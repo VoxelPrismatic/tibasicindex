@@ -210,3 +210,17 @@ function check_for_dupes() {
         }
     }
 }
+function escape(elem = find("page")) {
+    var elms = elem.children;
+    if(elms.length == 0)
+        return true;
+    for(var elm of elms) {
+        if(escape(elm)) {
+            elm.innerHTML = elm.innerHTML.replace(/\&/gm, "&amp;");
+            elm.innerHTML = elm.innerHTML.replace(/</gm, "&lt;");
+            elm.innerHTML = elm.innerHTML.replace(/>/gm, "&gt;");
+            elm.innerHTML = elm.innerHTML.replace(/\&lt;br\&gt;/, "<br>");
+        }
+    }
+    return false;
+}
