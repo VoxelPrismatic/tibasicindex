@@ -25,7 +25,8 @@ function highlight(phrase) {
         phrase2 += `[\\u${lc}\\u${uc}]`; //Escape chars
     }
     phrase2 = "(" + phrase2 + ")"
-    console.log(phrase2);
+    if(phrase2 == "()")
+        return;
     var re = RegExp(phrase2, "gm")
     if(phrase.startsWith("/") && phrase.endsWith("/"))
         re = RegExp("("+phrase.slice(1, -1)+")", "gm")
