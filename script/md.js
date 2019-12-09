@@ -259,7 +259,7 @@ function mark_page(st) {
         
         line = mark(line);
         if(line.endsWith("<br>"))
-            str += line.slice(0, -4) + "</span><br></span>;
+            str += line.slice(0, -4) + "</span><br></span>";
         else if(line.endsWith("§"))
             str += line.slice(0, -1);
         else if(line.endsWith("</br>"))
