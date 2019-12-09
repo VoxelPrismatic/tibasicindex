@@ -138,7 +138,7 @@ function mk_table(st) {
         str += "</tr>";
     }
     str += "</table>";
-    return str;
+    return "</span>"+str+"<span>";
 }
 
 function mk_ol(st) {
@@ -150,7 +150,7 @@ function mk_ol(st) {
     for(var li of ol)
         str += `<li>${mark_page(li)}</li>`;
     str += "</ol>";
-    return str;
+    return "</span>"+str+"<span>";
 }
 
 
@@ -163,7 +163,7 @@ function mk_ul(st) {
     for(var li of ul)
         str += `<li>${mark_page(li)}</li>`;
     str += "</ul>";
-    return str;
+    return "</span>"+str+"<span>";
 }
 
 function mark_page(st) {
@@ -199,11 +199,11 @@ function mark_page(st) {
         // Code block
         if(line == "CODE---" && !incode) {
             incode = true;
-            str += "<div class='code'>"
+            str += "</span><div class='code'>"
             continue;
         }
         if(line == "---" && incode) {
-            str += "</div>";
+            str += "</div><span>";
             incode = false;
             continue;
         }
@@ -259,7 +259,7 @@ function mark_page(st) {
         
         line = mark(line);
         if(line.endsWith("<br>"))
-            str += line;
+            str += line.slice(0, -4) + "</span><br></span>;
         else if(line.endsWith("§"))
             str += line.slice(0, -1);
         else if(line.endsWith("</br>"))
@@ -267,8 +267,6 @@ function mark_page(st) {
         else
             str += line+"\n";
     }
-    str = str.replace(/\n/gm, "<br>");
-    while(str.includes("<br><span><br></span>"))
-        str = str.replace("<br><span><br></span>", "<br>");
+    str = str.replace(/\n/gm, "</span><br></span>");
     return str;
 }
