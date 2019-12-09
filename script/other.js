@@ -212,15 +212,35 @@ function check_for_dupes() {
 }
 function escape(elem = find("page")) {
     var elms = elem.children;
-    if(elms.length == 0)
+    var st = elem.innerHTML;
+    var ls = [];
+    var el = [];
+    if(elms.length == 0) {
+        elem.innerHTML = elem.innerHTML.replace(/\&/gm, "&amp;");
+        elem.innerHTML = elem.innerHTML.replace(/</gm, "&lt;");
+        elem.innerHTML = elem.innerHTML.replace(/>/gm, "&gt;");
+        elem.innerHTML = elem.innerHTML.replace(/\&lt;br\&gt;/, "<br>");
         return true;
+    }
     for(var elm of elms) {
         if(escape(elm)) {
-            elm.innerHTML = elm.innerHTML.replace(/\&/gm, "&amp;");
-            elm.innerHTML = elm.innerHTML.replace(/</gm, "&lt;");
-            elm.innerHTML = elm.innerHTML.replace(/>/gm, "&gt;");
-            elm.innerHTML = elm.innerHTML.replace(/\&lt;br\&gt;/, "<br>");
+            if(ls.length == 0) {
+                ls = elem.innerHTML.split(elm.outerHTML);
+            } else {
+                var tmp = ls.slice(-1)[0].split(elm.outerHTML);
+                ls[ls.length-1] = tmp[0];
+                ls.push(tmp[1]);
+            }
+            el.push(elm.outerHTML);
         }
     }
+    var str = "";
+    while(el.length < ls.length)
+        el.push("");
+    while(el.length > ls.length)
+        ls.push("");
+    for(var i = 0; i < ls.length; i++)
+        str += ls[i] + el[i];
+    elem.innerHTML = str;
     return false;
 }
