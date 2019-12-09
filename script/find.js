@@ -22,7 +22,7 @@ function findHtml_in(thing, ids) {
         for(var e of elm)
             ls.push(e.innerHTML);
     } catch(err) {
-        return e.innerHTML; // Not iterable
+        return elm.innerHTML; // Not iterable
     }
     if(ls.length == 1)
         return ls[0]
@@ -38,7 +38,7 @@ function findOHtml_in(thing, ids) {
         for(var e of elm)
             ls.push(e.outerHTML);
     } catch(err) {
-        return e.outerHTML; // Not iterable
+        return elm.outerHTML; // Not iterable
     }
     return ls;
 }
@@ -52,7 +52,7 @@ function findVal_in(thing, ids) {
         for(var e of elm)
             ls.push(e.value);
     } catch(err) {
-        return e.value; // Not iterable
+        return elm.value; // Not iterable
     }
     return ls;
 }
