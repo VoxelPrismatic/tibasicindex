@@ -10,7 +10,7 @@ function btn(elem, id) {
 }
 function highlight(phrase) {
     phrase = phrase.trim();
-    find("page").innerHTML = findHtml("DOCS_" + findHtml("this-here")));
+    find("page").innerHTML = findHtml("DOCS_" + findHtml("this-here"));
     if(phrase.lengh <= 2) {
         return;
         throw "Thrown to stop highlighting";
