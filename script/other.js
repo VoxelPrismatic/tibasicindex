@@ -35,9 +35,7 @@ function highlight(phrase) {
     if(phrase.startsWith("/") && phrase.endsWith("/"))
         re = RegExp("("+phrase.slice(1, -1)+")", "gm")
     
-    var elms = find("page").children;
-    for(var elm of elms)
-        elm.innerHTML = elm.innerHTML.replace(re, "<span class='find'>$1</span>");
+    find_text(re);
     
     uri("&"+phrase);
     find("docs").click();
@@ -58,6 +56,17 @@ function highlight(phrase) {
         }
     }
     find("highlighter").innerHTML = phrase
+}
+
+function find_text(re, parent = find("page")) {
+    var elems = parent.children;
+    if(elems.length == 0) {
+        parent.innerHTML = parent.innerHTML.replace(re, "<span class='find'>$1</span>"));
+    } else {
+        for(var elem of elems) {
+            find_text(re, elem);
+        }
+    }
 }
 function uri(thing) {
     try {
