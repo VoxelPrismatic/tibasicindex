@@ -71,9 +71,7 @@ function find_text(re, parent = find("page")) {
 function uri(thing) {
     try {
         var href = find("url").innerHTML
-        while(href.startsWith(" "))
-            href = href.slice(1);
-        href = href.replace(/.*>(.*)<.*/gm, "$1");
+        href = href.replace(/<a href="(.*)"/gm, "$1").trim();
         var page = "";
         var jump = "";
         var look = "";
