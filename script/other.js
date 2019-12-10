@@ -61,7 +61,7 @@ function highlight(phrase) {
 function find_text(re, parent = find("page")) {
     var elems = parent.children;
     if(elems.length == 0) {
-        parent.innerHTML = parent.innerHTML.replace(re, "<span class='find'>$1</span>"));
+        parent.innerHTML = parent.innerHTML.replace(re, "<span class='find'>$1</span>");
     } else {
         for(var elem of elems) {
             find_text(re, elem);
