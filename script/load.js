@@ -43,6 +43,7 @@ function maybeload(uri) {
         } catch(err) {
             try {
                 load(url);
+                docs(url);
             } catch(err) {
                 find("page").innerHTML = mkElm("div", "An unknown error occured, check console for details", {class: "warn"});
                 console.log(err);
