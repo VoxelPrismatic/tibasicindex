@@ -10,7 +10,7 @@ function btn(elem, id) {
 }
 function highlight(phrase) {
     phrase = phrase.trim();
-    find("page").innerHTML = mark_page(findHtml("RAW_" + findHtml("this-here")));
+    find("page").innerHTML = findHtml("DOCS_" + findHtml("this-here")));
     if(phrase.lengh <= 2) {
         return;
         throw "Thrown to stop highlighting";
@@ -24,7 +24,7 @@ function highlight(phrase) {
             lc = "0" + lc;
         while(uc.length < 4)
             uc = "0" + uc;
-        phrase2 += `[\\u${lc}\\u${uc}]`; //Escape chars
+        phrase2 += `[\\u${lc}\\u${uc}\\u200b\\\\]`; //Escape chars
     }
     phrase2 = "(" + phrase2 + ")"
     if(phrase2 == "()") {
