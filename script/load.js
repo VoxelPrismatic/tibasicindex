@@ -41,6 +41,8 @@ function maybeload(uri) {
         try {
             docs(url);
         } catch(err) {
+            console.log(err);
+            console.log(url);
             try {
                 load(url);
                 docs(url);
