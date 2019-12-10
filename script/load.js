@@ -9,7 +9,9 @@ function load(fil) {
     if(!(txt.startsWith("--top--\n")))
        txt = "--top--\n"+txt;
     find("cached-pages").innerHTML += mkElm("div", txt, {id: "RAW_"+fil, class: "invis"});
-    find("page").innerHTML = "<span>"+mark_page(txt)+"</span>";
+    var mark = mark_page(txt).slice(21);
+    mark = mark.replace(/<br><span><\/span><br>/gm, "<br>"
+    find("page").innerHTML = "<span>"++"</span>";
     // Section
     for(var line of txt.split("\n")) {
         if(line.search(/^--[\w\d_.-]+--$/gm) == 0) {
