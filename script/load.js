@@ -35,15 +35,18 @@ function maybeload(uri) {
     var url = uri.replace(/\/\//gm, "/").split("#")[0].split("&")[0];
     if(!(url.endsWith(".txt")))
        url += "index.txt";
-    console.log(url);
     if (!(dirs.includes(url)))
         find("page").innerHTML = mkElm("div", "404 ] File not found", {class: "warn"});
     else
         try {
             docs(url);
         } catch(err) {
-            find("page").innerHTML = mkElm("div", "An unknown error occured, check console for details", {class: "warn"});
-            console.log(err);
+            try {
+                load(url);
+            } catch(err) {
+                find("page").innerHTML = mkElm("div", "An unknown error occured, check console for details", {class: "warn"});
+                console.log(err);
+            }
         }
     url = uri;
     if(url.includes("#")) {
