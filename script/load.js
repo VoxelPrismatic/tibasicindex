@@ -33,8 +33,10 @@ function maybeload(uri) {
     if (!(uri.startsWith("/prizmatic.docs/doc/")));
           uri = "/prizmatic.docs/doc/" + uri
     var url = uri.replace(/\/\//gm, "/").split("#")[0].split("&")[0];
-    if(!(url.endsWith(".txt")))
-       url += "index.txt";
+    if(url.endsWith("/"))
+        url += "index.txt";
+    else if(!(url.endsWith(".txt")))
+        url += ".txt";
     if (!(dirs.includes(url)))
         find("page").innerHTML = mkElm("div", "404 ] File not found", {class: "warn"});
     else
