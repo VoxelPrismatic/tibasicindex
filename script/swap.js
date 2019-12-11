@@ -37,11 +37,10 @@ function docs(elem) {
     find(id).className = "lnk sel";
     uri("?"+id.slice(20));
     jump("JUMP_top");
-    name = fil.slice(19).replace("index.txt", "").toUpperCase();
-    url = "https://github.com/VoxelPrismatic/prizmatic.docs/edit/master/doc/";
-    find("src").innerHTML = 
-        `EDIT THIS PAGE - <a href="${url}${name.toLowerCase()}">${name}</a>`;
+    var url = "https://github.com/VoxelPrismatic/prizmatic.docs/edit/master/doc/";
+    find("edit_url").href = url + fil.split("/").slice(3).join("/");
     highlight(find("highlighter").innerHTML);
+    
 }
 function finder(thing) {
     var ls = [];
