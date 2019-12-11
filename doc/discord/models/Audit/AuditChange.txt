@@ -19,4 +19,4 @@ PARAMS ---
 FUNCTIONS ---
     None
 ---
-?[Back to Audit]<discord/models/Audit/index.txt>
+?[Back to Audit]<./index.txt>
