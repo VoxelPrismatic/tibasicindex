@@ -15,6 +15,7 @@ function jump(elem) {
     check_for_dupes();
 }
 function docs(elem) {
+    var id = "";
     if(elem.id != undefined)
         id = elem.id;
     else
@@ -38,9 +39,23 @@ function docs(elem) {
     uri("?"+id.slice(20));
     jump("JUMP_top");
     var url = "https://github.com/VoxelPrismatic/prizmatic.docs/edit/master/doc/";
-    find("edit_url").href = url + fil.split("/").slice(3).join("/");
+    find("edit_url").href = url + id.split("/").slice(3).join("/");
     highlight(find("highlighter").innerHTML);
-    
+    try {
+        find("prev-page").innerHTML = "";
+        find("next-page").innerHTML = "";
+        var found = false;
+        for(var dir of dirs) {
+            if(dir == id)
+                found = true;
+            if(found)
+                find("next-page").innerHTML += mkElm("span", dir);
+            else
+                find("prev-page").innerHTML += mkElm("span", dir);
+        }
+    } catch(err) {
+        console.log(err);
+    }
 }
 function finder(thing) {
     var ls = [];
