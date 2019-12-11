@@ -1,5 +1,5 @@
 CODE---
-{{kw}}class {{cls}}AuditLog
+{{kw}}class {{cls}}AuditLog 
 
 DESCRIPTION ---
     Represents an audit log
