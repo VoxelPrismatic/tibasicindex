@@ -4,7 +4,7 @@ function read(filename) {
         if (this.readyState == 4 && this.status == 200)
             find("file").innerHTML = f.responseText.replace(/  /gm, "\u200b \u200b \u200b");
     }
-    f.open("GET", filename, true);
+    f.open("GET", filename, false);
     f.send();
     return findHtml("file");
 }
