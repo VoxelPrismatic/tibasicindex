@@ -4,7 +4,12 @@ function load(fil) {
         if(jmp.id.startsWith("JUMP_"))
             jmp.remove();
     find("page").innerHTML = "WAIT... [LOADING FILE]";
-    find(fil).className = "lnk sel";
+    try {
+        find(fil).className = "lnk sel";
+    catch(err) {
+        console.log(err);
+        console.log(fil);
+    }
     try {
         var txt = read(fil);
     } catch(err) {
