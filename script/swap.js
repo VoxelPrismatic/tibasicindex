@@ -11,7 +11,10 @@ function jump(elem) {
         if(thing.className == "lnk sel")
             thing.className = "lnk";
     find("JUMP_"+id).className = "lnk sel";
-    uri("#"+id);
+    var high = find("page_url").href.split("&")[1]
+    find("page_url").href = find("page_url").href.split("#")[0] + "#" + elem.slice(5);
+    if(high != undefined)
+        find("page_url").href += "&" + high;
     check_for_dupes();
 }
 function docs(elem) {
@@ -24,6 +27,8 @@ function docs(elem) {
     for(var jmp of jumps)
         if(jmp.id.startsWith("JUMP_"))
             jmp.remove();
+    find("back-page").innerHTML += `<span>${elem}</span>`;
+    find("this-here").innerHTML = elem;
     try {
         find("page").innerHTML = findHtml("DOCS_"+id);
         find("sect").innerHTML = findHtml("SECT_"+id);
@@ -40,6 +45,10 @@ function docs(elem) {
     jump("JUMP_top");
     var url = "https://github.com/VoxelPrismatic/prizmatic.docs/edit/master/doc/";
     find("edit_url").href = url + id.split("/").slice(3).join("/");
+    var high = find("page_url").href.split("&")[1]
+    find("page_url").href = find("page_url").href.split("?")[0] + id.split("/").slice(3).join("/") + "#top";
+    if(high != undefined)
+        find("page_url").href += "&" + high;
     highlight(find("highlighter").innerHTML);
     try {
         find("prev-page").innerHTML = "";
