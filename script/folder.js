@@ -17,7 +17,8 @@ function folder_prev() {
 }
 
 function folder_up() {
-    btnload("../__init__.txt");
+    if(findHtml("this-here").lastIndexOf("/") != 0)
+        btnload("../__init__.txt");
 }
 
 function folder_next() {
