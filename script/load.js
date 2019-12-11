@@ -64,3 +64,17 @@ function maybeload(uri) {
         find("page").innerHTML = findHtml("page").replace(RegExp(sec, "gm"), `<div class="find">${sec}</div>`);
     }
 }
+
+function btnload(url) {
+    var here = findHtml("this-here");
+    if(url.startsWith("./")) {
+        maybeload(here.split("/").slice(0, -1).join("/") + url.replace(/\.\//gm, ""));
+    } else if (url.startsWith("../")) {
+        while(url.startsWith("../")) {
+            url = url.slice(3);
+            here = here.split("/").slice(0, -1).join("/");
+        }
+        maybeload(here + url.replace(/\.\//gm, ""));
+    }
+    maybeload(url);
+}
