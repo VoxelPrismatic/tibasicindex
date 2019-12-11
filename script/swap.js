@@ -46,7 +46,7 @@ function docs(elem) {
     var url = "https://github.com/VoxelPrismatic/prizmatic.docs/edit/master/doc/";
     find("edit_url").href = url + id.split("/").slice(3).join("/");
     var high = find("page_url").href.split("&")[1]
-    find("page_url").href = find("page_url").href.split("?")[0] + id.split("/").slice(3).join("/") + "#top";
+    find("page_url").href = find("page_url").href.split("?")[0] + "?" + id.split("/").slice(3).join("/") + "#top";
     if(high != undefined)
         find("page_url").href += "&" + high;
     highlight(find("highlighter").innerHTML);
