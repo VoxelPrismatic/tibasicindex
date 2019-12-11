@@ -19,5 +19,5 @@ function readAsync(filename) {
     f.open("GET", filename, true);
     f.send();
     delete f;
-    return new Promise(setTimeout(() => {resolve(findHtml("file"));}, 500));
+    return new Promise(resolve => {setTimeout(() => {resolve(findHtml("file"));}, 500)});
 }
