@@ -6,13 +6,14 @@ function load(fil) {
     find("page").innerHTML = "WAIT... [LOADING FILE]";
     try {
         find(fil).className = "lnk sel";
-    catch(err) {
+    } catch(err) {
         console.log(err);
         console.log(fil);
     }
     try {
         var txt = read(fil);
     } catch(err) {
+        console.log(err);
         find("page").innerHTML = mkElm("div", "404 ] Not found", {class: "warn"});
         return;
     }
