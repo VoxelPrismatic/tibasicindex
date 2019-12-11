@@ -1,4 +1,0 @@
-There are no docs here...
-?[AuditChange]<./AuditChange.txt>
-?[AuditEvent]<./AuditEvent.txt>
-?[AuditLog]<./AuditEvent.txt>
