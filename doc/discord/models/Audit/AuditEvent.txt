@@ -1,5 +1,5 @@
 CODE ---
-{{kw}}class {{cls}}AuditEvent
+{{kw}}class {{cls}}AuditEvent 
 
 DESCRIPTION ---
     Represents an audit log event
@@ -10,5 +10,3 @@ PARAMS ---
 FUNCTIONS ---
     None
 ---
-?[View AuditChange]<./AuditChange.txt>
-?[Back to Audit]<./index.txt>
