@@ -52,6 +52,12 @@ var line_regex = [
     [/([^\\])\!\!(.+?)\!\!/gm, `$1<span class="hide" onclick="this.classList.toggle('unhide');">$2</span>`],
     [/([^\\])\:\: (.+)$/gm, `$1<span class="md-com">\u200b \u200b$2</span>`],
     
+    [/^@WARN---$/gm, "<div class='warn'><br>"],
+    [/^@NOTE---$/gm, "<div class='note'><br>"],
+    [/^@NEW---$/gm, "<div class='new'><br>"],
+    [/^@INFO---$/gm, "<div class='info'><br>"],
+    [/^@EX---$/gm, "<div class='exc'><br>"],
+    [/^@COMMENT---$/gm, "<div class='comblock'><br>"],
     [/^WARN---$/gm, "<div class='warn'><b>WARNING ---</b><br>"],
     [/^NOTE---$/gm, "<div class='note'><b>NOTICE ---</b><br>"],
     [/^NEW---$/gm, "<div class='new'><b>NEW ---</b><br>"],
