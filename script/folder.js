@@ -1,8 +1,8 @@
 function folder(id) {
     ls = find(id).children;
     if(ls.length != 0) {
-        docs(ls.slice(-1)[0]);
-        ls.slice(-1)[0].remove();
+        docs(ls[ls.length-1]);
+        ls[ls.length-1].remove();
     }
 }
 
