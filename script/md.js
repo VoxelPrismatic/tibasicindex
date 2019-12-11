@@ -13,6 +13,7 @@ var line_regex = [
     [/p\[(.+?)]<(.+?)>/gm, "<a href='tel:$2'>$1</a>"],
     [/<<(.+?)>>/gm, "<a href='$1'>$1</a>"],
     [/\?\[(.+?)\]\<(.+?)\>/gm, `<button class="btn" id="$2" onclick="btnload(this.id)">$1</button>`],
+    [/\|\|(.+?)\|\|/gm, `<button class="btn" id="./$1" onclick="btnload(this.id)">$1</button>`],
     
     [/^\\x([A-Fa-f0-9]{2})/gm, "\\u{$1}"],
     [/^\\U([A-Fa-f0-9]{8})/gm, "\\u{$1}"],
