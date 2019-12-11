@@ -24,7 +24,7 @@ FUNCTIONS ---
         index [int]
         - Index number, as if it were a list
     RETURNS ---
-        An ?[AuditChange]<discord/models/Audit/AuditChange.txt> object
+        An ?[AuditEvent]<./AuditEvent.txt> object
     
     audit_log[event_type]
     DESCRIPTION ---
@@ -33,7 +33,7 @@ FUNCTIONS ---
         event_type [str]
         - The event type
     RETURNS ---
-        A list of AuditChange objects
+        A list of AuditEvent objects
     
     audit_log(user_id)
     DESCRIPTION ---
@@ -42,5 +42,5 @@ FUNCTIONS ---
         user_id [int]
         - The user ID
     RETURNS ---
-        A list of AuditChange objects
+        A list of AuditEvent objects
 ---
