@@ -10,5 +10,5 @@ PARAMS ---
 FUNCTIONS ---
     None
 ---
-?[View AuditChange]<discord/models/Audit/AuditChange.txt>
-?[Back to Audit]<discord/models/Audit/index.txt>
+?[View AuditChange]<./AuditChange.txt>
+?[Back to Audit]<./index.txt>
