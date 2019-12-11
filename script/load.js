@@ -17,6 +17,13 @@ function load(fil) {
         find("page").innerHTML = mkElm("div", "404 ] Not found", {class: "warn"});
         return;
     }
+    if(txt.startsWith("__listdir__")) {
+        find("page").innerHTML = mkElm("div", "This file only imports the others in this directory", {class: "note"});
+        for(var dir of dirs)
+            find("page").innerHTML +=
+                mkElm("div", `[View ${dir}]`, {id: "./"+dir, class: "btn", onclick: 'onclick="btnload(this.id)"'});
+        return;
+    }
     if(!(txt.startsWith("--top--\n")))
        txt = "--top--\n"+txt;
     find("cached-pages").innerHTML += mkElm("div", txt, {id: "RAW_"+fil, class: "invis"});
