@@ -17,7 +17,7 @@ function folder_prev() {
 }
 
 function folder_up() {
-    btn_load("../__init__.txt");
+    btnload("../__init__.txt");
 }
 
 function folder_next() {
