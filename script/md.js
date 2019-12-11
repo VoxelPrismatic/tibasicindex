@@ -243,7 +243,7 @@ function mark_page(st) {
             continue;
         }
         
-       // Unordered list
+        // Unordered list
         if(line.replace(/^[\>\]\)\~\-\+] .*$/gm, "") == "" && !inul && line != "") {
             inul = true;
         }
@@ -263,8 +263,8 @@ function mark_page(st) {
             str += line.slice(0, -4) + "</span><br></span>";
         else if(line.endsWith("§"))
             str += line.slice(0, -1);
-        else if(line.endsWith("</br>"))
-            str += line.slice(0, -5);
+        else if(line.endsWith("</span></br><span>"))
+            str += line.slice(0, -18);
         else
             str += line+"\n";
     }
