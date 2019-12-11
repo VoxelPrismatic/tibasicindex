@@ -6,6 +6,7 @@ function read(filename) {
     }
     f.open("GET", filename, false);
     f.send();
+    delete f;
     return findHtml("file");
 }
 
@@ -19,8 +20,15 @@ function readAsync(filename) {
     f.open("GET", filename, true);
     f.send();
     var trys = 0;
-    while(findHtml("file") == cur && trys < 5)
+    while(findHtml("file") == cur && trys < 5) {
         trys += 1;
-        setTimeout(() => {console.log("wait");}, 500);
+        await new Promise(
+            setTimeout(function() {
+                console.log("waiting");
+                resolve("waiting");
+            }, 500)
+        );
+    }
+    delete f;
     return findHtml("file");
 }
