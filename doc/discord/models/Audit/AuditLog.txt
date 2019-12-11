@@ -24,7 +24,7 @@ FUNCTIONS ---
         index [int]
         - Index number, as if it were a list
     RETURNS ---
-        An ?[AuditEvent]<./AuditEvent.txt> object
+        An ?[AuditEvent]<./AuditEvent> object
     
     audit_log[event_type]
     DESCRIPTION ---
