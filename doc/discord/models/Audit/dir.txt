@@ -1,1 +1,3 @@
-
+AuditLog.txt
+AuditChange.txt
+AuditEvent.txt
