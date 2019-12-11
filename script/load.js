@@ -79,14 +79,16 @@ function maybeload(uri, init = false) {
 
 function btnload(url) {
     var here = findHtml("this-here");
+    if(url.startsWith("/prizmatic.docs/doc/"))
+        url = url.slice(20);
     if(url.startsWith("./")) {
-        maybeload(here.split("/").slice(0, -1).join("/") + url.replace(/\.\//gm, ""), true);
+        maybeload(here.split("/").slice(0, -1).join("/") +"/" + url.replace(/\.\//gm, ""), true);
     } else if(url.startsWith("../")) {
         while(url.startsWith("../")) {
             url = url.slice(3);
             here = here.split("/").slice(0, -1).join("/");
         }
-        maybeload(here + url.replace(/\.\//gm, ""), true);
+        maybeload(here + "/" + url.replace(/\.\//gm, ""), true);
     } else if(url.startsWith("~/")) {
         maybeload("prizmatic.doc/doc" + url.slice(1), true);
     } else {
