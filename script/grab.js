@@ -1,6 +1,6 @@
-async function grab_dirs(lvl) {
+function grab_dirs(lvl) {
     var dirs = [];
-    var lines = await readAsync(lvl+"/dir.txt").split("\n");
+    var lines = read(lvl+"/dir.txt").split("\n");
     for(var line of lines) {
         if(line.endsWith(".txt")) {
             lnk = lvl+"/"+line;
