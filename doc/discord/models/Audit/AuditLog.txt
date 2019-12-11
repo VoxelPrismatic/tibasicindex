@@ -1,0 +1,46 @@
+CODE---
+{{kw}}class {{cls}}AuditLog
+
+DESCRIPTION ---
+    Represents an audit log
+
+PARAMS ---
+    This class shouldn't be initialized by hand. Don't do that.
+
+FUNCTIONS ---
+    audit_log = AuditLog(webhooks, users, events)
+    DESCRIPTION ---
+        Create a new AuditLog object
+    
+    audit_log.make()
+    DESCRIPTION ---
+        Fully load the audit log, may take a while depending on
+        how many entries, webhooks, and users are in this log
+    
+    audit_log[index]
+    DESCRIPTION ---
+        Get that specific event
+    PARAMS ---
+        index [int]
+        - Index number, as if it were a list
+    RETURNS ---
+        An ?[AuditChange]<discord/models/Audit/AuditChange.txt> object
+    
+    audit_log[event_type]
+    DESCRIPTION ---
+        Filter to that event type
+    PARAMS ---
+        event_type [str]
+        - The event type
+    RETURNS ---
+        A list of AuditChange objects
+    
+    audit_log(user_id)
+    DESCRIPTION ---
+        Filter to that user
+    PARAMS ---
+        user_id [int]
+        - The user ID
+    RETURNS ---
+        A list of AuditChange objects
+---
