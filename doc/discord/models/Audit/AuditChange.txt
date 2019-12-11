@@ -1,4 +1,6 @@
 CODE---
+{{kw}}class {{cls}}AuditChange
+
 DESCRIPTION ---
     Represents an audit log change, that `01` you see
 
