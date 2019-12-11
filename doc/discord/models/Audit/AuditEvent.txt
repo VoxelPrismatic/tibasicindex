@@ -1,0 +1,14 @@
+CODE ---
+{{kw}}class {{cls}}AuditEvent
+
+DESCRIPTION ---
+    Represents an audit log event
+
+PARAMS ---
+    This class shouldn't be initialized by hand. Don't do that.
+
+FUNCTIONS ---
+    None
+---
+?[View AuditChange]<discord/models/Audit/AuditChange.txt>
+?[Back to Audit]<discord/models/Audit/index.txt>
