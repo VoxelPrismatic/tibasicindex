@@ -5,7 +5,12 @@ function load(fil) {
             jmp.remove();
     find("page").innerHTML = "WAIT... [LOADING FILE]";
     find(fil).className = "lnk sel";
-    var txt = read(fil);
+    try {
+        var txt = read(fil);
+    } catch(err) {
+        find("page").innerHTML = mkElm("div", "404 ] Not found", {class: "warn"});
+        return;
+    }
     if(!(txt.startsWith("--top--\n")))
        txt = "--top--\n"+txt;
     find("cached-pages").innerHTML += mkElm("div", txt, {id: "RAW_"+fil, class: "invis"});
@@ -39,22 +44,19 @@ function maybeload(uri, init = false) {
         url += "__init__.txt";
     else if(!(url.endsWith(".txt")))
         url += ".txt";
-    if (!(dirs.includes(url)))
-        find("page").innerHTML = mkElm("div", "404 ] File not found", {class: "warn"});
-    else
+    try {
+        docs(url);
+    } catch(err) {
+        console.log(err);
+        console.log(url);
         try {
+            load(url);
             docs(url);
         } catch(err) {
+            find("page").innerHTML = mkElm("div", "An unknown error occured, check console for details", {class: "warn"});
             console.log(err);
-            console.log(url);
-            try {
-                load(url);
-                docs(url);
-            } catch(err) {
-                find("page").innerHTML = mkElm("div", "An unknown error occured, check console for details", {class: "warn"});
-                console.log(err);
-            }
         }
+    }
     url = uri;
     if(url.includes("#")) {
         var sec = url.split("#")[1].split("?")[0].split("&")[0];
