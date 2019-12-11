@@ -29,12 +29,14 @@ function load(fil) {
     searching();
 }
 
-function maybeload(uri) {
+function maybeload(uri, init = false) {
     if (!(uri.startsWith("/prizmatic.docs/doc/")));
           uri = "/prizmatic.docs/doc/" + uri
     var url = uri.replace(/\/\//gm, "/").split("#")[0].split("&")[0];
-    if(url.endsWith("/"))
+    if(url.endsWith("/") && !init)
         url += "index.txt";
+    else if(url.endsWith("/") && init)
+        url += "__init__.txt";
     else if(!(url.endsWith(".txt")))
         url += ".txt";
     if (!(dirs.includes(url)))
@@ -70,16 +72,16 @@ function maybeload(uri) {
 function btnload(url) {
     var here = findHtml("this-here");
     if(url.startsWith("./")) {
-        maybeload(here.split("/").slice(0, -1).join("/") + url.replace(/\.\//gm, ""));
+        maybeload(here.split("/").slice(0, -1).join("/") + url.replace(/\.\//gm, ""), true);
     } else if(url.startsWith("../")) {
         while(url.startsWith("../")) {
             url = url.slice(3);
             here = here.split("/").slice(0, -1).join("/");
         }
-        maybeload(here + url.replace(/\.\//gm, ""));
+        maybeload(here + url.replace(/\.\//gm, ""), true);
     } else if(url.startsWith("~/")) {
-        maybeload("prizmatic.doc/doc" + url.slice(1));
+        maybeload("prizmatic.doc/doc" + url.slice(1), true);
     } else {
-        maybeload(url);
+        maybeload(url, true);
     }
 }
