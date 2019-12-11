@@ -16,6 +16,8 @@ function grab_dirs(lvl) {
             }
         } else if(line != "") {
             try {
+                if(line.endsWith(".dir")) 
+                    line = line.slice(0, -4);
                 for(var name of grab_dirs(lvl+"/"+line))
                     dirs.push(name);
             } catch(err) {
