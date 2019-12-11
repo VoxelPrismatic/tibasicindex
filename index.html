@@ -28,7 +28,7 @@
         <!-- MAIN PAGE HERE -->
         <div class="content">
             <!-- NAV BAR -->
-            <div class="nav" style="min-height: 5vh;">
+            <div class="nav" style="min-height: 5vh;" id="nav">
                 <button class="tab tabbed" id="docs" onclick="btn(this, 'page');">[DOCS]</button>
                 <button class="tab" id="swap" onclick="btn(this, 'nav');">[FILE]</button>
                 <button class="tab" id="jump" onclick="btn(this, 'sect');">[JUMP]</button>
@@ -62,21 +62,33 @@
             
             <!-- FOOTER -->
             <div id="src" class="src">
-                EDIT THIS PAGE - <a href="https://github.com/VoxelPrismatic/prizmatic.docs/">/</a>
+                <a id="edit_url">[EDIT]</a> // <a id="page_url">[LINK]</a>
             </div>
-            <div id="url" class="src">
-                [ https://VoxelPrismatic.github.io/prizmatic.docs/?index.txt#top ]
+            <div class="folder">
+                <button class="tab" id="back_btn" onclick="folder_back();"><b>&lt;--</b></button>
+                <button class="tab" id="prev_btn" onclick="folder_prev();"><b>&lt;</b></button>
+                <button class="tab" id="up_btn" onclick="folder_up();"><b>&Lambda;</b></button>
+                <button class="tab" id="next_btn" onclick="folder_next();"><b>&gt;</b></button>
+                <button class="tab" id="fwd_btn" onclick="folder_fwd();"><b>--&gt;</b></button>
             </div>
         </div>
         
         <!-- CACHE -->
-        <div id="loaded-pages" class="invis"></div>
-        <div id="loaded-sects" class="invis"></div>
-        <div id="cached-pages" class="invis"></div>
-        <div id="cache" class="invis"></div>
-        <div id="file" class="invis"></div>
-        <div id="this-here" class="invis"></div>
-        <div id="highlighter" class="invis"></div>
+        <div class="cache">
+            <div id="loaded-pages"></div>
+            <div id="loaded-sects"></div>
+            <div id="cached-pages"></div>
+            <div id="cache"></div>
+            <div id="file"></div>
+            <div id="this-here"></div>
+            <div id="highlighter"></div>
+            <div id="back-page"></div>
+            <div id="up-page"></div>
+            <div id="fwd-page"></div>
+            <div id="prev-page"></div>
+            <div id="next-page"></div>
+        </div>
+        
         
         <script type="text/javascript">
             var lines = read("/prizmatic.docs/script/uni.txt").split("\n");
@@ -88,6 +100,8 @@
             }
         </script>
         <script type="text/javascript" src="script/run.js"></script>
+        
+        <!-- Load the FILE tab -->
         <script type="text/javascript" defer>
             var dirs = grab_dirs("/prizmatic.docs/doc");
         </script>
