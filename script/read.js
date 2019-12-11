@@ -9,7 +9,7 @@ function read(filename) {
     return find("file").innerHTML.replace(/  /gm, "\u200b \u200b \u200b");
 }
 
-async function readAsync(filename) {
+function readAsync(filename) {
     var f = new XMLHttpRequest()
     f.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200)
