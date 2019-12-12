@@ -60,7 +60,7 @@ function findVal(ids) {
     return findVal_in(document, ids);
 }
 
-function mkElm(typ, txt, params) {
+function mkElm(typ, txt, params = {}) {
     var str = "<"+typ;
     for(var key of params.constructor["entries"](params))
         str += ` ${key[0]}="${key[1]}"`;
