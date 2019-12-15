@@ -39,6 +39,25 @@ var docs_regex = [
             return st;
         }
     ], [
+        /\{\{sepfn\}\} (await )?instance\.(.+?)\(((.|\n)+?)\)\n/gm,
+        function(m, p1, p2, p3) {
+            if(p1 == undefined)
+                p1 = "";
+            else
+                p1 = `<span class="aio">`;
+            var st = `<div class="head3">`;
+            st += `+] <span class="typ">{{fn}}</span> ` + p1 + p2;
+            st += `</div><div class="code">`;
+            var py = "";
+            py += p1 + "instance." + p2 + "(";
+            py += p3.replace(/\n */gm, " ") + ")";
+            st += py_mark(py) + "</div>";
+            st += `<div class="note">NOTICE ---\n`
+            st += "This function is seperate from the class, which means it cannot be called from it.";
+            st += "</div>"
+            return st;
+        }
+    ], [
         /\{\{param\}\} (.+?) \[(.+?)\]\n((.|\n)+?)\n\n/gm,
         function(m, p1, p2, p3) {
             var st = `<span class="typ">{{param}}</span>`;
@@ -74,6 +93,15 @@ var docs_regex = [
             var st = `<div class="note">NOTICE ---\n`
             st += p1.replace(/\n */gm, " ");
             st += `</div>`;
+            return st;
+        }
+    ], [
+        /discord\.(.+?)/gm, 
+        function(m, p1) {
+            var st = `<<button class="btn" onclick="btnload(this.id)"`;
+            st += `id="discord/${p1.replace(/\./gm, "/")}.txt">`;
+            st += "discord." + p1;
+            st += "</button>";
             return st;
         }
     ]
