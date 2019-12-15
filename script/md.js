@@ -186,7 +186,9 @@ function mark_page(st) {
     var inol = false;
     var inul = false;
     var incode = false;
-    for(var line of st.split("\n")) {        
+    for(var line of st.split("\n")) {
+        if(line.startsWith("{{cls}}"))
+            return docs_mark(st);
         // Python formatting
         if(line == "PY---" && !inpy) {
             inpy = true;
