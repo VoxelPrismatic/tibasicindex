@@ -63,7 +63,7 @@ var docs_regex = [
         /\{\{error\}\} \[(.+)\] (.+?)\n\n/gm,
         function(m, p1, p2) {
             var st = `<span class="typ">{{error}}</span>`;
-            st += `[<span class="cls">${p1}</span>] ${p2}\n`;
+            st += `[<span class="err">${p1}</span>] ${p2}\n`;
             return st;
         }
     ]
