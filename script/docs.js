@@ -30,7 +30,7 @@ var docs_regex = [
             else
                 p1 = `<span class="aio">`;
             var st = `<div class="head2">`;
-            st += `~] <span class="typ">{{fn}}</span> " + p1 + p2;
+            st += `~] <span class="typ">{{fn}}</span> ` + p1 + p2;
             st += `</div><div class="code">`;
             var py = "";
             py += p1 + "instance." + p2 + "(";
