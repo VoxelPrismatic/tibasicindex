@@ -68,7 +68,10 @@ var docs_regex = [
 function docs_mark(st) {
     st = st.trim() + "\n\n";
     for(var r of docs_regex) {
+        console.log(r);
+        console.log(st);
         st = st.replace(r[0], r[1]);
+        console.log(st);
     }
     st = st.trim().replace(/\n/gm, "<br>") + "<br>";
     return st
