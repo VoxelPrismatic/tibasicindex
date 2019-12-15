@@ -20,7 +20,7 @@ var docs_regex = [
     ], [
         /\{\{desc\}\} ((.|\n)+?)\n\n/gm,
         function(m, p1) {
-            return ind(4) + p1.trim().replace(/\n */gm, "\n" + ind(4)) + "\n;
+            return ind(4) + p1.trim().replace(/\n */gm, "\n" + ind(4)) + "\n";
         }
     ], [
         /\{\{fn\}\} (await )?instance\.(.+?)\(((.|\n)+?)\)/gm,
