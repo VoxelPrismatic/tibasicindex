@@ -40,7 +40,11 @@ function docs(elem) {
     for(var thing of things)
         if(thing.className == "lnk sel")
             thing.className = "lnk";
-    find(id).className = "lnk sel";
+    try {
+        find(id).className = "lnk sel";
+    } catch(err) {
+        console.log(err);
+    }
     var url = "https://github.com/VoxelPrismatic/prizmatic.docs/edit/master/doc/";
     find("edit_url").href = url + id.split("/").slice(3).join("/");
     var high = find("page_url").href.split("&")[1]
