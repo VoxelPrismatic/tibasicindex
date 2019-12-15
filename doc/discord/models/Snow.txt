@@ -1,0 +1,51 @@
+{{cls}} instance = Snow(snowflake)
+
+{{desc}}
+    Represents a snowflake... wonderfully named btw
+    000000000000000000000000000000000000000000 00000 00000 000000000000
+    ----------------TIME STAMP---------------- -wID- -pID- --INCREMENT--
+{{param}} snowflake [int, str, bytes]
+    Represents a Discord snowflake
+    - If str, then it must be a hex, number, or binary encoded string
+    - If bytes, then it must be able to be utf-8 decoded
+    - If int, then it must be correctly formatted
+
+{{prop}} timestamp [int]
+    Creation date of the ID
+
+{{prop}} worker [int]
+    Worker ID, the `wID` shown above.
+
+{{prop}} process [int]
+    Process ID, the `pID` shown above.
+
+{{prop}} increment [int]
+    Increment, idk
+
+{{prop}} id [int]
+    The entire ID, like a guild id, channel id, or a message id
+
+{{prop}} hex [str]
+    The hex formatted ID, if you need it
+
+{{prop}} bin [str]
+    The binary formatted ID, if you need it
+
+{{prop}} dt [datetime.datetime]
+    When the ID was made, as a datetime object
+    
+{{fn}} instance.__str__()
+
+{{note}} This function should actually be used as `str(instance)`
+
+{{desc}} Turns the snowflake into an str
+
+{{rtn}} [str] The str of the actual ID
+
+{{fn}} instance.__int__()
+        
+{{note}} This function should actually be used as `int(instance)`
+
+{{desc}} Turns the snowflake into an int
+
+{{rtn}} [int] The actual ID
