@@ -1,0 +1,3 @@
+{{desc}} Represents a guild embed
+
+{{note}} This class doesn't actually exist yet
