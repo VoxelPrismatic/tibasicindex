@@ -1,0 +1,50 @@
+{{cls}} instance = Color(int_color, rgb_color, hex_color)
+    
+{{desc}} Represents a color... yes thats ithttps://github.com/VoxelPrismatic/prizmatic.docs
+
+{{param}} int_color [Optional[int]]
+    The integer representation of the number
+    
+{{param}} rgb_color [Optional[tuple]]
+    R, G, and B color values in a tuple
+    
+{{param}} hex_color [Optional[str]]
+    The hexadecimal color. Must start with a #
+    
+{{prop}} hex [str]
+    The hex color
+    
+{{prop}} num [int]
+    The actual int color
+    
+{{prop}} rgb [tuple]
+    The RGB tuple
+
+{{fn}} str(instance)
+
+{{desc}} Return the hex color of the class
+
+{{rtn}} [str] The color
+
+{{fn}} int(instance)
+
+{{desc}} Return the int color of the class
+
+{{rtn}} [int] The int color
+
+{{fn}} tuple(instance)
+
+{{desc}} Return the RGB tuple of the color
+
+{{rtn}} [tuple] The RGB tuple
+
+{{sepfn}} get_color(obj)
+
+{{desc}} Returns the color value of an object
+
+{{note}} An alias for this function lies under `grab_color()`
+
+{{param}} obj [tuple, int, str, Color]
+    A color object or color compatible object
+
+{{rtn}} [int] The int color value
