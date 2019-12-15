@@ -7,7 +7,7 @@ function ind(num) {
 
 var docs_regex = [
     [
-        /\{\{cls\}\} (.+?) = (.+?)\(((.|\n)+?)\)/gm,
+        /\{\{cls\}\} (.+?) = (.+?)\(((.|\n)+?)\)\n/gm,
         function(m, p1, p2, p3) {
             var st = `<div class="head1">`;
             st += "#] " + p2;
@@ -23,7 +23,7 @@ var docs_regex = [
             return ind(4) + p1.trim().replace(/\n */gm, "\n" + ind(4)) + "\n";
         }
     ], [
-        /\{\{fn\}\} (await )?instance\.(.+?)\(((.|\n)+?)\)/gm,
+        /\{\{fn\}\} (await )?instance\.(.+?)\(((.|\n)+?)\)\n/gm,
         function(m, p1, p2, p3) {
             if(p1 == undefined)
                 p1 = "";
@@ -33,7 +33,7 @@ var docs_regex = [
             var py = "";
             py += p1 + "instance." + p2 + "(";
             py += p3.replace(/\n */gm, " ") + ")";
-            st += py_mark(py) + "</div>\n";
+            st += py_mark(py) + "</div>";
             return st;
         }
     ], [
