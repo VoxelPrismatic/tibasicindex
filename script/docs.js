@@ -105,8 +105,13 @@ var docs_regex = [
             return st;
         }
     ], [
-        /\`(.+?)`\gm, 
-        `<span class="code">$1</span>`
+        /\`(.+?)`/gm, 
+        function(m, p1) {
+            var st = `<span class="code">`;
+            st += py_mark(p1);
+            st += `</span>`;
+            return st;
+        }
     ]
 ]
 
