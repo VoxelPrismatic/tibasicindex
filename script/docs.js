@@ -42,6 +42,7 @@ var docs_regex = [
             var st = `<span class="comm"><i>{{</i><i>param</i><i>}}</i></span>`;
             st += ` <span class="var"><b>${p1}</b></span> [<span class="cls">${p2}</span>]\n`;
             st += ind(4) + p3.trim().replace(/\n */gm, "\n" + ind(4)) + "\n";
+            return st;
         }
     ], [
         /\{\{prop\}\} (.+?) \[(.+?)\]\n((.|\n)+?)\n\n/gm, 
@@ -49,18 +50,21 @@ var docs_regex = [
             var st = `<span class="comm"><i>{{</i><i>prop</i><i>}}</i></span>`;
             st += ` <span class="var"><b>${p1}</b></span> [<span class="cls">${p2}</span>]\n`;
             st += ind(4) + p3.trim().replace(/\n */gm, "\n" + ind(4)) + "\n";
+            return st;
         }
     ], [
         /\{\{rtn\}\} \[(.+)\] (.+?)\n\n/gm,
         function(m, p1, p2) {
             var st = `<span class="comm"><i>{{</i><i>rtn</i><i>}}</i></span>`;
             st += `[<span class="cls">${p1}</span>] ${p2}\n`;
+            return st;
         }
     ], [
         /\{\{error\}\} \[(.+)\] (.+?)\n\n/gm,
         function(m, p1, p2) {
             var st = `<span class="comm"><i>{{</i><i>error</i><i>}}</i></span>`;
             st += `[<span class="cls">${p1}</span>] ${p2}\n`;
+            return st;
         }
     ]
 ]
