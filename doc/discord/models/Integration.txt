@@ -1,0 +1,3 @@
+{{desc}} Represents a guild integration
+
+{{note}} This clasw doesn't actually exist yet
