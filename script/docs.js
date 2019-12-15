@@ -96,6 +96,14 @@ var docs_regex = [
             return st;
         }
     ], [
+        /\{\{warn\}\} ((.|\n)+?)\n\n/gm,
+        function(m, p1) {
+            var st = `<div class="warn">NOTICE ---\n`
+            st += p1.replace(/\n */gm, " ");
+            st += `</div>`;
+            return st;
+        }
+    ], [
         /discord\.(.+?)/gm, 
         function(m, p1) {
             var st = `<<button class="btn" onclick="btnload(this.id)"`;
