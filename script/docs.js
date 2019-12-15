@@ -68,17 +68,21 @@ var docs_regex = [
             st += ` [<span class="err">${p1}</span>] ${p2}\n`;
             return st;
         }
+    ], [
+        /\{\{note\}\} ((.|\n)+?)\n\n/gm,
+        function(m, p1) {
+            var st = `<div class="note">NOTICE ---\n`
+            st += p1.replace(/\n */gm, " ");
+            st += `</div>`;
+            return st;
+        }
     ]
 ]
 
 function docs_mark(st) {
     st = st.trim() + "\n\n";
-    for(var r of docs_regex) {
-        console.log(r);
-        console.log(st);
+    for(var r of docs_regex)
         st = st.replace(r[0], r[1]);
-        console.log(st);
-    }
     st = st.trim().replace(/\n/gm, "<br>") + "<br>";
     return st
 }
