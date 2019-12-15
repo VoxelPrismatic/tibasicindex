@@ -10,7 +10,7 @@ var docs_regex = [
         /\{\{cls\}\} (.+?) = (.+?)\(((.|\n)+?)\)\n/gm,
         function(m, p1, p2, p3) {
             var st = `<div class="head1">`;
-            st += "#] " + p2;
+            st += `#] <span class="typ">{{cls}}</span> ` + p2;
             st += `</div><div class="code">`;
             st += `${p1} = <span class="cls">${p2}</span>(`;
             st += p3.replace(/\n */gm, " ");
@@ -27,8 +27,10 @@ var docs_regex = [
         function(m, p1, p2, p3) {
             if(p1 == undefined)
                 p1 = "";
+            else
+                p1 = `<span class="aio">`;
             var st = `<div class="head2">`;
-            st += "~] " + p1 + p2;
+            st += `~] <span class="typ">{{fn}}</span> " + p1 + p2;
             st += `</div><div class="code">`;
             var py = "";
             py += p1 + "instance." + p2 + "(";
