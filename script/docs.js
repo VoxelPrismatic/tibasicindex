@@ -25,6 +25,8 @@ var docs_regex = [
     ], [
         /\{\{fn\}\} (await )?instance\.(.+?)\(((.|\n)+?)\)/gm,
         function(m, p1, p2, p3) {
+            if(p1 == undefined)
+                p1 = "";
             var st = `<div class="head2">`;
             st += "~] " + p1 + p2;
             st += `</div><div class="code">`;
