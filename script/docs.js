@@ -104,6 +104,9 @@ var docs_regex = [
             st += "</button>";
             return st;
         }
+    ], [
+        /\`(.+?)`\gm, 
+        `<span class="code">$1</span>`
     ]
 ]
 
