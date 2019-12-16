@@ -7,6 +7,7 @@ function ind(num) {
 
 var props = false;
 var params = false;
+var notes = {}
 var docs_regex = [
     [
         /\{\{cls\}\} (.+?) = (.+?)\(([\w\d*_, ]+)\)\n\n/gm,
@@ -59,7 +60,7 @@ var docs_regex = [
             py += p3.replace(/\n */gm, " ") + ")";
             st += py_mark(py) + "</div>";
             st += `<div class="warn"><b>NOTE ] </b>`
-            st += "This function is seperate from the class, which means it cannot be called from an instance of it.";
+            st += "This function is seperate from the class, which means it cannot be called from an instance of it";
             st += "</div>"
             return st;
         }
@@ -140,6 +141,12 @@ var docs_regex = [
             st += `</span>`;
             return st;
         }
+    ], [
+        /\n\%n(\d+)\% ([^%{]+)\n/gm,
+        function(m, p1, p2) {
+            notes["\\%N" + p1 + "\\%"] = p2;
+            return "\n";
+        }
     ]
 ]
 
@@ -148,6 +155,8 @@ function docs_mark(st) {
     st = st.trim() + "\n\n";
     for(var r of docs_regex)
         st = st.replace(r[0], r[1]);
+    for(var n of notes.keys())
+        st = st.replace(RegExp(n, "gm"), notes[n]);
     st = st.trim().replace(/\n/gm, "<br>") + "<br>";
     return st
 }
