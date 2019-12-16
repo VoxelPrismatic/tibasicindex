@@ -10,7 +10,7 @@ var docs_regex = [
         /\{\{cls\}\} (.+?) = (.+?)\((.+?)\)\n/gm,
         function(m, p1, p2, p3) {
             var st = `<div class="head1">`;
-            st += `#] <span class="typ">{{cls}}</span> ` + p2;
+            st += `#] ` + p2 + `<span class="typ">{{cls}}</span>`;
             st += `</div><div class="code">`;
             st += `${p1} = <span class="cls">${p2}</span>(`;
             st += p3.replace(/\n */gm, " ");
@@ -28,9 +28,9 @@ var docs_regex = [
             if(p1 == undefined)
                 p1 = "";
             else
-                p1 = `<span class="aio">`;
+                p1 = `<span class="aio">await</span> `;
             var st = `<div class="head2">`;
-            st += `~] <span class="typ">{{fn}}</span> ` + p1 + p2;
+            st += `~] ` + p1 + p2 + `<span class="typ">{{fn}}</span>`;
             st += `</div><div class="code">`;
             var py = "";
             py += p1 + "instance." + p2 + "(";
@@ -44,9 +44,9 @@ var docs_regex = [
             if(p1 == undefined)
                 p1 = "";
             else
-                p1 = `<span class="aio">`;
+                p1 = `<span class="aio">await</span> `;
             var st = `<div class="head3">`;
-            st += `+] <span class="typ">{{fn}}</span> ` + p1 + p2;
+            st += `~] ` + p1 + p2 + `<span class="typ">{{fn}}</span>`;
             st += `</div><div class="code">`;
             var py = "";
             py += p1 + "instance." + p2 + "(";
