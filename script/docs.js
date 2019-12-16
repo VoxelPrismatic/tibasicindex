@@ -182,6 +182,6 @@ function docs_mark(st) {
         if(elm.id.startsWith("JUMP_"))
             elm.remove();
     for(var elm of jumps)
-        mkJmp(...elm);
+        find("sect").innerHTML += mkJmp(...elm);
     return st
 }
