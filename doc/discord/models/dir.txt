@@ -1,1 +1,8 @@
+__init__.txt
+AttachedFile.txt
+Color.txt
+Guild.txt
+GuildEmbed.txt
+Integration.txt
+Snow.txt
 Audit.dir
