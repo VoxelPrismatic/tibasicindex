@@ -127,10 +127,29 @@ function searching() {
 
 function filter_docs(thing) {
     var pages = find("nav").children;
+    var regex = false;
+    if(thing.startsWith("/") && thing.endsWith("/") && thing != "/") {
+        var re = RegExp(thing.slice(1, -1), "gm");
+        regex = true;
+    } else {
+        var re = "";
+        for(var l of thing) {
+            var lc = l.toLowerCase().charCodeAt(0).toString(16);
+            var uc = l.toUpperCase().charCodeAt(0).toString(16);
+            while(lc.length < 4)
+                lc = "0" + lc;
+            while(uc.length < 4)
+                uc = "0" + uc;
+            re += `[\\u${lc}\\u${uc}\\u200b\\\\]`; //Escape chars
+        }
+    }
     for(var page of pages) {
         if(!(page.id.startsWith("/prizmatic.docs/doc/")))
             continue;
-        if(thing == "" || page.id.slice(20, -4).toLowerCase().search(thing.toLowerCase()) != -1)
+        var id = page.id.slice(20, -4);
+        if(regex)
+            id = id.toLowerCase();
+        if(thing == "" || id.search(re) != -1)
             page.style.display = "block";
         else
             page.style.display = "none";
@@ -139,6 +158,20 @@ function filter_docs(thing) {
 
 function filter_jump(thing) {
     var pages = find("sect").children;
+    if(thing.startsWith("/") && thing.endsWith("/") && thing != "/")
+        var re = RegExp(thing.slice(1, -1), "gm");
+    else {
+        var re = "";
+        for(var l of thing) {
+            var lc = l.toLowerCase().charCodeAt(0).toString(16);
+            var uc = l.toUpperCase().charCodeAt(0).toString(16);
+            while(lc.length < 4)
+                lc = "0" + lc;
+            while(uc.length < 4)
+                uc = "0" + uc;
+            re += `[\\u${lc}\\u${uc}\\u200b\\\\]`; //Escape chars
+        }
+    }
     for(var page of pages) {
         if(!(page.id.startsWith("JUMP_")))
             continue;
@@ -178,7 +211,7 @@ function find_in_docs(phrase) {
             try {
                 docs(dir);
             } catch(err) {
-                console.log(err);
+                console.error(err);
             }
             docs(this_here);
             if(find("RAW_"+dir).innerHTML.search(re) == -1)
