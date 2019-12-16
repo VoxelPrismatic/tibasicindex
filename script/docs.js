@@ -20,7 +20,7 @@ var docs_regex = [
         function(m, p1, p2, p3) {
             var st = `<div class="head1">`;
             st += `#] ` + p2 + ` <span class="typ">{{cls}}</span>`;
-            find("sect").innerHTML += `<div class="lnk" id="JUMP_${p2}" onclick="jump(this);">#cls ${p2}()</div>`;
+            find("sect").innerHTML += mkJmp(p2, `#cls ${p2}()`);
             st += `</div><div class="code">`;
             st += `${p1} = <span class="cls">${p2}</span>(`;
             st += p3.replace(/\n */gm, " ");
@@ -66,7 +66,8 @@ var docs_regex = [
             py += p3.replace(/\n */gm, " ") + ")";
             st += py_mark(py) + "</div>";
             st += `<div class="warn"><b>NOTE ] </b>`
-            st += "This function is seperate from the class, which means it cannot be called from an instance of it";
+            st += "This function is seperate from the class, ";
+            st += "which means it cannot be called from an instance of it";
             st += "</div>"
             return st;
         }
@@ -157,6 +158,11 @@ var docs_regex = [
         /\{\{alias\}\} ([\w\d_]+)/gm,
         function(m, p1) {
             return `<b>NOTE ] </b>An alias resides under '${p1}', but this takes priority</div>`;
+        }
+    ], [
+        /\{\{norm\}\} (.+)/gm,
+        function(m, p1) {
+            return `<b>NOTE ] </b>The default value is <span class="code">${p1}</span>`;
         }
     ]
 ]
