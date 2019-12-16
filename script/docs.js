@@ -158,7 +158,7 @@ var docs_regex = [
     ], [
         /\{\{alias\}\} ([\w\d_]+)/gm,
         function(m, p1) {
-            return `<b>NOTE ] </b>An alias resides under '${p1}', but this takes priority</div>`;
+            return `<b>NOTE ] </b>An alias resides under '${p1}'</div>`;
         }
     ], [
         /\{\{norm\}\} (.+)/gm,
