@@ -1,22 +1,22 @@
 {{cls}} instance = Color(int_color, rgb_color, hex_color)
-    
+
 {{desc}} Represents a color... yes thats it
 
 {{param}} int_color [Optional[int]]
     The integer representation of the number
-    
+
 {{param}} rgb_color [Optional[tuple]]
     R, G, and B color values in a tuple
-    
+
 {{param}} hex_color [Optional[str]]
     The hexadecimal color. Must start with a #
-    
+
 {{prop}} hex [str]
     The hex color
-    
+
 {{prop}} num [int]
     The actual int color
-    
+
 {{prop}} rgb [tuple]
     The RGB tuple
 
