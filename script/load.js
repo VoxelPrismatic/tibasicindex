@@ -101,4 +101,5 @@ function btnload(url) {
     } else {
         maybeload(url, true);
     }
+    find("back-page").innerHTML += `<span>${url}</span>`;
 }
