@@ -22,13 +22,13 @@ var docs_regex = [
             
         }
     ], [
-        /\{\{desc\}\} ([^{]+?)\n\n/gm,
+        /\{\{desc\}\} ([^{]+)\n\n/gm,
         function(m, p1) {
             return ind(4) + p1.trim().replace(/\n */gm, "\n" + ind(4)) + "\n";
         }
     ], [
-        /\{\{fn\}\} (await )?instance\.(.+?)\(([\w\d_, ]+)\)\n/gm,
-        function(m, p1, p2, p3) {
+        /\{\{fn\}\} (await )?(.+?)\.([\w\d_]+)\(([\w\d_, ]*)\)\n/gm,
+        function(m, p1, p4, p2, p3) {
             if(p1 == undefined)
                 p1 = "";
             else
@@ -38,14 +38,14 @@ var docs_regex = [
             st += `~] ` + p1 + p2 + `<span class="typ">{{fn}}</span>`;
             st += `</div><div class="code">`;
             var py = "";
-            py += p1 + "instance." + p2 + "(";
+            py += p1 + p4 + "." + p2 + "(";
             py += p3.replace(/\n */gm, " ") + ")";
             st += py_mark(py) + "</div>";
             return st;
         }
     ], [
-        /\{\{sepfn\}\} (await )?instance\.([\w\d_]+)\(([\w\d._]+)\)\n/gm,
-        function(m, p1, p2, p3) {
+        /\{\{sepfn\}\} (await )?(.+?)\.([\w\d_]+)\(([\w\d,_ ]*)\)\n/gm,
+        function(m, p1, p4, p2, p3) {
             if(p1 == undefined)
                 p1 = "";
             else
@@ -55,7 +55,7 @@ var docs_regex = [
             st += `</div><div class="code">`;
             var py = "";
             find("sect").innerHTML += `<div class="lnk" id="JUMP_${p2}" onclick="jump(this);">#fn ${p2}()</div>`;
-            py += p1 + "instance." + p2 + "(";
+            py += p1 + p4 + "." + p2 + "(";
             py += p3.replace(/\n */gm, " ") + ")";
             st += py_mark(py) + "</div>";
             st += `<div class="note">NOTICE ---\n`
@@ -64,7 +64,7 @@ var docs_regex = [
             return st;
         }
     ], [
-        /\{\{param\}\} (.+?) \[(.+)\]\n([^{]+?)\n\n/gm,
+        /\{\{param\}\} (.+?) \[(.+)\]\n([^{]+)\n\n/gm,
         function(m, p1, p2, p3) {
             var st = ""
             if(!params) {
@@ -78,7 +78,7 @@ var docs_regex = [
             return st;
         }
     ], [
-        /\{\{prop\}\} (.+?) \[(.+)\]\n([^{]+?)\n\n/gm, 
+        /\{\{prop\}\} (.+?) \[(.+)\]\n([^{]+)\n\n/gm, 
         function(m, p1, p2, p3) {
             var st = ""
             if(!props) {
@@ -92,21 +92,21 @@ var docs_regex = [
             return st;
         }
     ], [
-        /\{\{rtn\}\} \[(.+?)\] ([^{]+?)\n\n/gm,
+        /\{\{rtn\}\} \[(.+?)\] ([^{]+)\n\n/gm,
         function(m, p1, p2) {
             var st = `<span class="typ">{{rtn}}</span>`;
             st += ` [<span class="cls">${p1}</span>] ${p2}\n`;
             return st;
         }
     ], [
-        /\{\{err\}\} \[(.+?)\] ([^{]+?)\n\n/gm,
+        /\{\{err\}\} \[(.+?)\] ([^{]+)\n\n/gm,
         function(m, p1, p2) {
             var st = `<span class="typ">{{err}}</span>`;
             st += ` [<span class="err">${p1}</span>] ${p2}\n`;
             return st;
         }
     ], [
-        /\{\{note\}\} ([^{]+?)\n\n/gm,
+        /\{\{note\}\} ([^{]+)\n\n/gm,
         function(m, p1) {
             var st = `<div class="note">NOTICE ---\n`
             st += p1.replace(/\n */gm, " ");
@@ -114,7 +114,7 @@ var docs_regex = [
             return st;
         }
     ], [
-        /\{\{warn\}\} ([^{]+?)\n\n/gm,
+        /\{\{warn\}\} ([^{]+)\n\n/gm,
         function(m, p1) {
             var st = `<div class="warn">NOTICE ---\n`
             st += p1.replace(/\n */gm, " ");
