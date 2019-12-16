@@ -44,8 +44,8 @@ var docs_regex = [
             return st;
         }
     ], [
-        /\{\{sepfn\}\} (await )?(.+?)\.([\w\d_]+)\(([\w\d*_, ]*)\)\n/gm,
-        function(m, p1, p4, p2, p3) {
+        /\{\{sepfn\}\} (await )?([\w\d_]+)\(([\w\d*_, ]*)\)\n/gm,
+        function(m, p1, p2, p3) {
             if(p1 == undefined)
                 p1 = "";
             else
@@ -55,7 +55,7 @@ var docs_regex = [
             st += `</div><div class="code">`;
             var py = "";
             find("sect").innerHTML += `<div class="lnk" id="JUMP_${p2}" onclick="jump(this);">#fn ${p2}()</div>`;
-            py += p1 + p4 + "." + p2 + "(";
+            py += p1 + p2 + "(";
             py += p3.replace(/\n */gm, " ") + ")";
             st += py_mark(py) + "</div>";
             st += `<div class="note">NOTICE ---\n`
