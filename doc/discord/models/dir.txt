@@ -1,4 +1,4 @@
-__init__.txt
+index.txt
 AttachedFile.txt
 Color.txt
 Guild.txt
