@@ -13,7 +13,7 @@ function load(fil) {
     try {
         var txt = read(fil);
     } catch(err) {
-        console.log(err);
+        console.error(err);
         find("page").innerHTML = mkElm("div", "404 ] Not found", {class: "warn"});
         return;
     }
@@ -60,14 +60,14 @@ function maybeload(uri, init = false) {
     try {
         docs(url);
     } catch(err) {
-        console.log(err);
+        console.error(err);
         console.log(url);
         try {
             load(url);
             docs(url);
         } catch(err) {
             find("page").innerHTML = mkElm("div", "An unknown error occured, check console for details", {class: "warn"});
-            console.log(err);
+            console.error(err);
         }
     }
     url = uri;
