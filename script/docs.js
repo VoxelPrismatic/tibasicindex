@@ -12,7 +12,7 @@ var docs_regex = [
         /\{\{cls\}\} (.+?) = (.+?)\(([\w\d, ]+)\)\n/gm,
         function(m, p1, p2, p3) {
             var st = `<div class="head1">`;
-            st += `#] ` + p2 + `<span class="typ">{{cls}}</span>`;
+            st += `#] ` + p2 + ` <span class="typ">{{cls}}</span>`;
             find("sect").innerHTML += `<div class="lnk" id="JUMP_${p2}" onclick="jump(this);">#cls ${p2}()</div>`;
             st += `</div><div class="code">`;
             st += `${p1} = <span class="cls">${p2}</span>(`;
@@ -35,7 +35,7 @@ var docs_regex = [
                 p1 = `<span class="aio">await</span> `;
             var st = `<div id="${p2}"></div><div class="head2">`;
             find("sect").innerHTML += `<div class="lnk" id="JUMP_${p2}" onclick="jump(this);">#fn ${p2}()</div>`;
-            st += `~] ` + p1 + p2 + `<span class="typ">{{fn}}</span>`;
+            st += `~] ` + p1 + p2 + ` <span class="typ">{{fn}}</span>`;
             st += `</div><div class="code">`;
             var py = "";
             py += p1 + p4 + "." + p2 + "(";
@@ -51,7 +51,7 @@ var docs_regex = [
             else
                 p1 = `<span class="aio">await</span> `;
             var st = `<div class="head3">`;
-            st += `~] ` + p1 + p2 + `<span class="typ">{{fn}}</span>`;
+            st += `~] ` + p1 + p2 + ` <span class="typ">{{fn}}</span>`;
             st += `</div><div class="code">`;
             var py = "";
             find("sect").innerHTML += `<div class="lnk" id="JUMP_${p2}" onclick="jump(this);">#fn ${p2}()</div>`;
