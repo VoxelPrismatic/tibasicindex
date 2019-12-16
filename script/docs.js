@@ -35,36 +35,40 @@ var docs_regex = [
             return ind(4) + trim(p1).replace(/\n */gm, "\n" + ind(4)) + "\n";
         }
     ], [
-        /\{\{fn\}\} (await )?(.+?)\.([\w\d_]+)\(([\w\d*_, ]*)\)\n\n/gm,
-        function(m, p1, p4, p2, p3) {
+        /\{\{fn\}\} (await )?(.+?)\.([\w\d_]+)\(([\w\d*_, ]*)\)(.*)\n\n/gm,
+        function(m, p1, p4, p2, p3, p5) {
             if(p1 == undefined)
                 p1 = "";
             else
                 p1 = `<span class="aio">await</span> `;
+            if(p5 == undefined)
+                p5 = ""
             var st = `\n\n<div id="${p2}" class="head2">`;
             jumps.push([p2, `fn ${p2}()`]);
             st += `~] ` + p1 + p2 + ` <span class="typ">{{fn}}</span>`;
             st += `</div><div class="code">`;
             var py = "";
             py += p1 + p4 + "." + p2 + "(";
-            py += p3.replace(/\n */gm, " ") + ")";
+            py += p3.replace(/\n */gm, " ") + ")" + p5;
             st += py_mark(py) + "</div>";
             return st;
         }
     ], [
-        /\{\{sepfn\}\} (await )?([\w\d_]+)\(([\w\d*_, ]*)\)\n\n/gm,
-        function(m, p1, p2, p3) {
+        /\{\{sepfn\}\} (await )?([\w\d_]+)\(([\w\d*_, ]*)\)(.*)\n\n/gm,
+        function(m, p1, p2, p3, p5) {
             if(p1 == undefined)
                 p1 = "";
             else
                 p1 = `<span class="aio">await</span> `;
+            if(p5 == undefined)
+                p5 = ""
             var st = `\n\n<div id="${p2}" class="head3">`;
             st += `~] ` + p1 + p2 + ` <span class="typ">{{fn}}</span>`;
             st += `</div><div class="code">`;
             var py = "";
             jumps.push([p2, `fn ${p2}()`]);
             py += p1 + p2 + "(";
-            py += p3.replace(/\n */gm, " ") + ")";
+            py += p3.replace(/\n */gm, " ") + ")" + p5;
             st += py_mark(py) + "</div>";
             st += `<div class="warn"><b>NOTE ] </b>`
             st += "This function is seperate from the class, ";
