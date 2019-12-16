@@ -130,7 +130,7 @@ function filter_docs(thing) {
     for(var page of pages) {
         if(!(page.id.startsWith("/prizmatic.docs/doc/")))
             continue;
-        if(thing == "" || page.id.slice(20, -4).search(thing) != -1)
+        if(thing == "" || page.id.slice(20, -4).toLowerCase().search(thing.toLowerCase()) != -1)
             page.style.display = "block";
         else
             page.style.display = "none";
