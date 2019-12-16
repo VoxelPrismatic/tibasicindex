@@ -9,7 +9,7 @@ var props = false;
 var params = false;
 var docs_regex = [
     [
-        /\{\{cls\}\} (.+?) = (.+?)\(([\w\d, ]+)\)\n/gm,
+        /\{\{cls\}\} (.+?) = (.+?)\(([\w\d*_, ]+)\)\n/gm,
         function(m, p1, p2, p3) {
             var st = `<div class="head1">`;
             st += `#] ` + p2 + ` <span class="typ">{{cls}}</span>`;
@@ -27,7 +27,7 @@ var docs_regex = [
             return ind(4) + p1.trim().replace(/\n */gm, "\n" + ind(4)) + "\n";
         }
     ], [
-        /\{\{fn\}\} (await )?(.+?)\.([\w\d_]+)\(([\w\d_, ]*)\)\n/gm,
+        /\{\{fn\}\} (await )?(.+?)\.([\w\d_]+)\(([\w\d*_, ]*)\)\n/gm,
         function(m, p1, p4, p2, p3) {
             if(p1 == undefined)
                 p1 = "";
@@ -44,7 +44,7 @@ var docs_regex = [
             return st;
         }
     ], [
-        /\{\{sepfn\}\} (await )?(.+?)\.([\w\d_]+)\(([\w\d,_ ]*)\)\n/gm,
+        /\{\{sepfn\}\} (await )?(.+?)\.([\w\d_]+)\(([\w\d*_, ]*)\)\n/gm,
         function(m, p1, p4, p2, p3) {
             if(p1 == undefined)
                 p1 = "";
@@ -124,7 +124,9 @@ var docs_regex = [
     ], [
         /discord\.([.\w_]+)/gm, 
         function(m, p1) {
-            var st = `<<button class="btn" onclick="btnload(this.id)"`;
+            if(p1 == "gg")
+                return "discord.gg";
+            var st = `<button class="btn" onclick="btnload(this.id)"`;
             st += `id="discord/${p1.replace(/\./gm, "/")}.txt">`;
             st += "discord." + p1;
             st += "</button>";
