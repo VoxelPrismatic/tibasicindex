@@ -7,7 +7,7 @@ function load(fil) {
     try {
         find(fil).className = "lnk sel";
     } catch(err) {
-        console.log(err);
+        console.error(err);
         console.log(fil);
     }
     try {
@@ -28,7 +28,7 @@ function load(fil) {
        txt = "--top--\n"+txt;
     find("cached-pages").innerHTML += mkElm("div", txt, {id: "RAW_"+fil, class: "invis"});
     var mark = mark_page(txt);
-    find("page").innerHTML = "<span>"+mark+"</span>";
+    find("page").innerHTML = "<span>" + mark + "</span>";
     mark = findHtml("page");
     mark = mark.replace(/<span><\/span>/gm, "");
     mark = mark.replace(/<br><br>/gm, "<br>");
