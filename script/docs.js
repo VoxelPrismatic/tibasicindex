@@ -64,7 +64,7 @@ var docs_regex = [
             return st;
         }
     ], [
-        /\{\{param\}\} (.+?) \[(.+?)\]\n([^{]+?)\n\n/gm,
+        /\{\{param\}\} (.+?) \[(.+)\]\n([^{]+?)\n\n/gm,
         function(m, p1, p2, p3) {
             var st = ""
             if(!params) {
@@ -78,7 +78,7 @@ var docs_regex = [
             return st;
         }
     ], [
-        /\{\{prop\}\} (.+?) \[(.+?)\]\n([^{]+?)\n\n/gm, 
+        /\{\{prop\}\} (.+?) \[(.+)\]\n([^{]+?)\n\n/gm, 
         function(m, p1, p2, p3) {
             var st = ""
             if(!props) {
