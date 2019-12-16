@@ -1,6 +1,7 @@
 {{cls}} instance = Guild(*, too_many_args_to_list_here)
 
 {{desc}} Represents a Guild
+
 {{note}} This class shouldn't be initialized by hand. Don't do that.
 
 {{note}} A "guild" is referred to as a "server" in the UI
@@ -252,7 +253,7 @@
 {{prop}} out [bool]
     Whether or not the guild is offline
 
-{{prop}} player_count [int] 
+{{prop}} player_count [int]
     Number of players in the guild
 
 {{prop}} voice_states [List[dict]]
