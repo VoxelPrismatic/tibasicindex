@@ -36,7 +36,9 @@
 
 {{rtn}} [int] The int color
 
-{{fn}} tuple(instance)
+{{fn}} instance.__tuple__()
+
+{{note}} This function is actually supposed to be used as `tuple(instance)`
 
 {{desc}} Return the RGB tuple of the color
 
