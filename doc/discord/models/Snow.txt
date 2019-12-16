@@ -1,9 +1,8 @@
 {{cls}} instance = Snow(snowflake)
 
-{{desc}}
-    Represents a snowflake... wonderfully named btw
-    000000000000000000000000000000000000000000 00000 00000 000000000000
-    ----------------TIME STAMP---------------- -wID- -pID- --INCREMENT--
+{{desc}} Represents a snowflake... wonderfully named btw
+000000000000000000000000000000000000000000 00000 00000 000000000000
+--------------- TIME STAMP --------------- -wID- -pID- -- INCREM --
 
 {{param}} snowflake [int, str, bytes]
     Represents a Discord snowflake
