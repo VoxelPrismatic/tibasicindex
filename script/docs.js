@@ -7,7 +7,7 @@ function ind(num) {
 
 var docs_regex = [
     [
-        /\{\{cls\}\} (.+?) = (.+?)\(((.|\n)+?)\)\n\n/gm,
+        /\{\{cls\}\} (.+?) = (.+?)\(((.|\n)+?)\)\n/gm,
         function(m, p1, p2, p3) {
             var st = `<div class="head1">`;
             st += `#] <span class="typ">{{cls}}</span> ` + p2;
