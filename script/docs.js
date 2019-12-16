@@ -19,7 +19,7 @@ var docs_regex = [
     [
         /\{\{cls\}\} (.+?) = (.+?)\(([\w\d*_, ]*)\)\n\n/gm,
         function(m, p1, p2, p3) {
-            var st = `<div class="head1">`;
+            var st = `<div id="top"></div><div id="${p2}"></div><div class="head1">`;
             st += `#] ` + p2 + ` <span class="typ">{{cls}}</span>`;
             jumps.push([p2, `cls ${p2}()`]);
             st += `</div><div class="code">`;
