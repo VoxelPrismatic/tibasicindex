@@ -9,7 +9,7 @@ var props = false;
 var params = false;
 var docs_regex = [
     [
-        /\{\{cls\}\} (.+?) = (.+?)\(([\w\d*_, ]+)\)\n/gm,
+        /\{\{cls\}\} (.+?) = (.+?)\(([\w\d*_, ]+)\)\n\n/gm,
         function(m, p1, p2, p3) {
             var st = `<div class="head1">`;
             st += `#] ` + p2 + ` <span class="typ">{{cls}}</span>`;
@@ -27,7 +27,7 @@ var docs_regex = [
             return ind(4) + trim(p1).replace(/\n */gm, "\n" + ind(4)) + "\n";
         }
     ], [
-        /\{\{fn\}\} (await )?(.+?)\.([\w\d_]+)\(([\w\d*_, ]*)\)\n/gm,
+        /\{\{fn\}\} (await )?(.+?)\.([\w\d_]+)\(([\w\d*_, ]*)\)\n\n/gm,
         function(m, p1, p4, p2, p3) {
             if(p1 == undefined)
                 p1 = "";
@@ -44,14 +44,14 @@ var docs_regex = [
             return st;
         }
     ], [
-        /\{\{sepfn\}\} (await )?([\w\d_]+)\(([\w\d*_, ]*)\)\n/gm,
+        /\{\{sepfn\}\} (await )?([\w\d_]+)\(([\w\d*_, ]*)\)\n\n/gm,
         function(m, p1, p2, p3) {
             if(p1 == undefined)
                 p1 = "";
             else
                 p1 = `<span class="aio">await</span> `;
             var st = `\n\n<div id="${p2}"></div><div class="head3">`;
-            st += `+] ` + p1 + p2 + ` <span class="typ">{{fn}}</span>`;
+            st += `~] ` + p1 + p2 + ` <span class="typ">{{fn}}</span>`;
             st += `</div><div class="code">`;
             var py = "";
             find("sect").innerHTML += `<div class="lnk" id="JUMP_${p2}" onclick="jump(this);">#fn ${p2}()</div>`;
