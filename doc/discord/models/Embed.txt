@@ -1,0 +1,349 @@
+{{cls}} instance = Embed(*, too_many_args_to_list_here)
+{{desc}} Represents a Discord Embed
+
+{{param}} title [str]
+    The Embed Title, 256 chars max, %N0%
+
+{{param}} type [str]
+    Type of embed
+    {{norm}} "rich"
+
+{{param}} desc [str]
+    The Embed Description, 2048 chars max, %N0%
+    {{alias}} description
+
+{{param}} fields [List[str, str, bool], List[str, str]]
+    The fields, in [name, value, inline?] format
+    Alternatively, you can use [name, value], where inline is False
+    - name is 256 chars max, %N0%
+    - value is 1024 chars max, %N0%
+    - inline is False by default
+    Any more than 25 fields will be discarded
+    Any invalid fields will silently be discarded
+
+{{param}} foot [str]
+    The footer, 2048 chars max, %N0%
+    {{alias}} footer
+
+{{param}} foot_icon [str]
+    The http[s] url of the footer icon, %N1%
+    {{alias}} footer_icon
+
+{{param}} foot_proxy_icon [str]
+    The proxied url of the footer icon
+    {{alias}} footer_proxy_icon
+
+{{param}} url [str]
+    The url of the embed, http[s] only, %N1%
+
+{{param}} time [datetime.datetime, str]
+    The Datetime object of the time you wish to put
+    Placing "now" will give you the current time in UTC
+    Placing a VALID ISO 8601 timestamp will also work
+    {{alias}} timestamp
+
+{{param}} color [discord.models.Color, int, str, tuple]
+    The color of the embed
+    - if str, must be in hex eg #004466, in that format
+    - if tuple, then it must be 3 ints with max value 255, RGB
+    - if int, then no problem
+    - if Color, then it must be a Color object from this library
+
+{{param}} image [str]
+    The http[s] url of the image, %N1%
+
+{{param}} image_proxy [str]
+    The proxied url of the image
+
+{{param}} image_height [int]
+    How tall the image should be
+
+{{param}} image_width [int]
+    How wide the image should be
+
+{{param}} thumb [str]
+    The http[s] url of the thumbnail, %N1%
+    {{alias}} thumbnail
+
+{{param}} thumb_proxy [str]
+    The proxied url of the thumbnail
+    {{alias}} thumbnail_proxy
+
+{{param}} thumb_height [int]
+    How tall the thumbnail should be
+    {{alias}} thumbnail_height
+
+{{param}} thumb_width [int]
+    How wide the thumbnail should be
+    {{alias}} thumbnail_width
+
+{{param}} video [str]
+    The http[s] url of the video %N1%
+
+{{param}} video_height [int]
+    How tall the video should be
+
+{{param}} video_width [int]
+    How wide the video should be
+
+{{param}} provider [str]
+    Name of the provider
+
+{{param}} provider_url [str]
+    The url of the provider
+
+{{param}} author [str]
+    Name of the author, 256 chars max, %N0%
+
+{{param}} author_url [str]
+    The url of the author
+
+{{param}} author_icon [str]
+    The http[s] url of the author's pfp, %N1%
+
+{{param}} author_proxy_icon [str]
+    The proxied url of the author's pfp
+
+%n0% All text will automatically be stripped to meet length requirements
+
+%n1% All non http[s] or urls [not including proxied ones] will be silently
+discarded, but Discord does allow the `attachment://<file_name>.<type>`
+scheme, and is supported here too.
+
+{{note}} This is the default formatting of an Embed ---
+    ______________
+/
+| Author things
+| Title
+| -------------
+| desc...       [thumb]
+|
+| Field name
+| field content
+|
+| [   image   ]
+| [           ]
+| -------------
+| Footer things | Timestamp
+\______________
+*not to scale ofc but this is the general layout
+
+{{prop}} title [str]
+    The title of the embed
+
+{{prop}} type [str]
+    The type of embed
+
+{{prop}} desc [str]
+    Description
+    {{alias}} description
+
+{{prop}} foot [str]
+    Footer text
+    {{alias}} footer
+
+{{prop}} foot_icon [str]
+    Footer icon URL
+    {{alias}} footer_icon
+
+{{prop}} foot_proxy_icon [str]
+    Footer proxy icon URL
+    {{alias}} footer_proxy_icon
+
+{{prop}} url [str]
+    The embed URL
+
+{{prop}} time [None, datetime.datetime]
+    The timestamp of the embed
+    {{alias}} timestamp
+
+{{prop}} color [None, Color]
+    The color of the embed, on the left
+
+{{prop}} image [str]
+    Image URL
+    {{alias}} img
+
+{{prop}} image_proxy [str]
+    Image proxy URL
+    {{alias}} img_proxy
+
+{{prop}} image_width [int]
+    Width of the image in pixels
+    {{alias}} img_w
+
+{{prop}} image_height [int]
+    Height of the image in pixels
+    {{alias}} img_h
+
+{{prop}} thumb [str]
+    The thumbnail URL
+    {{alias}} thumbnail
+
+{{prop}} thumb_proxy [str]
+    The thumbnail proxy URL
+    {{alias}} thumbnail_proxy
+
+{{prop}} thumb_width [int]
+    The width of the thumbnail in pixels
+    {{alias}} thumbnail_width
+    {{alias}} thumb_w
+
+{{prop}} thumb_height [int]
+    Height of the thumbail in pixels
+    {{alias}} thumbnail_height
+    {{alias}} thumb_w
+
+{{prop}} video [str]
+    The video URL
+    {{alias}} vid
+
+{{prop}} video_proxy [str]
+    The video proxy URL
+    {{alias}} vid_proxy
+
+{{prop}} video_width [int]
+    The video width in pixels
+    {{alias}} vid_w
+
+{{prop}} video_height [int]
+    The height of the video in pixels
+    {{alias}} vid_h
+
+{{prop}} provider [str]
+    Name of the provider, eg "YouTube"
+
+{{prop}} provider_url [str]
+    The URL of the provider, eg "https://youtu.be/"
+
+{{prop}} author [str]
+    Name of the author
+    {{alias}} auth
+
+{{prop}} author_url [str]
+    The URL of where to locate the author
+    {{alias}} auth_url
+
+{{prop}} author_icon [str]
+    The URL of the author icon
+    {{alias}} auth_icon
+
+{{prop}} author_proxy_icon [str]
+    URL of the author proxy icon
+    {{alias}} auth_proxy_icon
+
+{{prop}} fields [List[List[str, str, bool]]]
+    A list of fields in the [name, val, ?inline] format
+
+{{fn}} instance.__repr__()
+
+{{note}} This function is actually meant to be used as `repr(self)`
+
+{{desc}} The correct name, according to python
+
+{{rtn}} [str] The correct name
+
+{{fn}} instance.__dict__()
+
+{{note}} This function is actually meant to be used as `dict(instance)`
+
+{{desc}} Returns a discord-compatible dict object ready for sending
+
+{{rtn}} [dict] The send-ready object
+
+{{fn}} instance.clear(*args)
+
+{{desc}} Clears values
+
+{{param}} *args [str]
+    What attributes to clear, eg ['title', 'desc']
+
+{{rtn}} [discord.models.Embed] Itself
+
+{{fn}} instance.set(*, too_many_args_to_list_here)
+
+{{desc}} Similar to creation, but only overrides given params
+
+{{note}} All parameters are the ones from initialization. That way you
+can edit all the params in one command
+
+{{rtn}} [discord.models.Embed] Itself
+
+{{fn}} instance.append_fields(fields)
+
+{{desc}} Adds fields to the embed
+
+{{param}} fields [List[List[str, str, bool]], List[str, str, bool]]
+    Either a single field or a list of fields
+
+{{rtn}} [discord.models.Embed] Itself
+
+{{fn}} instance.swap_fields(fields)
+
+{{desc}} Swaps a set of fields
+
+{{param}} fields [Dict[int: int]]
+    A dict of key-value pairs where the key is the field you want to
+    swap and the value is the new location of the field. This also
+    swaps the field currently occupying that location.
+
+{{rtn}} [discord.models.Embed] Itself
+
+{{fn}} instance.edit_field(index, field)
+
+{{desc}} Edits a field at index
+
+{{param}} index [int]
+    The field number to edit, starts from 0
+
+{{param}} field [List[str, str, bool], List[str, str]]
+    The fields, in [name, value, inline?] format
+    Alternatively, you can use [name, value], where inline is False
+    - name is 256 chars max, %N0%
+    - value is 1024 chars max, %N0%
+    - inline is False by default
+    Any more than 25 fields will be discarded
+    Any invalid fields will silently be discarded
+
+{{fn}} instance.remove_fields(indexes)
+
+{{desc}} Removes fields, starting from 0
+
+{{param}} indexes [int, str, List[int]]
+    The indexes to remove. This is 0 based
+
+{{rtn}} [discord.models.Embed] Itself
+
+{{fn}} instance.__setitem__(key) = val
+
+{{note}} This function is meant to be used as `instance[key] = val`
+
+{{desc}} Returns an attribute, so you can interact with this class as if
+it were a dict
+
+{{param}} key [str]
+    The attribute to set
+
+{{param}} val [Any]
+    The value to set the attribute to
+
+{{fn}} instance.from_dict(emb)
+
+{{desc}} Converts a dict embed to an actual embed
+
+{{param}} emb [dict]
+    A dict compatible object
+
+{{rtn}} The new embed
+
+{{fn}} instance.__getitem__(key)
+
+{{note}} This function is meant to be used as `instance[key]`
+
+{{desc}} Returns an attribute, so you can interact with this class as if
+it were a dict
+
+{{param}} key [str]
+    The attribute you want
+
+{{rtn}} [Any] The attribute
