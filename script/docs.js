@@ -19,7 +19,7 @@ var docs_regex = [
     [
         /\{\{cls\}\} (.+?) = (.+?)\(([\w\d*_, ]*)\)\n\n/gm,
         function(m, p1, p2, p3) {
-            var st = `<div id="top"></div><div id="${p2}"></div><div class="head1">`;
+            var st = `<div id="top"></div><div id="${p2}" class="head1">`;
             st += `#] ` + p2 + ` <span class="typ">{{cls}}</span>`;
             jumps.push([p2, `cls ${p2}()`]);
             st += `</div><div class="code">`;
@@ -41,7 +41,7 @@ var docs_regex = [
                 p1 = "";
             else
                 p1 = `<span class="aio">await</span> `;
-            var st = `\n\n<div id="${p2}"></div><div class="head2">`;
+            var st = `\n\n<div id="${p2}" class="head2">`;
             jumps.push([p2, `fn ${p2}()`]);
             st += `~] ` + p1 + p2 + ` <span class="typ">{{fn}}</span>`;
             st += `</div><div class="code">`;
@@ -58,7 +58,7 @@ var docs_regex = [
                 p1 = "";
             else
                 p1 = `<span class="aio">await</span> `;
-            var st = `\n\n<div id="${p2}"></div><div class="head3">`;
+            var st = `\n\n<div id="${p2}" class="head3">`;
             st += `~] ` + p1 + p2 + ` <span class="typ">{{fn}}</span>`;
             st += `</div><div class="code">`;
             var py = "";
@@ -78,7 +78,7 @@ var docs_regex = [
             var st = ""
             if(!params) {
                 st += `<div id="params"></div>`;
-                find("sect").innerHTML += mkJmp("params");
+                jumps.push("params");
                 params = true;
             }
             st += `<span class="typ">{{param}}</span>`;
@@ -92,7 +92,7 @@ var docs_regex = [
             var st = ""
             if(!props) {
                 st += `<div id="props"></div>`;
-                find("sect").innerHTML += ``;
+                jumps.push("props");
                 props = true;
             }
             st += `<span class="typ">{{prop}}</span>`;
