@@ -5,6 +5,12 @@ function ind(num) {
     return st;
 }
 
+function mkJmp(nam, show = "") {
+    if(show == "")
+        show = nam;
+    return `<div class="lnk" id="JUMP_${nam}" onclick="jump(this);">#${show}</div>`;
+}
+
 var props = false;
 var params = false;
 var notes = {}
@@ -35,7 +41,7 @@ var docs_regex = [
             else
                 p1 = `<span class="aio">await</span> `;
             var st = `\n\n<div id="${p2}"></div><div class="head2">`;
-            find("sect").innerHTML += `<div class="lnk" id="JUMP_${p2}" onclick="jump(this);">#fn ${p2}()</div>`;
+            find("sect").innerHTML += mkJmp(p2, `fn ${p2}()`);
             st += `~] ` + p1 + p2 + ` <span class="typ">{{fn}}</span>`;
             st += `</div><div class="code">`;
             var py = "";
@@ -55,7 +61,7 @@ var docs_regex = [
             st += `~] ` + p1 + p2 + ` <span class="typ">{{fn}}</span>`;
             st += `</div><div class="code">`;
             var py = "";
-            find("sect").innerHTML += `<div class="lnk" id="JUMP_${p2}" onclick="jump(this);">#fn ${p2}()</div>`;
+            find("sect").innerHTML += mkJmp(p2, `fn ${p2}()`);
             py += p1 + p2 + "(";
             py += p3.replace(/\n */gm, " ") + ")";
             st += py_mark(py) + "</div>";
@@ -70,7 +76,7 @@ var docs_regex = [
             var st = ""
             if(!params) {
                 st += `<div id="params"></div>`;
-                find("sect").innerHTML += `<div class="lnk" id="JUMP_params" onclick="jump(this);">#params</div>`;
+                find("sect").innerHTML += mkJmp("params");
                 params = true;
             }
             st += `<span class="typ">{{param}}</span>`;
@@ -84,7 +90,7 @@ var docs_regex = [
             var st = ""
             if(!props) {
                 st += `<div id="props"></div>`;
-                find("sect").innerHTML += `<div class="lnk" id="JUMP_props" onclick="jump(this);">#props</div>`;
+                find("sect").innerHTML += ``;
                 props = true;
             }
             st += `<span class="typ">{{prop}}</span>`;
@@ -117,7 +123,7 @@ var docs_regex = [
     ], [
         /\{\{warn\}\} ([^{]+)\n\n/gm,
         function(m, p1) {
-            var st = `<div class="warn">NOTICE ---\n`
+            var st = `<div class="warn"><b>WARNING ] </b>`
             st += p1.replace(/\n */gm, " ");
             st += `</div>`;
             return st;
@@ -146,6 +152,11 @@ var docs_regex = [
         function(m, p1, p2) {
             notes["\\%N" + p1 + "\\%"] = p2;
             return "\n";
+        }
+    ], [
+        /\{\{alias\}\} ([\w\d_]+)/gm,
+        function(m, p1) {
+            return `<b>NOTE ] </b>An alias resides under '${p1}', but this takes priority</div>`;
         }
     ]
 ]
