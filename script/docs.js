@@ -17,7 +17,7 @@ var notes = {}
 var jumps = []
 var docs_regex = [
     [
-        /\{\{cls\}\} (.+?) = (.+?)\(([\w\d*_, ]+)\)\n\n/gm,
+        /\{\{cls\}\} (.+?) = (.+?)\(([\w\d*_, ]*)\)\n\n/gm,
         function(m, p1, p2, p3) {
             var st = `<div class="head1">`;
             st += `#] ` + p2 + ` <span class="typ">{{cls}}</span>`;
