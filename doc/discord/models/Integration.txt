@@ -1,3 +1,5 @@
+{{cls}} instance = Integration()
+
 {{desc}} Represents a guild integration
 
-{{note}} This clasw doesn't actually exist yet
+{{note}} This class doesn't actually exist yet
