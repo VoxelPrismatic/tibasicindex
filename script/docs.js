@@ -172,7 +172,8 @@ function docs_mark(st) {
     st = st.trim() + "\n\n";
     for(var r of docs_regex)
         st = st.replace(r[0], r[1]);
-    for(var n of notes.keys())
+    var keys = notes.constructor.keys(notes);
+    for(var n of keys)
         st = st.replace(RegExp(n, "gm"), notes[n]);
     st = st.trim().replace(/\n/gm, "<br>") + "<br>";
     return st
