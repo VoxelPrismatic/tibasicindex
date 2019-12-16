@@ -14,13 +14,14 @@ function mkJmp(nam, show = "") {
 var props = false;
 var params = false;
 var notes = {}
+var jumps = []
 var docs_regex = [
     [
         /\{\{cls\}\} (.+?) = (.+?)\(([\w\d*_, ]+)\)\n\n/gm,
         function(m, p1, p2, p3) {
             var st = `<div class="head1">`;
             st += `#] ` + p2 + ` <span class="typ">{{cls}}</span>`;
-            find("sect").innerHTML += mkJmp(p2, `#cls ${p2}()`);
+            jumps.push([p2, `cls ${p2}()`]);
             st += `</div><div class="code">`;
             st += `${p1} = <span class="cls">${p2}</span>(`;
             st += p3.replace(/\n */gm, " ");
@@ -41,7 +42,7 @@ var docs_regex = [
             else
                 p1 = `<span class="aio">await</span> `;
             var st = `\n\n<div id="${p2}"></div><div class="head2">`;
-            find("sect").innerHTML += mkJmp(p2, `fn ${p2}()`);
+            jumps.push([p2, `fn ${p2}()`]);
             st += `~] ` + p1 + p2 + ` <span class="typ">{{fn}}</span>`;
             st += `</div><div class="code">`;
             var py = "";
@@ -61,7 +62,7 @@ var docs_regex = [
             st += `~] ` + p1 + p2 + ` <span class="typ">{{fn}}</span>`;
             st += `</div><div class="code">`;
             var py = "";
-            find("sect").innerHTML += mkJmp(p2, `fn ${p2}()`);
+            jumps.push([p2, `fn ${p2}()`]);
             py += p1 + p2 + "(";
             py += p3.replace(/\n */gm, " ") + ")";
             st += py_mark(py) + "</div>";
@@ -176,5 +177,11 @@ function docs_mark(st) {
     for(var n of keys)
         st = st.replace(RegExp(n, "gm"), notes[n]);
     st = st.trim().replace(/\n/gm, "<br>") + "<br>";
+    var jmp = find("sect").children;
+    for(var elm of jmp)
+        if(elm.id.startsWith("JUMP_"))
+            elm.remove();
+    for(var elm of jumps)
+        mkJmp(...elm);
     return st
 }
