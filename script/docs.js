@@ -24,7 +24,7 @@ var docs_regex = [
     ], [
         /\{\{desc\}\} ([^{]+)\n\n/gm,
         function(m, p1) {
-            return ind(4) + p1.trim().replace(/\n */gm, "\n" + ind(4)) + "\n";
+            return ind(4) + trim(p1).replace(/\n */gm, "\n" + ind(4)) + "\n";
         }
     ], [
         /\{\{fn\}\} (await )?(.+?)\.([\w\d_]+)\(([\w\d*_, ]*)\)\n/gm,
@@ -33,7 +33,7 @@ var docs_regex = [
                 p1 = "";
             else
                 p1 = `<span class="aio">await</span> `;
-            var st = `<div id="${p2}"></div><div class="head2">`;
+            var st = `\n\n<div id="${p2}"></div><div class="head2">`;
             find("sect").innerHTML += `<div class="lnk" id="JUMP_${p2}" onclick="jump(this);">#fn ${p2}()</div>`;
             st += `~] ` + p1 + p2 + ` <span class="typ">{{fn}}</span>`;
             st += `</div><div class="code">`;
@@ -50,16 +50,16 @@ var docs_regex = [
                 p1 = "";
             else
                 p1 = `<span class="aio">await</span> `;
-            var st = `<div class="head3">`;
-            st += `~] ` + p1 + p2 + ` <span class="typ">{{fn}}</span>`;
+            var st = `\n\n<div id="${p2}"></div><div class="head3">`;
+            st += `+] ` + p1 + p2 + ` <span class="typ">{{fn}}</span>`;
             st += `</div><div class="code">`;
             var py = "";
             find("sect").innerHTML += `<div class="lnk" id="JUMP_${p2}" onclick="jump(this);">#fn ${p2}()</div>`;
             py += p1 + p2 + "(";
             py += p3.replace(/\n */gm, " ") + ")";
             st += py_mark(py) + "</div>";
-            st += `<div class="note">NOTICE ---\n`
-            st += "This function is seperate from the class, which means it cannot be called from it.";
+            st += `<div class="warn"><b>NOTE ] </b>`
+            st += "This function is seperate from the class, which means it cannot be called from an instance of it.";
             st += "</div>"
             return st;
         }
@@ -74,7 +74,7 @@ var docs_regex = [
             }
             st += `<span class="typ">{{param}}</span>`;
             st += ` <span class="var"><b>${p1}</b></span> [<span class="cls">${p2}</span>]\n`;
-            st += ind(4) + p3.trim().replace(/\n */gm, "\n" + ind(4)) + "\n";
+            st += ind(4) + trim(p3).replace(/\n */gm, "\n" + ind(4)) + "\n";
             return st;
         }
     ], [
@@ -88,7 +88,7 @@ var docs_regex = [
             }
             st += `<span class="typ">{{prop}}</span>`;
             st += ` <span class="var"><b>${p1}</b></span> [<span class="cls">${p2}</span>]\n`;
-            st += ind(4) + p3.trim().replace(/\n */gm, "\n" + ind(4)) + "\n";
+            st += ind(4) + trim(p3).replace(/\n */gm, "\n" + ind(4)) + "\n";
             return st;
         }
     ], [
@@ -108,7 +108,7 @@ var docs_regex = [
     ], [
         /\{\{note\}\} ([^{]+)\n\n/gm,
         function(m, p1) {
-            var st = `<div class="note">NOTICE ---\n`
+            var st = `<div class="note"><b>NOTE ] </b>`
             st += p1.replace(/\n */gm, " ");
             st += `</div>`;
             return st;
@@ -124,8 +124,8 @@ var docs_regex = [
     ], [
         /discord\.([.\w_]+)/gm, 
         function(m, p1) {
-            if(p1 == "gg")
-                return "discord.gg";
+            if(p1.startsWith("gg"))
+                return "discord." + p1;
             var st = `<button class="btn" onclick="btnload(this.id)"`;
             st += `id="discord/${p1.replace(/\./gm, "/")}.txt">`;
             st += "discord." + p1;
