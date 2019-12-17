@@ -1,0 +1,25 @@
+{{cls}} instance = Party(*, id, size)
+
+{{note}} This class shouldn't be initialized by hand. Don't do that.
+
+{{desc}} Represents a party
+
+{{param}} id [str, discord.models.Snow]
+    The ID of the party
+
+{{param}} size [int]
+    The size of the party
+
+{{prop}} id [int]
+    The ID of the party
+
+{{prop}} size [int]
+    The size of the party
+
+{{fn}} instance.__dict__()
+
+{{note}} This function is actually meant to be used as `dict(instance)`
+
+{{desc}} Returns the send-ready object
+
+{{rtn}} [dict] The send-ready object
