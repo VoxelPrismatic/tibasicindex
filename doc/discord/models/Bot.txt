@@ -1,4 +1,4 @@
-{{cls}} bot = Bot(prefix, custom_prefix, token, *, ?thresh, ?keepalive)
+{{cls}} bot = Bot(prefix, custom_prefix, token, *, thresh, keepalive)
 
 {{desc}} Your Bot!
 
@@ -7,8 +7,8 @@
     custom_prefix fails.
 
 {{param}} custom_prefix [dict, str, function]
-    This is the main prefix. If a {{cls}}dict, then the keys are the guild
-    ids, and the values are their prefixes. If a {{cls}}str, then the prefix
+    This is the main prefix. If a dict, then the keys are the guild
+    ids, and the values are their prefixes. If a str, then the prefix
     applies to all guilds. If a function, then it must return a prefix. The
     parameters for the function will be an Info object.
 
