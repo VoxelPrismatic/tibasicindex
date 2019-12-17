@@ -76,6 +76,25 @@ var docs_regex = [
             return st;
         }
     ], [
+        /\{\{clsfn\}\} (.*) = (await )?([\w\d_]+)\(([\w\d*_, ]*)\)(.*)\n\n/gm,
+        function(m, p4, p1, p2, p3, p5) {
+            if(p1 == undefined)
+                p1 = "";
+            else
+                p1 = `<span class="aio">await</span> `;
+            if(p5 == undefined)
+                p5 = ""
+            var st = `\n\n<div id="${p2}" class="head3">`;
+            st += `~] ` + p1 + p2 + ` <span class="typ">{{fn}}</span>`;
+            st += `</div><div class="code">`;
+            var py = "";
+            jumps.push([p2, `fn ${p2}()`]);
+            py += p4 + " = " + p1 + p2 + "(";
+            py += p3.replace(/\n */gm, " ") + ")" + p5;
+            st += py_mark(py) + "</div>";
+            return st;
+        }
+    ], [
         /\{\{param\}\} (.+?) \[(.+)\]\n([^{]+)\n\n*/gm,
         function(m, p1, p2, p3) {
             var st = ""
