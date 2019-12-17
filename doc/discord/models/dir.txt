@@ -10,3 +10,4 @@ Snow.txt
 Webhook.txt
 Widget.txt
 Audit.dir
+Status.dir
