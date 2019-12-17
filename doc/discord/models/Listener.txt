@@ -1,0 +1,156 @@
+{{cls}} instance = Listener(bot_obj)
+
+{{desc}} Cleans up code and provides an easy solution to listening
+and ignoring things
+
+{{note}} This class is used internally only. Do not initialize this class
+by hand. You can access this class by using `bot.listeners`
+
+{{param}} bot_obj [discord.Bot]
+    The bot object
+
+{{prop}} bot_obj [discord.Bot]
+    The bot object
+
+{{prop}} listeners [dict]
+    The active listeners
+
+{{prop}} ignorers [dict]
+    Similar to listeners, but used for events like wanting to listen to all
+    messages except for boost messages
+
+{{prop}} channels [dict]
+{{prop}} texts [dict]
+{{prop}} guilds [dict]
+{{prop}} emojis [dict]
+{{prop}} roles [dict]
+{{prop}} players [dict]
+{{prop}} users [dict]
+{{prop}} reactions [dict]
+{{prop}} webhooks [dict]
+{{prop}} invites [dict]
+{{prop}} integrations [dict]
+{{prop}} widgets [dict]
+{{prop}} bans [dict]
+{{prop}} audits [dict]
+{{prop}} statuses [dict]
+    All of these are self explanitory.
+    They are all in this format: {id: instance}
+    None of these are actually dicts, but they are similar enough
+
+{{prop}} objs [dict]
+    A conversion table from catagory to actual object
+
+{{fn}} listeners = instance.get(listener_type, ignorer_type)
+
+{{desc}} Is a generator representing the listeners that actually listen
+to this event.
+
+{{param}} listener_type [str, list]
+    The listener string. If a list, then it will yield the listeners in
+    order
+
+{{param}} ignorer_type [str, list]
+    The thing to ignore. If a list, then if the listener is ignoring any
+    item in that list, it will be ignored.
+
+{{rtn}} [function] The function listening to the event.
+
+{{fn}} instance.run(listener_type, ignorer_type)
+
+{{desc}} Handles the calling of the listeners
+
+{{param}} listener_type [str, list]
+    Passed directly to `instance.get()`
+
+{{param}} ignorer_type [str, list[
+    Passed directly to `instance.get()`
+
+{{param}} *a, **kw [args, kwargs]
+    What arguments to pass on to the listener
+
+{{fn}} instance.act(j)
+
+{{desc}} Acts upon a gateway event
+
+{{param}} j [dict]
+    The dict from the gateway event
+
+{{fn}} await instance.make(c, id, url)
+
+{{desc}} Returns an object or creates it from a URL
+
+{{note}} This function is used internally, and is not meant to be used
+by hand
+
+{{param}} c [str]
+    Name of the group
+
+{{param}} id [str, int]
+    ID of the object
+
+{{param}} url [str]
+    Where to find the object
+
+{{rtn}} [any] The object found or made
+
+{{fn}} instance.raw(c, objs, *a, **kw)
+
+{{desc}} Returns an object or creates it from provided data
+
+{{note}} This function is used internally, and is not meant to be used
+by hand
+
+{{param}} c [str]
+    Name of the group
+
+{{param}} objs [dict, list(dict)]
+    The JSON object
+
+{{param}} *a, **kw [args, kwargs]
+    Global attributes if the object needs to be created
+
+{{rtn}} [any] The object found or made
+
+{{fn}} instance.raw_edit(c, obj, *a, **kw)
+
+{{edit}} Edits an object with provided data
+
+{{note}} This function is used internally, and is not meant to be used
+by hand
+
+{{param}} c [str]
+    Name of the group
+
+{{param}} obj [str, int]
+    The ID of the object
+
+{{param}} *a, **kw [args, kwargs]
+    How to edit the object
+
+{{rtn}} [any] The object found or made
+
+{{fn}} instance.find(c, id, url, fmt, **kw)
+
+{{desc}} Finds an object with a given ID, and returns it. If it doesn't
+exist, then a Raw object is returned instead.
+
+{{note}} This function is used internally, and is not meant to be used
+by hand
+
+{{param}} c [str]
+    Name of the group
+
+{{param}} id [str, int]
+    ID of the object
+
+{{param}} url [str]
+    URL of where to find the object if it doesn't exist
+
+{{param}} fmt [dict]
+    How to format the URL, it is used in `url.format(**fmt)`
+
+{{param}} **kw [kwargs]
+    Additional attributes for the object's creation
+
+{{rtn}} [any] The object found or made
