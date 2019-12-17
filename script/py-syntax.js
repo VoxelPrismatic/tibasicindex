@@ -10,10 +10,9 @@ var cls = [
 var kw = [
     "import", "from", "yield", "break", 
     "if", "assert",  "finally", "def",
-    "elif", "else", "for", "while",
-    "async", "await", "with", "as",
-    "in", "not", "and", "or", "is",
-    "super", "self", "global", "id",
+    "elif", "else", "for", "while", "id",
+    "with", "as", "in", "not", "and", 
+    "or", "is", "super", "self", "global",
     "local", "try", "except", "pass",
     "continue", "break", "return",
     "del", "nonlocal", "lambda"
@@ -64,6 +63,9 @@ py_regex = [
     ], [
         /\\x([A-Fa-f0-9\u200b]{4})/gm, 
         `<span class="op">\\x$1</span>`
+    ], [
+        /\\N\{([\w\d ]+)\}/gm, 
+        `<span class="op">\\N{$1}</span..,>`
     ], [
         /\\(.)/gm, 
         `<span class="op">\\$1</span>`
@@ -130,6 +132,15 @@ function py_mark(st) {
         st = st.replace(
             RegExp("("+sym+"|\n|[\u200b ]+)"+r+gsym, "gm"), 
             `$1<span class="kw">${r.split('').join('\u200b')}</span>$2`
+        );
+    } for(var r of ["await", "async"]) {
+        st = st.replace(
+            RegExp("^"+r+gsym, "gm"), 
+            `<span class="aio">${r.split('').join('\u200b')}</span>$1`
+        );
+        st = st.replace(
+            RegExp("("+sym+"|\n|[\u200b ]+)"+r+gsym, "gm"), 
+            `$1<span class="aio">${r.split('').join('\u200b')}</span>$2`
         );
     }
     return st.replace(/([^ ])\u200b/gm, "$1").replace(/ +\n/gm, "\n");
