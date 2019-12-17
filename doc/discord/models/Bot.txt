@@ -1,0 +1,215 @@
+{{cls}} bot = Bot(prefix, custom_prefix, token, *, ?thresh, ?keepalive)
+
+{{desc}} Your Bot!
+
+{{param}} prefix [str]
+    The bot prefix, default is ";]". This is the fallback for when
+    custom_prefix fails.
+
+{{param}} custom_prefix [dict, str, function]
+    This is the main prefix. If a {{cls}}dict, then the keys are the guild
+    ids, and the values are their prefixes. If a {{cls}}str, then the prefix
+    applies to all guilds. If a function, then it must return a prefix. The
+    parameters for the function will be an Info object.
+
+{{param}} token [str]
+    This is the token from your Discord Application.
+
+{{param}} thresh [int]
+    Timeout threshold. Don't change this if you aren't sure what it does.
+
+{{param}} keepalive [bool]
+    Whether to reconnect to Discord upon a disconnect. Default is True
+
+{{prop}} prefix [str]
+    Provided prefix
+
+{{prop}} custom_prefix [dict, str, function]
+    Provided custom prefix
+
+{{prop}} commands [dict]
+    Not really a dict, but basically the same.
+    Holds all command data
+
+{{prop}} shards [dict]
+    Not really a dict, but bascially the same.
+    Holds the shards
+
+{{prop}} token [str]
+    Provided token. Stripped content because you might want to read the
+    token from another file.
+
+{{prop}} client [asyncio.ClientSession]
+    HTTP Client for interacting with Discord
+
+{{prop}} thresh [int]
+    Provided threshold, default is 150
+
+{{prop}} heartbeat [int]
+    Heartbeat interval in milliseconds
+
+{{prop}} uri [str]
+    The gateway url
+
+{{prop}} http_uri [str]
+    The HTTP API url
+
+{{prop}} ack [int]
+    Number of messages recieved from the gateway
+
+{{prop}} connected [bool]
+    Whether or not the client is connected
+
+{{prop}} keepalive [bool]
+    Provided keepalive
+
+{{prop}} __version__ [str]
+    Version of the module
+
+{{prop}} listener [discord.Listener]
+    Listeners, for um idk listening to events
+
+{{prop}} voices [dict]
+    Not really a dict, but basically the same.
+    Holds all VoiceClient objects and IDs
+
+{{fn}} instance.run(?token)
+
+{{desc}} Starts the bot
+
+{{param}} ?token [str]
+    The token. Optional if the token was not provided upon init.
+
+{{fn}} await instance.send_beat()
+
+{{desc}} Sends a heartbeat to discord
+
+{{note}} This function is used internally, and is not meant to be used
+by hand
+
+{{fn}} await instance._gate(**payload)
+
+{{desc}} Sends a payload to the Discord Websocket
+
+{{note}} This function is used internally, and is not meant to be used
+by hand
+
+{{param}} **payload [kwargs]
+    The payload
+
+{{rtn}} [dict] The response from the websocket
+
+{{fn}} await instance.make(cl, id, url)
+
+{{desc}} Returns an object or creates it from a URL
+
+{{note}} This function is used internally, and is not meant to be used
+by hand
+
+{{param}} cl [str]
+    Name of the group
+
+{{param}} id [str, int]
+    ID of the object
+
+{{param}} url [str]
+    Where to find the object
+
+{{rtn}} [any] The object found or made
+
+{{fn}} instance.raw(c, objs, *a, **kw)
+
+{{desc}} Returns an object or creates it from provided data
+
+{{note}} This function is used internally, and is not meant to be used
+by hand
+
+{{param}} c [str]
+    Name of the group
+
+{{param}} objs [dict, list(dict)]
+    The JSON object
+
+{{param}} *a, **kw [args, kwargs]
+    Global attributes if the object needs to be created
+
+{{rtn}} [any] The object found or made
+
+{{fn}} instance.raw_edit(c, obj, *a, **kw)
+
+{{edit}} Edits an object with provided data
+
+{{note}} This function is used internally, and is not meant to be used
+by hand
+
+{{param}} c [str]
+    Name of the group
+
+{{param}} obj [str, int]
+    The ID of the object
+
+{{param}} *a, **kw [args, kwargs]
+    How to edit the object
+
+{{rtn}} [any] The object found or made
+
+{{fn}} await instance.await_make(c, raw_obj, **kw)
+
+{{desc}} Similar to raw(), but is awaitable and uses Raw instead
+
+{{note}} This function is used internally, and is not meant to be used
+by hand
+
+{{param}} c [str]
+    Name of the group
+
+{{param}} raw_obj [Raw]
+    The Raw object
+
+{{param}} **kw [kwargs]
+    Global attributes if the object needs to be created
+
+{{rtn}} [any] The object found or made
+
+{{fn}} instance.find(c, id, url, fmt, **kw)
+
+{{desc}} Finds an object with a given ID, and returns it. If it doesn't
+exist, then a Raw object is returned instead.
+
+{{note}} This function is used internally, and is not meant to be used
+by hand
+
+{{param}} c [str]
+    Name of the group
+
+{{param}} id [str, int]
+    ID of the object
+
+{{param}} url [str]
+    URL of where to find the object if it doesn't exist
+
+{{param}} fmt [dict]
+    How to format the URL, it is used in `url.format(**fmt)`
+
+{{param}} **kw [kwargs]
+    Additional attributes for the object's creation
+
+{{rtn}} [any] The object found or made
+
+{{fn}} await instance.login()
+
+{{desc}} Logs in the bot
+
+{{note}} Do not use this function. Use `bot.run()` instead. This is
+because you will need to use `asyncio.run(bot.login)` which is redundant
+and will prevent the bot from continuing to run properly.
+
+{{sepfn}} get_json(data)
+
+{{desc}} Returns the JSON data sent by the discord gateway
+
+{{param}} data [str, bytes]
+    If str, then it must be raw JSON
+    If bytes, then it must be ZLIB decodable and be JSON
+
+{{rtn}} [dict] The gateway response
