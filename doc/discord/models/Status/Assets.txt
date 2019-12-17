@@ -1,0 +1,37 @@
+{{cls}} instance = Assets(*, too_many_args_to_list_here)
+
+{{note}} This class shouldn't be initialized by hand. Don't do that.
+
+{{desc}} Represents assets
+
+{{param}} large_image [str]
+    Large image hash
+
+{{param}} large_text [str]
+    Long description
+
+{{param}} small_image [str]
+    Thumbnail hash
+
+{{param}} small_text [str]
+    Short description
+
+{{prop}} big_img [str]
+    Large image hash
+
+{{prop}} big_txt [str]
+    Long description
+
+{{prop}} lil_img [str]
+    Thumbnail hash
+
+{{prop}} lil_txt [str]
+    Short description
+
+{{fn}} instance.__dict__()
+
+{{note}} This function is actually meant to be used as `dict(instance)`
+
+{{desc}} Returns the send-ready object
+
+{{rtn}} [dict] The send-ready object
