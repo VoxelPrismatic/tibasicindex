@@ -1,0 +1,112 @@
+{{cls}} instance = Role(*, too_many_args_to_list_here)
+
+{{desc}} Depresents a role
+
+{{note}} This class shouldn't be initialized by hand. Don't do that.
+
+{{param}} id [str]
+    The role ID
+
+{{param}} color [int]
+    The color int, like 0x00ffff being rgb(000, 255, 255)
+
+{{param}} hoist [bool]
+    Whether or not this role is hoisted. AKA Does it seperate the player
+    list
+
+{{param}} position [int]
+    Where it is located on the role list in the server menu from the bottom
+
+{{param}} permissions [int]
+    The permissions integer
+
+{{param}} managed [bool]
+    Whether or not this role is managed by an integration like twitch
+
+{{param}} mentionable [bool]
+    Whether or not this role can be pinged
+
+{{param}} guild_id [str, discord.models.Snow]
+    The guild that owns this role
+
+{{prop}} id [int]
+    Id of the object
+
+{{prop}} name [str]
+    Name of the object
+
+{{prop}} color [discord.models.Color]
+    Color of the object
+
+{{prop}} hoist [bool]
+    Whether or not this role shows differently on the player board
+
+{{prop}} position [int]
+    Position on the role list, 0 is @everyone and it counts up
+
+{{prop}} perms [discord.models.Perms.Perms]
+    The permissions
+
+{{prop}} managed [bool]
+    Whether or not this role is managed by an integration, eg Patreon or
+    Twitch
+
+{{prop}} pingable [bool]
+    Whether or not you can ping the object
+
+{{prop}} guild_id [int]
+    The Guild ID
+
+{{prop}} guild [discord.models.Guild]
+    The guild that owns this object
+
+{{prop}} bot_obj [discord.models.Bot]
+    The bot object
+
+{{fn}} await instance.edit(*, too_many_args_to_list_here)
+
+{{note}} This function is asyncronous, so it must be awaited
+
+{{desc}} Edits the object on discord's end
+
+{{note}} All of these params are optional
+
+{{param}} name [str]
+    The new name of the role
+
+{{param}} perms [int, str, discord.models.Perms.Perms]
+    The permissions level for the role
+
+{{param}} color [str, int, discord.models.Color]
+    The color-compatible color
+
+{{param}} hoist [bool]
+    Whether or not this role should show up seperately in the player list
+
+{{param}} pingable [bool]
+    Whether or not this object can be pinged
+
+{{param}} position [int]
+    The position of this role
+
+{{param}} reason [str]
+    The reason for this change
+
+{{note}} If no params are passed, no data will actually be sent to
+discord. This is to prevent wasted data usage and time
+
+{{fn}} instance.__dict__()
+
+{{note}} This function is actually meant to be used as `dict(instance)`
+
+{{desc}} Returns the send-ready object
+
+{{rtn}} [dict] The send-ready object
+
+{{fn}} await instance.delete(reason)
+
+{{note}} This function is asyncronous, so it must be awaited
+
+{{desc}} Deletes the object on discord's end
+
+{{rtn}} [discord.models.NonExistentObj] The deleted object
