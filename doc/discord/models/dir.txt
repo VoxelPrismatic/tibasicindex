@@ -1,8 +1,12 @@
 index.txt
 AttachedFile.txt
 Color.txt
+Embed.txt
 Guild.txt
 GuildEmbed.txt
 Integration.txt
+NonExistentObj.txt
 Snow.txt
+Webhook.txt
+Widget.txt
 Audit.dir
