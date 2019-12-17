@@ -70,10 +70,9 @@ var docs_regex = [
             py += p1 + p2 + "(";
             py += p3.replace(/\n */gm, " ") + ")" + p5;
             st += py_mark(py) + "</div>";
-            st += `<div class="warn"><b>NOTE ] </b>`
-            st += "This function is seperate from the class, ";
-            st += "which means it cannot be called from an instance of it";
-            st += "</div>"
+            st += `<div class="warn"><b>NOTE ] </b>`;
+            st += "This function is not part of any class";
+            st += "</div>";
             return st;
         }
     ], [
