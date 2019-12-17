@@ -1,0 +1,8 @@
+{{fn}} datetime_object = from_ts(ts)
+
+{{desc}} Instead of writing `datetime.datetime.fromtimestamp(timestamp)`,
+you can just write `from_ts(timestamp)`
+
+{{param}} [str] A valid ISO timestamp
+
+{{rtn}} [datetime.datetime] The datetime
