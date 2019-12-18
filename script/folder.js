@@ -28,6 +28,5 @@ function folder_next() {
 }
 
 function folder_fwd() {
-    find("back-page").innerHTML += `<span>${findHtml("this-here")}</span>`;
     folder("fwd-page");
 }
