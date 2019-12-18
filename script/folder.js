@@ -1,16 +1,16 @@
-function folder(id) {
+function folder(id, go_back = true) {
     ls = find(id).children;
     if(ls.length != 0) {
         var elem = ls[ls.length-1];
         var h = elem.innerHTML;
         elem.remove();
-        docs(h, false);
+        docs(h, go_back);
     }
 }
 
 function folder_back() {
     find("fwd-page").innerHTML += `<span>${findHtml("this-here")}</span>`;
-    folder("back-page");
+    folder("back-page", false);
 }
 
 function folder_prev() {
