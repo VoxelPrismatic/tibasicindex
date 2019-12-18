@@ -20,33 +20,19 @@ by hand. You can access this class by using `bot.listeners`
     messages except for boost messages
 
 {{prop}} channels [dict]
-
 {{prop}} texts [dict]
-
 {{prop}} guilds [dict]
-
 {{prop}} emojis [dict]
-
 {{prop}} roles [dict]
-
 {{prop}} players [dict]
-
 {{prop}} users [dict]
-
 {{prop}} reactions [dict]
-
 {{prop}} webhooks [dict]
-
 {{prop}} invites [dict]
-
 {{prop}} integrations [dict]
-
 {{prop}} widgets [dict]
-
 {{prop}} bans [dict]
-
 {{prop}} audits [dict]
-
 {{prop}} statuses [dict]
     All of these are self explanitory.
     They are all in this format: {id: instance}
