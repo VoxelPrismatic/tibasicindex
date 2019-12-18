@@ -100,7 +100,7 @@ var docs_regex = [
             var st = ""
             if(!params) {
                 st += `<div id="params"></div>`;
-                jumps.push("params");
+                jumps.push(["params", ""]);
                 params = true;
             }
             st += `<span class="typ">{{param}}</span>`;
@@ -114,7 +114,7 @@ var docs_regex = [
             var st = ""
             if(!props) {
                 st += `<div id="props"></div>`;
-                jumps.push("props");
+                jumps.push(["props", ""]);
                 props = true;
             }
             st += `<span class="typ">{{prop}}</span>`;
@@ -192,6 +192,8 @@ var docs_regex = [
 
 function docs_mark(st) {
     jumps = [];
+    props = false;
+    params = false;
     st = st.slice(8); // Removes the "--top--"
     st = st.trim() + "\n\n";
     for(var r of docs_regex)
