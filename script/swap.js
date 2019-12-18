@@ -1,5 +1,6 @@
 function jump(elem) {
     find("docs").click();
+    var id = "";
     try {
         id = elem.id.split("JUMP_").slice(-1)[0];
     } catch {
@@ -13,7 +14,7 @@ function jump(elem) {
                 thing.className = "lnk";
         find("JUMP_"+id).className = "lnk sel";
         var high = find("page_url").href.split("&")[1]
-        find("page_url").href = find("page_url").href.split("#")[0] + "#" + elem.slice(5);
+        find("page_url").href = find("page_url").href.split("#")[0] + "#" + id.slice(5);
         if(high != undefined)
             find("page_url").href += "&" + high;
         check_for_dupes();
