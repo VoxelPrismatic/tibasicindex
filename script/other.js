@@ -128,10 +128,11 @@ function searching() {
 function filter_docs(thing) {
     var pages = find("nav").children;
     var regex = false;
+    var re = "";
     find("filter_docs").style.color = "#ffffff";
     if(thing.startsWith("/") && thing.endsWith("/") && thing != "/") {
         try {
-            var re = RegExp(thing.slice(1, -1), "gm");
+            re = RegExp(thing.slice(1, -1), "gm");
             find("filter_docs").style.color = "#00ffff";
             regex = true;
         } catch(err) {
@@ -165,17 +166,17 @@ function filter_docs(thing) {
 function filter_jump(thing) {
     var pages = find("sect").children;
     var regex = false;
+    var re = "";
     find("filter_docs").style.color = "#ffffff";
     if(thing.startsWith("/") && thing.endsWith("/") && thing != "/") {
         try {
-            var re = RegExp(thing.slice(1, -1), "gm");
+            re = RegExp(thing.slice(1, -1), "gm");
             find("filter_docs").style.color = "#00ffff";
             regex = true;
         } catch(err) {
             find("filter_docs").style.color = "#ff0000";
         }
     } else {
-        var re = "";
         for(var l of thing) {
             var lc = l.toLowerCase().charCodeAt(0).toString(16);
             var uc = l.toUpperCase().charCodeAt(0).toString(16);
@@ -189,7 +190,7 @@ function filter_jump(thing) {
     for(var page of pages) {
         if(!(page.id.startsWith("JUMP_")))
             continue;
-        if(thing == "" || page.id.slice(5).search(thing) != -1)
+        if(thing == "" || page.id.slice(5).search(re) != -1)
             page.style.display = "block";
         else
             page.style.display = "none";
