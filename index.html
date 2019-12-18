@@ -44,13 +44,15 @@
             
             <!-- FILES PAGE -->
             <div id="nav" class="page" style="display: none; text-align: center;">
-                <textarea onkeyup="filter_docs(this.value)" placeholder="Filter docs, you can also use /RegEx/"></textarea>
+                <textarea onkeyup="filter_docs(this.value)" id="filter_docs"
+                          placeholder="Filter docs, you can also use /RegEx/"></textarea>
                 <div class="lnk" id="/prizmatic.docs/doc/index.txt" onclick="docs(this);">/</div>
             </div>
             
             <!-- JUMP PAGE -->
             <div id="sect" class="page" style="display: none; text-align: center;">
-                <textarea onkeyup="filter_jump(this.value)" placeholder="Filter jumps, you can also use /RegEx/"></textarea>
+                <textarea onkeyup="filter_jump(this.value)" id="filter_sects"
+                          placeholder="Filter jumps, you can also use /RegEx/"></textarea>
                 <div class="lnk" id="JUMP_top" onclick="jump(this);">#top</div>
             </div>
             
