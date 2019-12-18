@@ -191,6 +191,7 @@ var docs_regex = [
 ]
 
 function docs_mark(st) {
+    jumps = [];
     st = st.slice(8); // Removes the "--top--"
     st = st.trim() + "\n\n";
     for(var r of docs_regex)
