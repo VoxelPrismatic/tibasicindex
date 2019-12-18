@@ -199,10 +199,12 @@ function docs_mark(st) {
     for(var n of keys)
         st = st.replace(RegExp(n, "gm"), notes[n]);
     st = st.trim().replace(/\n/gm, "<br>") + "<br>";
-    var jmp = find("sect").children;
-    for(var elm of jmp)
-        if(elm.id.startsWith("JUMP_"))
-            elm.remove();
+    while(find("sect").children.length > 1) {
+        var jmp = find("sect").children;
+        for(var elm of jmp)
+            if(elm.id.startsWith("JUMP_"))
+                elm.remove();
+    }
     for(var elm of jumps)
         find("sect").innerHTML += mkJmp(...elm);
     return st
