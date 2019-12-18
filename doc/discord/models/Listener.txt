@@ -77,7 +77,7 @@ to this event.
 {{param}} listener_type [str, list]
     Passed directly to `instance.get()`
 
-{{param}} ignorer_type [str, list[
+{{param}} ignorer_type [str, list]
     Passed directly to `instance.get()`
 
 {{param}} *a, **kw [args, kwargs]
