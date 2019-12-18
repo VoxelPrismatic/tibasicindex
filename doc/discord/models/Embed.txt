@@ -1,4 +1,5 @@
 {{cls}} instance = Embed(*, too_many_args_to_list_here)
+
 {{desc}} Represents a Discord Embed
 
 {{param}} title [str]
