@@ -167,14 +167,14 @@ function filter_jump(thing) {
     var pages = find("sect").children;
     var regex = false;
     var re = "";
-    find("filter_docs").style.color = "#ffffff";
+    find("filter_jumps").style.color = "#ffffff";
     if(thing.startsWith("/") && thing.endsWith("/") && thing != "/") {
         try {
             re = RegExp(thing.slice(1, -1), "gm");
-            find("filter_docs").style.color = "#00ffff";
+            find("filter_jumps").style.color = "#00ffff";
             regex = true;
         } catch(err) {
-            find("filter_docs").style.color = "#ff0000";
+            find("filter_jumps").style.color = "#ff0000";
         }
     } else {
         for(var l of thing) {
