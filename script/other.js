@@ -68,62 +68,6 @@ function find_text(re, parent = find("page")) {
         }
     }
 }
-function uri(thing) {
-    try {
-        var href = find("url").innerHTML
-        href = href.replace(/<a href="(.*)"/gm, "$1").trim();
-        var page = "";
-        var jump = "";
-        var look = "";
-        try {
-            page = href.split("?")[1].split("#")[0];
-        } catch(err) {
-            console.log(err);
-        } try {
-            jump = href.split("#")[1].split("&")[0];
-        } catch(err) {
-            console.log(err);
-        } try {
-            look = href.split("&")[1];
-        } catch(err) {
-            console.log(err);
-        }
-        if(thing.startsWith("&"))
-            look = thing;
-        if(thing.startsWith("?"))
-            page = thing;
-        if(thing.startsWith("#"))
-            jump = thing;
-        if(page != "" && page != undefined && !(page.startsWith("?")))
-            page = "?" + page;
-        if(jump != "" && jump != undefined && !(jump.startsWith("#")))
-            jump = "#" + jump;
-        if(look != "" && look != undefined && !(look.startsWith("&")))
-            look = "&" + look;
-        href = `https://VoxelPrismatic.github.io/prizmatic.docs/${page}${jump}`
-        if(look != "" && look != undefined)
-            href += look;
-        find("url").innerHTML = `[ <a href="${href}">${href}</a> ]`;
-    } catch(err) {
-        console.log(err);
-    }
-}
-
-function searching() {
-    if(find("swapper").value != "") {
-        maybeload(find("swapper").value);
-        find("swapper").value = "";
-    }
-    if(find("searcher").value != "") {
-        highlight(find("searcher").value);
-        find("searcher").value = "";
-    }
-    if(find("finder").value != "") {
-        find_in_docs(find("finder").value);
-        find("finder").value = "";
-    }
-    find("docs").click();
-}
 
 function filter_docs(thing) {
     var pages = find("nav").children;
@@ -202,41 +146,48 @@ function unimap(str) {
 }
 
 function find_in_docs(phrase) {
-    var phrase2 = "";
-    for(var l of phrase.split('')) {
-        var lc = l.toLowerCase().charCodeAt(0).toString(16);
-        var uc = l.toUpperCase().charCodeAt(0).toString(16);
-        while(lc.length < 4)
-            lc = "0" + lc;
-        while(uc.length < 4)
-            uc = "0" + uc;
-        phrase2 += `[\\u${lc}\\u${uc}]`; //Escape chars
+    while(find("search").children.length > 2) {
+        var jmp = find("search").children;
+        for(var elm of jmp)
+            if(elm.id.startsWith("JUMP"))
+                elm.remove();
     }
-    var re = RegExp(phrase2, "gm")
-    if(phrase.startsWith("/") && phrase.endsWith("/"))
-        re = RegExp(phrase.slice(1, -1), "gm")
-    for(var dir of dirs) {
+    var pages = find("nav").children;
+    var regex = false;
+    var re = "";
+    find("filter_text").style.color = "#ffffff";
+    if(thing.startsWith("/") && thing.endsWith("/") && thing != "/") {
         try {
-            if(find("RAW_"+dir).innerHTML.search(re) == -1)
-                find(dir).style.display = "none";
-            else
-                find(dir).style.display = "block";
+            re = RegExp(thing.slice(1, -1), "gm");
+            find("filter_text").style.color = "#00ffff";
+            regex = true;
         } catch(err) {
-            var this_here = find("this-here").innerHTML;
-            try {
-                docs(dir);
-            } catch(err) {
-                console.error(err);
-            }
-            docs(this_here);
-            if(find("RAW_"+dir).innerHTML.search(re) == -1)
-                find(dir).style.display = "none";
-            else
-                find(dir).style.display = "block";
+            find("filter_text").style.color = "#ff0000";
+        }
+    } else {
+        var re = "";
+        for(var l of thing) {
+            var lc = l.toLowerCase().charCodeAt(0).toString(16);
+            var uc = l.toUpperCase().charCodeAt(0).toString(16);
+            while(lc.length < 4)
+                lc = "0" + lc;
+            while(uc.length < 4)
+                uc = "0" + uc;
+            re += `[\\u${lc}\\u${uc}\\u200b\\\\]`; //Escape chars
         }
     }
-    highlight(phrase);
-    find("nav").click();
+    var this_here = findHtml("this-here");
+    for(var page of pages) {
+        if(!(page.id.startsWith("/prizmatic.docs/doc/")))
+            continue;
+        var id = page.id.slice(20, -4);
+        docs(id);
+        var text = findHtml("RAW_" + id)
+        if(text.search(re) != -1 && re != "") {
+            find("search").innerHTML += page.outerHTML;
+        }
+    }
+    docs(this_here);
 }
 
 function check_for_dupes() {
