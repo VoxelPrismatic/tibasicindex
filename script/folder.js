@@ -2,8 +2,9 @@ function folder(id) {
     ls = find(id).children;
     if(ls.length != 0) {
         var elem = ls[ls.length-1];
-        docs(elem.innerHTML);
+        var h = elem.innerHTML;
         elem.remove();
+        docs(h, false);
     }
 }
 
