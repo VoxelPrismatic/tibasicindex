@@ -32,8 +32,8 @@ function docs(elem) {
     for(var jmp of jumps)
         if(jmp.id.startsWith("JUMP_"))
             jmp.remove();
-    find("back-page").innerHTML += `<span>${elem}</span>`;
-    find("this-here").innerHTML = elem;
+    find("back-page").innerHTML += `<span>${findHtml("this-here")}`;
+    find("this-here").innerHTML = id;
     try {
         find("page").innerHTML = findHtml("DOCS_"+id);
         find("sect").innerHTML = findHtml("SECT_"+id);
