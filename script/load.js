@@ -44,7 +44,6 @@ function load(fil) {
     find("loaded-pages").innerHTML += mkElm("div", findHtml("page"), {id: "DOCS_"+fil, class: "invis"});
     find("loaded-sects").innerHTML += mkElm("div", findHtml("sect"), {id: "SECT_"+fil, class: "invis"});
     find("this-here").innerHTML = fil;
-    searching();
 }
 
 function maybeload(uri, init = false) {
