@@ -180,7 +180,7 @@ function find_in_docs(thing) {
     for(var page of pages) {
         if(!(page.id.startsWith("/prizmatic.docs/doc/")))
             continue;
-        docs(id);
+        docs(page.id);
         var text = findHtml("RAW_" + id)
         if(text.search(re) != -1 && re != "") {
             find("search").innerHTML += page.outerHTML;
