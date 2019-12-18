@@ -128,9 +128,11 @@ function searching() {
 function filter_docs(thing) {
     var pages = find("nav").children;
     var regex = false;
+    find("filter_docs").style.color = "#ffffff";
     if(thing.startsWith("/") && thing.endsWith("/") && thing != "/") {
         try {
             var re = RegExp(thing.slice(1, -1), "gm");
+            find("filter_docs").style.color = "#00ffff";
             regex = true;
         } catch(err) {
             find("filter_docs").style.color = "#ff0000";
@@ -147,7 +149,6 @@ function filter_docs(thing) {
             re += `[\\u${lc}\\u${uc}\\u200b\\\\]`; //Escape chars
         }
     }
-    find("filter_docs").style.color = "#ffffff";
     for(var page of pages) {
         if(!(page.id.startsWith("/prizmatic.docs/doc/")))
             continue;
@@ -163,10 +164,12 @@ function filter_docs(thing) {
 
 function filter_jump(thing) {
     var pages = find("sect").children;
-    var regex = false
+    var regex = false;
+    find("filter_docs").style.color = "#ffffff";
     if(thing.startsWith("/") && thing.endsWith("/") && thing != "/") {
         try {
             var re = RegExp(thing.slice(1, -1), "gm");
+            find("filter_docs").style.color = "#00ffff";
             regex = true;
         } catch(err) {
             find("filter_docs").style.color = "#ff0000";
@@ -183,7 +186,6 @@ function filter_jump(thing) {
             re += `[\\u${lc}\\u${uc}\\u200b\\\\]`; //Escape chars
         }
     }
-    find("filter_docs").style.color = "#ffffff";
     for(var page of pages) {
         if(!(page.id.startsWith("JUMP_")))
             continue;
