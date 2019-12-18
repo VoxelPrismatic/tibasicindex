@@ -145,7 +145,7 @@ function unimap(str) {
     return uni[str.toUpperCase()];
 }
 
-function find_in_docs(phrase) {
+function find_in_docs(thing) {
     while(find("search").children.length > 2) {
         var jmp = find("search").children;
         for(var elm of jmp)
