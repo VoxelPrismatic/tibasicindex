@@ -40,7 +40,7 @@ var docs_regex = [
             if(p1 == undefined)
                 p1 = "";
             else
-                p1 = `<span class="aio">await</span> `;
+                p1 = `await `;
             if(p5 == undefined)
                 p5 = ""
             var st = `\n\n<div id="${p2}" class="head2">`;
@@ -59,7 +59,7 @@ var docs_regex = [
             if(p1 == undefined)
                 p1 = "";
             else
-                p1 = `<span class="aio">await</span> `;
+                p1 = `await `;
             if(p5 == undefined)
                 p5 = ""
             var st = `\n\n<div id="${p2}" class="head3">`;
