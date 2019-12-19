@@ -30,6 +30,19 @@ var docs_regex = [
             
         }
     ], [
+        /\{\{subcls\}\} \[(.+)\] (.+?) = (.+?)\(([\w\d*_, ]*)\)\n\n/gm,
+        function(m, p4, p1, p2, p3) {
+            var st = `<div id="top"></div><div id="${p2}" class="head1">`;
+            st += `#] ` + p2 + "(" + p4 + ")" + ` <span class="typ">{{cls}}</span>`;
+            jumps.push([p2, `cls ${p2}()`]);
+            st += `</div><div class="code">`;
+            st += `${p1} = <span class="cls">${p2}</span>(`;
+            st += p3.replace(/\n */gm, " ");
+            st += ")</div>";
+            return st;
+            
+        }
+    ], [
         /\{\{desc\}\} ([^{]+)\n\n/gm,
         function(m, p1) {
             return ind(4) + trim(p1).replace(/\n */gm, "\n" + ind(4)) + "\n";
