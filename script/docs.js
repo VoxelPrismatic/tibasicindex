@@ -17,23 +17,10 @@ var notes = {}
 var jumps = []
 var docs_regex = [
     [
-        /\{\{cls\}\} (.+?) = (.+?)\(([\w\d*_, ]*)\)\n\n/gm,
+        /\{\{com\}\} (.*)\n\n/gm,
         function(m, p1, p2, p3) {
             var st = `<div id="top"></div><div id="${p2}" class="head1">`;
             st += `#] ` + p2 + ` <span class="typ">{{cls}}</span>`;
-            jumps.push([p2, `cls ${p2}()`]);
-            st += `</div><div class="code">`;
-            st += `${p1} = <span class="cls">${p2}</span>(`;
-            st += p3.replace(/\n */gm, " ");
-            st += ")</div>";
-            return st;
-            
-        }
-    ], [
-        /\{\{subcls\}\} \[(.+)\] (.+?) = (.+?)\(([\w\d*_, ]*)\)\n\n/gm,
-        function(m, p4, p1, p2, p3) {
-            var st = `<div id="top"></div><div id="${p2}" class="head1">`;
-            st += `#] ` + p2 + "(" + p4 + ")" + ` <span class="typ">{{cls}}</span>`;
             jumps.push([p2, `cls ${p2}()`]);
             st += `</div><div class="code">`;
             st += `${p1} = <span class="cls">${p2}</span>(`;
@@ -48,66 +35,6 @@ var docs_regex = [
             return ind(4) + trim(p1).replace(/\n */gm, "\n" + ind(4)) + "\n";
         }
     ], [
-        /\{\{fn\}\} (await )?(.+?)\.([\w\d_]+)\(([\w\d*_, ]*)\)(.*)\n\n/gm,
-        function(m, p1, p4, p2, p3, p5) {
-            if(p1 == undefined)
-                p1 = "";
-            else
-                p1 = `await `;
-            if(p5 == undefined)
-                p5 = ""
-            var st = `\n\n<div id="${p2}" class="head2">`;
-            jumps.push([p2, `fn ${p2}()`]);
-            st += `~] ` + p1 + p2 + ` <span class="typ">{{fn}}</span>`;
-            st += `</div><div class="code">`;
-            var py = "";
-            py += p1 + p4 + "." + p2 + "(";
-            py += p3.replace(/\n */gm, " ") + ")" + p5;
-            st += py_mark(py) + "</div>";
-            return st;
-        }
-    ], [
-        /\{\{sepfn\}\} (await )?([\w\d_]+)\(([\w\d*_, ]*)\)(.*)\n\n/gm,
-        function(m, p1, p2, p3, p5) {
-            if(p1 == undefined)
-                p1 = "";
-            else
-                p1 = `await `;
-            if(p5 == undefined)
-                p5 = ""
-            var st = `\n\n<div id="${p2}" class="head3">`;
-            st += `~] ` + p1 + p2 + ` <span class="typ">{{fn}}</span>`;
-            st += `</div><div class="code">`;
-            var py = "";
-            jumps.push([p2, `fn ${p2}()`]);
-            py += p1 + p2 + "(";
-            py += p3.replace(/\n */gm, " ") + ")" + p5;
-            st += py_mark(py) + "</div>";
-            st += `<div class="warn"><b>NOTE ] </b>`;
-            st += "This function is not part of any class";
-            st += "</div>";
-            return st;
-        }
-    ], [
-        /\{\{clsfn\}\} (.*) = (await )?([\w\d_]+)\(([\w\d*_, ]*)\)(.*)\n\n/gm,
-        function(m, p4, p1, p2, p3, p5) {
-            if(p1 == undefined)
-                p1 = "";
-            else
-                p1 = `<span class="aio">await</span> `;
-            if(p5 == undefined)
-                p5 = ""
-            var st = `\n\n<div id="${p2}" class="head3">`;
-            st += `~] ` + p1 + p2 + ` <span class="typ">{{fn}}</span>`;
-            st += `</div><div class="code">`;
-            var py = "";
-            jumps.push([p2, `fn ${p2}()`]);
-            py += p4 + " = " + p1 + p2 + "(";
-            py += p3.replace(/\n */gm, " ") + ")" + p5;
-            st += py_mark(py) + "</div>";
-            return st;
-        }
-    ], [
         /\{\{param\}\} (.+?) \[(.+)\]\n([^{]*)\n\n*/gm,
         function(m, p1, p2, p3) {
             var st = ""
@@ -117,20 +44,6 @@ var docs_regex = [
                 params = true;
             }
             st += `<span class="typ">{{param}}</span>`;
-            st += ` <span class="var"><b>${p1}</b></span> [<span class="cls">${p2}</span>]\n`;
-            st += ind(4) + trim(p3).replace(/\n */gm, "\n" + ind(4)) + "\n";
-            return st;
-        }
-    ], [
-        /\{\{prop\}\} (.+?) \[(.+)\]\n([^{]*)\n\n*/gm, 
-        function(m, p1, p2, p3) {
-            var st = ""
-            if(!props) {
-                st += `<div id="props"></div>`;
-                jumps.push(["props", ""]);
-                props = true;
-            }
-            st += `<span class="typ">{{prop}}</span>`;
             st += ` <span class="var"><b>${p1}</b></span> [<span class="cls">${p2}</span>]\n`;
             st += ind(4) + trim(p3).replace(/\n */gm, "\n" + ind(4)) + "\n";
             return st;
@@ -166,13 +79,11 @@ var docs_regex = [
             return st;
         }
     ], [
-        /discord\.([.\w_]+)/gm, 
+        /ti\.([.\w_]+)/gm, 
         function(m, p1) {
-            if(p1.startsWith("gg"))
-                return "discord." + p1;
             var st = `<button class="btn" onclick="btnload(this.id)"`;
-            st += `id="discord/${p1.replace(/\./gm, "/")}.txt">`;
-            st += "discord." + p1;
+            st += `id="ti/${p1.replace(/\./gm, "/")}.txt">`;
+            st += "ti." + p1;
             st += "</button>";
             return st;
         }
@@ -180,7 +91,7 @@ var docs_regex = [
         /\`(.+?)`/gm, 
         function(m, p1) {
             var st = `<span class="code">`;
-            st += py_mark(p1);
+            st += ti_mark(p1);
             st += `</span>`;
             return st;
         }
