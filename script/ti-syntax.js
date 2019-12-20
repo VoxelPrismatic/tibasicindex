@@ -1,13 +1,22 @@
-kw_68k = [
+var kw_68k = [
 ];
 
-kw_ti83 = [
+var fn_68k = [
+]
+
+var kw_ti83 = [
 ];
 
-kw_nspire = [
+var fn_ti83 = [
+]
+
+var kw_nspire = [
 ];
 
-ti_regex = [
+var fn_nspire = [
+];
+
+var ti_regex = [
     [
         /"(.+?)"/gm,
         `<span class="str">"$1"</span>`
@@ -27,7 +36,11 @@ ti_regex = [
         function(m, a) {
             return `<span class="comm">\u00a9${a.split('').join('\u200b')}</span>`;
         }
-    ], [
+    ]
+];
+
+var tok = [
+    [
         /(-?)(\d+(\.\d+)?j?)/gm, 
         `<span class="var">$1$2</span>`
     ], [
@@ -36,8 +49,7 @@ ti_regex = [
     ], [
         /\>=/gm,
     ]
-];
-
+]
 function ti_mark(st) {
     st = st.replace(/\n/gm, " \n");
     var sym = "[\\"+"\\.,:;()[]{}~|/-+=*^%&@ ".split('').join("\\")+"]";
@@ -51,7 +63,7 @@ function ti_mark(st) {
     else if(document.URL.includes("nspire"))
         kw = kw_nspire;
     else
-        kw = kw_ti83
+        kw = kw_ti83;
     for(var r of kw) {
         st = st.replace(
             RegExp("^"+r+gsym, "gm"), 
