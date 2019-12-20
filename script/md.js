@@ -195,7 +195,7 @@ function mark_page(st) {
             continue;
         }
         if(line == "---" && inpy) {
-            str += py_mark(py).replace(/\n/gm, "<br>");
+            str += ti_mark(py).replace(/\n/gm, "<br>");
             py = "";
             inpy = false;
             continue;
